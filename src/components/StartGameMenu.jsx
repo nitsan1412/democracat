@@ -10,8 +10,8 @@ export default function StartGameMenu() {
 
   return (
     <Stack alignItems="center" gap={2} sx={{ padding: "1rem" }}>
-      <Typography variant="h2">DemocraCat</Typography>
-      <Typography variant="h4">למען פלורליזם חברתי</Typography>
+      <Typography variant="h3">DemocraCat</Typography>
+      <Typography variant="h5">למען פלורליזם חברתי</Typography>
       <Stack direction="row" gap={2}>
         <Character.Image
           characterType="orthodox-man"

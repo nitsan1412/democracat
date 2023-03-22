@@ -18,7 +18,7 @@ export default function Rule({ rule, noChoice }) {
   return (
     <Paper
       elevation={2}
-      sx={{ padding: "0.5rem", width: "20rem", position: "absolute", top: 60 }}
+      sx={{ padding: "0.5rem", width: "25rem", position: "absolute", top: 60 }}
     >
       <Stack gap={1} height={1}>
         <Stack flexDirection="row">
@@ -80,25 +80,29 @@ function RuleImpact({ rule }) {
             badgeContent={RuleImpact.BADGES[impact].content}
             color={RuleImpact.BADGES[impact].color}
             sx={{
+              // flex: 1,
+              // alignSelf: "center",
               ".MuiBadge-badge": {
                 padding: 0,
-                fontSize: "0.5rem",
-                minWidth: "11px",
-                height: "11px",
-                lineHeight: "11px",
+                fontSize: "1rem",
+                minWidth: "21px",
+                height: "21px",
+                lineHeight: "21px",
+                top: 10,
+                right: 15,
               },
             }}
           >
             <Character.Image
               characterType={characterType}
-              sx={{ height: "30px", width: "30px" }}
+              sx={{ height: "60px", width: "60px" }}
             />
           </Badge>
         ) : (
           <Character.Image
             key={characterType}
             characterType={characterType}
-            sx={{ height: "30px", width: "30px" }}
+            sx={{ height: "60px", width: "60px" }}
           />
         )
       )}
@@ -107,11 +111,11 @@ function RuleImpact({ rule }) {
 }
 
 RuleImpact.BADGES = {
-  [-1]: { color: "error", content: "-" },
-  1: { color: "success", content: "+" },
-  2: { color: "success", content: "+" },
-  3: { color: "success", content: "+" },
-  [-2]: { color: "error", content: "-" },
+  [-1]: { color: "error", content: "1" },
+  1: { color: "success", content: "1" },
+  2: { color: "success", content: "2" },
+  3: { color: "success", content: "3" },
+  [-2]: { color: "error", content: "2" },
 };
 
 function RuleChoice({ rule }) {
@@ -156,9 +160,9 @@ function RuleChoice({ rule }) {
         onClose={() => setOpenModal(false)}
         sx={{ borderRadius: 15 }}
       >
-        <Box sx={style}>
+        <Box sx={style} gap={3}>
           <Typography id="modal-modal-title" variant="h6" component="h6">
-            החוק: {rule.name}
+            חוק {rule.name}
           </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h6">
             עבר בהצלחה
@@ -187,10 +191,12 @@ function RuleChoice({ rule }) {
   );
 }
 const style = {
-  width: 400,
+  width: "100%",
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
+  display: "flex",
+  flexDirection: "column",
 };
 // const buttonStyle = {
 //   borderRadius: 25,
