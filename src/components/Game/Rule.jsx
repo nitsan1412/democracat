@@ -11,13 +11,12 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import { useGame } from "../../helpers/GameContext";
 import Character from "./Character";
 import { playSound } from "../../helpers/Sounds";
+import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
 
 export default function Rule({ rule, noChoice }) {
+  const [showRuleInfo, setShowRuleInfo] = useState(false);
   return (
-    <Paper
-      elevation={2}
-      sx={{ padding: "0.5rem", width: "calc(100vw - 2rem)" }}
-    >
+    <Paper elevation={2} sx={{ padding: "0.5rem", width: "calc(30vw - 2rem)" }}>
       <Stack gap={1} height={1} alignItems="center">
         <Typography
           variant="body1"
@@ -25,6 +24,20 @@ export default function Rule({ rule, noChoice }) {
         >
           {rule.name}
         </Typography>
+        <InfoTwoToneIcon
+          sx={{ color: "purple" }}
+          onClick={() => setShowRuleInfo(!showRuleInfo)}
+        />
+        {showRuleInfo ? (
+          <Typography
+            variant="body2"
+            sx={{ textAlign: "center", flex: 1, fontSize: "0.9rem" }}
+          >
+            {rule.info}
+          </Typography>
+        ) : (
+          <></>
+        )}
         <RuleImpact rule={rule} />
         {noChoice ? "" : <RuleChoice rule={rule} />}
       </Stack>

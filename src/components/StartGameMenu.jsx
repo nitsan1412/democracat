@@ -10,26 +10,26 @@ export default function StartGameMenu() {
 
   return (
     <Stack alignItems="center" gap={2} sx={{ padding: "1rem" }}>
-      <Typography variant="h2">DemocRun</Typography>
+      <Typography variant="h2">DemocraCat</Typography>
       <Typography variant="h4">למען פלורליזם חברתי</Typography>
       <Stack direction="row" gap={2}>
         <Character.Image
           characterType="orthodox-man"
-          sx={{ width: "calc(50vw - 2rem)", height: "calc(50vw - 2rem)" }}
+          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
         />
         <Character.Image
           characterType="arab-woman"
-          sx={{ width: "calc(50vw - 2rem)", height: "calc(50vw - 2rem)" }}
+          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
         />
       </Stack>
       <Stack direction="row" gap={2}>
         <Character.Image
           characterType="secular-woman"
-          sx={{ width: "calc(50vw - 2rem)", height: "calc(50vw - 2rem)" }}
+          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
         />
         <Character.Image
           characterType="religious-man"
-          sx={{ width: "calc(50vw - 2rem)", height: "calc(50vw - 2rem)" }}
+          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
         />
       </Stack>
       <Button variant="contained" fullWidth onClick={start}>
