@@ -1,9 +1,9 @@
 import Typography from "@mui/material/Typography";
-import { Grid, Button } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useGame } from "../../helpers/GameContext";
 
 export default function Timer() {
-  const { game, pauseGame, resumeGame } = useGame();
+  const { game } = useGame();
   return (
     <Grid
       // direction="row"
