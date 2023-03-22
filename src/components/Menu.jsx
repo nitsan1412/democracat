@@ -12,7 +12,7 @@ export default function Menu() {
         sx={{ padding: "0.5rem", height: "3rem" }}
       >
         <Typography variant="button" sx={{ fontWeight: "bold" }}>
-          democrun
+          DemocraCat
         </Typography>
       </Stack>
     </AppBar>

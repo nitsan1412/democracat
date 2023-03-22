@@ -11,20 +11,39 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import { useGame } from "../../helpers/GameContext";
 import Character from "./Character";
 import { playSound } from "../../helpers/Sounds";
+import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
 
 export default function Rule({ rule, noChoice }) {
+  const [showRuleInfo, setShowRuleInfo] = useState(false);
   return (
     <Paper
       elevation={2}
-      sx={{ padding: "0.5rem", width: "calc(100vw - 2rem)" }}
+      sx={{ padding: "0.5rem", width: "25rem", position: "absolute", top: 60 }}
     >
-      <Stack gap={1} height={1} alignItems="center">
-        <Typography
-          variant="body1"
-          sx={{ textAlign: "center", flex: 1, fontSize: "1.2rem" }}
-        >
-          {rule.name}
-        </Typography>
+      <Stack gap={1} height={1}>
+        <Stack flexDirection="row">
+          <InfoTwoToneIcon
+            sx={{ color: "purple", flex: 1 }}
+            onClick={() => setShowRuleInfo(!showRuleInfo)}
+          />
+          <Typography
+            variant="body1"
+            sx={{ textAlign: "center", flex: 5, fontSize: "1.2rem" }}
+          >
+            {rule.name}
+          </Typography>
+        </Stack>
+
+        {showRuleInfo ? (
+          <Typography
+            variant="body2"
+            sx={{ textAlign: "center", flex: 1, fontSize: "0.9rem" }}
+          >
+            {rule.info}
+          </Typography>
+        ) : (
+          <></>
+        )}
         <RuleImpact rule={rule} />
         {noChoice ? "" : <RuleChoice rule={rule} />}
       </Stack>
@@ -61,25 +80,29 @@ function RuleImpact({ rule }) {
             badgeContent={RuleImpact.BADGES[impact].content}
             color={RuleImpact.BADGES[impact].color}
             sx={{
+              // flex: 1,
+              // alignSelf: "center",
               ".MuiBadge-badge": {
                 padding: 0,
-                fontSize: "0.5rem",
-                minWidth: "11px",
-                height: "11px",
-                lineHeight: "11px",
+                fontSize: "1rem",
+                minWidth: "21px",
+                height: "21px",
+                lineHeight: "21px",
+                top: 10,
+                right: 15,
               },
             }}
           >
             <Character.Image
               characterType={characterType}
-              sx={{ height: "30px", width: "30px" }}
+              sx={{ height: "60px", width: "60px" }}
             />
           </Badge>
         ) : (
           <Character.Image
             key={characterType}
             characterType={characterType}
-            sx={{ height: "30px", width: "30px" }}
+            sx={{ height: "60px", width: "60px" }}
           />
         )
       )}
@@ -88,11 +111,11 @@ function RuleImpact({ rule }) {
 }
 
 RuleImpact.BADGES = {
-  [-1]: { color: "error", content: "-" },
-  1: { color: "success", content: "+" },
-  2: { color: "success", content: "+" },
-  3: { color: "success", content: "+" },
-  [-2]: { color: "error", content: "-" },
+  [-1]: { color: "error", content: "1" },
+  1: { color: "success", content: "1" },
+  2: { color: "success", content: "2" },
+  3: { color: "success", content: "3" },
+  [-2]: { color: "error", content: "2" },
 };
 
 function RuleChoice({ rule }) {
@@ -137,9 +160,9 @@ function RuleChoice({ rule }) {
         onClose={() => setOpenModal(false)}
         sx={{ borderRadius: 15 }}
       >
-        <Box sx={style}>
+        <Box sx={style} gap={3}>
           <Typography id="modal-modal-title" variant="h6" component="h6">
-            החוק: {rule.name}
+            חוק {rule.name}
           </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h6">
             עבר בהצלחה
@@ -168,10 +191,12 @@ function RuleChoice({ rule }) {
   );
 }
 const style = {
-  width: 400,
+  width: "100%",
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
+  display: "flex",
+  flexDirection: "column",
 };
 // const buttonStyle = {
 //   borderRadius: 25,
