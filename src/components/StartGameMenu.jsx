@@ -15,21 +15,21 @@ export default function StartGameMenu() {
       <Stack direction="row" gap={2}>
         <Character.Image
           characterType="orthodox-man"
-          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
+          sx={StartGameMenu.characterStyles}
         />
         <Character.Image
           characterType="arab-woman"
-          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
+          sx={StartGameMenu.characterStyles}
         />
       </Stack>
       <Stack direction="row" gap={2}>
         <Character.Image
           characterType="secular-woman"
-          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
+          sx={StartGameMenu.characterStyles}
         />
         <Character.Image
           characterType="religious-man"
-          sx={{ width: "calc(20vw - 2rem)", height: "calc(20vw - 2rem)" }}
+          sx={StartGameMenu.characterStyles}
         />
       </Stack>
       <Button variant="contained" fullWidth onClick={start}>
@@ -38,3 +38,7 @@ export default function StartGameMenu() {
     </Stack>
   );
 }
+StartGameMenu.characterStyles = {
+  width: 150,
+  height: 150,
+};

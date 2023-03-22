@@ -16,18 +16,24 @@ import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
 export default function Rule({ rule, noChoice }) {
   const [showRuleInfo, setShowRuleInfo] = useState(false);
   return (
-    <Paper elevation={2} sx={{ padding: "0.5rem", width: "calc(30vw - 2rem)" }}>
-      <Stack gap={1} height={1} alignItems="center">
-        <Typography
-          variant="body1"
-          sx={{ textAlign: "center", flex: 1, fontSize: "1.2rem" }}
-        >
-          {rule.name}
-        </Typography>
-        <InfoTwoToneIcon
-          sx={{ color: "purple" }}
-          onClick={() => setShowRuleInfo(!showRuleInfo)}
-        />
+    <Paper
+      elevation={2}
+      sx={{ padding: "0.5rem", width: "20rem", position: "absolute", top: 60 }}
+    >
+      <Stack gap={1} height={1}>
+        <Stack flexDirection="row">
+          <InfoTwoToneIcon
+            sx={{ color: "purple", flex: 1 }}
+            onClick={() => setShowRuleInfo(!showRuleInfo)}
+          />
+          <Typography
+            variant="body1"
+            sx={{ textAlign: "center", flex: 5, fontSize: "1.2rem" }}
+          >
+            {rule.name}
+          </Typography>
+        </Stack>
+
         {showRuleInfo ? (
           <Typography
             variant="body2"
