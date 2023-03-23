@@ -28,13 +28,24 @@ Timer.displayTime = (seconds) =>
 
 Timer.twoDigits = (num) => String(Math.floor(num)).padStart(2, "0");
 
+// Timer.styles = {
+//   position: "absolute",
+//   top: 0,
+//   left: 0,
+//   height: "3rem",
+//   lineHeight: "3rem",
+//   fontSize: "1.2rem",
+//   color: "white",
+//   paddingLeft: "1rem",
+// };
 Timer.styles = {
   position: "absolute",
-  top: 0,
-  left: 0,
+  marginTop: -6,
+  marginRight: 13,
   height: "3rem",
   lineHeight: "3rem",
   fontSize: "1.2rem",
   color: "white",
   paddingLeft: "1rem",
+  zIndex: 300,
 };

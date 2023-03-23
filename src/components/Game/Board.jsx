@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 
 import { useGame } from "../../helpers/GameContext";
 import Character from "./Character";
+import useWindowSize from "../../helpers/windowSize";
 
 export default function Board() {
   const { game } = useGame();
@@ -13,13 +14,15 @@ export default function Board() {
       width={1}
       hight={1}
       direction="column"
-      alignItems="stretch"
+      alignItems="center"
+      justifyContent="center"
       sx={{ flexGrow: 1 }}
     >
       {" "}
       <Stack
         width={1}
-        hight={1}
+        hight="70%"
+        // border="black solid 3px"
         direction="row"
         alignItems="stretch"
         sx={{ flexGrow: 1 }}
@@ -34,7 +37,16 @@ export default function Board() {
           )
         )}
       </Stack>
-      <Button variant="contained" fullWidth>
+      <Button
+        variant="contained"
+        fullWidth
+        sx={{
+          marginBottom: "1rem",
+          position: "absolute",
+          bottom: -15,
+          width: useWindowSize().width > 450 ? 350 : "100%",
+        }}
+      >
         הגעת ליעד
       </Button>
     </Stack>
@@ -43,7 +55,11 @@ export default function Board() {
 
 function Track({ characterType, characters }) {
   return (
-    <Box width={1} sx={{ marginRight: "-1px", position: "relative" }}>
+    <Box
+      width={1}
+      height={"78%"}
+      sx={{ marginRight: "-1px", position: "relative" }}
+    >
       {characters.map((character, index) =>
         character.location < 100 ? (
           <Character key={index} character={character} />

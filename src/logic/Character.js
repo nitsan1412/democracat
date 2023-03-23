@@ -8,7 +8,12 @@ export default class Character {
   }
 
   static createCharacter(characterTypes) {
-    let rulletePointer = Math.random() * Object.values(Character.CHARACTER_TYPE_PRECENTAGES).reduce((sum, x) => sum + x, 0);
+    let rulletePointer =
+      Math.random() *
+      Object.values(Character.CHARACTER_TYPE_PRECENTAGES).reduce(
+        (sum, x) => sum + x,
+        0
+      );
     let gender = Math.random() > 0.5 ? "man" : "woman";
     let characterTypefound = Object.entries(
       Character.CHARACTER_TYPE_PRECENTAGES
@@ -28,9 +33,9 @@ export default class Character {
   }
 
   static CHARACTER_TYPE_PRECENTAGES = {
-    secular: 40,
-    religious: 20,
-    orthodox: 15,
-    arab: 15
+    secular: 25,
+    religious: 25,
+    orthodox: 25,
+    arab: 25,
   };
 }

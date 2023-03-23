@@ -16,6 +16,15 @@ const theme = createTheme({
     body1: { direction: "rtl" },
     body2: { direction: "rtl" },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 350,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
 });
 
 export default function Provider({ children }) {
