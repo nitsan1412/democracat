@@ -34,7 +34,7 @@ export default function Board() {
           )
         )}
       </Stack>
-      <Button variant="contained" fullWidth>
+      <Button variant="contained" fullWidth sx={{ marginBottom: "1rem" }}>
         הגעת ליעד
       </Button>
     </Stack>

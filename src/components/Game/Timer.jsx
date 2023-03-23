@@ -9,7 +9,7 @@ export default function Timer() {
       // direction="row"
       alignItems="center"
       justifyContent="center"
-      // sx={{ padding: "0.5rem", height: "3rem" }}
+      sx={{ padding: "0.5rem", height: "3rem", zIndex: 99 }}
     >
       {/* <Button
         variant="text"
