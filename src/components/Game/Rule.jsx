@@ -12,6 +12,7 @@ import { useGame } from "../../helpers/GameContext";
 import Character from "./Character";
 import { playSound } from "../../helpers/Sounds";
 import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
+import useWindowSize from "../../helpers/windowSize";
 
 export default function Rule({ rule, noChoice }) {
   const [showRuleInfo, setShowRuleInfo] = useState(false);
@@ -20,7 +21,8 @@ export default function Rule({ rule, noChoice }) {
       elevation={2}
       sx={{
         padding: "0.5rem",
-        width: "100%",
+        width: useWindowSize().width > 450 ? 350 : "100%",
+        maxWidth: 450,
         maxHeight: "18rem",
         position: "absolute",
         top: 48,
@@ -102,7 +104,7 @@ function RuleImpact({ rule }) {
                   width: "21px",
                   height: "21px",
                   lineHeight: "21px",
-                  top: 10,
+                  // top: 10,
                   right: 15,
                 },
               }}
@@ -141,7 +143,12 @@ function RuleChoice({ rule }) {
   const { game, pauseGame, resumeGame } = useGame();
   const [openModal, setOpenModal] = useState(false);
   return (
-    <Stack width={1} direction="row-reverse" justifyContent="space-evenly">
+    <Stack
+      width={1}
+      direction="row-reverse"
+      justifyContent="space-evenly"
+      sx={{ ".MuiStack-root": { height: "4.5rem !important" } }}
+    >
       <Button
         variant="outlined"
         size="small"

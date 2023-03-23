@@ -20,7 +20,9 @@ export default class Game {
 
   step() {
     if (this.paused) return;
-    this.characters.forEach((charcter) => charcter.move(0.1));
+    this.characters.forEach((charcter) => {
+      charcter.move(0.1);
+    });
     if (Math.random() <= Game.CHARACTER_ADDITION_CHANCE) {
       this.characters.push(Character.createCharacter(this.characterTypes));
     }
