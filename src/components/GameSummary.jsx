@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Rule from "./Game/Rule";
-import Character from "./Game/Character";
+// import Character from "./Game/Character";
 
 import { useGame } from "../helpers/GameContext";
 
