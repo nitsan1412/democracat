@@ -52,8 +52,15 @@ export default class Game {
   }
 
   get score() {
+    let charctersDone = this.characters.filter(
+      (charcter) => charcter.location >= Game.TRACK_END
+    );
+    return charctersDone.length;
+  }
+
+  get bonusScore() {
     let diversityMap = Object.fromEntries(
-      this.characterTypes.map((characterType) => [characterType, 0])
+      this.characterTypes.map((characterType) => [characterType.name, 0])
     );
     let charctersDone = this.characters.filter(
       (charcter) => charcter.location >= Game.TRACK_END
@@ -61,7 +68,9 @@ export default class Game {
     charctersDone.forEach((character) => {
       diversityMap[character.type]++;
     });
-    return charctersDone.length + this.calculateBonus(diversityMap);
+    return (
+      charctersDone.length + this.calculateBonus(diversityMap, charctersDone)
+    );
   }
 
   get shouldSetNextRule() {
@@ -161,8 +170,18 @@ export default class Game {
     this.status = Game.STATUS.OVER;
   }
 
-  calculateBonus(diversityMap) {
-    return 0;
+  calculateBonus(diversityMap, charctersDoneArray) {
+    let bonusScore = 0;
+    // this.characterTypes.forEach((characterType) => {
+    //   if (diversityMap[characterType.name] > 0) bonusScore += 10;
+    // });
+    console.log(charctersDoneArray);
+    // const females = charctersDoneArray.filter((charcter) =>
+    //   charcter.includes("woman")
+    // );
+    // if (females.length > 0) bonusScore += 10;
+    // if (charctersDoneArray.length - females.length > 0) bonusScore += 10; //there are males
+    return bonusScore;
   }
 
   static STATUS = {
@@ -176,7 +195,10 @@ export default class Game {
     DECLINED: "declined",
   };
   static STEP = 0.1;
+  // static STEP = 1;
   static DURATION = 2.5 * 60;
+  // static DURATION = 1 * 30;
+
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
   static TRACK_END = 100;

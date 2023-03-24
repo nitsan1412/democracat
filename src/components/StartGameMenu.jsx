@@ -14,20 +14,24 @@ export default function StartGameMenu() {
       <Typography variant="h5">למען פלורליזם חברתי</Typography>
       <Stack direction="row" gap={2}>
         <Character.Image
+          key="orthodox-man"
           characterType="orthodox-man"
           sx={StartGameMenu.characterStyles}
         />
         <Character.Image
+          key="arab-woman"
           characterType="arab-woman"
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
       <Stack direction="row" gap={2}>
         <Character.Image
+          key="secular-woman"
           characterType="secular-woman"
           sx={StartGameMenu.characterStyles}
         />
         <Character.Image
+          key="religious-man"
           characterType="religious-man"
           sx={StartGameMenu.characterStyles}
         />

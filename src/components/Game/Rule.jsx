@@ -15,18 +15,19 @@ import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
 import useWindowSize from "../../helpers/windowSize";
 
 export default function Rule({ rule, noChoice }) {
-  const [showRuleInfo, setShowRuleInfo] = useState(false);
+  const [showRuleInfo, setShowRuleInfo] = useState(noChoice ? true : false);
+  const currentWidth = useWindowSize().width;
   return (
     <Paper
       elevation={2}
       sx={{
         padding: "0.5rem",
-        width: useWindowSize().width > 450 ? 350 : "100%",
+        width: noChoice ? 230 : currentWidth > 450 ? 350 : "100%",
         maxWidth: 450,
         maxHeight: "18rem",
-        position: "absolute",
-        top: 48,
-        zIndex: 99,
+        position: !noChoice && "absolute",
+        top: noChoice ? 0 : 48,
+        zIndex: noChoice ? 4560 : 99,
       }}
     >
       <Stack gap={1} height={1}>
@@ -193,11 +194,7 @@ function RuleChoice({ rule }) {
           <Typography id="modal-modal-title" variant="h6" component="h6">
             עבר בהצלחה
           </Typography>
-          <Typography
-            id="modal-modal-title"
-            variant="subtitle2"
-            component="subtitle2"
-          >
+          <Typography id="modal-modal-title" variant="h6" component="h6">
             {rule.info || ""}
           </Typography>
           <Button
