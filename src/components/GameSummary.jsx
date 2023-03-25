@@ -7,12 +7,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Rule from "./Game/Rule";
-// import Character from "./Game/Character";
+import Character from "./Game/Character";
 
 import { useGame } from "../helpers/GameContext";
 
 export default function StartGameMenu() {
-  const { game } = useGame();
+  const { game, newGame } = useGame();
 
   return (
     <Stack
@@ -39,20 +39,23 @@ export default function StartGameMenu() {
       <Typography variant="h5">
         סך הכל: {game.bonusScore + game.score}
       </Typography>
-      {/* <Stack>
+      {/* working on styling */}
+
+      <Stack sx={{ flexDirection: "column", maxHeight: "40vh" }}>
         {Object.entries(game.charactersByType).map(
           ([characterType, characters]) => {
             console.log("characterType", characterType);
             console.log("characters", characters);
-            // const charactersDoneOfType = characters.filter(
-            //   (character) =>
-            //     character.location < 100 &&
-            //     characterType === character.type.name
-            // );
+            const numberOfCharactersDoneOfType = characters.filter(
+              (character) =>
+                character.location > 100 &&
+                characterType === character.type.name
+            ).length;
             return (
-              <Stack sx={{ flexDirection: "row", gap: 1 }}>
-                <Typography variant="h5">{characters.length}</Typography>
-
+              <Stack sx={{ flexDirection: "row" }}>
+                <Typography variant="h5" sx={{ marginTop: 1.5 }}>
+                  {numberOfCharactersDoneOfType}
+                </Typography>
                 <Character.Image
                   characterType={characterType}
                   sx={{ height: "60px", width: "60px" }}
@@ -61,7 +64,7 @@ export default function StartGameMenu() {
             );
           }
         )}
-      </Stack> */}
+      </Stack>
       <Stack
         alignItems="center"
         justifyContent="center"
@@ -91,13 +94,7 @@ export default function StartGameMenu() {
           {game.chosenRules.length} :חוקים שעברו
         </Typography>
         <Slider slidesToShow={1} slidesToScroll={1}>
-          {/* <div>hhh</div>
-          <div>hhh</div>
-          <div>hhh</div>
-          <div>hhh</div> */}
-
           {game.chosenRules.map((rule) => (
-            // <div>hhh</div>
             <Rule rule={rule} noChoice />
           ))}
         </Slider>
@@ -118,7 +115,7 @@ export default function StartGameMenu() {
         startIcon={
           <ShareIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
         }
-        onClick={() => {}}
+        onClick={() => newGame()}
       >
         New Game
       </Button>

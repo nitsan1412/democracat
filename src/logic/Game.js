@@ -175,7 +175,7 @@ export default class Game {
     // this.characterTypes.forEach((characterType) => {
     //   if (diversityMap[characterType.name] > 0) bonusScore += 10;
     // });
-    console.log(charctersDoneArray);
+    // console.log(charctersDoneArray);
     // const females = charctersDoneArray.filter((charcter) =>
     //   charcter.includes("woman")
     // );
