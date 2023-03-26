@@ -28,9 +28,9 @@ export default function Board() {
         sx={{ flexGrow: 1 }}
       >
         {Object.entries(game.charactersByGenderlessType).map(
-          ([characterType, characters]) => (
+          ([characterType, characters], index) => (
             <Track
-              key={characterType.name}
+              key={index}
               characterType={characterType}
               characters={characters}
             />

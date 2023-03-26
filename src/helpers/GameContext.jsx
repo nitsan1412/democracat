@@ -12,6 +12,11 @@ export function GameProvider({ children }) {
   const [game, setGame] = useState(new Game());
   const [intervalHandler, setIntervalHandler] = useState(undefined);
 
+  const newGame = () => {
+    console.log("in newGame in context");
+    setGame(new Game());
+  };
+
   const start = () => {
     game.start();
     let interval = setInterval(() => {
@@ -53,6 +58,7 @@ export function GameProvider({ children }) {
     <GameContext.Provider
       value={{
         game,
+        newGame,
         start,
         cancel,
         chooseRule,

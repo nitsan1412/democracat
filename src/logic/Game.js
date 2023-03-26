@@ -21,7 +21,7 @@ export default class Game {
   step() {
     if (this.paused) return;
     this.characters.forEach((charcter) => {
-      charcter.move(0.1);
+      if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
     });
     if (Math.random() <= Game.CHARACTER_ADDITION_CHANCE) {
       this.characters.push(Character.createCharacter(this.characterTypes));
@@ -52,16 +52,27 @@ export default class Game {
   }
 
   get score() {
+    let charctersDone = this.characters.filter(
+      (charcter) => charcter.location >= Game.TRACK_END
+    );
+    return charctersDone.length;
+  }
+
+  get bonusScore() {
     let diversityMap = Object.fromEntries(
-      this.characterTypes.map((characterType) => [characterType, 0])
+      this.characterTypes.map((characterType) => [characterType.name, 0])
     );
     let charctersDone = this.characters.filter(
       (charcter) => charcter.location >= Game.TRACK_END
     );
     charctersDone.forEach((character) => {
-      diversityMap[character.type]++;
+      diversityMap[character.type.name]++;
     });
-    return charctersDone.length + this.calculateBonus(diversityMap);
+    console.log("charctersDone", charctersDone);
+    console.log("diversityMap", diversityMap);
+    if (charctersDone.length > 0)
+      return this.calculateBonus(diversityMap, charctersDone);
+    return 0;
   }
 
   get shouldSetNextRule() {
@@ -161,8 +172,21 @@ export default class Game {
     this.status = Game.STATUS.OVER;
   }
 
-  calculateBonus(diversityMap) {
-    return 0;
+  calculateBonus(diversityMap, charctersDoneArray) {
+    let bonusScore = charctersDoneArray.length
+      ? charctersDoneArray.length * CharacterType.characterTypes().length
+      : 0; //starter score
+    let avg = (
+      charctersDoneArray.length / CharacterType.characterTypes().length
+    ).toFixed(0);
+    console.log("diversityMap", diversityMap);
+    Object.keys(diversityMap).forEach((type) => {
+      const deviation = avg - type;
+      if (deviation > 0) {
+        bonusScore = bonusScore - Math.sqrt(deviation);
+      }
+    });
+    return bonusScore;
   }
 
   static STATUS = {
@@ -176,7 +200,10 @@ export default class Game {
     DECLINED: "declined",
   };
   static STEP = 0.1;
+  // static STEP = 1;
   static DURATION = 2.5 * 60;
+  // static DURATION = 1 * 30;
+
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
   static TRACK_END = 100;
