@@ -5,6 +5,8 @@ import { useGame } from "../../helpers/GameContext";
 import Rule from "./Rule";
 import cneset1 from "../../images/cneset1.jpeg";
 // import cneset2 from "../../images/cneset2.jpeg";
+// import cneset3 from "../../images/cneset3.png";
+
 import useWindowSize from "../../helpers/windowSize";
 import { Typography } from "@mui/material";
 

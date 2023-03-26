@@ -54,7 +54,7 @@ export default function Rule({ rule, noChoice }) {
         ) : (
           <></>
         )}
-        <RuleImpact rule={rule} />
+        {!noChoice ? "" : <RuleImpact rule={rule} />}
         {noChoice ? "" : <RuleChoice rule={rule} />}
       </Stack>
     </Paper>
@@ -189,7 +189,7 @@ function RuleChoice({ rule }) {
       >
         <Box sx={style} gap={3}>
           <Typography id="modal-modal-title" variant="h6" component="h6">
-            חוק {rule.name}
+            {rule.name}
           </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h6">
             עבר בהצלחה
@@ -197,6 +197,7 @@ function RuleChoice({ rule }) {
           <Typography id="modal-modal-title" variant="h6" component="h6">
             {rule.info || ""}
           </Typography>
+          <RuleImpact rule={rule} />
           <Button
             // sx={buttonStyle}
             variant="outlined"
