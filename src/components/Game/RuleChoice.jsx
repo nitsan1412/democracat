@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 // import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import { useGame } from "../../helpers/GameContext";
 import Rule from "./Rule";
 // import cneset1 from "../../images/cneset1.jpeg";

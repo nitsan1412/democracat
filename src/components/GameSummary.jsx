@@ -72,6 +72,7 @@ export default function StartGameMenu() {
                   />
                 </Stack>
               );
+            else return "";
           }
         )}
       </Grid>
