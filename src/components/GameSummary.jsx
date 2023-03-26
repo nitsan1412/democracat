@@ -1,7 +1,9 @@
 import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ShareIcon from "@mui/icons-material/Share";
+import ReplayIcon from "@mui/icons-material/Replay";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -24,7 +26,7 @@ export default function StartGameMenu() {
         // gap: "1rem",
         // ".slick-track": { width: "250 !important" },
         ".slick-slide": { padding: "0.5rem 1rem" },
-        ".slick-arrow": { zIndex: 2, "&::before": { color: "#000000" } },
+        ".slick-arrow": { zIndex: 72, "&::before": { color: "#000000" } },
         ".slick-prev": { left: "-45px" },
         ".slick-next": { right: "-55px" },
       }}
@@ -41,7 +43,14 @@ export default function StartGameMenu() {
       </Typography>
       {/* working on styling */}
 
-      <Stack sx={{ flexDirection: "column", maxHeight: "40vh" }}>
+      <Grid
+        sx={{ maxWidth: "350px", marginTop: 2 }}
+        container
+        justifyContent="center"
+        alignItems="center"
+        spacing={4}
+        // xs={8} sm={} md={} lg={} xl={}
+      >
         {Object.entries(game.charactersByType).map(
           ([characterType, characters]) => {
             console.log("characterType", characterType);
@@ -51,20 +60,21 @@ export default function StartGameMenu() {
                 character.location > 100 &&
                 characterType === character.type.name
             ).length;
-            return (
-              <Stack sx={{ flexDirection: "row" }}>
-                <Typography variant="h5" sx={{ marginTop: 1.5 }}>
-                  {numberOfCharactersDoneOfType}
-                </Typography>
-                <Character.Image
-                  characterType={characterType}
-                  sx={{ height: "60px", width: "60px" }}
-                />
-              </Stack>
-            );
+            if (numberOfCharactersDoneOfType > 0)
+              return (
+                <Stack sx={{ flexDirection: "row", maxWidth: 150 }}>
+                  <Typography variant="h5" sx={{ marginTop: 1.5 }}>
+                    {numberOfCharactersDoneOfType}
+                  </Typography>
+                  <Character.Image
+                    characterType={characterType}
+                    sx={{ height: "60px", width: "60px" }}
+                  />
+                </Stack>
+              );
           }
         )}
-      </Stack>
+      </Grid>
       <Stack
         alignItems="center"
         justifyContent="center"
@@ -93,7 +103,12 @@ export default function StartGameMenu() {
         <Typography variant="h5">
           {game.chosenRules.length} :חוקים שעברו
         </Typography>
-        <Slider slidesToShow={1} slidesToScroll={1}>
+        <Slider
+          slidesToShow={1}
+          slidesToScroll={1}
+          dots={true}
+          swipeToSlide={true}
+        >
           {game.chosenRules.map((rule) => (
             <Rule rule={rule} noChoice />
           ))}
@@ -103,6 +118,7 @@ export default function StartGameMenu() {
       <Button
         variant="contained"
         fullWidth
+        sx={{ marginBottom: "8px" }}
         startIcon={
           <ShareIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
         }
@@ -113,7 +129,7 @@ export default function StartGameMenu() {
         variant="contained"
         fullWidth
         startIcon={
-          <ShareIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
+          <ReplayIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
         }
         onClick={() => newGame()}
       >

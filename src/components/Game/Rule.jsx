@@ -25,7 +25,7 @@ export default function Rule({ rule, noChoice }) {
         width: noChoice ? 230 : currentWidth > 450 ? 350 : "100%",
         maxWidth: 450,
         maxHeight: "18rem",
-        position: !noChoice && "absolute",
+        position: !noChoice ? "absolute" : "unset",
         top: noChoice ? 0 : 48,
         zIndex: noChoice ? 4560 : 99,
       }}
