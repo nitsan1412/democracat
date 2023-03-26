@@ -21,7 +21,7 @@ export default class Game {
   step() {
     if (this.paused) return;
     this.characters.forEach((charcter) => {
-      charcter.move(0.1);
+      if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
     });
     if (Math.random() <= Game.CHARACTER_ADDITION_CHANCE) {
       this.characters.push(Character.createCharacter(this.characterTypes));
@@ -66,11 +66,13 @@ export default class Game {
       (charcter) => charcter.location >= Game.TRACK_END
     );
     charctersDone.forEach((character) => {
-      diversityMap[character.type]++;
+      diversityMap[character.type.name]++;
     });
-    return (
-      charctersDone.length + this.calculateBonus(diversityMap, charctersDone)
-    );
+    console.log("charctersDone", charctersDone);
+    console.log("diversityMap", diversityMap);
+    if (charctersDone.length > 0)
+      return this.calculateBonus(diversityMap, charctersDone);
+    return 0;
   }
 
   get shouldSetNextRule() {
@@ -171,16 +173,19 @@ export default class Game {
   }
 
   calculateBonus(diversityMap, charctersDoneArray) {
-    let bonusScore = 0;
-    // this.characterTypes.forEach((characterType) => {
-    //   if (diversityMap[characterType.name] > 0) bonusScore += 10;
-    // });
-    // console.log(charctersDoneArray);
-    // const females = charctersDoneArray.filter((charcter) =>
-    //   charcter.includes("woman")
-    // );
-    // if (females.length > 0) bonusScore += 10;
-    // if (charctersDoneArray.length - females.length > 0) bonusScore += 10; //there are males
+    let bonusScore = charctersDoneArray.length
+      ? charctersDoneArray.length * CharacterType.characterTypes().length
+      : 0; //starter score
+    let avg = (
+      charctersDoneArray.length / CharacterType.characterTypes().length
+    ).toFixed(0);
+    console.log("diversityMap", diversityMap);
+    Object.keys(diversityMap).forEach((type) => {
+      const deviation = avg - type;
+      if (deviation > 0) {
+        bonusScore = bonusScore - Math.sqrt(deviation);
+      }
+    });
     return bonusScore;
   }
 

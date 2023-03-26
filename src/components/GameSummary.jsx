@@ -36,7 +36,7 @@ export default function StartGameMenu() {
       {/* <Typography variant="h5">+</Typography> */}
 
       <Typography variant="h5">
-        {game.bonusScore} בונוס עבור פלורליזם !
+        {game.bonusScore} בונוס עבור פלורליזם!
       </Typography>
       <Typography variant="h5">
         סך הכל: {game.bonusScore + game.score}
@@ -53,8 +53,6 @@ export default function StartGameMenu() {
       >
         {Object.entries(game.charactersByType).map(
           ([characterType, characters]) => {
-            console.log("characterType", characterType);
-            console.log("characters", characters);
             const numberOfCharactersDoneOfType = characters.filter(
               (character) =>
                 character.location > 100 &&
