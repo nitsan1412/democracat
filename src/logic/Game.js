@@ -8,6 +8,7 @@ export default class Game {
     this.status = Game.STATUS.PENDING;
     this.characters = [];
     this.rules = [];
+    this.isDunkey = false;
   }
 
   start() {

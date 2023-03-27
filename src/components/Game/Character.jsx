@@ -9,7 +9,6 @@ import ArabWoman from "../../images/cats/arab-woman.png";
 import OrthodoxWoman from "../../images/cats/orthodox-woman.png";
 import ReligiousWoman from "../../images/cats/religious-woman.png";
 import SecularWoman from "../../images/cats/secular-woman.png";
-
 import Donkey from "../../images/cats/donkey.png";
 
 import { playSound } from "../../helpers/Sounds";
@@ -25,7 +24,7 @@ export default function Character({ character }) {
         width: "70%",
         aspectRatio: "1",
         backgroundImage: `url(${
-          character.donkey ? Donkey : Character.IMAGES[character.type.name]
+          character.type.donkey ? Donkey : Character.IMAGES[character.type.name]
         })`,
         backgroundSize: "contain",
       }}
@@ -52,7 +51,6 @@ Character.IMAGES = {
   "orthodox-man": OrthodoxMan,
   "religious-man": ReligiousMan,
   "secular-man": SecularMan,
-
   "arab-woman": ArabWoman,
   "orthodox-woman": OrthodoxWoman,
   "religious-woman": ReligiousWoman,

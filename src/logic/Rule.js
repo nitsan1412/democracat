@@ -7,11 +7,18 @@ export default class Rule {
   }
 
   apply(characters, characterTypes) {
-    Object.entries(this.impact).forEach(([filter, speedChange]) => {
-      characterTypes
-        .filter((characterType) => characterType.name.includes(filter))
-        .forEach((characterType) => characterType.changeSpeed(speedChange));
-    });
+    if (Object.keys(this.impact).includes("donkey")) {
+      characterTypes.forEach((characterType) =>
+        characterType.changeImage("donkey")
+      );
+    } else {
+      Object.entries(this.impact).forEach(([filter, speedChange]) => {
+        characterTypes
+          .filter((characterType) => characterType.name.includes(filter))
+          .forEach((characterType) => characterType.changeSpeed(speedChange));
+      });
+    }
+
     return characters;
   }
 
@@ -19,13 +26,14 @@ export default class Rule {
     new Rule({
       name: "חוק תקשורת",
       info: "יללות אסורות בכל שעות היום והלילה.",
-      impact: "unknown",
-      apply: (characters, characterTypes) => {
-        characterTypes.forEach((characterType) => {
-          characterTypes.donkey = true;
-        });
-        return characters;
-      },
+      impact: { donkey: 1 },
+      // apply: { donkey: 1 },
+      // (characters, characterTypes) => {
+      //   characterTypes.forEach((characterType) => {
+      //     characterType.donkey = true;
+      //   });
+      //   return characters;
+      // },
     }),
     new Rule({
       name: "חוק הסדרת הצייד",
