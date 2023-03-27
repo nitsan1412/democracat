@@ -88,7 +88,6 @@ function RuleImpact({ rule }) {
       justifyContent="center"
       alignItems="center"
     >
-      {/* {console.log("impactedCharacterTypes", impactedCharacterTypes)} */}
       {impactedCharacterTypes.map(
         ({ characterType, impact }) =>
           impact && (

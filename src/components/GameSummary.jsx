@@ -10,8 +10,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Rule from "./Game/Rule";
 import Character from "./Game/Character";
+import Game from "../logic/Game";
 
 import { useGame } from "../helpers/GameContext";
+// import useWindowSize from "../helpers/windowSize";
 
 export default function StartGameMenu() {
   const { game, newGame } = useGame();
@@ -20,11 +22,9 @@ export default function StartGameMenu() {
     <Stack
       alignItems="center"
       justifyContent="center"
-      // maxWidth="350px"
+      maxHeight="100%"
       sx={{
         padding: "1rem",
-        // gap: "1rem",
-        // ".slick-track": { width: "250 !important" },
         ".slick-slide": { padding: "0.5rem 1rem" },
         ".slick-arrow": { zIndex: 72, "&::before": { color: "#000000" } },
         ".slick-prev": { left: "-45px" },
@@ -33,29 +33,24 @@ export default function StartGameMenu() {
     >
       <Typography variant="h3">כל הכבוד!</Typography>
       <Typography variant="h5">{game.score} נקודות!</Typography>
-      {/* <Typography variant="h5">+</Typography> */}
-
       <Typography variant="h5">
         {game.bonusScore} בונוס עבור פלורליזם!
       </Typography>
       <Typography variant="h5">
         סך הכל: {game.bonusScore + game.score}
       </Typography>
-      {/* working on styling */}
-
       <Grid
         sx={{ maxWidth: "350px", marginTop: 2 }}
         container
         justifyContent="center"
         alignItems="center"
         spacing={4}
-        // xs={8} sm={} md={} lg={} xl={}
       >
         {Object.entries(game.charactersByType).map(
           ([characterType, characters]) => {
             const numberOfCharactersDoneOfType = characters.filter(
               (character) =>
-                character.location > 100 &&
+                character.location > Game.TRACK_END &&
                 characterType === character.type.name
             ).length;
             if (numberOfCharactersDoneOfType > 0)
@@ -80,7 +75,6 @@ export default function StartGameMenu() {
         maxWidth="250px"
         sx={{
           ".slick-initialized": {
-            // width: 250,
             direction: "row",
             justifyContent: "center",
             alignContent: "center",
@@ -96,6 +90,9 @@ export default function StartGameMenu() {
             maxWidth: 230,
             height: "13rem",
             transform: "translate3d(0px, 0px, 0px)",
+          },
+          ".slick-dots": {
+            bottom: 0,
           },
         }}
       >
@@ -117,7 +114,11 @@ export default function StartGameMenu() {
       <Button
         variant="contained"
         fullWidth
-        sx={{ marginBottom: "8px" }}
+        sx={
+          // useWindowSize().height > 700
+          //   ? { marginTop: "-15%", marginBottom: "2%" }:
+          { marginTop: "10%", marginBottom: "2%" }
+        }
         startIcon={
           <ShareIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
         }
@@ -132,7 +133,7 @@ export default function StartGameMenu() {
         }
         onClick={() => newGame()}
       >
-        New Game
+        משחק חדש
       </Button>
     </Stack>
   );

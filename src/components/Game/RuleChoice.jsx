@@ -27,7 +27,7 @@ export default function RuleChoice() {
         gap: rule && "1rem",
         // height: rule && "27%",
         maxWidth: !rule ? "fit-content" : currentWidth > 450 ? 350 : "100vw",
-        height: "27%",
+        height: "20vh",
       }}
     >
       {rule ? (

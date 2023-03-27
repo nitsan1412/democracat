@@ -7,7 +7,7 @@ import Board from "./Board";
 
 export default function Game() {
   return (
-    <Stack alignItems="center" sx={{ height: "calc(100% - 3rem)" }}>
+    <Stack alignItems="center" sx={{ height: "100%" }}>
       <Timer />
       <Score />
       <RuleChoice />

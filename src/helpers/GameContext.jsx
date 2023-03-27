@@ -13,7 +13,6 @@ export function GameProvider({ children }) {
   const [intervalHandler, setIntervalHandler] = useState(undefined);
 
   const newGame = () => {
-    console.log("in newGame in context");
     setGame(new Game());
   };
 
