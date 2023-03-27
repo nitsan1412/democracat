@@ -10,8 +10,16 @@ export default function StartGameMenu() {
 
   return (
     <Stack alignItems="center" gap={2} sx={{ padding: "1rem" }}>
-      <Typography variant="h3">DemocraCat</Typography>
-      <Typography variant="h5">למען פלורליזם חברתי</Typography>
+      <Typography variant="h3" sx={{ fontWeight: "700" }}>
+        DemocraCat
+      </Typography>
+      <Typography variant="h5" sx={{ fontWeight: "700" }}>
+        למען פלורליזם חברתי
+      </Typography>
+      <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+        כמה חתולים יגיעו ליעד
+      </Typography>
+
       <Stack direction="row" gap={2}>
         <Character.Image
           key="orthodox-man"
@@ -36,6 +44,10 @@ export default function StartGameMenu() {
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
+      <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+        מי יצליח ליצר מגון רחב של מגזרים ומגדרים שונים
+      </Typography>
+
       <Button variant="contained" fullWidth onClick={start}>
         להתחיל
       </Button>

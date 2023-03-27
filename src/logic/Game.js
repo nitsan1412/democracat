@@ -68,8 +68,6 @@ export default class Game {
     charctersDone.forEach((character) => {
       diversityMap[character.type.name]++;
     });
-    console.log("charctersDone", charctersDone);
-    console.log("diversityMap", diversityMap);
     if (charctersDone.length > 0)
       return this.calculateBonus(diversityMap, charctersDone);
     return 0;
@@ -179,14 +177,19 @@ export default class Game {
     let avg = (
       charctersDoneArray.length / CharacterType.characterTypes().length
     ).toFixed(0);
-    console.log("diversityMap", diversityMap);
-    Object.keys(diversityMap).forEach((type) => {
-      const deviation = avg - type;
-      if (deviation > 0) {
-        bonusScore = bonusScore - Math.sqrt(deviation);
-      }
-    });
-    return bonusScore;
+    for (const key in diversityMap) {
+      console.log("calc", Math.sqrt(avg - diversityMap[key]));
+      // console.log("key", key);
+
+      bonusScore = bonusScore - Math.pow(avg - diversityMap[key], 2);
+    }
+    // Object.keys(diversityMap).forEach((type) => {
+    //   // const deviation = avg - type;
+    //   // if (avg - type > 0) {
+    //   // }
+    // });
+    if (bonusScore > 0) return bonusScore;
+    else return 0;
   }
 
   static STATUS = {

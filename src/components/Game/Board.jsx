@@ -43,7 +43,7 @@ export default function Board() {
         sx={{
           marginBottom: "1rem",
           position: "absolute",
-          bottom: -15,
+          bottom: useWindowSize().height > 700 ? -15 : -40,
           width: useWindowSize().width > 450 ? 350 : "100%",
         }}
       >

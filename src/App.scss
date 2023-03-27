@@ -1,15 +1,17 @@
 html, body {
   min-width: 100vw  !important;
   height: 100vh;
+  max-height: 750px;
   display: flex;
   justify-content: center;
 }
 
 #root {
   width: 350px;
-  height: 100vh;
+  // height: /100vh;
+  max-height: 750px;
   background: #DDDDDD;
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: 450px) {
