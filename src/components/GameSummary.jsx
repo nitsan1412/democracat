@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Rule from "./Game/Rule";
 import Character from "./Game/Character";
+import Game from "../logic/Game";
 
 import { useGame } from "../helpers/GameContext";
 // import useWindowSize from "../helpers/windowSize";
@@ -49,7 +50,7 @@ export default function StartGameMenu() {
           ([characterType, characters]) => {
             const numberOfCharactersDoneOfType = characters.filter(
               (character) =>
-                character.location > 100 &&
+                character.location > Game.TRACK_END &&
                 characterType === character.type.name
             ).length;
             if (numberOfCharactersDoneOfType > 0)

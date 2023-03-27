@@ -178,16 +178,8 @@ export default class Game {
       charctersDoneArray.length / CharacterType.characterTypes().length
     ).toFixed(0);
     for (const key in diversityMap) {
-      console.log("calc", Math.sqrt(avg - diversityMap[key]));
-      // console.log("key", key);
-
       bonusScore = bonusScore - Math.pow(avg - diversityMap[key], 2);
     }
-    // Object.keys(diversityMap).forEach((type) => {
-    //   // const deviation = avg - type;
-    //   // if (avg - type > 0) {
-    //   // }
-    // });
     if (bonusScore > 0) return bonusScore;
     else return 0;
   }
@@ -209,5 +201,5 @@ export default class Game {
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
-  static TRACK_END = 100;
+  static TRACK_END = 110;
 }

@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack";
 import { useGame } from "../../helpers/GameContext";
 import Character from "./Character";
 import useWindowSize from "../../helpers/windowSize";
+import Game from "../../logic/Game";
 
 export default function Board() {
   const { game } = useGame();
@@ -41,9 +42,9 @@ export default function Board() {
         variant="contained"
         fullWidth
         sx={{
-          marginBottom: "1rem",
-          position: "absolute",
-          bottom: useWindowSize().height > 700 ? -15 : -40,
+          // marginBottom: "1rem",
+          // position: "absolute"
+          marginBottom: "13%",
           width: useWindowSize().width > 450 ? 350 : "100%",
         }}
       >
@@ -61,7 +62,7 @@ function Track({ characterType, characters }) {
       sx={{ marginRight: "-1px", position: "relative" }}
     >
       {characters.map((character, index) =>
-        character.location < 100 ? (
+        character.location < Game.TRACK_END ? (
           <Character key={index} character={character} />
         ) : (
           ""
