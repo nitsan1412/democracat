@@ -93,7 +93,7 @@ export default class Rule {
     new Rule({
       name: "אישור פונדקאות ללהטבים",
       info: "חוק המאפשר לחברי הקהילה הלהטבית לקיים הליך פונדקאות",
-      impact: { LGTB: -2 },
+      impact: { "-LGTB": -2 },
     }),
     new Rule({
       name: "פסילת מפלגות ערביות",

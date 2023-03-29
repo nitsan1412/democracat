@@ -9,7 +9,7 @@ import ArabWoman from "../../images/cats/arab-woman.png";
 import OrthodoxWoman from "../../images/cats/orthodox-woman.png";
 import ReligiousWoman from "../../images/cats/religious-woman.png";
 import SecularWoman from "../../images/cats/secular-woman.png";
-import Donkey from "../../images/cats/donkey.png";
+import Donkey from "../../images/cats/donkey1.jpeg";
 
 import { playSound } from "../../helpers/Sounds";
 
