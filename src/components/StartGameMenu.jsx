@@ -9,7 +9,7 @@ export default function StartGameMenu() {
   const { start } = useGame();
 
   return (
-    <Stack alignItems="center" gap={2} sx={{ padding: "1rem" }}>
+    <Stack alignItems="center" sx={{ padding: "1rem" }}>
       <Typography variant="h3" sx={{ fontWeight: "700" }}>
         DemocraCat
       </Typography>
@@ -33,6 +33,22 @@ export default function StartGameMenu() {
         />
       </Stack>
       <Stack direction="row" gap={2}>
+        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+          הניקוד הגבוה ביותר שלך:
+        </Typography>
+        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+          {localStorage.getItem("highest-score")}{" "}
+        </Typography>
+      </Stack>
+      <Stack direction="row" gap={2}>
+        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+          מתאריך:{" "}
+        </Typography>
+        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+          {localStorage.getItem("highest-score-dateTime")}
+        </Typography>
+      </Stack>
+      <Stack direction="row" gap={2}>
         <CharacterImage
           key="secular-woman"
           characterType="secular-woman"
@@ -44,11 +60,17 @@ export default function StartGameMenu() {
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
+
       <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
         מי יצליח ליצר מגון רחב של מגזרים ומגדרים שונים
       </Typography>
 
-      <Button variant="contained" fullWidth onClick={start}>
+      <Button
+        variant="contained"
+        sx={{ marginTop: "2rem" }}
+        fullWidth
+        onClick={start}
+      >
         להתחיל
       </Button>
     </Stack>

@@ -194,7 +194,10 @@ export default class Game {
       localStorage.removeItem("highest-score");
       localStorage.removeItem("highest-score-dateTime");
       localStorage.setItem("highest-score", newScore);
-      localStorage.setItem("highest-score-dateTime", Date.now());
+      localStorage.setItem(
+        "highest-score-dateTime",
+        new Date().toLocaleDateString()
+      );
     }
   }
 
