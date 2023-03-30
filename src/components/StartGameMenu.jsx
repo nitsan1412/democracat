@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import Character from "./Game/Character";
+import CharacterImage from "./Game/CharacterImage";
 import { useGame } from "../helpers/GameContext";
 
 export default function StartGameMenu() {
@@ -21,24 +21,24 @@ export default function StartGameMenu() {
       </Typography>
 
       <Stack direction="row" gap={2}>
-        <Character.Image
+        <CharacterImage
           key="orthodox-man"
           characterType="orthodox-man"
           sx={StartGameMenu.characterStyles}
         />
-        <Character.Image
+        <CharacterImage
           key="arab-woman"
           characterType="arab-woman"
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
       <Stack direction="row" gap={2}>
-        <Character.Image
+        <CharacterImage
           key="secular-woman"
           characterType="secular-woman"
           sx={StartGameMenu.characterStyles}
         />
-        <Character.Image
+        <CharacterImage
           key="religious-man"
           characterType="religious-man"
           sx={StartGameMenu.characterStyles}

@@ -5,17 +5,15 @@ import Button from "@mui/material/Button";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
 import Slider from "react-slick";
+import Rule from "./Game/Rule";
+import CharacterImage from "./Game/CharacterImage";
+import Game from "../logic/Game";
+import { useGame } from "../helpers/GameContext";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Rule from "./Game/Rule";
-import Character from "./Game/Character";
-import Game from "../logic/Game";
-
-import { useGame } from "../helpers/GameContext";
-// import useWindowSize from "../helpers/windowSize";
-
-export default function StartGameMenu() {
+export default function GameSummary() {
   const { game, newGame } = useGame();
 
   return (
@@ -53,19 +51,19 @@ export default function StartGameMenu() {
                 character.location > Game.TRACK_END &&
                 characterType === character.type.name
             ).length;
-            if (numberOfCharactersDoneOfType > 0)
+            if (numberOfCharactersDoneOfType <= 0) return "";
+            else
               return (
                 <Stack sx={{ flexDirection: "row", maxWidth: 150 }}>
                   <Typography variant="h5" sx={{ marginTop: 1.5 }}>
                     {numberOfCharactersDoneOfType}
                   </Typography>
-                  <Character.Image
+                  <CharacterImage
                     characterType={characterType}
                     sx={{ height: "60px", width: "60px" }}
                   />
                 </Stack>
               );
-            else return "";
           }
         )}
       </Grid>
@@ -115,7 +113,6 @@ export default function StartGameMenu() {
         variant="contained"
         fullWidth
         sx={
-          // useWindowSize().height > 700
           //   ? { marginTop: "-15%", marginBottom: "2%" }:
           { marginTop: "10%", marginBottom: "2%" }
         }

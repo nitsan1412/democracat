@@ -14,7 +14,7 @@ export default function Timer() {
       {/* <Button
         variant="text"
         sx={{ ...Timer.styles, left: 90 }}
-        onClick={game.paused ? resumeGame : pauseGame}
+        onClick={game.paused ? game.resume() : pauseGame}
       >
         {game.paused ? "המשך" : "עצור"}
       </Button> */}

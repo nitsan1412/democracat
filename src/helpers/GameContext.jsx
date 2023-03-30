@@ -46,18 +46,6 @@ export function GameProvider({ children }) {
     forceUpdate();
   };
 
-  const pauseGame = () => {
-    game.pause();
-  };
-
-  const resumeGame = () => {
-    game.resume();
-  };
-
-  // const changeToDunkey = () ={
-  //   setIsDunkey(true)
-  // }
-
   return (
     <GameContext.Provider
       value={{
@@ -67,8 +55,6 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
-        pauseGame,
-        resumeGame,
         // changeToDunkey,
       }}
     >

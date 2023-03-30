@@ -1,73 +1,63 @@
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { useGame } from "../helpers/GameContext";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import useWindowSize from "../helpers/windowSize";
-import Dialog from "@mui/material/Dialog";
+import InstructionDialog from "./InstructionDialog";
+import { useWindowWidth } from "@react-hook/window-size";
+import { useGame } from "../helpers/GameContext";
 
 export default function Menu() {
   const { game } = useGame();
   const [showInstructions, setShowInstructions] = useState(false);
-  const currentWidth = useWindowSize().width;
+  const currentWidth = useWindowWidth();
 
   return (
     <AppBar position="static">
-      {game.status === "pending" && (
-        <Typography
-          variant="button"
-          sx={{
-            fontWeight: "bold",
-            position: "absolute",
-            top: "0.8rem",
-            right:
-              currentWidth > 450
-                ? "calc(currentWidth-(currentWidth-5%))"
-                : "5%",
-            marginRight: currentWidth > 450 ? "1rem" : 0,
-          }}
-          onClick={() => setShowInstructions(!showInstructions)}
-        >
-          <HelpOutlineIcon />
-        </Typography>
-      )}
       <Stack
         direction="row"
         alignItems="center"
-        justifyContent="center"
-        sx={{ padding: "0.5rem", height: "3rem" }}
+        justifyContent={game.status === "pending" ? "space-between" : "center"}
+        marginX="2rem"
       >
-        <Typography variant="button" sx={{ fontWeight: "bold" }}>
-          DemocraCat
-        </Typography>
+        {game.status === "pending" ? (
+          <Stack justifyContent="flex-start" marginTop="0.5rem">
+            <Typography
+              variant="button"
+              sx={{
+                fontWeight: "bold",
+                alignItems: "center",
+                marginRight: currentWidth > 450 ? "1rem" : 0,
+              }}
+              onClick={() => setShowInstructions(!showInstructions)}
+            >
+              <HelpOutlineIcon />
+            </Typography>
+          </Stack>
+        ) : (
+          <></>
+        )}
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          marginLeft={game.status === "pending" ? "6rem" : 0}
+        >
+          <Stack
+            alignItems="center"
+            justifyContent="center"
+            sx={{ padding: "0.5rem", height: "3rem" }}
+          >
+            <Typography variant="button" sx={{ fontWeight: "bold" }}>
+              DemocraCat
+            </Typography>
+          </Stack>
+        </Stack>
+        <InstructionDialog
+          setShowInstructions={setShowInstructions}
+          showInstructions={showInstructions}
+        />
       </Stack>
-      <Dialog
-        open={showInstructions}
-        onClose={() => setShowInstructions(false)}
-        sx={{ borderRadius: 15 }}
-      >
-        <Box sx={style} gap={3}>
-          <Typography id="modal-modal-title" variant="h6" component="h6">
-            {/* {rule.name} */}
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h6">
-            עבר בהצלחה
-          </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h6">
-            {/* {rule.info || ""} */}
-          </Typography>
-        </Box>
-      </Dialog>
     </AppBar>
   );
 }
-const style = {
-  width: "100%",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  display: "flex",
-  flexDirection: "column",
-};
