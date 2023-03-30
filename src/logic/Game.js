@@ -184,7 +184,18 @@ export default class Game {
     for (const key in this.diversityTypes()) {
       bonusScore -= Math.pow(avg - this.diversityTypes()[key], 2);
     }
+    Game.compairHighScore(bonusScore + numberOfFinished);
     return Math.max(bonusScore, 0);
+  }
+
+  static compairHighScore(newScore) {
+    let currentHighest = localStorage.getItem("highest-score");
+    if (currentHighest < newScore) {
+      localStorage.removeItem("highest-score");
+      localStorage.removeItem("highest-score-dateTime");
+      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score-dateTime", Date.now());
+    }
   }
 
   static STATUS = {
