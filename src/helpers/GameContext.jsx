@@ -14,11 +14,9 @@ export function GameProvider({ children }) {
 
   useEffect(() => {
     let params = new URLSearchParams(document.location.search);
-    let initialSpeed = params.get("initialSpeed");
-    let duration = params.get("duration");
-    setGame(new Game(Number(initialSpeed), duration));
-    console.log("initialSpeed", initialSpeed);
-    console.log("duration", duration);
+    let stepDT = Number(params.get("stepDT"));
+    let duration = Number(params.get("duration"));
+    setGame(new Game(stepDT, duration));
   }, []);
 
   const newGame = () => {

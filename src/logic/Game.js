@@ -5,9 +5,9 @@ import CharacterType from "./CharacterType";
 import Character from "./Character";
 
 export default class Game {
-  constructor(stepSpeed = Game.STEP, duration = Game.DURATION) {
+  constructor(stepDT = Game.STEP, duration = Game.DURATION) {
     Object.assign(this, {
-      stepSpeed,
+      stepDT,
       isDonkey: false,
       characterTypes: CharacterType.characterTypes(),
       status: Game.STATUS.PENDING,
@@ -220,10 +220,7 @@ export default class Game {
     DECLINED: "declined",
   };
   static STEP = 0.1;
-  // static STEP = 1;
   static DURATION = 2.5 * 60;
-  // static DURATION = 1 * 30;
-
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
   static TRACK_END = 110;
