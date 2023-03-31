@@ -2,13 +2,13 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
 import Slider from "react-slick";
 import Rule from "./Game/Rule";
 import CharacterImage from "./Game/CharacterImage";
 import Game from "../logic/Game";
 import { useGame } from "../helpers/GameContext";
+import ShareButton from "./Share"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -109,16 +109,7 @@ export default function GameSummary() {
         </Slider>
       </Stack>
 
-      <Button
-        variant="contained"
-        fullWidth
-        sx={{ marginTop: "10%", marginBottom: "2%" }}
-        startIcon={
-          <ShareIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
-        }
-      >
-        Share
-      </Button>
+      <ShareButton fullWidth sx={{ marginTop: "10%", marginBottom: "2%" }} />
       <Button
         variant="contained"
         fullWidth
