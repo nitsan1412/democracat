@@ -25,6 +25,22 @@ export default class Rule {
         characterTypes.forEach((characterType) =>
           characterType.changeImage("donkey")
         );
+        return characters;
+      },
+    }),
+    new Rule({
+      name: "חוק השיוויון",
+      info: "כל החתולים מגיעים לעמק השווה",
+      impact: { all: 0 },
+      apply: (characters, characterTypes) => {
+        const averageLocation =
+          characters.reduce(
+            (accumulator, currentValue) => accumulator + currentValue.location,
+            0
+          ) / characters.length;
+        return characters.forEach(
+          (character) => (character.location = averageLocation)
+        );
       },
     }),
     new Rule({
