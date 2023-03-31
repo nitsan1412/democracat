@@ -1,5 +1,3 @@
-import Box from "@mui/material/Box";
-
 import Donkey from "../../images/cats/donkey2.png";
 
 import { playSound } from "../../helpers/Sounds";
@@ -7,9 +5,9 @@ import { IMAGES } from "./CharacterImage";
 
 export default function Character({ character }) {
   return (
-    <Box
+    <div
       onClick={() => playSound("meow")}
-      sx={{
+      style={{
         position: "absolute",
         left: `15%`,
         top: `${character.location}%`,
