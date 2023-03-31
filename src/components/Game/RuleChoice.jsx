@@ -36,15 +36,9 @@ export default function RuleChoice() {
             alignItems: "center",
           }}
         >
-          {/* <img
-            src={cneset1}
-            width={currentWidth > 450 ? 350 : "100%"}
-            height="auto"
-            alt={"הכנסת"}
-          /> */}
           <Typography
             variant="h2"
-            sx={{ color: "white", position: "absolute" }}
+            sx={{ color: "black", position: "absolute" }}
           >
             הכנסת בפגרה
           </Typography>
