@@ -2,8 +2,8 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import CharacterImage from "./Game/CharacterImage";
-import { useGame } from "../helpers/GameContext";
+import CharacterImage from "../Game/CharacterImage";
+import { useGame } from "../../helpers/GameContext";
 
 export default function StartGameMenu() {
   const { start } = useGame();

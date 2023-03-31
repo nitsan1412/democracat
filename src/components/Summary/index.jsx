@@ -4,10 +4,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ReplayIcon from "@mui/icons-material/Replay";
 import Slider from "react-slick";
-import Rule from "./Game/Rule";
-import CharacterImage from "./Game/CharacterImage";
-import Game from "../logic/Game";
-import { useGame } from "../helpers/GameContext";
+
+import Rule from "../Game/Rule";
+import CharacterImage from "../Game/CharacterImage";
+import Game from "../../logic/Game";
+import { useGame } from "../../helpers/GameContext";
 import ShareButton from "./Share"
 
 import "slick-carousel/slick/slick.css";
