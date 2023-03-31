@@ -36,12 +36,12 @@ export default function RuleChoice() {
             alignItems: "center",
           }}
         >
-          <img
+          {/* <img
             src={cneset1}
             width={currentWidth > 450 ? 350 : "100%"}
             height="auto"
             alt={"הכנסת"}
-          />
+          /> */}
           <Typography
             variant="h2"
             sx={{ color: "white", position: "absolute" }}
