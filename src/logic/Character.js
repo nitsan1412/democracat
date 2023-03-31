@@ -1,6 +1,6 @@
 export default class Character {
   constructor({ type, location = 0, currentScore = 0 }) {
-    Object.assign(this, { type, location, currentScore });
+    Object.assign(this, { type, location, currentScore, x: Math.random() });
   }
 
   move(dt) {
