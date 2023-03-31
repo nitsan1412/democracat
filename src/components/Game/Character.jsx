@@ -9,9 +9,9 @@ export default function Character({ character }) {
       onClick={() => playSound("meow")}
       style={{
         position: "absolute",
-        left: `15%`,
+        left: `${80 * character.xPosition}%`,
         top: `${character.location}%`,
-        width: character.type.donkey ? "50%" : "70%",
+        width: character.type.donkey ? "15%" : "21%",
         aspectRatio: character.type.donkey ? "0.7" : "1",
         backgroundImage: `url(${
           character.type.donkey ? Donkey : IMAGES[character.type.name]
