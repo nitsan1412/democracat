@@ -25,6 +25,7 @@ export default class Rule {
         characterTypes.forEach((characterType) =>
           characterType.changeImage("donkey")
         );
+        return characters
       },
     }),
     new Rule({
