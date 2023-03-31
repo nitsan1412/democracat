@@ -1,16 +1,20 @@
-import { DateTime } from "luxon"
+import { DateTime } from "luxon";
 
 import Rule from "./Rule";
 import CharacterType from "./CharacterType";
 import Character from "./Character";
 
 export default class Game {
-  constructor() {
-    this.characterTypes = CharacterType.characterTypes();
-    this.status = Game.STATUS.PENDING;
-    this.characters = [];
-    this.rules = [];
-    this.isDonkey = false;
+  constructor(stepDT = Game.STEP, duration = Game.DURATION) {
+    Object.assign(this, {
+      stepDT,
+      isDonkey: false,
+      characterTypes: CharacterType.characterTypes(),
+      status: Game.STATUS.PENDING,
+      characters: [],
+      rules: [],
+      duration,
+    });
   }
 
   start() {
@@ -24,7 +28,7 @@ export default class Game {
   step() {
     if (this.paused) return;
     this.characters.forEach((charcter) => {
-      if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
+      if (charcter.location < Game.TRACK_END) charcter.move(this.stepSpeed);
     });
     if (Math.random() <= Game.CHARACTER_ADDITION_CHANCE) {
       this.characters.push(Character.createCharacter(this.characterTypes));
@@ -50,9 +54,9 @@ export default class Game {
 
   get time() {
     if (this.paused) {
-      return Game.DURATION - (this.puaseTime - this.startTime) / 1000;
+      return this.duration - (this.puaseTime - this.startTime) / 1000;
     }
-    return Game.DURATION - (Date.now() - this.startTime) / 1000;
+    return this.duration - (Date.now() - this.startTime) / 1000;
   }
 
   get score() {
@@ -198,7 +202,10 @@ export default class Game {
       localStorage.removeItem("highest-score");
       localStorage.removeItem("highest-score-dateTime");
       localStorage.setItem("highest-score", newScore);
-      localStorage.setItem("highest-score-dateTime", DateTime.now().toFormat('dd.MM.yyyy'));
+      localStorage.setItem(
+        "highest-score-dateTime",
+        DateTime.now().toFormat("dd.MM.yyyy")
+      );
     }
   }
 
@@ -213,7 +220,7 @@ export default class Game {
     DECLINED: "declined",
   };
   static STEP = 0.1;
-  static DURATION = 5 //2.5 * 60;
+  static DURATION = 2.5 * 60;
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
