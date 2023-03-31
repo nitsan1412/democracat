@@ -9,12 +9,8 @@ export default function Track({ characterType, characters }) {
       height={"78%"}
       sx={{ marginRight: "-1px", position: "relative" }}
     >
-      {characters.map((character, index) =>
-        character.location < Game.TRACK_END ? (
-          <Character key={index} character={character} />
-        ) : (
-          ""
-        )
+      {characters.filter(character => character.location < Game.TRACK_END).map((character, index) =>
+        <Character key={index} character={character} />
       )}
     </Stack>
   );
