@@ -28,7 +28,7 @@ export default class Game {
   step() {
     if (this.paused) return;
     this.characters.forEach((charcter) => {
-      if (charcter.location < Game.TRACK_END) charcter.move(this.stepSpeed);
+      if (charcter.location < Game.TRACK_END) charcter.move(this.stepDT);
     });
     if (Math.random() <= Game.CHARACTER_ADDITION_CHANCE) {
       this.characters.push(Character.createCharacter(this.characterTypes));
