@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap');
+
 html, body {
   min-width: 100vw  !important;
   min-height: fit-content;
   display: flex;
   justify-content: center;
-
 }
 
 #root {
   min-width: 40%;
   min-height: 100vh;
   max-height: 750px;
-  background: #DDDDDD;
+  background: #F5F5F5;
 }
 
 @media only screen and (max-width: 450px) {

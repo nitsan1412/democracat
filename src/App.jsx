@@ -11,7 +11,6 @@ export default function App() {
   return (
     <ThemeProvider>
       <GameProvider>
-        <Menu />
         <Main />
       </GameProvider>
     </ThemeProvider>
