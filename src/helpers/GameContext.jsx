@@ -14,9 +14,13 @@ export function GameProvider({ children }) {
 
   useEffect(() => {
     let params = new URLSearchParams(document.location.search);
-    let stepDT = Number(params.get("stepDT"));
+    let speed = Number(params.get("speed"));
     let duration = Number(params.get("duration"));
-    setGame(new Game(stepDT, duration));
+    let charachterAdditionChance = Number(
+      params.get("charachter-addition-chance")
+    );
+
+    setGame(new Game(speed, duration, charachterAdditionChance));
   }, []);
 
   const newGame = () => {
