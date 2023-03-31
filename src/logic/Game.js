@@ -5,15 +5,19 @@ import CharacterType from "./CharacterType";
 import Character from "./Character";
 
 export default class Game {
-  constructor(stepDT = Game.STEP, duration = Game.DURATION) {
+  constructor(
+    speed = 1,
+    duration = Game.DURATION,
+    charachterAdditionChance = Game.CHARACTER_ADDITION_CHANCE
+  ) {
     Object.assign(this, {
-      stepDT,
       isDonkey: false,
-      characterTypes: CharacterType.characterTypes(),
+      characterTypes: CharacterType.characterTypes(speed),
       status: Game.STATUS.PENDING,
       characters: [],
       rules: [],
       duration,
+      charachterAdditionChance,
     });
   }
 
@@ -28,9 +32,9 @@ export default class Game {
   step() {
     if (this.paused) return;
     this.characters.forEach((charcter) => {
-      if (charcter.location < Game.TRACK_END) charcter.move(this.stepDT);
+      if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
     });
-    if (Math.random() <= Game.CHARACTER_ADDITION_CHANCE) {
+    if (Math.random() <= this.charachterAdditionChance) {
       this.characters.push(Character.createCharacter(this.characterTypes));
     }
     if (this.shouldSetNextRule) {
