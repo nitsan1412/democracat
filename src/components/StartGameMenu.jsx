@@ -72,12 +72,7 @@ export default function StartGameMenu() {
         מי יצליח ליצר מגון רחב של מגזרים ומגדרים שונים
       </Typography>
 
-      <Button
-        variant="contained"
-        sx={{ marginTop: "2rem" }}
-        fullWidth
-        onClick={start}
-      >
+      <Button variant="contained" fullWidth onClick={start}>
         להתחיל
       </Button>
     </Stack>
