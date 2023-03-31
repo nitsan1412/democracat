@@ -45,14 +45,6 @@ export function GameProvider({ children }) {
     forceUpdate();
   };
 
-  const pauseGame = () => {
-    game.pause();
-  };
-
-  const resumeGame = () => {
-    game.resume();
-  };
-
   return (
     <GameContext.Provider
       value={{
@@ -62,8 +54,6 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
-        pauseGame,
-        resumeGame,
       }}
     >
       {children}

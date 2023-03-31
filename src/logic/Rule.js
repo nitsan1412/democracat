@@ -12,6 +12,7 @@ export default class Rule {
         .filter((characterType) => characterType.name.includes(filter))
         .forEach((characterType) => characterType.changeSpeed(speedChange));
     });
+
     return characters;
   }
 
@@ -19,12 +20,11 @@ export default class Rule {
     new Rule({
       name: "חוק תקשורת",
       info: "יללות אסורות בכל שעות היום והלילה.",
-      impact: "unknown",
+      impact: { donkey: 1 },
       apply: (characters, characterTypes) => {
-        characterTypes.forEach((characterType) => {
-          characterTypes.donkey = true;
-        });
-        return characters;
+        characterTypes.forEach((characterType) =>
+          characterType.changeImage("donkey")
+        );
       },
     }),
     new Rule({
@@ -47,21 +47,21 @@ export default class Rule {
       info: "לחתול השופט החרדי יש סמכות לפסוק רק לטובת חתולים.",
       impact: { "-woman": -1 },
     }),
-    // new Rule({
-    //   name: "חוק ביטול זכות בחירה לערבים",
-    //   info: 'ביטול אפשרות הצייד תגרום לחתול הערבי להפוך לחתול בית וכך ניתן יהיה להעביר אותו למאמצים בחו"ל.',
-    //   impact: { arab: -1 },
-    //   apply: (characters, characterTypes) => {
-    //     characterTypes
-    //       .filter((characterType) => characterType.name.includes("arab"))
-    //       .forEach((characterType) => {
-    //         characterTypes.disabled = true;
-    //       });
-    //     return characters.filter(
-    //       (characterType) => !characterType.name.includes("arab")
-    //     );
-    //   },
-    // }),
+    new Rule({
+      name: "חוק ביטול זכות בחירה לערבים",
+      info: 'ביטול אפשרות הצייד תגרום לחתול הערבי להפוך לחתול בית וכך ניתן יהיה להעביר אותו למאמצים בחו"ל.',
+      impact: { arab: -1 },
+      apply: (characters, characterTypes) => {
+        characterTypes
+          .filter((characterType) => characterType.name.includes("arab"))
+          .forEach((characterType) => {
+            characterTypes.disabled = true;
+          });
+        return characters.filter(
+          (characterType) => !characterType.name.includes("arab")
+        );
+      },
+    }),
     new Rule({
       name: "חוק עבודה בשבת",
       info: "אסור לצוד בשבת אלא אם אתה חתול בית חילוני",
@@ -85,7 +85,7 @@ export default class Rule {
     new Rule({
       name: "אישור פונדקאות ללהטבים",
       info: "חוק המאפשר לחברי הקהילה הלהטבית לקיים הליך פונדקאות",
-      impact: { LGTB: -2 },
+      impact: { "-LGTB": -2 },
     }),
     new Rule({
       name: "פסילת מפלגות ערביות",

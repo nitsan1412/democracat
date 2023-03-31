@@ -2,14 +2,17 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import Character from "./Game/Character";
+import CharacterImage from "./Game/CharacterImage";
 import { useGame } from "../helpers/GameContext";
 
 export default function StartGameMenu() {
   const { start } = useGame();
-
+  const highestScoreToShow = {
+    highestScore: localStorage.getItem("highest-score"),
+    date: localStorage.getItem("highest-score-dateTime"),
+  };
   return (
-    <Stack alignItems="center" gap={2} sx={{ padding: "1rem" }}>
+    <Stack alignItems="center" sx={{ padding: "1rem" }}>
       <Typography variant="h3" sx={{ fontWeight: "700" }}>
         DemocraCat
       </Typography>
@@ -21,34 +24,60 @@ export default function StartGameMenu() {
       </Typography>
 
       <Stack direction="row" gap={2}>
-        <Character.Image
+        <CharacterImage
           key="orthodox-man"
           characterType="orthodox-man"
           sx={StartGameMenu.characterStyles}
         />
-        <Character.Image
+        <CharacterImage
           key="arab-woman"
           characterType="arab-woman"
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
+      {localStorage.getItem("highest-score") && (
+        <Stack direction="row" gap={2}>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            הניקוד הגבוה ביותר שלך:
+          </Typography>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            {highestScoreToShow.highestScore}
+          </Typography>
+        </Stack>
+      )}
+      {highestScoreToShow.highestScore && (
+        <Stack direction="row" gap={2}>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            מתאריך:{" "}
+          </Typography>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            {highestScoreToShow.date}
+          </Typography>
+        </Stack>
+      )}
       <Stack direction="row" gap={2}>
-        <Character.Image
+        <CharacterImage
           key="secular-woman"
           characterType="secular-woman"
           sx={StartGameMenu.characterStyles}
         />
-        <Character.Image
+        <CharacterImage
           key="religious-man"
           characterType="religious-man"
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
+
       <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
         מי יצליח ליצר מגון רחב של מגזרים ומגדרים שונים
       </Typography>
 
-      <Button variant="contained" fullWidth onClick={start}>
+      <Button
+        variant="contained"
+        sx={{ marginTop: "2rem" }}
+        fullWidth
+        onClick={start}
+      >
         להתחיל
       </Button>
     </Stack>

@@ -1,3 +1,5 @@
+import { DateTime } from "luxon"
+
 import Rule from "./Rule";
 import CharacterType from "./CharacterType";
 import Character from "./Character";
@@ -8,11 +10,12 @@ export default class Game {
     this.status = Game.STATUS.PENDING;
     this.characters = [];
     this.rules = [];
+    this.isDonkey = false;
   }
 
   start() {
     this.status = Game.STATUS.RUNNING;
-    this.rules = this.generateRules();
+    this.rules = Game.generateRules();
     this.startTime = Date.now();
     this.paused = false;
     this.setNextRule();
@@ -42,6 +45,7 @@ export default class Game {
   resume() {
     this.startTime = this.startTime + Date.now() - this.puaseTime;
     this.paused = false;
+    this.setNextRule();
   }
 
   get time() {
@@ -52,24 +56,13 @@ export default class Game {
   }
 
   get score() {
-    let charctersDone = this.characters.filter(
+    return this.characters.filter(
       (charcter) => charcter.location >= Game.TRACK_END
-    );
-    return charctersDone.length;
+    ).length;
   }
 
   get bonusScore() {
-    let diversityMap = Object.fromEntries(
-      this.characterTypes.map((characterType) => [characterType.name, 0])
-    );
-    let charctersDone = this.characters.filter(
-      (charcter) => charcter.location >= Game.TRACK_END
-    );
-    charctersDone.forEach((character) => {
-      diversityMap[character.type.name]++;
-    });
-    if (charctersDone.length > 0)
-      return this.calculateBonus(diversityMap, charctersDone);
+    if (this.charactersDone().length > 0) return this.calculateBonus();
     return 0;
   }
 
@@ -128,14 +121,30 @@ export default class Game {
     );
   }
 
+  charactersDone() {
+    return this.characters.filter(
+      (charcter) => charcter.location >= Game.TRACK_END
+    );
+  }
+
+  diversityTypes() {
+    let diversityMap = Object.fromEntries(
+      this.characterTypes.map((characterType) => [characterType.name, 0])
+    );
+    this.charactersDone().forEach((character) => {
+      diversityMap[character.type.name]++;
+    });
+    return diversityMap;
+  }
+
   chooseRule(rule) {
     this._setRuleStatus(rule, Game.RULE_STATUS.CHOSEN);
     this.characters = rule.apply(this.characters, this.characterTypes);
   }
 
   declineRule(rule) {
-    // this.resetNextRule()
     this._setRuleStatus(rule, Game.RULE_STATUS.DECLINED);
+    this.resetNextRule();
   }
 
   _setRuleStatus(rule, status) {
@@ -159,7 +168,7 @@ export default class Game {
     );
   }
 
-  generateRules() {
+  static generateRules() {
     return Rule.RULES.map((rule) => ({
       rule,
       status: Game.RULE_STATUS.PENDING,
@@ -170,18 +179,27 @@ export default class Game {
     this.status = Game.STATUS.OVER;
   }
 
-  calculateBonus(diversityMap, charctersDoneArray) {
-    let bonusScore = charctersDoneArray.length
-      ? charctersDoneArray.length * CharacterType.characterTypes().length
-      : 0; //starter score
+  calculateBonus() {
+    let numberOfFinished = this.charactersDone().length;
+    let bonusScore = numberOfFinished * CharacterType.characterTypes().length;
     let avg = (
-      charctersDoneArray.length / CharacterType.characterTypes().length
+      numberOfFinished / CharacterType.characterTypes().length
     ).toFixed(0);
-    for (const key in diversityMap) {
-      bonusScore = bonusScore - Math.pow(avg - diversityMap[key], 2);
+    for (const key in this.diversityTypes()) {
+      bonusScore -= Math.pow(avg - this.diversityTypes()[key], 2);
     }
-    if (bonusScore > 0) return bonusScore;
-    else return 0;
+    Game.compairHighScore(bonusScore + numberOfFinished);
+    return Math.max(bonusScore, 0);
+  }
+
+  static compairHighScore(newScore) {
+    let currentHighest = localStorage.getItem("highest-score");
+    if (currentHighest < newScore) {
+      localStorage.removeItem("highest-score");
+      localStorage.removeItem("highest-score-dateTime");
+      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score-dateTime", DateTime.now().toFormat('dd.MM.yyyy'));
+    }
   }
 
   static STATUS = {
