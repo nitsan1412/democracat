@@ -1,3 +1,5 @@
+import { DateTime } from "luxon"
+
 import Rule from "./Rule";
 import CharacterType from "./CharacterType";
 import Character from "./Character";
@@ -196,10 +198,7 @@ export default class Game {
       localStorage.removeItem("highest-score");
       localStorage.removeItem("highest-score-dateTime");
       localStorage.setItem("highest-score", newScore);
-      localStorage.setItem(
-        "highest-score-dateTime",
-        new Date().toLocaleDateString()
-      );
+      localStorage.setItem("highest-score-dateTime", DateTime.now().toFormat('dd.MM.yyyy'));
     }
   }
 
