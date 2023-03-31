@@ -221,6 +221,7 @@ export default class Game {
   };
   static STEP = 0.1;
   static DURATION = 2.5 * 60;
+
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
   static TRACK_END = 110;
