@@ -23,5 +23,3 @@ export default function Character({ character }) {
     />
   );
 }
-
-// Character.HORIZONTAL_VARIANCE = 8;

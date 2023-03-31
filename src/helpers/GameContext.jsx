@@ -11,7 +11,6 @@ export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
   const [game, setGame] = useState(new Game());
   const [intervalHandler, setIntervalHandler] = useState(undefined);
-  // const [isDunkey, setIsDunkey] = useState(false);
 
   const newGame = () => {
     setGame(new Game());
@@ -55,7 +54,6 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
-        // changeToDunkey,
       }}
     >
       {children}

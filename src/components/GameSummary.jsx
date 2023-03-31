@@ -112,10 +112,7 @@ export default function GameSummary() {
       <Button
         variant="contained"
         fullWidth
-        sx={
-          //   ? { marginTop: "-15%", marginBottom: "2%" }:
-          { marginTop: "10%", marginBottom: "2%" }
-        }
+        sx={{ marginTop: "10%", marginBottom: "2%" }}
         startIcon={
           <ShareIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
         }

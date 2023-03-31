@@ -8,7 +8,7 @@ export default class Game {
     this.status = Game.STATUS.PENDING;
     this.characters = [];
     this.rules = [];
-    this.isDunkey = false;
+    this.isDonkey = false;
   }
 
   start() {
@@ -43,6 +43,7 @@ export default class Game {
   resume() {
     this.startTime = this.startTime + Date.now() - this.puaseTime;
     this.paused = false;
+    this.setNextRule();
   }
 
   get time() {
@@ -141,6 +142,7 @@ export default class Game {
 
   declineRule(rule) {
     this._setRuleStatus(rule, Game.RULE_STATUS.DECLINED);
+    this.resetNextRule();
   }
 
   _setRuleStatus(rule, status) {

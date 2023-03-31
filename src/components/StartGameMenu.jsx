@@ -7,7 +7,10 @@ import { useGame } from "../helpers/GameContext";
 
 export default function StartGameMenu() {
   const { start } = useGame();
-
+  const highestScoreToShow = {
+    highestScore: localStorage.getItem("highest-score"),
+    date: localStorage.getItem("highest-score-dateTime"),
+  };
   return (
     <Stack alignItems="center" sx={{ padding: "1rem" }}>
       <Typography variant="h3" sx={{ fontWeight: "700" }}>
@@ -32,22 +35,26 @@ export default function StartGameMenu() {
           sx={StartGameMenu.characterStyles}
         />
       </Stack>
-      <Stack direction="row" gap={2}>
-        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
-          הניקוד הגבוה ביותר שלך:
-        </Typography>
-        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
-          {localStorage.getItem("highest-score")}{" "}
-        </Typography>
-      </Stack>
-      <Stack direction="row" gap={2}>
-        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
-          מתאריך:{" "}
-        </Typography>
-        <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
-          {localStorage.getItem("highest-score-dateTime")}
-        </Typography>
-      </Stack>
+      {localStorage.getItem("highest-score") && (
+        <Stack direction="row" gap={2}>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            הניקוד הגבוה ביותר שלך:
+          </Typography>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            {highestScoreToShow.highestScore}
+          </Typography>
+        </Stack>
+      )}
+      {highestScoreToShow.highestScore && (
+        <Stack direction="row" gap={2}>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            מתאריך:{" "}
+          </Typography>
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            {highestScoreToShow.date}
+          </Typography>
+        </Stack>
+      )}
       <Stack direction="row" gap={2}>
         <CharacterImage
           key="secular-woman"

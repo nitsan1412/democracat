@@ -19,7 +19,6 @@ export default function Board() {
     >
       <Stack
         width={1}
-        // hight="70%"
         direction="row"
         alignItems="stretch"
         sx={{ flexGrow: 1 }}

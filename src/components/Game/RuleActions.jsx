@@ -47,7 +47,6 @@ export default function RuleActions({ rule }) {
         }
         onClick={() => {
           game.declineRule(rule);
-          game.resetNextRule();
         }}
       >
         דחייה
@@ -69,11 +68,9 @@ export default function RuleActions({ rule }) {
           </Typography>
           <RuleImpact rule={rule} />
           <Button
-            // sx={buttonStyle}
             variant="outlined"
             onClick={() => {
               game.resume();
-              game.resetNextRule();
               setOpenModal(false);
             }}
           >
@@ -92,7 +89,3 @@ const style = {
   display: "flex",
   flexDirection: "column",
 };
-// const buttonStyle = {
-//   borderRadius: 25,
-//   border: black
-// };

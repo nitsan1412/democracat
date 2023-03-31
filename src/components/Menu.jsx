@@ -10,6 +10,8 @@ import { useGame } from "../helpers/GameContext";
 export default function Menu() {
   const { game } = useGame();
   const [showInstructions, setShowInstructions] = useState(false);
+  const isPending = game.status === "pending";
+
   const currentWidth = useWindowWidth();
 
   return (
@@ -17,10 +19,10 @@ export default function Menu() {
       <Stack
         direction="row"
         alignItems="center"
-        justifyContent={game.status === "pending" ? "space-between" : "center"}
+        justifyContent={isPending ? "space-between" : "center"}
         marginX="2rem"
       >
-        {game.status === "pending" ? (
+        {isPending ? (
           <Stack justifyContent="flex-start" marginTop="0.5rem">
             <Typography
               variant="button"
@@ -41,7 +43,7 @@ export default function Menu() {
           direction="row"
           alignItems="center"
           justifyContent="center"
-          marginLeft={game.status === "pending" ? "6rem" : 0}
+          marginLeft={isPending ? "6rem" : 0}
         >
           <Stack
             alignItems="center"

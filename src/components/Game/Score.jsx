@@ -9,8 +9,6 @@ export default function Score() {
 
 Score.styles = {
   position: "absolute",
-  // top: 0,
-  // right: 0,
   marginTop: -6,
   marginLeft: 40,
   height: "3rem",

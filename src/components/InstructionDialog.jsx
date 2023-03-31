@@ -99,9 +99,7 @@ export default function InstructionDialog(props) {
           </Typography>
           <CharacterImage
             key="secular-woman"
-            // key="secular-gay"
             characterType="secular-woman"
-            // characterType="secular-gay"
             sx={characterStyles}
           />
         </Stack>

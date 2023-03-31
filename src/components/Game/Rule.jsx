@@ -48,7 +48,6 @@ export default function Rule({ rule, noChoice }) {
           <></>
         )}
         {!noChoice ? <RuleActions rule={rule} /> : <RuleImpact rule={rule} />}
-        {/* {noChoice ? "" : <RuleActions rule={rule} />} */}
       </Stack>
     </Paper>
   );

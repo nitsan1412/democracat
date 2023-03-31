@@ -7,17 +7,11 @@ export default class Rule {
   }
 
   apply(characters, characterTypes) {
-    if (Object.keys(this.impact).includes("donkey")) {
-      characterTypes.forEach((characterType) =>
-        characterType.changeImage("donkey")
-      );
-    } else {
-      Object.entries(this.impact).forEach(([filter, speedChange]) => {
-        characterTypes
-          .filter((characterType) => characterType.name.includes(filter))
-          .forEach((characterType) => characterType.changeSpeed(speedChange));
-      });
-    }
+    Object.entries(this.impact).forEach(([filter, speedChange]) => {
+      characterTypes
+        .filter((characterType) => characterType.name.includes(filter))
+        .forEach((characterType) => characterType.changeSpeed(speedChange));
+    });
 
     return characters;
   }
@@ -27,6 +21,11 @@ export default class Rule {
       name: "חוק תקשורת",
       info: "יללות אסורות בכל שעות היום והלילה.",
       impact: { donkey: 1 },
+      apply: (characters, characterTypes) => {
+        characterTypes.forEach((characterType) =>
+          characterType.changeImage("donkey")
+        );
+      },
     }),
     new Rule({
       name: "חוק הסדרת הצייד",
