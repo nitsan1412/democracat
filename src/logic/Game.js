@@ -84,7 +84,7 @@ export default class Game {
   get hasMoreRulesInBatch () {
     const pastRulesCount = this.chosenRules.length + this.declinedRules.length
     let pastBatchesSum = 0
-    Game.BATCHES.find(batch => {
+    Game.RULE_BATCHES.find(batch => {
       pastBatchesSum += batch
       return pastBatchesSum >= pastRulesCount
     })
@@ -239,5 +239,5 @@ export default class Game {
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
   static TRACK_END = 110;
-  static BATCHES = [3, 4, 3, 3, 5];
+  static RULE_BATCHES = [3, 4, 3, 3, 5];
 }
