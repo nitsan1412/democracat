@@ -9,7 +9,7 @@ export default function Character({ character }) {
       onClick={() => playSound("meow")}
       style={{
         position: "absolute",
-        left: `${80 * character.x}%`,
+        left: `${80 * character.xPosition}%`,
         top: `${character.location}%`,
         width: character.type.donkey ? "15%" : "21%",
         aspectRatio: character.type.donkey ? "0.7" : "1",
