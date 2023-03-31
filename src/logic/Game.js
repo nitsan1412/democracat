@@ -213,9 +213,7 @@ export default class Game {
     DECLINED: "declined",
   };
   static STEP = 0.1;
-  // static STEP = 1;
-  static DURATION = 2.5 * 60;
-  // static DURATION = 1 * 30;
+  static DURATION = 5 //2.5 * 60;
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
