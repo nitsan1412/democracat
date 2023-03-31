@@ -1,17 +1,14 @@
 import Stack from "@mui/material/Stack";
-
-import Timer from "./Timer";
-import Score from "./Score";
 import RuleChoice from "./RuleChoice";
 import Board from "./Board";
-import Menu from "../Menu";
+import Menu from "./Menu";
 
 export default function Game() {
   return (
-    <Stack alignItems="center" >
-      <Menu/>
-      <Timer />
-      <Score />
+    <Stack alignItems="stretch" margin={2}>
+      <Stack alignItems="space-between">
+        <Menu />
+      </Stack>
       <RuleChoice />
       <Board />
     </Stack>

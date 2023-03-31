@@ -9,9 +9,10 @@ html, body {
 
 #root {
   min-width: 40%;
+  max-width: 450px;
   min-height: 100vh;
   max-height: 750px;
-  background: #F5F5F5;
+  background: #FFFFFF;
 }
 
 @media only screen and (max-width: 450px) {
