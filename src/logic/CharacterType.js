@@ -10,6 +10,10 @@ export default class CharacterType {
     });
   }
 
+  resetSpeed() {
+    this.speed = this.initialSpeed;
+  }
+
   changeSpeed(acceleration) {
     this.speed += acceleration;
   }
