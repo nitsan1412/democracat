@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
@@ -11,6 +11,15 @@ export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
   const [game, setGame] = useState(new Game());
   const [intervalHandler, setIntervalHandler] = useState(undefined);
+
+  useEffect(() => {
+    let params = new URLSearchParams(document.location.search);
+    let initialSpeed = params.get("initialSpeed");
+    let duration = params.get("duration");
+    setGame(new Game(Number(initialSpeed), duration));
+    console.log("initialSpeed", initialSpeed);
+    console.log("duration", duration);
+  }, []);
 
   const newGame = () => {
     setGame(new Game());

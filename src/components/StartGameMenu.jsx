@@ -74,7 +74,7 @@ export default function StartGameMenu() {
 
       <Button
         variant="contained"
-        sx={{ marginTop: "2rem" }}
+        // sx={{ marginTop: "2rem" }}
         fullWidth
         onClick={start}
       >
