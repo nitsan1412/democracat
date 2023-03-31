@@ -17,22 +17,9 @@ export default function Board() {
       justifyContent="center"
       sx={{ flexGrow: 1 }}
     >
-      <Stack
-        width={1}
-        direction="row"
-        alignItems="stretch"
-        sx={{ flexGrow: 1 }}
-      >
-        {Object.entries(game.charactersByGenderlessType).map(
-          ([characterType, characters], index) => (
-            <Track
-              key={index}
-              characterType={characterType}
-              characters={characters}
-            />
-          )
-        )}
-      </Stack>
+      <Track
+        characters={game.characters}
+      />
       <Button
         variant="contained"
         fullWidth
