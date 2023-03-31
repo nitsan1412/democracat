@@ -25,7 +25,31 @@ export default class Rule {
         characterTypes.forEach((characterType) =>
           characterType.changeImage("donkey")
         );
-        return characters
+        return characters;
+      },
+    }),
+    new Rule({
+      name: "חוק השיוויון",
+      info: "כל החתולים מגיעים לעמק השווה",
+      impact: { all: 0 },
+      apply: (characters, characterTypes) => {
+        const averageLocation =
+          characters.reduce(
+            (accumulator, currentValue) => accumulator + currentValue.location,
+            0
+          ) / characters.length;
+        return characters.forEach(
+          (character) => (character.location = averageLocation)
+        );
+      },
+    }),
+    new Rule({
+      name: "הצבעת אי אמון בממשלה",
+      info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
+      impact: { all: 0 },
+      apply: (characters, characterTypes) => {
+        characterTypes.forEach((characterType) => characterType.resetSpeed());
+        return characters;
       },
     }),
     new Rule({
@@ -56,10 +80,10 @@ export default class Rule {
         characterTypes
           .filter((characterType) => characterType.name.includes("arab"))
           .forEach((characterType) => {
-            characterTypes.disabled = true;
+            characterType.disabled = true;
           });
         return characters.filter(
-          (characterType) => !characterType.name.includes("arab")
+          (character) => !character.type.name.includes("arab")
         );
       },
     }),
