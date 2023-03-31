@@ -8,16 +8,15 @@ export default class Character {
   }
 
   static createCharacter(characterTypes) {
+    const characterTypePercentages = Object.fromEntries(Object.entries(Character.CHARACTER_TYPE_PRECENTAGES).filter(([key]) => characterTypes.some(type => type.name.includes(key))))
     let rulletePointer =
       Math.random() *
-      Object.values(Character.CHARACTER_TYPE_PRECENTAGES).reduce(
+      Object.values(characterTypePercentages).reduce(
         (sum, x) => sum + x,
         0
       );
     let gender = Math.random() > 0.5 ? "man" : "woman";
-    let characterTypefound = Object.entries(
-      Character.CHARACTER_TYPE_PRECENTAGES
-    ).find(([type, precetage]) => {
+    let characterTypefound = Object.entries(characterTypePercentages).find(([type, precetage]) => {
       if (rulletePointer <= precetage) {
         return true;
       } else {
