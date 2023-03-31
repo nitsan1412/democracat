@@ -26,7 +26,7 @@ export default class Game {
     this.rules = Game.generateRules();
     this.startTime = Date.now();
     this.paused = false;
-    this.setNextRule();
+    this.resetNextRule();
   }
 
   step() {
