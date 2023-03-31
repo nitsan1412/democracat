@@ -1,4 +1,3 @@
-
 export default class Rule {
   constructor({ name, impact, apply, info }) {
     Object.assign(this, { name, impact, info });
@@ -81,10 +80,10 @@ export default class Rule {
         characterTypes
           .filter((characterType) => characterType.name.includes("arab"))
           .forEach((characterType) => {
-            characterTypes.disabled = true;
+            characterType.disabled = true;
           });
         return characters.filter(
-          (characterType) => !characterType.name.includes("arab")
+          (character) => !character.type.name.includes("arab")
         );
       },
     }),

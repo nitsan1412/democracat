@@ -35,7 +35,7 @@ export default class Game {
       if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
     });
     if (Math.random() <= this.charachterAdditionChance) {
-      this.characters.push(Character.createCharacter(this.characterTypes));
+      this.characters.push(Character.createCharacter(this.characterTypes.filter(characterType => !characterType.disabled)));
     }
     if (this.shouldSetNextRule) {
       this.setNextRule();
