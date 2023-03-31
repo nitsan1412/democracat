@@ -1,3 +1,4 @@
+
 export default class Rule {
   constructor({ name, impact, apply, info }) {
     Object.assign(this, { name, impact, info });
@@ -41,6 +42,15 @@ export default class Rule {
         return characters.forEach(
           (character) => (character.location = averageLocation)
         );
+      },
+    }),
+    new Rule({
+      name: "הצבעת אי אמון בממשלה",
+      info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
+      impact: { all: 0 },
+      apply: (characters, characterTypes) => {
+        characterTypes.forEach((characterType) => characterType.resetSpeed());
+        return characters;
       },
     }),
     new Rule({
