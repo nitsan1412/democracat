@@ -26,7 +26,7 @@ export default class Game {
     this.rules = Game.generateRules();
     this.startTime = Date.now();
     this.paused = false;
-    this.setNextRule();
+    this.resetNextRule();
   }
 
   step() {
@@ -53,7 +53,7 @@ export default class Game {
   resume() {
     this.startTime = this.startTime + Date.now() - this.puaseTime;
     this.paused = false;
-    this.setNextRule();
+    this.resetNextRule();
   }
 
   get time() {
@@ -77,8 +77,18 @@ export default class Game {
   get shouldSetNextRule() {
     return (
       !this.nextRule &&
-      (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY
+      (this.hasMoreRulesInBatch || (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
     );
+  }
+
+  get hasMoreRulesInBatch () {
+    const pastRulesCount = this.chosenRules.length + this.declinedRules.length
+    let pastBatchesSum = 0
+    Game.BATCHES.find(batch => {
+      pastBatchesSum += batch
+      return pastBatchesSum >= pastRulesCount
+    })
+    return pastBatchesSum > pastRulesCount
   }
 
   resetNextRule() {
@@ -229,4 +239,5 @@ export default class Game {
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
   static TRACK_END = 110;
+  static BATCHES = [3, 4, 3, 3, 5];
 }
