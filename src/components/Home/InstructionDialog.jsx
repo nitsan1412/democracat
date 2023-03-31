@@ -4,7 +4,7 @@ import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import CharacterImage from "./Game/CharacterImage";
+import CharacterImage from "../Game/CharacterImage";
 export default function InstructionDialog(props) {
   return (
     <Dialog
