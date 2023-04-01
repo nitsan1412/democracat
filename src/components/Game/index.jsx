@@ -5,11 +5,17 @@ import Menu from "./Menu";
 
 export default function Game() {
   return (
-    <Stack alignItems="stretch" margin={2}>
-      <Stack alignItems="space-between">
+    <Stack alignItems="stretch">
+      <Stack alignItems="space-between" height="10vh">
         <Menu />
       </Stack>
-      <RuleChoice />
+      <Stack
+        sx={{
+          height: "20vh",
+        }}
+      >
+        <RuleChoice />
+      </Stack>
       <Board />
     </Stack>
   );
