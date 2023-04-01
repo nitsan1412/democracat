@@ -14,7 +14,8 @@ const theme = createTheme({
     }
   },
   palette: {
-    primary: { main: "#333333" },
+    black: { main: "#303030", contrastText: "#ffffff" },
+    primary: { main: "#79C300" },
     secondary: { main: "#FC68B4" }
   },
   typography: {
