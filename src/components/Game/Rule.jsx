@@ -6,35 +6,42 @@ import { useWindowWidth } from "@react-hook/window-size";
 import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
 import RuleActions from "./RuleActions";
 import RuleImpact from "./RuleImpact";
+import downArrow from "../../images/icons/downArrow.svg";
+import upArrow from "../../images/icons/upArrow.svg";
 
 export default function Rule({ rule, noChoice }) {
   const [showRuleInfo, setShowRuleInfo] = useState(noChoice ? true : false);
-  const currentWidth = useWindowWidth();
   return (
     <Paper
       elevation={2}
       sx={{
         padding: "0.5rem",
-        width: noChoice ? 230 : currentWidth > 450 ? 350 : "100%",
-        maxWidth: 450,
-        maxHeight: "18rem",
-        position: !noChoice ? "absolute" : "unset",
-        top: noChoice ? 0 : 48,
         zIndex: noChoice ? 4560 : 99,
+        width: "315px",
+        flexDirection: "column",
       }}
     >
-      <Stack gap={1} height={1}>
+      <Stack gap={1} height={1} flexDirection="column">
+        {/* <Stack flexDirection="row"> */}
+        <Typography variant="h4">הצעת חוק</Typography>
+        {/* </Stack> */}
         <Stack flexDirection="row">
-          <InfoTwoToneIcon
-            sx={{ color: "purple", flex: 1 }}
-            onClick={() => setShowRuleInfo(!showRuleInfo)}
-          />
           <Typography
             variant="body1"
-            sx={{ textAlign: "center", flex: 5, fontSize: "1.2rem" }}
+            sx={{
+              textAlign: "center",
+              flex: 5,
+              fontSize: "1rem",
+              textDecoration: "underline",
+            }}
           >
             {rule.name}
           </Typography>
+          <img
+            src={showRuleInfo ? upArrow : downArrow}
+            alt=""
+            onClick={() => setShowRuleInfo(!showRuleInfo)}
+          />
         </Stack>
 
         {showRuleInfo ? (
@@ -47,7 +54,7 @@ export default function Rule({ rule, noChoice }) {
         ) : (
           <></>
         )}
-        {!noChoice ? <RuleActions rule={rule} /> : <RuleImpact rule={rule} />}
+        {/* {!noChoice ? <RuleActions rule={rule} /> : <RuleImpact rule={rule} />} */}
       </Stack>
     </Paper>
   );

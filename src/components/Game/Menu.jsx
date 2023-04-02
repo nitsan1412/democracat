@@ -10,13 +10,13 @@ export default function Menu() {
     <Stack
       direction="row"
       alignItems="center"
-      justifyContent="space-between"
-      // marginX="2rem"
+      justifyContent="space-around"
+      margin="1rem"
     >
       <Stack
         alignItems="center"
         justifyContent="center"
-        sx={{ padding: "0.5rem", height: "3rem" }}
+        sx={{ height: "3rem" }}
       >
         <Stack direction="row" gap={1}>
           <img src={backArrow} alt="" />
