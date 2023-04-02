@@ -6,10 +6,12 @@ import Stack from "@mui/material/Stack";
 import RuleChoice from "./RuleChoice";
 import Board from "./Board";
 import Menu from "./Menu";
+import RuleActions from "./RuleActions";
 
 export default function Game() {
   const { game } = useGame();
   const navigate = useNavigate();
+  const rule = game.nextRule;
 
   useEffect(() => {
     console.log("game", game.status);
@@ -27,9 +29,22 @@ export default function Game() {
           height: "20vh",
         }}
       >
-        <RuleChoice />
+        <RuleChoice rule={rule} />
       </Stack>
-      <Board />
+      <Stack
+        sx={{
+          height: "60vh",
+        }}
+      >
+        <Board />
+      </Stack>
+      <Stack
+        sx={{
+          height: "10vh",
+        }}
+      >
+        {rule ? <RuleActions rule={rule} /> : ""}
+      </Stack>
     </Stack>
   );
 }

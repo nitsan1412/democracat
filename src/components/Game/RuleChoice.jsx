@@ -1,16 +1,9 @@
 import Stack from "@mui/material/Stack";
-import { useWindowWidth } from "@react-hook/window-size";
-import { useGame } from "../../helpers/GameContext";
 import Rule from "./Rule";
 
 import { Typography } from "@mui/material";
 
-export default function RuleChoice() {
-  const currentWidth = useWindowWidth();
-
-  const { game } = useGame();
-  const rule = game.nextRule;
-
+export default function RuleChoice(props) {
   return (
     <Stack
       direction="row"
@@ -18,14 +11,14 @@ export default function RuleChoice() {
       alignSelf="center"
       justifyContent="center"
       sx={{
-        padding: rule && "1rem",
-        gap: rule && "1rem",
-        maxWidth: !rule ? "fit-content" : currentWidth > 450 ? 250 : "85vw",
+        padding: props.rule && "1rem",
+        gap: props.rule && "1rem",
+        width: !props.rule ? "fit-content" : "100%",
         height: "20vh",
       }}
     >
-      {rule ? (
-        <Rule rule={rule} />
+      {props.rule ? (
+        <Rule rule={props.rule} />
       ) : (
         <Stack
           sx={{

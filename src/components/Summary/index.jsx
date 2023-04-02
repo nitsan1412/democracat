@@ -1,21 +1,31 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ReplayIcon from "@mui/icons-material/Replay";
-import Slider from "react-slick";
 
 import Rule from "../Game/Rule";
 import CharacterImage from "../Game/CharacterImage";
 import Game from "../../logic/Game";
+
 import { useGame } from "../../helpers/GameContext";
-import ShareButton from "./Share"
+import ShareButton from "./Share";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function GameSummary() {
   const { game, newGame } = useGame();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("game", game.status);
+    if (game.status === "pending") navigate("/");
+    else if (game.status === "running") navigate("/game");
+  }, [game.status, navigate]);
 
   return (
     <Stack
