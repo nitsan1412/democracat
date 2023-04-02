@@ -17,12 +17,14 @@ export default function Rule({ rule, noChoice }) {
       sx={{
         padding: "0.5rem",
         zIndex: noChoice ? 4560 : 99,
+        width: "315px",
+        flexDirection: "column",
       }}
     >
       <Stack gap={1} height={1} flexDirection="column">
-        <Stack flexDirection="row">
-          <Typography variant="h4">הצעת חוק</Typography>
-        </Stack>
+        {/* <Stack flexDirection="row"> */}
+        <Typography variant="h4">הצעת חוק</Typography>
+        {/* </Stack> */}
         <Stack flexDirection="row">
           <Typography
             variant="body1"
