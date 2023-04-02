@@ -28,9 +28,7 @@ export default function Rule({ rule, noChoice }) {
         alignSelf="center"
         justifyContent="center"
       >
-        <Stack flexDirection="row">
-          <Typography variant="h4">הצעת חוק</Typography>
-        </Stack>
+        <Typography variant="h4">הצעת חוק</Typography>
         <Stack
           flexDirection="row"
           onClick={() => setShowRuleInfo(!showRuleInfo)}
@@ -47,11 +45,7 @@ export default function Rule({ rule, noChoice }) {
           >
             {rule.name}
           </Typography>
-          <img
-            src={showRuleInfo ? upArrow : downArrow}
-            alt=""
-            // onClick={() => setShowRuleInfo(!showRuleInfo)}
-          />
+          <img src={showRuleInfo ? upArrow : downArrow} alt="" />
         </Stack>
 
         {showRuleInfo ? (

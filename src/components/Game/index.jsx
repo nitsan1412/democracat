@@ -14,7 +14,6 @@ export default function Game() {
   const rule = game.nextRule;
 
   useEffect(() => {
-    console.log("game", game.status);
     if (game.status === "pending") navigate("/");
     else if (game.status === "over") navigate("/summery");
   }, [game.status, navigate]);

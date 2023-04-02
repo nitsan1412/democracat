@@ -45,7 +45,7 @@ export default function Instructions(props) {
         מחברת החתולים
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>מטרה</b> היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
+        <b>המטרה</b> היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
         <b>על כל חתול</b> שהגיע אל הכרית תקבלו נקודה
       </Typography>
     </Stack>,
@@ -153,12 +153,17 @@ export default function Instructions(props) {
           infinite={false}
           prevArrow={<PrevArrow />}
           nextArrow={<NextArrow />}
-          style={{ width: "90vw" }}
+          style={{ width: "25rem" }}
         >
           {slides.map((slide, index) => (
             <Paper
               elevation={2}
-              sx={{ width: "90vw", padding: "2rem", paddingTop: "1rem" }}
+              sx={{
+                width: "90vw",
+                padding: "2rem",
+                paddingTop: "1rem",
+                marginTop: "4rem",
+              }}
             >
               <Typography
                 color="primary"

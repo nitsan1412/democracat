@@ -27,8 +27,8 @@ export default function RuleChoice(props) {
             alignItems: "center",
           }}
         >
-          <Typography variant="h2" sx={{ color: "black" }}>
-            הכנסת בפגרה
+          <Typography variant="h6" sx={{ color: "black" }}>
+            המתן לחוקים חדשים. הכנסת בפגרה
           </Typography>
         </Stack>
       )}

@@ -71,7 +71,7 @@ export default function GameSummary() {
                   </Typography>
                   <CharacterImage
                     characterType={characterType}
-                    sx={{ height: "60px", width: "60px" }}
+                    sx={{ height: "30px", width: "30px" }}
                   />
                 </Stack>
               );

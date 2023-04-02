@@ -74,7 +74,10 @@ export default function RuleActions(props) {
       </Stack>
       <Dialog
         open={openModal}
-        onClose={() => setOpenModal(false)}
+        onClose={() => {
+          setOpenModal(false);
+          game.resume();
+        }}
         sx={{ borderRadius: 15 }}
       >
         <RuleSelectedModal rule={props.rule} setOpenModal={setOpenModal} />

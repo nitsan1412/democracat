@@ -32,7 +32,6 @@ export default function RuleImpact({ rule }) {
             badgeContent={`${impact > 0 ? impact : impact * -1}${
               impact > 0 ? "+" : "-"
             }`}
-            color={impact > 0 ? "success" : "error"}
             sx={{
               justifyContent: "center",
               ".MuiBadge-badge": {
@@ -42,6 +41,7 @@ export default function RuleImpact({ rule }) {
                 height: "21px",
                 lineHeight: "21px",
                 right: 15,
+                backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
               },
             }}
           >
@@ -49,8 +49,8 @@ export default function RuleImpact({ rule }) {
               characterType={characterType}
               sx={
                 impactedCharacterTypes.length < 5
-                  ? { height: "60px", width: "60px" }
-                  : { height: "40px", width: "40px" }
+                  ? { height: "30px", width: "30px" }
+                  : { height: "20px", width: "20px" }
               }
             />
           </Badge>
