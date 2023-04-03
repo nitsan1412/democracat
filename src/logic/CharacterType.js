@@ -20,6 +20,7 @@ export default class CharacterType {
 
   changeImage(newImage) {
     if (newImage === "donkey") this.donkey = true;
+    else this.donkey = false;
   }
 
   get gender() {

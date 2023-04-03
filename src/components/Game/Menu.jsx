@@ -19,6 +19,7 @@ export default function Menu() {
       alignItems="center"
       justifyContent="space-around"
       margin="1rem"
+      minWidth="100%"
     >
       <Stack
         alignItems="center"

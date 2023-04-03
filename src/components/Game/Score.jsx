@@ -6,7 +6,13 @@ import emptyCat from "../../images/icons/emptyCat.svg";
 export default function Score() {
   const { game } = useGame();
   return (
-    <Stack direction="row" alignItems="center" justifyContent="center" gap={2}>
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+      gap={1}
+      sx={{ width: "5rem" }}
+    >
       <img src={emptyCat} alt="" />
       <Typography sx={Score.styles}> {game.score}</Typography>
     </Stack>
@@ -14,6 +20,6 @@ export default function Score() {
 }
 
 Score.styles = {
-  fontSize: "0.7rem",
+  fontSize: "1rem",
   color: "#303030",
 };

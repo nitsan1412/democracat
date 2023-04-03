@@ -22,13 +22,16 @@ export default function RuleChoice(props) {
       ) : (
         <Stack
           sx={{
-            direction: "row",
+            direction: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Typography variant="h6" sx={{ color: "black" }}>
-            המתן לחוקים חדשים. הכנסת בפגרה
+            ממתינים לחוקים חדשים
+          </Typography>
+          <Typography variant="h6" sx={{ color: "black" }}>
+            הכנסת בפגרה
           </Typography>
         </Stack>
       )}

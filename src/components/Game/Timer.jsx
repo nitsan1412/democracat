@@ -5,7 +5,13 @@ import timer from "../../images/icons/timer.svg";
 export default function Timer() {
   const { game } = useGame();
   return (
-    <Stack direction="row" alignItems="center" justifyContent="center" gap={2}>
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+      gap={1}
+      sx={{ width: "5rem" }}
+    >
       <img src={timer} alt="" />
       <Typography sx={Timer.styles}> {Timer.displayTime(game.time)}</Typography>
     </Stack>
@@ -18,6 +24,6 @@ Timer.displayTime = (seconds) =>
 Timer.twoDigits = (num) => String(Math.floor(num)).padStart(2, "0");
 
 Timer.styles = {
-  fontSize: "0.7rem",
+  fontSize: "1rem",
   color: "#303030",
 };

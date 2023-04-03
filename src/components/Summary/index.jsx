@@ -1,19 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Slider from "react-slick";
 import Stack from "@mui/material/Stack";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import ReplayIcon from "@mui/icons-material/Replay";
-
-import Rule from "../Game/Rule";
-import CharacterImage from "../Game/CharacterImage";
-import Game from "../../logic/Game";
-
 import { useGame } from "../../helpers/GameContext";
 import ShareButton from "./Share";
-
+import SummeryHeader from "./SummeryHeader";
+import EndScore from "./EndScore";
+import SummeryReview from "./SummeryReview";
+import SummeryRulesReview from "./SummeryRulesReview";
+import restartGameArrow from "../../images/icons/restartGameArrow.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -22,7 +17,6 @@ export default function GameSummary() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("game", game.status);
     if (game.status === "pending") navigate("/");
     else if (game.status === "running") navigate("/game");
   }, [game.status, navigate]);
@@ -31,7 +25,8 @@ export default function GameSummary() {
     <Stack
       alignItems="center"
       justifyContent="center"
-      maxHeight="100%"
+      direction="column"
+      gap={1}
       sx={{
         padding: "1rem",
         ".slick-slide": { padding: "0.5rem 1rem" },
@@ -40,97 +35,57 @@ export default function GameSummary() {
         ".slick-next": { right: "-55px" },
       }}
     >
-      <Typography variant="h3">כל הכבוד!</Typography>
-      <Typography variant="h5">{game.score} נקודות!</Typography>
-      <Typography variant="h5">
-        {game.bonusScore} בונוס עבור פלורליזם!
-      </Typography>
-      <Typography variant="h5">
-        סך הכל: {game.bonusScore + game.score}
-      </Typography>
-      <Grid
-        sx={{ maxWidth: "350px", marginTop: 2 }}
-        container
-        justifyContent="center"
-        alignItems="center"
-        spacing={4}
-      >
-        {Object.entries(game.charactersByType).map(
-          ([characterType, characters]) => {
-            const numberOfCharactersDoneOfType = characters.filter(
-              (character) =>
-                character.location > Game.TRACK_END &&
-                characterType === character.type.name
-            ).length;
-            if (numberOfCharactersDoneOfType <= 0) return "";
-            else
-              return (
-                <Stack sx={{ flexDirection: "row", maxWidth: 150 }}>
-                  <Typography variant="h5" sx={{ marginTop: 1.5 }}>
-                    {numberOfCharactersDoneOfType}
-                  </Typography>
-                  <CharacterImage
-                    characterType={characterType}
-                    sx={{ height: "30px", width: "30px" }}
-                  />
-                </Stack>
-              );
-          }
-        )}
-      </Grid>
-      <Stack
-        alignItems="center"
-        justifyContent="center"
-        maxWidth="250px"
-        sx={{
-          ".slick-initialized": {
-            direction: "row",
-            justifyContent: "center",
-            alignContent: "center",
-          },
-          ".slick-list": {
-            width: 250,
-            direction: "column",
-            alignContent: "center",
-            height: "12rem",
-            margin: "1rem -2rem",
-          },
-          ".css-1qgzj37-MuiStack-root .slick-track": {
-            maxWidth: 230,
-            height: "13rem",
-            transform: "translate3d(0px, 0px, 0px)",
-          },
-          ".slick-dots": {
-            bottom: 0,
-          },
-        }}
-      >
-        <Typography variant="h5">
-          {game.chosenRules.length} :חוקים שעברו
-        </Typography>
-        <Slider
-          slidesToShow={1}
-          slidesToScroll={1}
-          dots={true}
-          swipeToSlide={true}
-        >
-          {game.chosenRules.map((rule) => (
-            <Rule rule={rule} noChoice />
-          ))}
-        </Slider>
+      <SummeryHeader />
+      <Stack sx={boxStyle}>
+        <EndScore />
+      </Stack>
+      <Stack sx={boxStyle}>
+        <SummeryReview />
+      </Stack>
+      <Stack sx={boxStyle}>
+        <SummeryRulesReview />
       </Stack>
 
-      <ShareButton fullWidth sx={{ marginTop: "10%", marginBottom: "2%" }} />
-      <Button
-        variant="contained"
-        fullWidth
-        startIcon={
-          <ReplayIcon sx={{ marginRight: "-8px", marginLeft: "8px" }} />
-        }
-        onClick={() => newGame()}
+      <Stack
+        gap={2}
+        sx={{ flexDirection: "row", justifyContent: "space-between" }}
       >
-        משחק חדש
-      </Button>
+        <ShareButton
+          sx={{ fontSize: "0.9rem", fontWeight: "500", padding: "0.3rem 1rem" }}
+        />
+        <Stack
+          gap={1}
+          sx={{
+            border: "1px #646464 solid ",
+            padding: "0.5rem 1rem",
+            flexDirection: "row",
+            alignItems: "center",
+            alignSelf: "center",
+            justifyContent: "center",
+            borderRadius: "12px",
+          }}
+          onClick={() => newGame()}
+        >
+          <img src={restartGameArrow} alt="" width="15px" height="15px" />
+          <Typography
+            variant="subtitle1"
+            sx={{ fontSize: "0.9rem", fontWeight: "500" }}
+          >
+            שחק שוב
+          </Typography>
+        </Stack>
+      </Stack>
     </Stack>
   );
 }
+
+const boxStyle = {
+  border: "2px #ECECEC solid ",
+  padding: "0.5rem",
+  width: "315px",
+  flexDirection: "column",
+  alignItems: "center",
+  alignSelf: "center",
+  justifyContent: "center",
+  borderRadius: "25px",
+};

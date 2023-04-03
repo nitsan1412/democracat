@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import emptyCat from "../../images/icons/emptyCat.svg";
 
-export default function HightScoreBox(props) {
+export default function HighestScoreBox(props) {
   return (
     <Stack
       alignItems="center"

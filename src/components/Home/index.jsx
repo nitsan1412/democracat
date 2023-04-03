@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 
 import InstructionsButton from "./Instructions";
 import StartGameButton from "../StartGameButton";
-import HightScoreBox from "./HightScoreBox";
+import HightScoreBox from "./HighestScoreBox";
 import TermsOfUse from "./TermsOfUse";
 
 export default function StartGameMenu() {

@@ -3,7 +3,7 @@ import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
 
-export default function RuleImpact({ rule }) {
+export default function RuleImpact({ rule, inSummery }) {
   const { game } = useGame();
   const impactedCharacterTypes = game.characterTypes
     .map((characterType) => ({
@@ -36,12 +36,13 @@ export default function RuleImpact({ rule }) {
               justifyContent: "center",
               ".MuiBadge-badge": {
                 padding: 0,
-                fontSize: "0.75rem",
-                width: "21px",
-                height: "21px",
-                lineHeight: "21px",
+                fontSize: inSummery ? "0.6rem" : "0.75rem",
+                width: inSummery ? "11px" : "15px",
+                height: inSummery ? "15px" : "15px",
+                lineHeight: inSummery ? "11px" : "15px",
                 right: 15,
                 backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
+                color: "#FFFFFF",
               },
             }}
           >
@@ -49,8 +50,12 @@ export default function RuleImpact({ rule }) {
               characterType={characterType}
               sx={
                 impactedCharacterTypes.length < 5
-                  ? { height: "30px", width: "30px" }
-                  : { height: "20px", width: "20px" }
+                  ? inSummery
+                    ? { height: "40px", width: "40px" }
+                    : { height: "50px", width: "50px" }
+                  : inSummery
+                  ? { height: "35px", width: "35px" }
+                  : { height: "50px", width: "50px" }
               }
             />
           </Badge>

@@ -50,7 +50,12 @@ export default class Rule {
       info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
       impact: { all: 0 },
       apply: (characters, characterTypes) => {
-        characterTypes.forEach((characterType) => characterType.resetSpeed());
+        characterTypes.forEach((characterType) => {
+          characterType.resetSpeed();
+          if (characterType.donkey) {
+            characterType.changeImage(characterType.name);
+          }
+        });
         return characters;
       },
     }),

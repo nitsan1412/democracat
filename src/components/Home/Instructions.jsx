@@ -153,7 +153,7 @@ export default function Instructions(props) {
           infinite={false}
           prevArrow={<PrevArrow />}
           nextArrow={<NextArrow />}
-          style={{ width: "25rem" }}
+          style={{ width: "20rem" }}
         >
           {slides.map((slide, index) => (
             <Paper
