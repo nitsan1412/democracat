@@ -9,11 +9,10 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CircleIcon from "@mui/icons-material/Circle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import Slider from "react-slick";
-
-import StartGameButton from "../StartGameButton";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import StartGameButton from "../StartGameButton";
 
 import catKing from "../../images/icons/instructions/catKing.svg";
 import catIcons from "../../images/icons/instructions/catIcons.svg";

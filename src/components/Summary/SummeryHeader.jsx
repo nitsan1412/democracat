@@ -8,7 +8,6 @@ export default function SummeryHeader() {
         variant="body1"
         sx={{
           textAlign: "center",
-          //   flex: 5,
           fontSize: "1.6rem",
           fontWeight: 700,
           color: "#FC68B4",

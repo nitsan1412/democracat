@@ -5,7 +5,6 @@ import { useGame } from "../../helpers/GameContext";
 import Rule from "../Game/Rule";
 
 export default function SummeryRulesReview() {
-    
   const { game } = useGame();
 
   return (
@@ -46,9 +45,7 @@ export default function SummeryRulesReview() {
         swipeToSlide={true}
       >
         {game.chosenRules.map((rule) => (
-          // <Stack sx={boxStyle}>
           <Rule rule={rule} inSummery />
-          // </Stack>
         ))}
       </Slider>
     </Stack>

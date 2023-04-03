@@ -35,7 +35,11 @@ export default class Game {
       if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
     });
     if (Math.random() <= this.charachterAdditionChance) {
-      this.characters.push(Character.createCharacter(this.characterTypes.filter(characterType => !characterType.disabled)));
+      this.characters.push(
+        Character.createCharacter(
+          this.characterTypes.filter((characterType) => !characterType.disabled)
+        )
+      );
     }
     if (this.shouldSetNextRule) {
       this.setNextRule();
@@ -77,18 +81,19 @@ export default class Game {
   get shouldSetNextRule() {
     return (
       !this.nextRule &&
-      (this.hasMoreRulesInBatch || (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
+      (this.hasMoreRulesInBatch ||
+        (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
     );
   }
 
-  get hasMoreRulesInBatch () {
-    const pastRulesCount = this.chosenRules.length + this.declinedRules.length
-    let pastBatchesSum = 0
-    Game.RULE_BATCHES.find(batch => {
-      pastBatchesSum += batch
-      return pastBatchesSum >= pastRulesCount
-    })
-    return pastBatchesSum > pastRulesCount
+  get hasMoreRulesInBatch() {
+    const pastRulesCount = this.chosenRules.length + this.declinedRules.length;
+    let pastBatchesSum = 0;
+    Game.RULE_BATCHES.find((batch) => {
+      pastBatchesSum += batch;
+      return pastBatchesSum >= pastRulesCount;
+    });
+    return pastBatchesSum > pastRulesCount;
   }
 
   resetNextRule() {
@@ -238,6 +243,6 @@ export default class Game {
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
-  static TRACK_END = 110;
+  static TRACK_END = 100;
   static RULE_BATCHES = [3, 4, 3, 3, 5];
 }

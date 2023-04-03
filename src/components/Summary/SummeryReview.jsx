@@ -1,7 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import emptyCat from "../../images/icons/emptyCat.svg";
 import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "../Game/CharacterImage";

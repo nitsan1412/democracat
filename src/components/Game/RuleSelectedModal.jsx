@@ -49,7 +49,6 @@ export default function RuleSelectedModal(props) {
             fontSize: "1.5rem",
             fontWeight: 700,
             justifyContent: "center",
-            // width: "2rem",
           }}
         >
           {props.rule.name}
@@ -79,7 +78,6 @@ export default function RuleSelectedModal(props) {
             fontSize: "0.9rem",
             fontWeight: 600,
             justifyContent: "center",
-            // width: "2rem",
           }}
         >
           {props.rule.info || ""}
