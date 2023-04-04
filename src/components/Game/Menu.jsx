@@ -24,7 +24,7 @@ export default function Menu() {
       <Stack
         alignItems="center"
         justifyContent="center"
-        sx={{ height: "3rem" }}
+        sx={{ height: "3rem", cursor: "pointer" }}
       >
         <Stack
           direction="row"
