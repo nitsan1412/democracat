@@ -17,11 +17,7 @@ export default class Game {
       rules: [],
       duration,
       charachterAdditionChance,
-      scoreManager: new Score(
-        this.charactersDone(),
-        this.diversityTypes(),
-        this.characterTypes
-      ),
+      scoreManager: new Score(),
     });
   }
 

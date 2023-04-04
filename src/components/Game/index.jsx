@@ -14,6 +14,7 @@ export default function Game() {
   const rule = game.nextRule;
 
   useEffect(() => {
+    console.log(game.status);
     if (game.status === "pending") navigate("/");
     else if (game.status === "over") navigate("/summery");
   }, [game.status, navigate]);
@@ -28,7 +29,7 @@ export default function Game() {
           height: "20vh",
         }}
       >
-        <RuleChoice rule={rule} />
+        <RuleChoice rule={rule || {}} />
       </Stack>
       <Stack
         sx={{

@@ -1,11 +1,8 @@
 import { DateTime } from "luxon";
 
 export default class Score {
-  constructor(charactersDoneArray, diversityTypes, characters, characterTypes) {
+  constructor() {
     Object.assign(this, {
-      charactersDoneArray,
-      diversityTypes,
-      characterTypes,
       cuerrentScore: 0,
       bonusScore: 0,
     });
