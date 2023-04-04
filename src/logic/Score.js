@@ -51,11 +51,9 @@ export default class Score {
       (bonusLimit) => this.bonusScore < bonusLimit
     );
     return Score.SUMMERY_TEXTS[
-      (pointsIndex
-        ? pointsIndex
-        : Score.SUMMERY_TEXTS_POINTS_LIMIT.length + 1) *
+      (pointsIndex ? pointsIndex : Score.SUMMERY_TEXTS_POINTS_LIMIT.length) *
         (Score.SUMMERY_TEXTS_BONUS_LIMIT.length + 1) +
-        (bonusIndex ? bonusIndex : Score.SUMMERY_TEXTS_BONUS_LIMIT.length + 1) +
+        (bonusIndex ? bonusIndex : Score.SUMMERY_TEXTS_BONUS_LIMIT.length) +
         1
     ];
   }
