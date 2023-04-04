@@ -228,6 +228,53 @@ export default class Game {
     }
   }
 
+  getSummeryText() {
+    let rulesPass = this.chosenRules.length;
+    if (rulesPass < 3) return Game.SUMMERY_TEXTS[0];
+    const currentScore = this.score;
+    const currentBonus = this.bonusScore;
+    let returnText = "";
+    for (
+      let pointsIndex = 0;
+      Game.SUMMERY_TEXTS_POINTS_LIMIT.length;
+      pointsIndex++
+    ) {
+      if (currentScore < Game.SUMMERY_TEXTS_POINTS_LIMIT[pointsIndex]) {
+        for (
+          let bonusIndex = 0;
+          Game.SUMMERY_TEXTS_BONUS_LIMIT.length;
+          bonusIndex++
+        ) {
+          if (currentBonus < Game.SUMMERY_TEXTS_BONUS_LIMIT[bonusIndex]) {
+            returnText =
+              Game.SUMMERY_TEXTS[
+                pointsIndex * (Game.SUMMERY_TEXTS_BONUS_LIMIT.length + 1) +
+                  bonusIndex +
+                  1
+              ];
+          }
+        }
+        returnText = Game.SUMMERY_TEXTS[pointsIndex + 3];
+      }
+    }
+    for (
+      let bonusIndex = 0;
+      Game.SUMMERY_TEXTS_BONUS_LIMIT.length;
+      bonusIndex++
+    ) {
+      if (currentBonus < Game.SUMMERY_TEXTS_BONUS_LIMIT[bonusIndex]) {
+        returnText =
+          Game.SUMMERY_TEXTS[
+            (Game.SUMMERY_TEXTS_POINTS_LIMIT.length + 1) *
+              (Game.SUMMERY_TEXTS_BONUS_LIMIT.length + 1) +
+              bonusIndex +
+              1
+          ];
+      }
+    }
+    if (returnText) return returnText;
+    else return Game.SUMMERY_TEXTS[Game.SUMMERY_TEXTS.length - 1];
+  }
   static STATUS = {
     PENDING: "pending",
     RUNNING: "running",
@@ -245,4 +292,67 @@ export default class Game {
   static RULES_DELAY = 5;
   static TRACK_END = 100;
   static RULE_BATCHES = [3, 4, 3, 3, 5];
+  static SUMMERY_TEXTS_POINTS_LIMIT = [30, 55, 80];
+  static SUMMERY_TEXTS_BONUS_LIMIT = [100, 200];
+
+  static SUMMERY_TEXTS = [
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו",
+      secondLine: "כדי לקדם את חתוליך אתה צריך לאשר חוקים שעוזרים לאזרחים",
+    },
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו",
+      secondLine:
+        "נראה לי שאפשר יותר טוב. כדאי גם לדאוג לכל המגזרים. רוצה לשחק שוב?",
+    },
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו, אבל המגוון לא רע.",
+      secondLine: "כדאי לנסות שוב. בטוח יהיה טוב יותר",
+    },
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו",
+      secondLine: "אבל אתה פלורליסט אמיתי!",
+    },
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת בסדר, אבל המגוון לא משהו. ",
+      secondLine: "בטוח שאפשר לשפר",
+    },
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת בסדר, והמגוון לא רע. ",
+      secondLine: "אבל בטוח שאפשר לשפר.",
+    },
+    {
+      firstLine: "בתור שליט מדינת החתולים הצלחת בסדר, אבל המגוון מדהים.",
+      secondLine: "אתה פלורליסט אמיתי!",
+    },
+    {
+      firstLine:
+        "וואוו ! הצלחת ממש יפה בתור שליט מדינת החתולים, אבל המגוון לא משהו.",
+      secondLine: "כדאי לדאוג לכל המגזרים.",
+    },
+    {
+      firstLine:
+        "וואוו ! הצלחת ממש יפה בתור שליט מדינת החתולים, וגם המגוון לא רע.",
+      secondLine: "שווה לשתף את התוצאה",
+    },
+    {
+      firstLine: "וואוו ! הצלחת ממש יפה בתור שליט מדינת החתולים.",
+      secondLine: "אתה פלורליסט אמיתי! שיתפת?",
+    },
+    {
+      firstLine:
+        "וואוו ! כל הכבוד!!! אין שליט מדינת החתולים טוב כמוך בעולם כולו! אבל המגוון לא מספיק טוב.",
+      secondLine: "כדאי לדאוג לכל המגזרים.",
+    },
+    {
+      firstLine:
+        "וואוו ! כל הכבוד!!! אין שליט מדינת החתולים טוב כמוך בעולם כולו! וגם המגוון לא רע.",
+      secondLine: "שווה לשתף את התוצאה",
+    },
+    {
+      firstLine:
+        "וואוו ! כל הכבוד!!! אין שליט מדינת החתולים טוב כמוך בעולם כולו! וגם המגוון מעולה!.",
+      secondLine: "אתה פלורליסט אמיתי! שיתפת?",
+    },
+  ];
 }

@@ -41,7 +41,11 @@ export default function StartGameMenu() {
           sx={{ borderWidth: 2, fontSize: "1.3rem !important", height: "3rem" }}
         />
       </Stack>
-      <Stack flexDirection="row" onClick={() => setShowUseInfo(!showUseInfo)}>
+      <Stack
+        flexDirection="row"
+        onClick={() => setShowUseInfo(!showUseInfo)}
+        sx={{ cursor: "pointer" }}
+      >
         <Typography
           variant="body1"
           sx={{

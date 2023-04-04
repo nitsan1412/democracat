@@ -38,7 +38,6 @@ export default class Rule {
             (accumulator, currentValue) => accumulator + currentValue.location,
             0
           ) / characters.length;
-        console.log("averageLocation", averageLocation);
         characters.forEach((character) => {
           character.location = averageLocation;
         });

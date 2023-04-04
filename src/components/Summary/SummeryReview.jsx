@@ -23,11 +23,33 @@ export default function SummeryReview() {
           sx={{
             textAlign: "center",
             flex: 5,
+            fontSize: "0.9rem",
+            fontWeight: 600,
+          }}
+        >
+          {game.getSummeryText().firstLine}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "center",
+            flex: 5,
+            fontSize: "0.9rem",
+            fontWeight: 600,
+          }}
+        >
+          {game.getSummeryText().secondLine}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "center",
+            flex: 5,
             fontSize: "1rem",
             fontWeight: 700,
           }}
         >
-          משפט סיום משתנה{" "}
+          רוצה לשחק שוב?
         </Typography>
       </Stack>
       <Stack

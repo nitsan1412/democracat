@@ -26,7 +26,7 @@ import {
 export default function Share(props) {
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
-  const url = document.location;
+  const url = document.location.toString().split("/summery")[0];
 
   const copy = () => {
     setCopyStatus("copying");
@@ -71,7 +71,7 @@ export default function Share(props) {
           </Stack>
           <OutlinedInput
             fullWidth
-            value={url.toString().split("/summery")[0]}
+            value={url}
             sx={{
               flexDirection: "row-reverse",
               paddingRight: "1.2rem",

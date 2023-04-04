@@ -22,6 +22,7 @@ export default function RuleActions(props) {
           backgroundColor: "#F2F9E5",
           border: "#A6D756 2px solid",
           borderRadius: "10px",
+          cursor: "pointer",
         }}
         onClick={() => {
           game.chooseRule(props.rule);
@@ -54,6 +55,7 @@ export default function RuleActions(props) {
           backgroundColor: "#FFF0F7",
           border: "#FD8DC7 2px solid",
           borderRadius: "10px",
+          cursor: "pointer",
         }}
         onClick={() => {
           game.declineRule(props.rule);

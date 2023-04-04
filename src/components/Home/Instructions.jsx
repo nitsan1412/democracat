@@ -129,7 +129,11 @@ export default function Instructions(props) {
       gap={1}
     >
       {slides.map((slide, index) =>
-        index === current ? <CircleIcon /> : <RadioButtonUncheckedIcon />
+        index === current ? (
+          <CircleIcon key={index} />
+        ) : (
+          <RadioButtonUncheckedIcon key={index} />
+        )
       )}
     </Stack>
   );
@@ -156,9 +160,11 @@ export default function Instructions(props) {
         >
           {slides.map((slide, index) => (
             <Paper
+              key={index}
               elevation={2}
               sx={{
                 width: "90vw",
+                height: "30rem",
                 padding: "2rem",
                 paddingTop: "1rem",
                 marginTop: "4rem",
