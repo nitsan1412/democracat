@@ -9,14 +9,15 @@ import Menu from "./Menu";
 import RuleActions from "./RuleActions";
 
 export default function Game() {
-  const navigate = useNavigate();
   const { game } = useGame();
+  const navigate = useNavigate();
+  const rule = game.nextRule;
 
   useEffect(() => {
     if (game.status === "pending") navigate("/");
+    else if (game.status === "over") navigate("/summery");
   }, [game.status, navigate]);
 
-  const rule = game.nextRule;
   return (
     <Stack alignItems="stretch">
       <Stack alignItems="space-between" height="10vh">
