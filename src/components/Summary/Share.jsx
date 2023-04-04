@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
+// import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -51,9 +51,9 @@ export default function Share(props) {
         שתפו חברים
       </Button>
       <Dialog fullWidth open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>
-          <Typography variant="h4">שיתוף</Typography>
-        </DialogTitle>
+        {/* <DialogTitle> */}
+        <Typography variant="h4">שיתוף</Typography>
+        {/* </DialogTitle> */}
         <DialogContent>
           <Stack direction="row" justifyContent="space-evenly">
             <FacebookShareButton url={url}>

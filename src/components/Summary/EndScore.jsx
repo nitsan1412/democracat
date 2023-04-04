@@ -45,7 +45,7 @@ export default function EndScore() {
               fontWeight: 400,
             }}
           >
-            {game.bonusScore + game.score}
+            {game.bonusScore + game.getScore}
           </Typography>
           <img src={emptyCat} alt="" />
         </Stack>

@@ -27,7 +27,7 @@ export default function SummeryReview() {
             fontWeight: 600,
           }}
         >
-          {game.getSummeryText().firstLine}
+          {game.summeryText.firstLine}
         </Typography>
         <Typography
           variant="body1"
@@ -38,7 +38,7 @@ export default function SummeryReview() {
             fontWeight: 600,
           }}
         >
-          {game.getSummeryText().secondLine}
+          {game.summeryText.secondLine}
         </Typography>
         <Typography
           variant="body1"
