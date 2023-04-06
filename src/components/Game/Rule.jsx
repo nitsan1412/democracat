@@ -59,16 +59,7 @@ export default function Rule({ rule, inSummery }) {
         ) : (
           <></>
         )}
-        {inSummery ? (
-          <Typography
-            variant="body2"
-            sx={{ textAlign: "center", flex: 1, fontSize: "0.9rem" }}
-          >
-            <RuleImpact rule={rule} inSummery />
-          </Typography>
-        ) : (
-          <></>
-        )}
+        {inSummery ? <RuleImpact rule={rule} inSummery /> : <></>}
       </Stack>
     </Stack>
   );

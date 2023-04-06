@@ -32,7 +32,7 @@ export default function Game() {
       </Stack>
       <Stack
         sx={{
-          height: "60vh",
+          height: "50vh",
         }}
       >
         <Board />

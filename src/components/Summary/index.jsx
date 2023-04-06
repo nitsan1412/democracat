@@ -13,13 +13,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function GameSummary() {
-  const { game, newGame } = useGame();
+  const { game } = useGame();
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(game.status);
     if (game.status === "pending") navigate("/");
   }, [game.status, navigate]);
-
+  if (game.status === "pending") return <></>;
   return (
     <Stack
       alignItems="center"
@@ -63,7 +64,7 @@ export default function GameSummary() {
             justifyContent: "center",
             borderRadius: "12px",
           }}
-          onClick={() => newGame()}
+          onClick={() => navigate("/")}
         >
           <img src={restartGameArrow} alt="" width="15px" height="15px" />
           <Typography

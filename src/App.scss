@@ -5,12 +5,14 @@ html, body {
   min-height: fit-content;
   display: flex;
   justify-content: center;
+  height: 100%;
+
 }
 
 #root {
   min-width: 40%;
   max-width: 450px;
-  min-height: 100vh;
+  min-height: 100%;
   max-height: 750px;
   background: #FFFFFF;
 }

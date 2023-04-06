@@ -44,8 +44,8 @@ export default function SummeryRulesReview() {
         dots={true}
         swipeToSlide={true}
       >
-        {game.chosenRules.map((rule) => (
-          <Rule rule={rule} inSummery />
+        {game.chosenRules.map((rule, ruleIndex) => (
+          <Rule key={ruleIndex} rule={rule} inSummery />
         ))}
       </Slider>
     </Stack>

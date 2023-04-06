@@ -14,7 +14,7 @@ export default function Score() {
       sx={{ width: "5rem" }}
     >
       <img src={emptyCat} alt="" />
-      <Typography sx={Score.styles}> {game.getScore}</Typography>
+      <Typography sx={Score.styles}> {game.baseScore}</Typography>
     </Stack>
   );
 }

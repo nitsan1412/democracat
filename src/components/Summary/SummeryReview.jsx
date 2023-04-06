@@ -27,7 +27,7 @@ export default function SummeryReview() {
             fontWeight: 600,
           }}
         >
-          {game.summeryText.firstLine}
+          {game.gameSummery.endGameText.firstLine}
         </Typography>
         <Typography
           variant="body1"
@@ -38,7 +38,7 @@ export default function SummeryReview() {
             fontWeight: 600,
           }}
         >
-          {game.summeryText.secondLine}
+          {game.gameSummery.endGameText.secondLine}
         </Typography>
         <Typography
           variant="body1"
@@ -54,7 +54,6 @@ export default function SummeryReview() {
       </Stack>
       <Stack
         sx={{ maxWidth: "350px", marginTop: 2 }}
-        container
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
@@ -62,7 +61,6 @@ export default function SummeryReview() {
       >
         <Stack
           sx={{ maxWidth: "350px", marginTop: 2 }}
-          container
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
@@ -87,7 +85,7 @@ export default function SummeryReview() {
           gap={1}
         >
           {Object.entries(game.charactersByType).map(
-            ([characterType, characters]) => {
+            ([characterType, characters], index) => {
               const numberOfCharactersDoneOfType = characters.filter(
                 (character) =>
                   character.location > Game.TRACK_END &&
@@ -103,6 +101,7 @@ export default function SummeryReview() {
                       marginBottom: 2,
                       justifyContent: "center",
                     }}
+                    key={index}
                   >
                     <Badge
                       key={characterType}
@@ -120,7 +119,7 @@ export default function SummeryReview() {
                           color: "#FFFFFF",
                         },
                       }}
-                    ></Badge>
+                    />
 
                     <CharacterImage
                       characterType={characterType}

@@ -1,7 +1,7 @@
 import Rule from "./Rule";
 import CharacterType from "./CharacterType";
 import Character from "./Character";
-import Score from "./Score";
+import ScoreManager from "./ScoreManager";
 
 export default class Game {
   constructor(
@@ -17,7 +17,7 @@ export default class Game {
       rules: [],
       duration,
       charachterAdditionChance,
-      scoreManager: new Score(),
+      scoreManager: new ScoreManager(),
     });
   }
 
@@ -67,21 +67,8 @@ export default class Game {
     return this.duration - (Date.now() - this.startTime) / 1000;
   }
 
-  get getScore() {
-    return this.scoreManager.findScore(this.charactersDone());
-  }
-
-  get bonusScore() {
-    if (this.charactersDone().length > 0)
-      return this.scoreManager.findBonusScore(
-        this.characterTypes,
-        this.diversityTypes()
-      );
-    return 0;
-  }
-
-  get summeryText() {
-    return this.scoreManager.getSummeryText(this.chosenRules.length);
+  get baseScore() {
+    return this.scoreManager.calculateScore(this.charactersDone());
   }
 
   get shouldSetNextRule() {
@@ -208,6 +195,21 @@ export default class Game {
 
   finish() {
     this.status = Game.STATUS.OVER;
+    const score = this.scoreManager.calculateScore(this.charactersDone());
+    const bonusScore = this.scoreManager.calculateBonusScore(
+      this.charactersDone(),
+      this.characterTypes,
+      this.diversityTypes()
+    );
+    this.gameSummery = {
+      score,
+      bonusScore,
+      endGameText: this.scoreManager.getSummeryText(
+        this.chosenRules.length,
+        score,
+        bonusScore
+      ),
+    };
   }
 
   static STATUS = {
@@ -225,6 +227,6 @@ export default class Game {
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
-  static TRACK_END = 100;
+  static TRACK_END = 85;
   static RULE_BATCHES = [3, 4, 3, 3, 5];
 }

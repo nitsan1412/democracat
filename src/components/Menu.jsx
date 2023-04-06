@@ -15,7 +15,7 @@ export default function Menu() {
   const currentWidth = useWindowWidth();
 
   return (
-    <AppBar position="static" sx={{ "+*": { height: "calc(100vh - 48px)" } }}>
+    <AppBar position="static" sx={{ "+*": { height: "calc(100% - 48px)" } }}>
       <Stack
         direction="row"
         alignItems="center"

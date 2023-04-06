@@ -20,7 +20,7 @@ export default function RuleSelectedModal(props) {
           }}
         >
           <ClearIcon
-            sx={{ marginRight: "-8px", marginLeft: "8px" }}
+            sx={{ marginRight: "-8px", marginLeft: "8px", cursor: "pointer" }}
             onClick={() => {
               game.resume();
               props.setOpenModal(false);

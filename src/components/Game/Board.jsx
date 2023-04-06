@@ -12,11 +12,11 @@ export default function Board() {
       hight={1}
       direction="column"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="flex-start"
       sx={{ flexGrow: 1 }}
     >
       <Track characters={game.characters} />
-      <img src={pillow} alt="" />
+      <img src={pillow} alt="" height="45rem" />
     </Stack>
   );
 }
