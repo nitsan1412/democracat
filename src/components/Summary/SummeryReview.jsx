@@ -105,7 +105,7 @@ export default function SummeryReview() {
                   >
                     <Badge
                       key={characterType}
-                      badgeContent={`${numberOfCharactersDoneOfType}+`}
+                      badgeContent={numberOfCharactersDoneOfType}
                       sx={{
                         justifyContent: "center",
                         ".MuiBadge-badge": {

@@ -7,6 +7,7 @@ import RuleChoice from "./RuleChoice";
 import Board from "./Board";
 import Menu from "./Menu";
 import RuleActions from "./RuleActions";
+import gameBackground from "../../images/gameBackground.png";
 
 export default function Game() {
   const { game } = useGame();
@@ -26,6 +27,7 @@ export default function Game() {
       <Stack
         sx={{
           height: "20vh",
+          backgroundImage: gameBackground,
         }}
       >
         <RuleChoice rule={rule || {}} />

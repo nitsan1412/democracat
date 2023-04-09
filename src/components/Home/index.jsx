@@ -7,6 +7,7 @@ import InstructionsButton from "./Instructions";
 import StartGameButton from "../StartGameButton";
 import HightScoreBox from "./HighestScoreBox";
 import TermsOfUse from "./TermsOfUse";
+import homeBackground from "../../images/homeBackground.png";
 
 export default function StartGameMenu() {
   const highestScoreToShow = {
@@ -16,7 +17,14 @@ export default function StartGameMenu() {
   const [showUseInfo, setShowUseInfo] = useState(false);
 
   return (
-    <Stack alignItems="center" sx={{ padding: "3rem", height: 1 }}>
+    <Stack
+      alignItems="center"
+      sx={{
+        padding: "3rem",
+        height: 1,
+        backgroundImage: `url(${homeBackground})`,
+      }}
+    >
       <Typography
         variant="h3"
         sx={{ fontWeight: "700", marginBottom: "-0.5rem" }}
