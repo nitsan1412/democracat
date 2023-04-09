@@ -15,6 +15,7 @@ export default function HighestScoreBox(props) {
         alignSelf: "center",
         justifyContent: "center",
         borderRadius: "25px",
+        backgroundColor: "white",
       }}
     >
       <Stack

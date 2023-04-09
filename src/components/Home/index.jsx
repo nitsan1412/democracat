@@ -20,63 +20,88 @@ export default function StartGameMenu() {
     <Stack
       alignItems="center"
       sx={{
-        padding: "3rem",
+        paddingTop: "1rem",
         height: 1,
-        backgroundImage: `url(${homeBackground})`,
       }}
     >
-      <Typography
-        variant="h3"
-        sx={{ fontWeight: "700", marginBottom: "-0.5rem" }}
+      <Stack
+        // gap={1}
+        justifyContent="center"
+        sx={{
+          height: "8rem",
+        }}
       >
-        מיציטופיה
-      </Typography>
-      <Typography variant="h5">למען פלורליזם חברתי</Typography>
-      {!highestScoreToShow.highestScore ? (
-        ""
-      ) : (
-        <Stack sx={{ flexGrow: 1, width: 0.6 }} gap={1} justifyContent="center">
-          <HightScoreBox highestScoreToShow={highestScoreToShow} />
-        </Stack>
-      )}
-      <Stack sx={{ flexGrow: 1, width: 0.6 }} gap={1} justifyContent="center">
-        <StartGameButton />
-        <InstructionsButton
-          fullWidth
-          disableElevation
-          variant="outlined"
-          color="secondary"
-          sx={{ borderWidth: 2, fontSize: "1.3rem !important", height: "3rem" }}
-        />
+        <Typography variant="h3" sx={{ fontWeight: "700" }}>
+          מיציטופיה
+        </Typography>
+        <Typography variant="h5">למען פלורליזם חברתי</Typography>
       </Stack>
       <Stack
-        flexDirection="row"
-        onClick={() => setShowUseInfo(!showUseInfo)}
-        sx={{ cursor: "pointer" }}
-      >
-        <Typography
-          variant="body1"
-          sx={{
-            textAlign: "center",
-            flex: 5,
-            fontSize: "1.1rem",
-            textDecoration: "underline",
-            fontWeight: 600,
-          }}
-        >
-          תנאי שימוש באתר
-        </Typography>
-        {/* <img src={showRuleInfo ? upArrow : downArrow} alt="" /> */}
-      </Stack>
-      <Dialog
-        open={showUseInfo}
-        onClose={() => {
-          setShowUseInfo(false);
+        alignItems="center"
+        gap={8}
+        sx={{
+          // padding: "3rem",
+          height: "calc(100% - 8rem)",
+          width: 1,
+          backgroundImage: `url(${homeBackground})`,
+          marginTop: "-2.5rem",
         }}
-        sx={{ borderRadius: 15, padding: "1rem" }}
       >
-        <TermsOfUse />
-      </Dialog>
+        {!highestScoreToShow.highestScore ? (
+          ""
+        ) : (
+          <Stack
+            justifyContent="flex-start"
+            sx={{
+              marginTop: "4rem",
+            }}
+          >
+            <HightScoreBox highestScoreToShow={highestScoreToShow} />
+          </Stack>
+        )}
+        <Stack sx={{ width: 0.6 }} gap={2} justifyContent="center">
+          <StartGameButton />
+          <InstructionsButton
+            fullWidth
+            disableElevation
+            variant="outlined"
+            color="secondary"
+            sx={{
+              borderWidth: 2,
+              fontSize: "1.3rem !important",
+              height: "3rem",
+              backgroundColor: "white",
+            }}
+          />
+        </Stack>
+        <Stack
+          flexDirection="row"
+          onClick={() => setShowUseInfo(!showUseInfo)}
+          sx={{ cursor: "pointer" }}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              textAlign: "center",
+              // flex: 5,
+              fontSize: "1.1rem",
+              textDecoration: "underline",
+              fontWeight: 600,
+            }}
+          >
+            תקנון ותנאי שימוש{" "}
+          </Typography>
+        </Stack>
+        <Dialog
+          open={showUseInfo}
+          onClose={() => {
+            setShowUseInfo(false);
+          }}
+          sx={{ borderRadius: 15, padding: "1rem" }}
+        >
+          <TermsOfUse />
+        </Dialog>
+      </Stack>
     </Stack>
   );
 }
