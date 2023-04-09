@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import InstructionDialog from "./InstructionDialog";
+import InstructionDialog from "./Home/InstructionDialog";
 import { useWindowWidth } from "@react-hook/window-size";
 import { useGame } from "../helpers/GameContext";
 
@@ -15,7 +15,7 @@ export default function Menu() {
   const currentWidth = useWindowWidth();
 
   return (
-    <AppBar position="static" sx={{ "+*": { height: "calc(100vh - 48px)" } }}>
+    <AppBar position="static" sx={{ "+*": { height: "calc(100% - 48px)" } }}>
       <Stack
         direction="row"
         alignItems="center"

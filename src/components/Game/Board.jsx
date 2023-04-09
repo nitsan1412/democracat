@@ -1,12 +1,10 @@
-import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import { useWindowWidth } from "@react-hook/window-size";
 import { useGame } from "../../helpers/GameContext";
 import Track from "./Track";
+import pillow from "../../images/icons/pillow.svg";
 
 export default function Board() {
   const { game } = useGame();
-  const currentWidth = useWindowWidth();
 
   return (
     <Stack
@@ -14,22 +12,11 @@ export default function Board() {
       hight={1}
       direction="column"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="flex-start"
       sx={{ flexGrow: 1 }}
     >
-      <Track
-        characters={game.characters}
-      />
-      <Button
-        variant="contained"
-        fullWidth
-        sx={{
-          marginBottom: "13%",
-          width: currentWidth > 450 ? 350 : "100%",
-        }}
-      >
-        הגעת ליעד
-      </Button>
+      <Track characters={game.characters} />
+      <img src={pillow} alt="" height="45rem" />
     </Stack>
   );
 }

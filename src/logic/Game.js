@@ -1,8 +1,7 @@
-import { DateTime } from "luxon";
-
 import Rule from "./Rule";
 import CharacterType from "./CharacterType";
 import Character from "./Character";
+import ScoreManager from "./ScoreManager";
 
 export default class Game {
   constructor(
@@ -18,6 +17,7 @@ export default class Game {
       rules: [],
       duration,
       charachterAdditionChance,
+      scoreManager: new ScoreManager(),
     });
   }
 
@@ -35,7 +35,11 @@ export default class Game {
       if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
     });
     if (Math.random() <= this.charachterAdditionChance) {
-      this.characters.push(Character.createCharacter(this.characterTypes.filter(characterType => !characterType.disabled)));
+      this.characters.push(
+        Character.createCharacter(
+          this.characterTypes.filter((characterType) => !characterType.disabled)
+        )
+      );
     }
     if (this.shouldSetNextRule) {
       this.setNextRule();
@@ -63,32 +67,26 @@ export default class Game {
     return this.duration - (Date.now() - this.startTime) / 1000;
   }
 
-  get score() {
-    return this.characters.filter(
-      (charcter) => charcter.location >= Game.TRACK_END
-    ).length;
-  }
-
-  get bonusScore() {
-    if (this.charactersDone().length > 0) return this.calculateBonus();
-    return 0;
+  get baseScore() {
+    return this.scoreManager.calculateScore(this.charactersDone());
   }
 
   get shouldSetNextRule() {
     return (
       !this.nextRule &&
-      (this.hasMoreRulesInBatch || (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
+      (this.hasMoreRulesInBatch ||
+        (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
     );
   }
 
-  get hasMoreRulesInBatch () {
-    const pastRulesCount = this.chosenRules.length + this.declinedRules.length
-    let pastBatchesSum = 0
-    Game.RULE_BATCHES.find(batch => {
-      pastBatchesSum += batch
-      return pastBatchesSum >= pastRulesCount
-    })
-    return pastBatchesSum > pastRulesCount
+  get hasMoreRulesInBatch() {
+    const pastRulesCount = this.chosenRules.length + this.declinedRules.length;
+    let pastBatchesSum = 0;
+    Game.RULE_BATCHES.find((batch) => {
+      pastBatchesSum += batch;
+      return pastBatchesSum >= pastRulesCount;
+    });
+    return pastBatchesSum > pastRulesCount;
   }
 
   resetNextRule() {
@@ -140,16 +138,18 @@ export default class Game {
   }
 
   charactersDone() {
-    return this.characters.filter(
+    return this.characters?.filter(
       (charcter) => charcter.location >= Game.TRACK_END
     );
   }
 
   diversityTypes() {
-    let diversityMap = Object.fromEntries(
-      this.characterTypes.map((characterType) => [characterType.name, 0])
-    );
-    this.charactersDone().forEach((character) => {
+    let diversityMap =
+      this.characterTypes &&
+      Object.fromEntries(
+        this.characterTypes.map((characterType) => [characterType.name, 0])
+      );
+    this.charactersDone()?.forEach((character) => {
       diversityMap[character.type.name]++;
     });
     return diversityMap;
@@ -195,32 +195,21 @@ export default class Game {
 
   finish() {
     this.status = Game.STATUS.OVER;
-  }
-
-  calculateBonus() {
-    let numberOfFinished = this.charactersDone().length;
-    let bonusScore = numberOfFinished * CharacterType.characterTypes().length;
-    let avg = (
-      numberOfFinished / CharacterType.characterTypes().length
-    ).toFixed(0);
-    for (const key in this.diversityTypes()) {
-      bonusScore -= Math.pow(avg - this.diversityTypes()[key], 2);
-    }
-    Game.compairHighScore(bonusScore + numberOfFinished);
-    return Math.max(bonusScore, 0);
-  }
-
-  static compairHighScore(newScore) {
-    let currentHighest = localStorage.getItem("highest-score");
-    if (currentHighest < newScore) {
-      localStorage.removeItem("highest-score");
-      localStorage.removeItem("highest-score-dateTime");
-      localStorage.setItem("highest-score", newScore);
-      localStorage.setItem(
-        "highest-score-dateTime",
-        DateTime.now().toFormat("dd.MM.yyyy")
-      );
-    }
+    const score = this.scoreManager.calculateScore(this.charactersDone());
+    const bonusScore = this.scoreManager.calculateBonusScore(
+      this.charactersDone(),
+      this.characterTypes,
+      this.diversityTypes()
+    );
+    this.gameSummery = {
+      score,
+      bonusScore,
+      endGameText: this.scoreManager.getSummeryText(
+        this.chosenRules.length,
+        score,
+        bonusScore
+      ),
+    };
   }
 
   static STATUS = {
@@ -238,6 +227,6 @@ export default class Game {
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
-  static TRACK_END = 110;
+  static TRACK_END = 85;
   static RULE_BATCHES = [3, 4, 3, 3, 5];
 }

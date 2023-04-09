@@ -1,51 +1,36 @@
 import Stack from "@mui/material/Stack";
-import { useWindowWidth } from "@react-hook/window-size";
-import { useGame } from "../../helpers/GameContext";
 import Rule from "./Rule";
-import cneset1 from "../../images/cneset1.jpeg";
 
 import { Typography } from "@mui/material";
 
-export default function RuleChoice() {
-  const currentWidth = useWindowWidth();
-
-  const { game } = useGame();
-  const rule = game.nextRule;
-
+export default function RuleChoice(props) {
   return (
     <Stack
       direction="row"
       alignItems="center"
+      alignSelf="center"
       justifyContent="center"
-      width={currentWidth > 450 ? 350 : "100vw"}
       sx={{
-        padding: rule && "1rem",
-        gap: rule && "1rem",
-        maxWidth: !rule ? "fit-content" : currentWidth > 450 ? 350 : "100vw",
+        padding: props.rule && "1rem",
+        gap: props.rule && "1rem",
+        width: !props.rule ? "fit-content" : "100%",
         height: "20vh",
       }}
     >
-      {rule ? (
-        <Rule rule={rule} />
+      {props.rule ? (
+        <Rule rule={props.rule} />
       ) : (
         <Stack
           sx={{
-            position: "relative",
-            direction: "row",
+            direction: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <img
-            src={cneset1}
-            width={currentWidth > 450 ? 350 : "100%"}
-            height="auto"
-            alt={"הכנסת"}
-          />
-          <Typography
-            variant="h2"
-            sx={{ color: "white", position: "absolute" }}
-          >
+          <Typography variant="h6" sx={{ color: "black" }}>
+            ממתינים לחוקים חדשים
+          </Typography>
+          <Typography variant="h6" sx={{ color: "black" }}>
             הכנסת בפגרה
           </Typography>
         </Stack>

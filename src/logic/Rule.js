@@ -38,7 +38,6 @@ export default class Rule {
             (accumulator, currentValue) => accumulator + currentValue.location,
             0
           ) / characters.length;
-        console.log("averageLocation", averageLocation);
         characters.forEach((character) => {
           character.location = averageLocation;
         });
@@ -50,7 +49,12 @@ export default class Rule {
       info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
       impact: { all: 0 },
       apply: (characters, characterTypes) => {
-        characterTypes.forEach((characterType) => characterType.resetSpeed());
+        characterTypes.forEach((characterType) => {
+          characterType.resetSpeed();
+          if (characterType.donkey) {
+            characterType.changeImage(characterType.name);
+          }
+        });
         return characters;
       },
     }),

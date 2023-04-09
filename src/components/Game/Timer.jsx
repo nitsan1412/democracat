@@ -1,13 +1,20 @@
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { Stack } from "@mui/material";
 import { useGame } from "../../helpers/GameContext";
-
+import timer from "../../images/icons/timer.svg";
 export default function Timer() {
   const { game } = useGame();
   return (
-    <Grid alignItems="center" justifyContent="center">
-      <Typography sx={Timer.styles}>{Timer.displayTime(game.time)}</Typography>
-    </Grid>
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+      gap={1}
+      sx={{ width: "5rem" }}
+    >
+      <img src={timer} alt="" />
+      <Typography sx={Timer.styles}> {Timer.displayTime(game.time)}</Typography>
+    </Stack>
   );
 }
 
@@ -17,13 +24,6 @@ Timer.displayTime = (seconds) =>
 Timer.twoDigits = (num) => String(Math.floor(num)).padStart(2, "0");
 
 Timer.styles = {
-  position: "absolute",
-  marginTop: -6,
-  marginRight: 13,
-  height: "3rem",
-  lineHeight: "3rem",
-  fontSize: "1.2rem",
-  color: "white",
-  paddingLeft: "1rem",
-  zIndex: 300,
+  fontSize: "1rem",
+  color: "#303030",
 };

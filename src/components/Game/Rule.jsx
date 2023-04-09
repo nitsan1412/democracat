@@ -1,40 +1,52 @@
 import { useState } from "react";
 import Stack from "@mui/material/Stack";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { useWindowWidth } from "@react-hook/window-size";
-import InfoTwoToneIcon from "@mui/icons-material/InfoTwoTone";
-import RuleActions from "./RuleActions";
+import downArrow from "../../images/icons/downArrow.svg";
+import upArrow from "../../images/icons/upArrow.svg";
 import RuleImpact from "./RuleImpact";
 
-export default function Rule({ rule, noChoice }) {
-  const [showRuleInfo, setShowRuleInfo] = useState(noChoice ? true : false);
-  const currentWidth = useWindowWidth();
+export default function Rule({ rule, inSummery }) {
+  const [showRuleInfo, setShowRuleInfo] = useState(false);
   return (
-    <Paper
-      elevation={2}
+    <Stack
       sx={{
-        padding: "0.5rem",
-        width: noChoice ? 230 : currentWidth > 450 ? 350 : "100%",
-        maxWidth: 450,
-        maxHeight: "18rem",
-        position: !noChoice ? "absolute" : "unset",
-        top: noChoice ? 0 : 48,
-        zIndex: noChoice ? 4560 : 99,
+        border: "2px #ECECEC solid ",
+        padding: inSummery ? "0.5rem" : 0,
+        zIndex: inSummery ? 4560 : 99,
+        width: !inSummery ? "315px" : "100%",
+        flexDirection: "column",
+        alignItems: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+        borderRadius: "25px",
       }}
     >
-      <Stack gap={1} height={1}>
-        <Stack flexDirection="row">
-          <InfoTwoToneIcon
-            sx={{ color: "purple", flex: 1 }}
-            onClick={() => setShowRuleInfo(!showRuleInfo)}
-          />
+      <Stack
+        gap={1}
+        height={1}
+        flexDirection="column"
+        alignItems="center"
+        alignSelf="center"
+        justifyContent="center"
+      >
+        <Typography variant="h4">הצעת חוק</Typography>
+        <Stack
+          flexDirection="row"
+          onClick={() => setShowRuleInfo(!showRuleInfo)}
+        >
           <Typography
             variant="body1"
-            sx={{ textAlign: "center", flex: 5, fontSize: "1.2rem" }}
+            sx={{
+              textAlign: "center",
+              flex: 5,
+              fontSize: "1.1rem",
+              textDecoration: "underline",
+              fontWeight: 600,
+            }}
           >
             {rule.name}
           </Typography>
+          <img src={showRuleInfo ? upArrow : downArrow} alt="" />
         </Stack>
 
         {showRuleInfo ? (
@@ -47,8 +59,8 @@ export default function Rule({ rule, noChoice }) {
         ) : (
           <></>
         )}
-        {!noChoice ? <RuleActions rule={rule} /> : <RuleImpact rule={rule} />}
+        {inSummery ? <RuleImpact rule={rule} inSummery /> : <></>}
       </Stack>
-    </Paper>
+    </Stack>
   );
 }
