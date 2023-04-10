@@ -25,7 +25,6 @@ export default function StartGameMenu() {
       }}
     >
       <Stack
-        // gap={1}
         justifyContent="center"
         sx={{
           height: "8rem",
@@ -40,7 +39,6 @@ export default function StartGameMenu() {
         alignItems="center"
         gap={8}
         sx={{
-          // padding: "3rem",
           height: "calc(100% - 8rem)",
           width: 1,
           backgroundImage: `url(${homeBackground})`,
