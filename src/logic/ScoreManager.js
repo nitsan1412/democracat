@@ -7,7 +7,7 @@ export default class ScoreManager {
 
   calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
     if (charactersDoneArray.length === 0) return 0;
-    let numberOfFinished = this.calculateScore();
+    let numberOfFinished = this.calculateScore(charactersDoneArray);
     let bonusScore = numberOfFinished * characterTypes.length;
     let avg = (numberOfFinished / characterTypes.length).toFixed(0);
     for (const key in diversityTypes) {

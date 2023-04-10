@@ -7,6 +7,8 @@ import RuleChoice from "./RuleChoice";
 import Board from "./Board";
 import Menu from "./Menu";
 import RuleActions from "./RuleActions";
+import gameBackground from "../../images/gameBackground.png";
+import pillow from "../../images/icons/pillow.svg";
 
 export default function Game() {
   const { game } = useGame();
@@ -17,7 +19,7 @@ export default function Game() {
     if (game.status === "pending") navigate("/");
     else if (game.status === "over") navigate("/summery");
   }, [game.status, navigate]);
-
+  if (game.status === "pending") return <></>;
   return (
     <Stack alignItems="stretch">
       <Stack alignItems="space-between" height="10vh">
@@ -25,17 +27,30 @@ export default function Game() {
       </Stack>
       <Stack
         sx={{
-          height: "20vh",
+          backgroundImage: `url(${gameBackground})`,
         }}
       >
-        <RuleChoice rule={rule || {}} />
+        <Stack
+          sx={{
+            height: "20vh",
+          }}
+        >
+          <RuleChoice rule={rule || {}} />
+        </Stack>
+        <Stack
+          sx={{
+            height: "50vh",
+          }}
+        >
+          <Board />
+        </Stack>
       </Stack>
       <Stack
         sx={{
-          height: "50vh",
+          height: "10vh",
         }}
       >
-        <Board />
+        <img src={pillow} alt="" height="45rem" />
       </Stack>
       <Stack
         sx={{

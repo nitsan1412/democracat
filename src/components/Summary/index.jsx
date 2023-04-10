@@ -17,7 +17,6 @@ export default function GameSummary() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(game.status);
     if (game.status === "pending") navigate("/");
   }, [game.status, navigate]);
   if (game.status === "pending") return <></>;

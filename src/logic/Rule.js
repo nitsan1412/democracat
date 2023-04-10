@@ -1,3 +1,4 @@
+import Game from "./Game";
 export default class Rule {
   constructor({ name, impact, apply, info }) {
     Object.assign(this, { name, impact, info });
@@ -33,12 +34,16 @@ export default class Rule {
       info: "כל החתולים מגיעים לעמק השווה",
       impact: { all: 0 },
       apply: (characters, characterTypes) => {
+        const onBoardCharacters = characters.filter(
+          (character) =>
+            character.location < Game.TRACK_END && character.location > 0
+        );
         const averageLocation =
-          characters.reduce(
+          onBoardCharacters.reduce(
             (accumulator, currentValue) => accumulator + currentValue.location,
             0
           ) / characters.length;
-        characters.forEach((character) => {
+        onBoardCharacters.forEach((character) => {
           character.location = averageLocation;
         });
         return characters;

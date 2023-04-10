@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Rule from "./Rule";
-
+import cnesetInPagra from "../../images/cnesetInPagra.svg";
 import { Typography } from "@mui/material";
 
 export default function RuleChoice(props) {
@@ -17,7 +17,7 @@ export default function RuleChoice(props) {
         height: "20vh",
       }}
     >
-      {props.rule ? (
+      {props.rule?.info ? (
         <Rule rule={props.rule} />
       ) : (
         <Stack
@@ -28,11 +28,12 @@ export default function RuleChoice(props) {
           }}
         >
           <Typography variant="h6" sx={{ color: "black" }}>
-            ממתינים לחוקים חדשים
+            הכנסת בפגרה{" "}
           </Typography>
-          <Typography variant="h6" sx={{ color: "black" }}>
-            הכנסת בפגרה
+          <Typography variant="h6" sx={{ color: "black", fontSize: "0.9rem" }}>
+            5 שניות הפסקה{" "}
           </Typography>
+          <img src={cnesetInPagra} alt="" />
         </Stack>
       )}
     </Stack>
