@@ -8,7 +8,7 @@ export default class ScoreManager {
   calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
     if (charactersDoneArray.length === 0) return 0;
     const numberOfFinished = this.calculateScore(charactersDoneArray);
-    const bonusScore = numberOfFinished * characterTypes.length;
+    let bonusScore = numberOfFinished * characterTypes.length;
     const avg = (numberOfFinished / characterTypes.length).toFixed(0);
     for (const key in diversityTypes) {
       bonusScore -= Math.pow(avg - diversityTypes[key], 2);

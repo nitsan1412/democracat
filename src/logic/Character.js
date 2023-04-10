@@ -18,12 +18,13 @@ export default class Character {
         characterTypes.some((type) => type.name.includes(key))
       )
     );
-    const rulletePointer =
+    let rulletePointer =
       Math.random() *
       Object.values(characterTypePercentages).reduce((sum, x) => sum + x, 0);
     const gender = Math.random() > 0.5 ? "man" : "woman";
-    const characterTypefound = Object.values(characterTypePercentages).find(
-      (precetage) => {
+    const characterTypefound = Object.keys(characterTypePercentages).find(
+      (type) => {
+        const precetage = characterTypePercentages[type];
         if (rulletePointer <= precetage) {
           return true;
         } else {
@@ -32,9 +33,10 @@ export default class Character {
         }
       }
     );
+
     return new Character({
       type: characterTypes.find(
-        (item) => item.name === `${characterTypefound[0]}-${gender}`
+        (item) => item.name === `${characterTypefound}-${gender}`
       ),
     });
   }

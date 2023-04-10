@@ -1,4 +1,4 @@
-import { characters } from "../settings/Game-Settings.json";
+import { characters } from "./Game-Settings";
 
 export default class CharacterType {
   constructor({ name, translation, initialScore = 0, initialSpeed = 1 }) {
@@ -33,5 +33,5 @@ export default class CharacterType {
     return this.name.replace(`-${this.gender}`, "");
   }
 
-  static characterTypes = (speed) => characters.map((c) => ({ ...c, speed }));
+  static characterTypes = (speed) => characters.map((c) => new CharacterType({ ...c, speed }));
 }
