@@ -9,14 +9,14 @@ const theme = createTheme({
   overrides: {
     MuiButtonBase: {
       root: {
-        boxShadow: 'unset',
-      }
-    }
+        boxShadow: "unset",
+      },
+    },
   },
   palette: {
     black: { main: "#303030", contrastText: "#ffffff" },
     primary: { main: "#79C300" },
-    secondary: { main: "#FC68B4" }
+    secondary: { main: "#FC68B4" },
   },
   typography: {
     h1: { direction: "rtl", fontFamily: "Assistant" },

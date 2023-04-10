@@ -7,9 +7,9 @@ export default class ScoreManager {
 
   calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
     if (charactersDoneArray.length === 0) return 0;
-    let numberOfFinished = this.calculateScore(charactersDoneArray);
-    let bonusScore = numberOfFinished * characterTypes.length;
-    let avg = (numberOfFinished / characterTypes.length).toFixed(0);
+    const numberOfFinished = this.calculateScore(charactersDoneArray);
+    const bonusScore = numberOfFinished * characterTypes.length;
+    const avg = (numberOfFinished / characterTypes.length).toFixed(0);
     for (const key in diversityTypes) {
       bonusScore -= Math.pow(avg - diversityTypes[key], 2);
     }
@@ -18,7 +18,7 @@ export default class ScoreManager {
   }
 
   static compairHighScore(newScore) {
-    let currentHighest = localStorage.getItem("highest-score");
+    const currentHighest = localStorage.getItem("highest-score");
     if (!currentHighest) {
       localStorage.setItem("highest-score", newScore);
       localStorage.setItem(

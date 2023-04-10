@@ -49,19 +49,19 @@ export default class Game {
   }
 
   pause() {
-    this.puaseTime = Date.now();
+    this.pauseTime = Date.now();
     this.paused = true;
   }
 
   resume() {
-    this.startTime = this.startTime + Date.now() - this.puaseTime;
+    this.startTime += Date.now() - this.pauseTime;
     this.paused = false;
     this.resetNextRule();
   }
 
   get time() {
     if (this.paused) {
-      return this.duration - (this.puaseTime - this.startTime) / 1000;
+      return this.duration - (this.pauseTime - this.startTime) / 1000;
     }
     return this.duration - (Date.now() - this.startTime) / 1000;
   }
@@ -80,7 +80,7 @@ export default class Game {
 
   get hasMoreRulesInBatch() {
     const pastRulesCount = this.chosenRules.length + this.declinedRules.length;
-    let pastBatchesSum = 0;
+    const pastBatchesSum = 0;
     Game.RULE_BATCHES.find((batch) => {
       pastBatchesSum += batch;
       return pastBatchesSum >= pastRulesCount;
@@ -143,7 +143,7 @@ export default class Game {
   }
 
   diversityTypes() {
-    let diversityMap =
+    const diversityMap =
       this.characterTypes &&
       Object.fromEntries(
         this.characterTypes.map((characterType) => [characterType.name, 0])

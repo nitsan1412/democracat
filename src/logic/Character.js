@@ -1,6 +1,11 @@
 export default class Character {
   constructor({ type, location = 0, currentScore = 0 }) {
-    Object.assign(this, { type, location, currentScore, xPosition: Math.random() });
+    Object.assign(this, {
+      type,
+      location,
+      currentScore,
+      xPosition: Math.random(),
+    });
   }
 
   move(dt) {
@@ -8,22 +13,25 @@ export default class Character {
   }
 
   static createCharacter(characterTypes) {
-    const characterTypePercentages = Object.fromEntries(Object.entries(Character.CHARACTER_TYPE_PRECENTAGES).filter(([key]) => characterTypes.some(type => type.name.includes(key))))
-    let rulletePointer =
+    const characterTypePercentages = Object.fromEntries(
+      Object.entries(Character.CHARACTER_TYPE_PRECENTAGES).filter(([key]) =>
+        characterTypes.some((type) => type.name.includes(key))
+      )
+    );
+    const rulletePointer =
       Math.random() *
-      Object.values(characterTypePercentages).reduce(
-        (sum, x) => sum + x,
-        0
-      );
-    let gender = Math.random() > 0.5 ? "man" : "woman";
-    let characterTypefound = Object.entries(characterTypePercentages).find(([type, precetage]) => {
-      if (rulletePointer <= precetage) {
-        return true;
-      } else {
-        rulletePointer = rulletePointer - precetage;
-        return false;
+      Object.values(characterTypePercentages).reduce((sum, x) => sum + x, 0);
+    const gender = Math.random() > 0.5 ? "man" : "woman";
+    const characterTypefound = Object.values(characterTypePercentages).find(
+      (precetage) => {
+        if (rulletePointer <= precetage) {
+          return true;
+        } else {
+          rulletePointer = rulletePointer - precetage;
+          return false;
+        }
       }
-    });
+    );
     return new Character({
       type: characterTypes.find(
         (item) => item.name === `${characterTypefound[0]}-${gender}`
