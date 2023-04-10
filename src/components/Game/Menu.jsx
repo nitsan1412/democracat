@@ -15,10 +15,12 @@ export default function Menu() {
 
   return (
     <Stack
+      position="static"
+      sx={{ "+*": { height: "calc(100% - 48px)" } }}
       direction="row"
       alignItems="center"
       justifyContent="space-around"
-      margin="1rem"
+      marginTop="1rem"
       minWidth="100%"
     >
       <Stack

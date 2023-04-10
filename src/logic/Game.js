@@ -10,18 +10,17 @@ export default class Game {
     charachterAdditionChance = Game.CHARACTER_ADDITION_CHANCE
   ) {
     Object.assign(this, {
-      isDonkey: false,
       characterTypes: CharacterType.characterTypes(speed),
       status: Game.STATUS.PENDING,
-      characters: [],
       rules: [],
       duration,
       charachterAdditionChance,
-      scoreManager: new ScoreManager(),
     });
   }
 
   start() {
+    this.characters = [];
+    this.scoreManager = new ScoreManager();
     this.status = Game.STATUS.RUNNING;
     this.rules = Game.generateRules();
     this.startTime = Date.now();
@@ -227,6 +226,6 @@ export default class Game {
 
   static CHARACTER_ADDITION_CHANCE = 0.05;
   static RULES_DELAY = 5;
-  static TRACK_END = 85;
+  static TRACK_END = 120;
   static RULE_BATCHES = [3, 4, 3, 3, 5];
 }

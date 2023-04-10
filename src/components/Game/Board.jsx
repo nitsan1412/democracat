@@ -1,7 +1,6 @@
 import Stack from "@mui/material/Stack";
 import { useGame } from "../../helpers/GameContext";
 import Track from "./Track";
-import pillow from "../../images/icons/pillow.svg";
 
 export default function Board() {
   const { game } = useGame();
@@ -16,7 +15,6 @@ export default function Board() {
       sx={{ flexGrow: 1 }}
     >
       <Track characters={game.characters} />
-      <img src={pillow} alt="" height="45rem" />
     </Stack>
   );
 }
