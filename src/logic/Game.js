@@ -10,7 +10,7 @@ export default class Game {
     charachterAdditionChance = Game.CHARACTER_ADDITION_CHANCE
   ) {
     Object.assign(this, {
-      characterTypes: CharacterType.characterTypes(speed),
+      speed,
       status: Game.STATUS.PENDING,
       rules: [],
       duration,
@@ -20,6 +20,7 @@ export default class Game {
 
   start() {
     this.characters = [];
+    this.characterTypes = CharacterType.characterTypes(this.speed, false);
     this.scoreManager = new ScoreManager();
     this.status = Game.STATUS.RUNNING;
     this.rules = Game.generateRules();

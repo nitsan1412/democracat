@@ -1,14 +1,20 @@
 import { characters } from "./Game-Settings";
 
 export default class CharacterType {
-  constructor({ name, translation, initialScore = 0, initialSpeed = 1 }) {
+  constructor({
+    name,
+    translation,
+    initialScore = 0,
+    initialSpeed = 1,
+    donkey,
+  }) {
     Object.assign(this, {
       name,
       translation,
       initialScore,
       initialSpeed,
       speed: initialSpeed,
-      donkey: false,
+      donkey: donkey || false,
     });
   }
 
@@ -33,5 +39,6 @@ export default class CharacterType {
     return this.name.replace(`-${this.gender}`, "");
   }
 
-  static characterTypes = (speed) => characters.map((c) => new CharacterType({ ...c, speed }));
+  static characterTypes = (speed, donkey) =>
+    characters.map((c) => new CharacterType({ ...c, speed, donkey }));
 }
