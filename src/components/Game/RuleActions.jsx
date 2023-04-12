@@ -8,7 +8,7 @@ import { useGame } from "../../helpers/GameContext";
 import { playSound } from "../../helpers/Sounds";
 import RuleSelectedModal from "./RuleSelectedModal";
 export default function RuleActions(props) {
-  const { game } = useGame();
+  const { game, declineRule, chooseRule } = useGame();
   const [openModal, setOpenModal] = useState(false);
   return (
     <Stack width={1} direction="row" justifyContent="space-evenly">
@@ -25,7 +25,7 @@ export default function RuleActions(props) {
           cursor: "pointer",
         }}
         onClick={() => {
-          game.chooseRule(props.rule);
+          chooseRule(props.rule);
           setOpenModal(true);
           game.pause();
           props.rule.name === "חוק תקשורת"
@@ -58,7 +58,7 @@ export default function RuleActions(props) {
           cursor: "pointer",
         }}
         onClick={() => {
-          game.declineRule(props.rule);
+          declineRule(props.rule);
         }}
       >
         <ClearIcon

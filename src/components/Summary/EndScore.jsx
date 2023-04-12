@@ -45,7 +45,7 @@ export default function EndScore() {
               fontWeight: 400,
             }}
           >
-            {game.gameSummery.bonusScore + game.gameSummery.score}
+            {game.gameSummary.bonusScore + game.gameSummary.score}
           </Typography>
           <img src={emptyCat} alt="" />
         </Stack>
@@ -77,7 +77,7 @@ export default function EndScore() {
             fontWeight: 400,
           }}
         >
-          {game.gameSummery.bonusScore} נקודות!
+          {game.gameSummary.bonusScore} נקודות!
         </Typography>
       </Stack>
     </Stack>

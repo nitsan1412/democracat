@@ -17,7 +17,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<Game />} />
-            <Route path="/summery" element={<Summary />} />
+            <Route path="/summary" element={<Summary />} />
           </Routes>
         </BrowserRouter>
       </GameProvider>
