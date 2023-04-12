@@ -1,9 +1,10 @@
 import { useState, createContext, useContext, useEffect } from "react";
+import React from 'react'
 
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 
-const GameContext = createContext();
+const GameContext = createContext(null);
 
 export const useGame = () => useContext(GameContext);
 
