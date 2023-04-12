@@ -1,7 +1,7 @@
-import Rule from "./Rule";
 import CharacterType from "./CharacterType";
 import Character from "./Character";
 import ScoreManager from "./ScoreManager";
+import RuleManager from "./RuleManager";
 
 export default class Game {
   constructor(
@@ -23,10 +23,11 @@ export default class Game {
     this.characterTypes = CharacterType.characterTypes(this.speed, false);
     this.scoreManager = new ScoreManager();
     this.status = Game.STATUS.RUNNING;
-    this.rules = Game.generateRules();
     this.startTime = Date.now();
     this.paused = false;
-    this.resetNextRule();
+    this.ruleManager = new RuleManager();
+    this.rules = this.ruleManager.generateRules();
+    this.ruleManager.resetNextRule();
   }
 
   step() {
@@ -41,8 +42,8 @@ export default class Game {
         )
       );
     }
-    if (this.shouldSetNextRule) {
-      this.setNextRule();
+    if (this.ruleManager.shouldSetNextRule) {
+      this.ruleManager.setNextRule();
     }
     if (this.time <= 0) {
       this.finish();
@@ -57,7 +58,7 @@ export default class Game {
   resume() {
     this.startTime += Date.now() - this.pauseTime;
     this.paused = false;
-    this.resetNextRule();
+    this.ruleManager.resetNextRule();
   }
 
   get time() {
@@ -69,33 +70,6 @@ export default class Game {
 
   get baseScore() {
     return this.scoreManager.calculateScore(this.charactersDone());
-  }
-
-  get shouldSetNextRule() {
-    return (
-      !this.nextRule &&
-      (this.hasMoreRulesInBatch ||
-        (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
-    );
-  }
-
-  get hasMoreRulesInBatch() {
-    const pastRulesCount = this.chosenRules.length + this.declinedRules.length;
-    let pastBatchesSum = 0;
-    Game.RULE_BATCHES.find((batch) => {
-      pastBatchesSum += batch;
-      return pastBatchesSum >= pastRulesCount;
-    });
-    return pastBatchesSum > pastRulesCount;
-  }
-
-  resetNextRule() {
-    this.lastRuleTime = Date.now();
-    this.nextRule = undefined;
-  }
-
-  setNextRule() {
-    this.nextRule = this.pendingRules[0];
   }
 
   get pendingRules() {
@@ -162,7 +136,7 @@ export default class Game {
 
   declineRule(rule) {
     this._setRuleStatus(rule, Game.RULE_STATUS.DECLINED);
-    this.resetNextRule();
+    this.ruleManager.resetNextRule();
   }
 
   _setRuleStatus(rule, status) {
@@ -184,13 +158,6 @@ export default class Game {
     return this.characters.filter(
       (character) => character.type === characterType
     );
-  }
-
-  static generateRules() {
-    return Rule.RULES.map((rule) => ({
-      rule,
-      status: Game.RULE_STATUS.PENDING,
-    })).sort(() => Math.random() - 0.5);
   }
 
   finish() {

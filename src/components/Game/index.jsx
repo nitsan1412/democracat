@@ -13,7 +13,7 @@ import pillow from "../../images/icons/pillow.svg";
 export default function Game() {
   const { game } = useGame();
   const navigate = useNavigate();
-  const rule = game.nextRule;
+  const rule = game.ruleManager.nextRule;
 
   useEffect(() => {
     if (game.status === "pending") navigate("/");
