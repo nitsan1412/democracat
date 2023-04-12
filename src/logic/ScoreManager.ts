@@ -44,13 +44,13 @@ export class ScoreManager {
       );
     }
   }
-  getSummeryText(
+  getSummaryText(
     numberOfChosenRules: number,
     score: number,
     bonusScore: number
   ): SummayText | SummayText[] {
-    if (numberOfChosenRules < 3) return ScoreManager.SUMMERY_TEXTS[0];
-    let scoreIndex = ScoreManager.SUMMERY_TEXTS_SCORE_LIMIT.findIndex(
+    if (numberOfChosenRules < 3) return ScoreManager.SUMMARY_TEXTS[0];
+    let scoreIndex = ScoreManager.SUMMARY_TEXTS_SCORE_LIMIT.findIndex(
       (scoreLimit) => score <= scoreLimit
     );
     if (scoreIndex === -1)

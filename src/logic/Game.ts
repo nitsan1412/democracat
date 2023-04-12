@@ -4,10 +4,13 @@ import { Rule } from "./Rule";
 import { ScoreManager } from "./ScoreManager";
 import { GameRule } from "./GameRule";
 import { GameStatus, GameSummary, RuleStatus } from "../contracts";
+import RuleManager from "./RuleManager";
+import CharacterManager from "./CharacterManager";
 
 export default class Game {
+
   status: GameStatus;
-  gameSummery: GameSummary;
+  gameSummary: GameSummary;
 
   private rules: GameRule[];
   private characters: Character[];
@@ -17,21 +20,22 @@ export default class Game {
   private pauseTime: number;
   private paused: boolean;
   private nextRule: Rule;
-  private lastRuleTime: number;
+  private characterManager: CharacterManager;
+  private ruleManager: RuleManager;
 
   constructor(
     private speed = 1,
     private duration = Game.DURATION,
-    private charachterAdditionChance = Game.CHARACTER_ADDITION_CHANCE
+    private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE
   ) {
-    this.status = Game.STATUS.PENDING;
+    this.status = CharacterManager.STATUS.PENDING;
     this.rules = [];
   }
 
   start() {
     this.characterManager = new CharacterManager(Game.INITIAL_SPEED);
     this.scoreManager = new ScoreManager();
-    this.status = Game.STATUS.RUNNING;
+    this.status = CharacterManager.STATUS.RUNNING;
     this.startTime = Date.now();
     this.paused = false;
     this.ruleManager = new RuleManager();
@@ -76,133 +80,9 @@ export default class Game {
   }
 
   get baseScore() {
-    return this.scoreManager.calculateScore(this.charactersDone());
-  }
-
-  private get shouldSetNextRule() {
-    return (
-      !this.nextRule &&
-      (this.hasMoreRulesInBatch ||
-        (Date.now() - this.lastRuleTime) / 1000 > Game.RULES_DELAY)
+    return this.scoreManager.calculateScore(
+      this.characterManager.charactersDone()
     );
-  }
-
-  private get hasMoreRulesInBatch() {
-    const pastRulesCount = this.chosenRules.length + this.declinedRules.length;
-    let pastBatchesSum = 0;
-    Game.RULE_BATCHES.find((batch) => {
-      pastBatchesSum += batch;
-      return pastBatchesSum >= pastRulesCount;
-    });
-    return pastBatchesSum > pastRulesCount;
-  }
-
-  private resetNextRule() {
-    this.lastRuleTime = Date.now();
-    this.nextRule = undefined;
-  }
-
-  private setNextRule() {
-    this.nextRule = this.pendingRules[0];
-  }
-
-  private get pendingRules() {
-    return this._getRulesOfStatus(Game.RULE_STATUS.PENDING);
-  }
-
-  get chosenRules() {
-    return this._getRulesOfStatus(Game.RULE_STATUS.CHOSEN);
-  }
-
-  private get declinedRules() {
-    return this._getRulesOfStatus(Game.RULE_STATUS.DECLINED);
-  }
-
-  get charactersByType() {
-    return Object.fromEntries(
-      this.characterTypes.map((characterType) => [
-        characterType.name,
-        this._getCharactersOfType(characterType),
-      ])
-    );
-  }
-
-  private get charactersByGenderlessType() {
-    const genderlessCharacterTypeNames = this.characterTypes
-      .map((type) => type.genderlessName)
-      .filter((type, index, arr) => arr.indexOf(type) === index); // unique
-
-    return Object.fromEntries(
-      genderlessCharacterTypeNames.map((genderlessCharacterTypeName) => {
-        const men = this._getCharactersOfType(
-          `${genderlessCharacterTypeName}-man`
-        );
-        const women = this._getCharactersOfType(
-          `${genderlessCharacterTypeName}-woman`
-        );
-        return [genderlessCharacterTypeName, men.concat(women)];
-      })
-    );
-  }
-
-  private charactersDone(): Character[] {
-    return this.characters?.filter(
-      (charcter) => charcter.location >= Game.TRACK_END
-    );
-  }
-
-  diversityTypes() {
-    const diversityMap: { [name: string]: number } =
-      this.characterTypes &&
-      Object.fromEntries(
-        this.characterTypes.map((characterType) => [characterType.name, 0])
-      );
-    this.charactersDone()?.forEach((character) => {
-      diversityMap[character.type.name]++;
-    });
-    return diversityMap;
-  }
-
-  chooseRule(rule: Rule) {
-    this._setRuleStatus(rule, Game.RULE_STATUS.CHOSEN);
-    this.characters = rule.apply(this.characters, this.characterTypes);
-  }
-
-  declineRule(rule: Rule) {
-    this._setRuleStatus(rule, Game.RULE_STATUS.DECLINED);
-    this.resetNextRule();
-  }
-
-  private _setRuleStatus(rule: Rule, status: RuleStatus) {
-    const gameRule = this.rules.find((gameRule) => gameRule.rule === rule);
-    gameRule.status = status;
-  }
-
-  private _getRulesOfStatus(ruleStatus: RuleStatus): Rule[] {
-    return this.rules
-      .filter(({ status }) => status === ruleStatus)
-      .map(({ rule }) => rule);
-  }
-
-  private _getCharactersOfType(characterType) {
-    if (characterType.constructor === String) {
-      characterType = this.characterTypes.find(
-        (type) => type.name === characterType
-      );
-    }
-    return this.characters.filter(
-      (character) => character.type === characterType
-    );
-  }
-
-  private generateRules(): GameRule[] {
-    return Rule.RULES.map(
-      (rule) =>
-        ({
-          rule,
-          status: Game.RULE_STATUS.PENDING,
-        } as GameRule)
-    ).sort(() => Math.random() - 0.5);
   }
 
   finish() {
@@ -231,6 +111,7 @@ export default class Game {
     RUNNING: "running",
     OVER: "over",
   };
+
   static STEP = 0.1;
   static DURATION = 2.5 * 60;
   static TRACK_END = 100;

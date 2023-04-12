@@ -1,10 +1,17 @@
-import Rule from "./Rule";
+import { RuleStatus } from "../contracts";
+import { GameRule } from "./GameRule";
+import { Rule } from "./Rule";
 
 export default class RuleManager {
+  rules: GameRule[];
+  lastRuleTime: number;
+  nextRule: any;
+  
   constructor() {
     this.generateRules();
     this.resetNextRule();
   }
+
   generateRules() {
     this.rules = Rule.RULES.map((rule) => ({
       rule,
@@ -54,7 +61,7 @@ export default class RuleManager {
     this.rules.find((gameRule) => gameRule.rule === rule).status = status;
   }
 
-  _getRulesOfStatus(ruleStatus) {
+  _getRulesOfStatus(ruleStatus: RuleStatus): Rule[] {
     return this.rules
       .filter(({ status }) => status === ruleStatus)
       .map(({ rule }) => rule);
@@ -72,7 +79,7 @@ export default class RuleManager {
     return this._getRulesOfStatus(RuleManager.RULE_STATUS.DECLINED);
   }
 
-  static RULE_STATUS = {
+  static RULE_STATUS: { [key: string]: RuleStatus } = {
     PENDING: "pending",
     CHOSEN: "chosen",
     DECLINED: "declined",
