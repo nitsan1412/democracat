@@ -14,7 +14,7 @@ export default function Board() {
       justifyContent="flex-start"
       sx={{ flexGrow: 1 }}
     >
-      <Track characters={game.characters} />
+      <Track characters={game.characterManager.charactersInPlay()} />
     </Stack>
   );
 }

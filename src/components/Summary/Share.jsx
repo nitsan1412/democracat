@@ -3,7 +3,6 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import Dialog from "@mui/material/Dialog";
-// import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -26,7 +25,7 @@ import {
 export default function Share(props) {
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
-  const url = document.location.toString().split("/summery")[0];
+  const url = document.location.toString().split("/summary")[0];
 
   const copy = () => {
     setCopyStatus("copying");

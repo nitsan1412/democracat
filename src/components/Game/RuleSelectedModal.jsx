@@ -9,7 +9,7 @@ export default function RuleSelectedModal(props) {
   const { game } = useGame();
   return (
     <Box sx={style}>
-      <Stack direction="row" alignItems="center">
+      <Stack direction="row" alignItems="center" justifyContent="center">
         <Typography
           id="modal-modal-title"
           variant="button"

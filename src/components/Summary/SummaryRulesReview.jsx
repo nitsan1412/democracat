@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { useGame } from "../../helpers/GameContext";
 import Rule from "../Game/Rule";
 
-export default function SummeryRulesReview() {
+export default function SummaryRulesReview() {
   const { game } = useGame();
 
   return (
@@ -36,7 +36,7 @@ export default function SummeryRulesReview() {
       }}
     >
       <Typography variant="h5">
-        {game.chosenRules.length} :חוקים שעברו
+        {game.ruleManager.chosenRules.length} :חוקים שעברו
       </Typography>
       <Slider
         slidesToShow={1}
@@ -44,8 +44,8 @@ export default function SummeryRulesReview() {
         dots={true}
         swipeToSlide={true}
       >
-        {game.chosenRules.map((rule, ruleIndex) => (
-          <Rule key={ruleIndex} rule={rule} inSummery />
+        {game.ruleManager.chosenRules.map((rule, ruleIndex) => (
+          <Rule key={ruleIndex} rule={rule} inSummary />
         ))}
       </Slider>
     </Stack>

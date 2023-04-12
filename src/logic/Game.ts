@@ -29,34 +29,32 @@ export default class Game {
   }
 
   start() {
-    this.characters = [];
-    this.characterTypes = CharacterType.characterTypes(this.speed, false);
+    this.characterManager = new CharacterManager(Game.INITIAL_SPEED);
     this.scoreManager = new ScoreManager();
     this.status = Game.STATUS.RUNNING;
-    this.rules = this.generateRules();
     this.startTime = Date.now();
     this.paused = false;
-    this.resetNextRule();
+    this.ruleManager = new RuleManager();
   }
 
   step() {
     if (this.paused) return;
-    this.characters.forEach((charcter) => {
-      if (charcter.location < Game.TRACK_END) charcter.move(Game.STEP);
-    });
-    if (Math.random() <= this.charachterAdditionChance) {
-      this.characters.push(
-        Character.createCharacter(
-          this.characterTypes.filter((characterType) => !characterType.disabled)
-        )
-      );
-    }
-    if (this.shouldSetNextRule) {
-      this.setNextRule();
-    }
+    this.characterManager.move();
+    this.characterManager.createCharacterWithProbability(
+      this.charachterAdditionChance
+    );
+    this.ruleManager.setNextRuleIfShould();
     if (this.time <= 0) {
       this.finish();
     }
+  }
+
+  chooseRule(rule) {
+    this.ruleManager._setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
+    this.characterManager.characters = rule.apply(
+      this.characterManager.characters,
+      this.characterManager.characterTypes
+    );
   }
 
   pause() {
@@ -67,7 +65,7 @@ export default class Game {
   resume() {
     this.startTime += Date.now() - this.pauseTime;
     this.paused = false;
-    this.resetNextRule();
+    this.ruleManager.resetNextRule();
   }
 
   get time() {
@@ -209,17 +207,19 @@ export default class Game {
 
   finish() {
     this.status = Game.STATUS.OVER;
-    const score = this.scoreManager.calculateScore(this.charactersDone());
-    const bonusScore = this.scoreManager.calculateBonusScore(
-      this.charactersDone(),
-      this.characterTypes,
-      this.diversityTypes()
+    const score = this.scoreManager.calculateScore(
+      this.characterManager.charactersDone()
     );
-    this.gameSummery = {
+    const bonusScore = this.scoreManager.calculateBonusScore(
+      this.characterManager.charactersDone(),
+      this.characterManager.characterTypes,
+      this.characterManager.diversityTypes()
+    );
+    this.gameSummary = {
       score,
       bonusScore,
-      endGameText: this.scoreManager.getSummeryText(
-        this.chosenRules.length,
+      endGameText: this.scoreManager.getSummaryText(
+        this.ruleManager.chosenRules.length,
         score,
         bonusScore
       ),
@@ -231,16 +231,8 @@ export default class Game {
     RUNNING: "running",
     OVER: "over",
   };
-  static RULE_STATUS: { [key: string]: RuleStatus } = {
-    PENDING: "pending",
-    CHOSEN: "chosen",
-    DECLINED: "declined",
-  };
   static STEP = 0.1;
   static DURATION = 2.5 * 60;
-
-  static CHARACTER_ADDITION_CHANCE = 0.05;
-  static RULES_DELAY = 5;
-  static TRACK_END = 120;
-  static RULE_BATCHES = [3, 4, 3, 3, 5];
+  static TRACK_END = 100;
+  static INITIAL_SPEED = 120;
 }

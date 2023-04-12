@@ -1,8 +1,8 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import React from 'react'
-
+import React from "react";
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
+import CharacterManager from "../logic/CharacterManager";
 
 const GameContext = createContext(null);
 
@@ -18,7 +18,8 @@ export function GameProvider({ children }) {
     const speed = Number(params.get("speed") || 1);
     const duration = Number(params.get("duration") || Game.DURATION);
     const charachterAdditionChance = Number(
-      params.get("charachter-addition-chance") || Game.CHARACTER_ADDITION_CHANCE
+      params.get("charachter-addition-chance") ||
+        CharacterManager.CHARACTER_ADDITION_CHANCE
     );
 
     setGame(new Game(speed, duration, charachterAdditionChance));
@@ -46,7 +47,7 @@ export function GameProvider({ children }) {
   };
 
   const declineRule = (rule) => {
-    game.declineRule(rule);
+    game.ruleManager.declineRule(rule);
     forceUpdate();
   };
 
@@ -66,8 +67,7 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
-      }}
-    >
+      }}>
       {children}
     </GameContext.Provider>
   );

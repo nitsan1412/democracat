@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Rule from "./Rule";
-import cnesetInBreake from "../../images/cnesetInBreake.svg";
+import knessetInBreake from "../../images/knessetInBreake.svg";
 import { Typography } from "@mui/material";
 
 export default function RuleChoice(props) {
@@ -33,7 +33,7 @@ export default function RuleChoice(props) {
           <Typography variant="h6" sx={{ color: "black", fontSize: "0.9rem" }}>
             5 שניות הפסקה{" "}
           </Typography>
-          <img src={cnesetInBreake} alt="" />
+          <img src={knessetInBreake} alt="" />
         </Stack>
       )}
     </Stack>
