@@ -25,7 +25,7 @@ import {
 export default function Share(props) {
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
-  const url = document.location.toString().split("/summery")[0];
+  const url = document.location.toString().split("/summary")[0];
 
   const copy = () => {
     setCopyStatus("copying");

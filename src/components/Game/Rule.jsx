@@ -5,15 +5,15 @@ import downArrow from "../../images/icons/downArrow.svg";
 import upArrow from "../../images/icons/upArrow.svg";
 import RuleImpact from "./RuleImpact";
 
-export default function Rule({ rule, inSummery }) {
+export default function Rule({ rule, inSummary }) {
   const [showRuleInfo, setShowRuleInfo] = useState(false);
   return (
     <Stack
       sx={{
         border: "2px #ECECEC solid ",
-        padding: inSummery ? "0.5rem" : 0,
-        zIndex: inSummery ? 4560 : 99,
-        width: !inSummery ? "315px" : "100%",
+        padding: inSummary ? "0.5rem" : 0,
+        zIndex: inSummary ? 4560 : 99,
+        width: !inSummary ? "315px" : "100%",
         flexDirection: "column",
         alignItems: "center",
         alignSelf: "center",
@@ -59,7 +59,7 @@ export default function Rule({ rule, inSummery }) {
         ) : (
           <></>
         )}
-        {inSummery ? <RuleImpact rule={rule} inSummery /> : <></>}
+        {inSummary ? <RuleImpact rule={rule} inSummary /> : <></>}
       </Stack>
     </Stack>
   );

@@ -17,7 +17,7 @@ export default function Game() {
 
   useEffect(() => {
     if (game.status === "pending") navigate("/");
-    else if (game.status === "over") navigate("/summery");
+    else if (game.status === "over") navigate("/summary");
   }, [game.status, navigate]);
   if (game.status === "pending") return <></>;
   return (

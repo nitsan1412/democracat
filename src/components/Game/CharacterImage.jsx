@@ -1,12 +1,12 @@
 import Box from "@mui/material/Box";
-import ArabMan from "../../images/new-cats/arab-man.svg";
-import OrthodoxMan from "../../images/new-cats/orthodox-man.svg";
-import ReligiousMan from "../../images/new-cats/religious-man.svg";
-import SecularMan from "../../images/new-cats/secular-man.svg";
-import ArabWoman from "../../images/new-cats/arab-woman.svg";
-import OrthodoxWoman from "../../images/new-cats/orthodox-woman.svg";
-import ReligiousWoman from "../../images/new-cats/religious-woman.svg";
-import SecularWoman from "../../images/new-cats/secular-woman.svg";
+import ArabMan from "../../images/cats/arab-man.svg";
+import OrthodoxMan from "../../images/cats/orthodox-man.svg";
+import ReligiousMan from "../../images/cats/religious-man.svg";
+import SecularMan from "../../images/cats/secular-man.svg";
+import ArabWoman from "../../images/cats/arab-woman.svg";
+import OrthodoxWoman from "../../images/cats/orthodox-woman.svg";
+import ReligiousWoman from "../../images/cats/religious-woman.svg";
+import SecularWoman from "../../images/cats/secular-woman.svg";
 
 export default function CharacterImage({ characterType, sx, ...props }) {
   return (
@@ -14,6 +14,7 @@ export default function CharacterImage({ characterType, sx, ...props }) {
       sx={{
         ...sx,
         backgroundImage: `url(${IMAGES[characterType]})`,
+        backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
       }}
       {...props}

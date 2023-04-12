@@ -18,6 +18,7 @@ export default function Character({ character }) {
           character.type.donkey ? Donkey : IMAGES[character.type.name]
         })`,
         backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
       }}
     />
   );
