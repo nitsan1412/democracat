@@ -81,7 +81,6 @@ export default function StartGameMenu() {
             variant="body1"
             sx={{
               textAlign: "center",
-              // flex: 5,
               fontSize: "1.1rem",
               textDecoration: "underline",
               fontWeight: 600,

@@ -51,7 +51,6 @@ export default function GameSummary() {
         gap={2}
         sx={{
           flexDirection: "row",
-          // position: "-webkit-sticky",
           position: "sticky",
           bottom: "0",
           height: "6rem",
@@ -83,7 +82,6 @@ export default function GameSummary() {
             alignSelf: "center",
             justifyContent: "center",
             borderRadius: "12px",
-            // backgroundColor: "white",
           }}
           onClick={() => navigate("/")}
         >
