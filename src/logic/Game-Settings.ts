@@ -1,21 +1,23 @@
-export const rules = [
+import { RuleDetails } from "../contracts";
+
+export const rules: RuleDetails[] = [
   {
     name: "חוק תקשורת",
     info: "יללות אסורות בכל שעות היום והלילה.",
     impact: { donkey: 1 },
-    apply: { type: "donkey" },
+    apply: { type: "Donkey" },
   },
   {
     name: "חוק השיוויון",
     info: "כל החתולים מגיעים לעמק השווה",
     impact: { all: 0 },
-    apply: { type: "average-loc" },
+    apply: { type: "Average-Location" },
   },
   {
     name: "הצבעת אי אמון בממשלה",
     info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
     impact: { all: 0 },
-    apply: { type: "reset" },
+    apply: { type: "Reset" },
   },
   {
     name: "חוק הסדרת הצייד",
@@ -41,7 +43,7 @@ export const rules = [
     name: "חוק ביטול זכות בחירה לערבים",
     info: 'ביטול אפשרות הצייד תגרום לחתול הערבי להפוך לחתול בית וכך ניתן יהיה להעביר אותו למאמצים בחו"ל.',
     impact: { arab: -1 },
-    apply: { type: "disable", args: ["arab"] },
+    apply: { type: "Disable", args: ["arab"] },
   },
   {
     name: "חוק עבודה בשבת",

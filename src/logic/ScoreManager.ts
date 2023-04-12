@@ -1,15 +1,24 @@
 import { DateTime } from "luxon";
+import Character from "./Character";
+import CharacterType from "./CharacterType";
+import { SummayText } from "../contracts/SummayText";
 
-export default class ScoreManager {
-  calculateScore(charactersDoneArray) {
+export class ScoreManager {
+  calculateScore(charactersDoneArray: Character[]): number {
     return charactersDoneArray ? charactersDoneArray.length : 0;
   }
 
-  calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
+  calculateBonusScore(
+    charactersDoneArray: Character[],
+    characterTypes: CharacterType[],
+    diversityTypes: {
+      [name: string]: number;
+    }
+  ) {
     if (charactersDoneArray.length === 0) return 0;
     const numberOfFinished = this.calculateScore(charactersDoneArray);
     let bonusScore = numberOfFinished * characterTypes.length;
-    const avg = (numberOfFinished / characterTypes.length).toFixed(0);
+    const avg = Math.floor((numberOfFinished / characterTypes.length));
     for (const key in diversityTypes) {
       bonusScore -= Math.pow(avg - diversityTypes[key], 2);
     }
@@ -17,10 +26,10 @@ export default class ScoreManager {
     return Math.max(bonusScore, 0);
   }
 
-  static compairHighScore(newScore) {
-    const currentHighest = localStorage.getItem("highest-score");
+  static compairHighScore(newScore: number) {
+    const currentHighest = +localStorage.getItem("highest-score");
     if (!currentHighest) {
-      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
@@ -28,14 +37,18 @@ export default class ScoreManager {
     } else if (currentHighest < newScore) {
       localStorage.removeItem("highest-score");
       localStorage.removeItem("highest-score-dateTime");
-      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
       );
     }
   }
-  getSummeryText(numberOfChosenRules, score, bonusScore) {
+  getSummeryText(
+    numberOfChosenRules: number,
+    score: number,
+    bonusScore: number
+  ): SummayText | SummayText[] {
     if (numberOfChosenRules < 3) return ScoreManager.SUMMERY_TEXTS[0];
     let scoreIndex = ScoreManager.SUMMERY_TEXTS_SCORE_LIMIT.findIndex(
       (scoreLimit) => score <= scoreLimit

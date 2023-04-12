@@ -1,24 +1,22 @@
+import CharacterType from "./CharacterType";
+
 export default class Character {
-  constructor({ type, location = 0, currentScore = 0 }) {
-    Object.assign(this, {
-      type,
-      location,
-      currentScore,
-      xPosition: Math.random(),
-    });
+  xPosition: number;
+  constructor(public type: CharacterType, public location = 0, private currentScore = 0) {
+    this.xPosition = Math.random();
   }
 
-  move(dt) {
+  move(dt: number) {
     this.location = Math.max(this.location + this.type.speed * dt, 0);
   }
 
-  static createCharacter(characterTypes) {
+  static createCharacter(characterTypes: CharacterType[]) {
     const characterTypePercentages = Object.fromEntries(
       Object.entries(Character.CHARACTER_TYPE_PRECENTAGES).filter(([key]) =>
         characterTypes.some((type) => type.name.includes(key))
       )
     );
-    let rulletePointer =
+    let rulletePointer: number =
       Math.random() *
       Object.values(characterTypePercentages).reduce((sum, x) => sum + x, 0);
     const gender = Math.random() > 0.5 ? "man" : "woman";
@@ -34,11 +32,11 @@ export default class Character {
       }
     );
 
-    return new Character({
-      type: characterTypes.find(
+    return new Character(
+      characterTypes.find(
         (item) => item.name === `${characterTypefound}-${gender}`
-      ),
-    });
+      ) as CharacterType
+    );
   }
 
   static CHARACTER_TYPE_PRECENTAGES = {

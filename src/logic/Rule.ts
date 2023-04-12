@@ -1,15 +1,20 @@
+import { Applier, ApplyDetails, Impact } from "../contracts";
+import Character from "./Character";
+import CharacterType from "./CharacterType";
 import Game from "./Game";
 import { rules } from "./Game-Settings";
 
-export default class Rule {
-  constructor({ name, impact, apply, info }) {
-    Object.assign(this, { name, impact, info });
-    if (apply) {
-      this.apply = apply;
-    }
+export class Rule {
+  constructor(
+    public name: string,
+    public info: string,
+    private impact: Impact,
+    apply: Applier
+  ) {
+    this.apply = apply || this.apply;
   }
 
-  apply(characters, characterTypes) {
+  apply(characters: Character[], characterTypes: CharacterType[]) {
     Object.entries(this.impact).forEach(([filter, speedChange]) => {
       characterTypes
         .filter((characterType) => characterType.name.includes(filter))
@@ -19,19 +24,21 @@ export default class Rule {
     return characters;
   }
 
-  static initApplier(apply) {
+  static initApplier(
+    apply: ApplyDetails
+  ): (characters: Character[], characterTypes: CharacterType[]) => Character[] {
     if (!apply) {
-      return;
+      return null;
     }
     switch (apply.type) {
-      case "donkey":
+      case "Donkey":
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) =>
             characterType.changeImage("donkey")
           );
           return characters;
         };
-      case "average-loc":
+      case "Average-Location":
         return (characters) => {
           const onBoardCharacters = characters.filter(
             (character) =>
@@ -48,7 +55,7 @@ export default class Rule {
           });
           return characters;
         };
-      case "reset":
+      case "Reset":
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) => {
             characterType.resetSpeed();
@@ -58,7 +65,7 @@ export default class Rule {
           });
           return characters;
         };
-      case "disable":
+      case "Disable":
         return (characters, characterTypes) => {
           const types = apply.args || [];
           characterTypes
@@ -80,6 +87,6 @@ export default class Rule {
   static RULES = rules.map((r) => {
     const { name, impact, info, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule({ name, impact, info, apply });
+    return new Rule(name, info, impact, apply);
   });
 }
