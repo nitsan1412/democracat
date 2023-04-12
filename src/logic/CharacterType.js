@@ -1,4 +1,4 @@
-import { characters } from "./Game-Settings";
+import { allCharacterTypes } from "./Game-Settings";
 
 export default class CharacterType {
   constructor({
@@ -40,5 +40,5 @@ export default class CharacterType {
   }
 
   static characterTypes = (speed, donkey) =>
-    characters.map((c) => new CharacterType({ ...c, speed, donkey }));
+    allCharacterTypes.map((c) => new CharacterType({ ...c, speed, donkey }));
 }
