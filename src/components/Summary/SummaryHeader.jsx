@@ -1,9 +1,15 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-
-export default function SummeryHeader() {
+import hipHipHurray from "../../images/icons/hipHipHurray.svg";
+export default function SummaryHeader() {
   return (
-    <Stack>
+    <Stack
+      sx={{
+        backgroundImage: `url(${hipHipHurray})`,
+        backgroundRepeat: "round",
+        width: "90%",
+      }}
+    >
       <Typography
         variant="body1"
         sx={{

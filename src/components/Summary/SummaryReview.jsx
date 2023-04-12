@@ -5,7 +5,7 @@ import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "../Game/CharacterImage";
 import Game from "../../logic/Game";
-export default function SummeryReview() {
+export default function SummaryReview() {
   const { game } = useGame();
 
   return (
@@ -27,7 +27,7 @@ export default function SummeryReview() {
             fontWeight: 600,
           }}
         >
-          {game.gameSummery.endGameText.firstLine}
+          {game.gameSummary.endGameText.firstLine}
         </Typography>
         <Typography
           variant="body1"
@@ -38,7 +38,7 @@ export default function SummeryReview() {
             fontWeight: 600,
           }}
         >
-          {game.gameSummery.endGameText.secondLine}
+          {game.gameSummary.endGameText.secondLine}
         </Typography>
         <Typography
           variant="body1"
@@ -84,7 +84,7 @@ export default function SummeryReview() {
           alignItems="center"
           gap={1}
         >
-          {Object.entries(game.charactersByType).map(
+          {Object.entries(game.characterManager.charactersByType).map(
             ([characterType, characters], index) => {
               const numberOfCharactersDoneOfType = characters.filter(
                 (character) =>
@@ -105,25 +105,27 @@ export default function SummeryReview() {
                   >
                     <Badge
                       key={characterType}
-                      badgeContent={numberOfCharactersDoneOfType}
+                      badgeContent={`x${numberOfCharactersDoneOfType}`}
                       sx={{
                         justifyContent: "center",
                         ".MuiBadge-badge": {
                           padding: 0,
-                          fontSize: "0.75rem",
-                          width: "21px",
-                          height: "21px",
+                          fontSize: "0.7rem",
+                          width: "1.7rem",
+                          height: "1.7rem",
+                          borderRadius: "25px",
                           lineHeight: "21px",
                           right: 15,
-                          backgroundColor: "#79C300",
-                          color: "#FFFFFF",
+                          backgroundColor: "#FFFFFF",
+                          color: "#303030",
+                          border: " 1px solid #303030",
                         },
                       }}
                     />
 
                     <CharacterImage
                       characterType={characterType}
-                      sx={{ height: "60px", width: "60px" }}
+                      sx={{ height: "53px", width: "50px" }}
                     />
                   </Stack>
                 );

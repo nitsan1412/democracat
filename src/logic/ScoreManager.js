@@ -7,9 +7,9 @@ export default class ScoreManager {
 
   calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
     if (charactersDoneArray.length === 0) return 0;
-    let numberOfFinished = this.calculateScore(charactersDoneArray);
+    const numberOfFinished = this.calculateScore(charactersDoneArray);
     let bonusScore = numberOfFinished * characterTypes.length;
-    let avg = (numberOfFinished / characterTypes.length).toFixed(0);
+    const avg = (numberOfFinished / characterTypes.length).toFixed(0);
     for (const key in diversityTypes) {
       bonusScore -= Math.pow(avg - diversityTypes[key], 2);
     }
@@ -18,7 +18,7 @@ export default class ScoreManager {
   }
 
   static compairHighScore(newScore) {
-    let currentHighest = localStorage.getItem("highest-score");
+    const currentHighest = localStorage.getItem("highest-score");
     if (!currentHighest) {
       localStorage.setItem("highest-score", newScore);
       localStorage.setItem(
@@ -35,26 +35,26 @@ export default class ScoreManager {
       );
     }
   }
-  getSummeryText(numberOfChosenRules, score, bonusScore) {
-    if (numberOfChosenRules < 3) return ScoreManager.SUMMERY_TEXTS[0];
-    let scoreIndex = ScoreManager.SUMMERY_TEXTS_SCORE_LIMIT.findIndex(
+  getSummaryText(numberOfChosenRules, score, bonusScore) {
+    if (numberOfChosenRules < 3) return ScoreManager.SUMMARY_TEXTS[0];
+    let scoreIndex = ScoreManager.SUMMARY_TEXTS_SCORE_LIMIT.findIndex(
       (scoreLimit) => score <= scoreLimit
     );
     if (scoreIndex === -1)
-      scoreIndex = ScoreManager.SUMMERY_TEXTS_SCORE_LIMIT.length;
-    let bonusIndex = ScoreManager.SUMMERY_TEXTS_BONUS_LIMIT.findIndex(
+      scoreIndex = ScoreManager.SUMMARY_TEXTS_SCORE_LIMIT.length;
+    let bonusIndex = ScoreManager.SUMMARY_TEXTS_BONUS_LIMIT.findIndex(
       (bonusLimit) => bonusScore <= bonusLimit
     );
     if (bonusIndex === -1)
-      bonusIndex = ScoreManager.SUMMERY_TEXTS_BONUS_LIMIT.length;
+      bonusIndex = ScoreManager.SUMMARY_TEXTS_BONUS_LIMIT.length;
 
-    return ScoreManager.SUMMERY_TEXTS[scoreIndex + 1][bonusIndex];
+    return ScoreManager.SUMMARY_TEXTS[scoreIndex + 1][bonusIndex];
   }
 
-  static SUMMERY_TEXTS_SCORE_LIMIT = [30, 60, 100];
-  static SUMMERY_TEXTS_BONUS_LIMIT = [200, 350];
+  static SUMMARY_TEXTS_SCORE_LIMIT = [30, 60, 100];
+  static SUMMARY_TEXTS_BONUS_LIMIT = [200, 350];
 
-  static SUMMERY_TEXTS = [
+  static SUMMARY_TEXTS = [
     {
       firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו",
       secondLine: "כדי לקדם את חתוליך אתה צריך לאשר חוקים שעוזרים לאזרחים",

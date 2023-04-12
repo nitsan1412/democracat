@@ -11,12 +11,14 @@ export default function Character({ character }) {
         position: "absolute",
         left: `${80 * character.xPosition}%`,
         top: `${character.location}%`,
-        width: character.type.donkey ? "45px" : "60px",
+        width: character.type.donkey ? "45px" : "45px",
+        height: character.type.donkey ? "45px" : "48px",
         aspectRatio: character.type.donkey ? "0.7" : "1",
         backgroundImage: `url(${
           character.type.donkey ? Donkey : IMAGES[character.type.name]
         })`,
         backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
       }}
     />
   );

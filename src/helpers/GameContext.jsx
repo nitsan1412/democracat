@@ -2,7 +2,7 @@ import { useState, createContext, useContext, useEffect } from "react";
 
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
-
+import CharacterManager from "../logic/CharacterManager";
 const GameContext = createContext();
 
 export const useGame = () => useContext(GameContext);
@@ -13,10 +13,13 @@ export function GameProvider({ children }) {
   const [intervalHandler, setIntervalHandler] = useState(undefined);
 
   useEffect(() => {
-    let params = new URLSearchParams(document.location.search);
-    let speed = Number(params.get("speed") || 1);
-    let duration = Number(params.get("duration") || Game.DURATION);
-    let charachterAdditionChance = Number(params.get("charachter-addition-chance") || Game.CHARACTER_ADDITION_CHANCE);
+    const params = new URLSearchParams(document.location.search);
+    const speed = Number(params.get("speed") || 1);
+    const duration = Number(params.get("duration") || Game.DURATION);
+    const charachterAdditionChance = Number(
+      params.get("charachter-addition-chance") ||
+        CharacterManager.CHARACTER_ADDITION_CHANCE
+    );
 
     setGame(new Game(speed, duration, charachterAdditionChance));
   }, []);
@@ -27,7 +30,7 @@ export function GameProvider({ children }) {
 
   const start = () => {
     game.start();
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       game.step();
       forceUpdate();
       if (game.status === "over") {
@@ -43,7 +46,7 @@ export function GameProvider({ children }) {
   };
 
   const declineRule = (rule) => {
-    game.declineRule(rule);
+    game.ruleManager.declineRule(rule);
     forceUpdate();
   };
 
