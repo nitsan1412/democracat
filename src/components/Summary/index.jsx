@@ -99,6 +99,7 @@ export default function GameSummary() {
             alignSelf: "center",
             justifyContent: "center",
             borderRadius: "12px",
+            cursor: "pointer",
           }}
           onClick={() => navigate("/")}
         >
