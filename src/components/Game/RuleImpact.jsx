@@ -29,9 +29,15 @@ export default function RuleImpact({ rule, inSummery }) {
         ) : (
           <Badge
             key={characterType}
-            badgeContent={`${impact > 0 ? impact : impact * -1}${
-              impact > 0 ? "+" : "-"
-            }`}
+            badgeContent={
+              inSummery
+                ? `${impact > 0 ? "+" : "-"}${
+                    impact > 0 ? impact : impact * -1
+                  }`
+                : `${impact > 0 ? impact : impact * -1}${
+                    impact > 0 ? "+" : "-"
+                  }`
+            }
             sx={{
               justifyContent: "center",
               ".MuiBadge-badge": {
@@ -51,11 +57,11 @@ export default function RuleImpact({ rule, inSummery }) {
               sx={
                 impactedCharacterTypes.length < 5
                   ? inSummery
-                    ? { height: "40px", width: "40px" }
-                    : { height: "50px", width: "50px" }
+                    ? { height: "42px", width: "40px" }
+                    : { height: "53px", width: "50px" }
                   : inSummery
-                  ? { height: "35px", width: "35px" }
-                  : { height: "50px", width: "50px" }
+                  ? { height: "35px", width: "33px" }
+                  : { height: "35px", width: "33px" }
               }
             />
           </Badge>

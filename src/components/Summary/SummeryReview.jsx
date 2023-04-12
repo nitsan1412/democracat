@@ -123,7 +123,7 @@ export default function SummeryReview() {
 
                     <CharacterImage
                       characterType={characterType}
-                      sx={{ height: "60px", width: "60px" }}
+                      sx={{ height: "53px", width: "50px" }}
                     />
                   </Stack>
                 );
