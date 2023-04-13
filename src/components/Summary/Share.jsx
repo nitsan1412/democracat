@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -21,11 +22,17 @@ import {
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
+import { useGame } from "../../helpers/GameContext";
 
 export default function Share(props) {
+  const { game } = useGame();
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
-  const url = document.location.toString().split("/summary")[0];
+  const url = `${document.location.toString().split("/summary")[0]}/share`;
+  const text = `${game.gameSummary.endGameText.firstLine},
+${game.gameSummary.endGameText.secondLine}.
+הניקוד שלי: ${game.gameSummary.bonusScore + game.gameSummary.score}. יכולים יותר?
+`;
 
   const copy = () => {
     setCopyStatus("copying");
@@ -50,21 +57,21 @@ export default function Share(props) {
         שתפו חברים
       </Button>
       <Dialog fullWidth open={open} onClose={() => setOpen(false)}>
-        {/* <DialogTitle> */}
-        <Typography variant="h4">שיתוף</Typography>
-        {/* </DialogTitle> */}
+       <DialogTitle>
+          <Typography variant="h4" sx={{ textAlign: "center" }}>שיתוף</Typography>
+       </DialogTitle>
         <DialogContent>
           <Stack direction="row" justifyContent="space-evenly">
-            <FacebookShareButton url={url}>
+            <FacebookShareButton url={url} quote={text}>
               <FacebookIcon size={48} round />
             </FacebookShareButton>
-            <TwitterShareButton url={url}>
+            <TwitterShareButton url={url} title={text}>
               <TwitterIcon size={48} round />
             </TwitterShareButton>
-            <WhatsappShareButton url={url}>
+            <WhatsappShareButton url={url} title={text}>
               <WhatsappIcon size={48} round />
             </WhatsappShareButton>
-            <TelegramShareButton url={url}>
+            <TelegramShareButton url={url} title={text}>
               <TelegramIcon size={48} round />
             </TelegramShareButton>
           </Stack>
