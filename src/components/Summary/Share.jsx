@@ -31,7 +31,7 @@ export default function Share(props) {
   const url = `${document.location.toString().split("/summary")[0]}/share`;
   const text = `${game.gameSummary.endGameText.firstLine},
 ${game.gameSummary.endGameText.secondLine}.
-הניקוד שלי: ${game.gameSummary.bonusScore + game.gameSummary.score}. יכולים יותר?
+ניקוד: ${game.gameSummary.bonusScore + game.gameSummary.score}.
 `;
 
   const copy = () => {
