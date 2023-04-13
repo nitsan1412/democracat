@@ -57,10 +57,22 @@ export default function SummaryRulesReview() {
           margin: "1.5rem 0",
         },
         ".slick-slide": {
-          padding: "0.5rem"
+          padding: "0.5rem",
+          ".MuiStack-root": {
+            height: "15rem" // Change here in case rule is too big for the paper
+          }
         },
         ".slick-dots": {
+          position: "relative",
           bottom: 0,
+          display: "flex !important",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+          width: "100%",
+          "> *": {
+            width: "unset",
+            margin: 0
+          }
         },
         ".slick-prev": {
           left: 0,
