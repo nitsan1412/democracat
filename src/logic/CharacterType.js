@@ -32,11 +32,11 @@ export default class CharacterType {
   }
 
   get gender() {
-    return this.name.includes("woman") ? "woman" : "man";
+    return this.name.split("-")[1];
   }
 
   get genderlessName() {
-    return this.name.replace(`-${this.gender}`, "");
+    return this.name.split("-")[0];
   }
 
   static characterTypes = (speed, donkey) =>
