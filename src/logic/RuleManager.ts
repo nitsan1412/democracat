@@ -12,7 +12,7 @@ export default class RuleManager {
     this.resetNextRule();
   }
 
-  generateRules() {
+  private generateRules() {
     this.rules = Rule.RULES.map((rule) => ({
       rule,
       status: RuleManager.RULE_STATUS.PENDING,
@@ -24,7 +24,7 @@ export default class RuleManager {
     this.nextRule = undefined;
   }
 
-  setNextRule() {
+  private setNextRule() {
     this.nextRule = this.pendingRules[0];
   }
 
@@ -34,7 +34,7 @@ export default class RuleManager {
     }
   }
 
-  get shouldSetNextRule() {
+  private get shouldSetNextRule() {
     return (
       !this.nextRule &&
       (this.hasMoreRulesInBatch ||
@@ -42,7 +42,7 @@ export default class RuleManager {
     );
   }
 
-  get hasMoreRulesInBatch() {
+  private get hasMoreRulesInBatch() {
     const pastRulesCount = this.chosenRules.length + this.declinedRules.length;
     let pastBatchesSum = 0;
     RuleManager.RULE_BATCHES.find((batch) => {
@@ -52,31 +52,31 @@ export default class RuleManager {
     return pastBatchesSum > pastRulesCount;
   }
 
-  declineRule(rule) {
-    this._setRuleStatus(rule, RuleManager.RULE_STATUS.DECLINED);
+  declineRule(rule: Rule) {
+    this.setRuleStatus(rule, RuleManager.RULE_STATUS.DECLINED);
     this.resetNextRule();
   }
 
-  _setRuleStatus(rule, status) {
+  setRuleStatus(rule: Rule, status: RuleStatus) {
     this.rules.find((gameRule) => gameRule.rule === rule).status = status;
   }
 
-  _getRulesOfStatus(ruleStatus: RuleStatus): Rule[] {
+  private getRulesByStatus(ruleStatus: RuleStatus): Rule[] {
     return this.rules
       .filter(({ status }) => status === ruleStatus)
       .map(({ rule }) => rule);
   }
 
   get pendingRules() {
-    return this._getRulesOfStatus(RuleManager.RULE_STATUS.PENDING);
+    return this.getRulesByStatus(RuleManager.RULE_STATUS.PENDING);
   }
 
   get chosenRules() {
-    return this._getRulesOfStatus(RuleManager.RULE_STATUS.CHOSEN);
+    return this.getRulesByStatus(RuleManager.RULE_STATUS.CHOSEN);
   }
 
   get declinedRules() {
-    return this._getRulesOfStatus(RuleManager.RULE_STATUS.DECLINED);
+    return this.getRulesByStatus(RuleManager.RULE_STATUS.DECLINED);
   }
 
   static RULE_STATUS: { [key: string]: RuleStatus } = {

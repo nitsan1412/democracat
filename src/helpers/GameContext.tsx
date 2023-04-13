@@ -3,6 +3,7 @@ import React from "react";
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
+import { Rule } from "../logic/Rule";
 
 const GameContext = createContext(null);
 
@@ -41,12 +42,12 @@ export function GameProvider({ children }) {
     setIntervalHandler(interval);
   };
 
-  const chooseRule = (rule) => {
+  const chooseRule = (rule: Rule) => {
     game.chooseRule(rule);
     forceUpdate();
   };
 
-  const declineRule = (rule) => {
+  const declineRule = (rule: Rule) => {
     game.ruleManager.declineRule(rule);
     forceUpdate();
   };

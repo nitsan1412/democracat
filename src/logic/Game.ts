@@ -1,9 +1,6 @@
-import CharacterType from "./CharacterType";
-import Character from "./Character";
 import { Rule } from "./Rule";
 import { ScoreManager } from "./ScoreManager";
-import { GameRule } from "./GameRule";
-import { GameStatus, GameSummary, RuleStatus } from "../contracts";
+import { GameStatus, GameSummary } from "../contracts";
 import RuleManager from "./RuleManager";
 import CharacterManager from "./CharacterManager";
 
@@ -11,31 +8,26 @@ export default class Game {
 
   status: GameStatus;
   gameSummary: GameSummary;
+  ruleManager: RuleManager;
 
-  private rules: GameRule[];
-  private characters: Character[];
-  private characterTypes: CharacterType[];
   private scoreManager: ScoreManager;
   private startTime: number;
   private pauseTime: number;
   private paused: boolean;
-  private nextRule: Rule;
   private characterManager: CharacterManager;
-  private ruleManager: RuleManager;
 
   constructor(
-    private speed = 1,
+    private speed = Game.INITIAL_SPEED,
     private duration = Game.DURATION,
     private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE
   ) {
-    this.status = CharacterManager.STATUS.PENDING;
-    this.rules = [];
+    this.status = Game.STATUS.PENDING;
   }
 
   start() {
-    this.characterManager = new CharacterManager(Game.INITIAL_SPEED);
+    this.characterManager = new CharacterManager(this.speed);
     this.scoreManager = new ScoreManager();
-    this.status = CharacterManager.STATUS.RUNNING;
+    this.status = Game.STATUS.RUNNING;
     this.startTime = Date.now();
     this.paused = false;
     this.ruleManager = new RuleManager();
@@ -53,8 +45,8 @@ export default class Game {
     }
   }
 
-  chooseRule(rule) {
-    this.ruleManager._setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
+  chooseRule(rule: Rule) {
+    this.ruleManager.setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
     this.characterManager.characters = rule.apply(
       this.characterManager.characters,
       this.characterManager.characterTypes
