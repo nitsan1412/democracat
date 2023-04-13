@@ -6,18 +6,21 @@ export const rules: RuleDetails[] = [
     info: "יללות אסורות בכל שעות היום והלילה.",
     impact: { donkey: 1 },
     apply: { type: "Donkey" },
+    isDelayed: true,
   },
   {
     name: "חוק השיוויון",
     info: "כל החתולים מגיעים לעמק השווה",
     impact: { all: 0 },
     apply: { type: "Average-Location" },
+    isDelayed: true,
   },
   {
     name: "הצבעת אי אמון בממשלה",
     info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
     impact: { all: 0 },
     apply: { type: "Reset" },
+    isDelayed: true,
   },
   {
     name: "חוק הסדרת הצייד",
@@ -87,7 +90,7 @@ export const rules: RuleDetails[] = [
   },
 ];
 
-export const characters = [
+export const allCharacterTypes = [
   {
     name: "orthodox-man",
     translation: "חרדי",

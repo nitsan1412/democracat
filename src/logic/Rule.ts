@@ -9,6 +9,7 @@ export class Rule {
     public name: string,
     public info: string,
     private impact: Impact,
+    private isDelayed: boolean,
     apply: Applier
   ) {
     this.apply = apply || this.apply;
@@ -85,8 +86,8 @@ export class Rule {
   }
 
   static RULES = rules.map((r) => {
-    const { name, impact, info, apply: applyDetails } = r;
+    const { name, impact, info, isDelayed, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule(name, info, impact, apply);
+    return new Rule(name, info, impact, isDelayed, apply);
   });
 }

@@ -20,6 +20,7 @@ export default function StartGameButton({ text = "התחל משחק", ...props }
       fullWidth
       disableElevation
       sx={{ fontSize: "1.3rem !important", height: "3rem" }}
+      cursor="pointer"
     >
       למשחק
     </Button>
