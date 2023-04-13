@@ -14,7 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function GameSummary() {
-  const { game } = useGame();
+  const { game, start } = useGame();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -101,7 +101,10 @@ export default function GameSummary() {
             borderRadius: "12px",
             cursor: "pointer",
           }}
-          onClick={() => navigate("/")}
+          onClick={() => {
+            start();
+            navigate("/regame");
+          }}
         >
           <img src={restartGameArrow} alt="" width="15px" height="15px" />
           <Typography

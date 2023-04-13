@@ -24,11 +24,9 @@ export function GameProvider({ children }) {
     setGame(new Game(speed, duration, charachterAdditionChance));
   }, []);
 
-  const newGame = () => {
-    setGame(new Game());
-  };
-
   const start = () => {
+    const game = new Game()
+    setGame(game)
     game.start();
     const interval = setInterval(() => {
       game.step();
@@ -61,7 +59,6 @@ export function GameProvider({ children }) {
     <GameContext.Provider
       value={{
         game,
-        newGame,
         start,
         cancel,
         chooseRule,

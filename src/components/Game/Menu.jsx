@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useGame } from "../../helpers/GameContext";
 
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -9,8 +8,6 @@ import Score from "./Score";
 import backArrow from "../../images/icons/backArrow.svg";
 
 export default function Menu() {
-  const { newGame } = useGame();
-
   const navigate = useNavigate();
 
   return (
@@ -32,7 +29,6 @@ export default function Menu() {
           direction="row"
           gap={1}
           onClick={() => {
-            newGame();
             navigate("/");
           }}
         >
