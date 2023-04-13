@@ -5,7 +5,6 @@ import RuleManager from "./RuleManager";
 import CharacterManager from "./CharacterManager";
 
 export default class Game {
-
   status: GameStatus;
   gameSummary: GameSummary;
   ruleManager: RuleManager;
