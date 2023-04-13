@@ -1,27 +1,24 @@
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import hipHipHurray from "../../images/icons/hipHipHurray.svg";
+
 export default function SummaryHeader() {
   return (
-    <Stack
+    <Typography
+      variant="body1"
       sx={{
         backgroundImage: `url(${hipHipHurray})`,
         backgroundRepeat: "round",
-        width: "90%",
+        backgroundPosition: "center",
+        margin: "0 1rem",
+        width: "calc(100% - 2rem)",
+        textAlign: "center",
+        fontSize: "1.6rem",
+        fontWeight: 700,
+        color: "#FC68B4",
+        padding: "1rem 0rem",
       }}
     >
-      <Typography
-        variant="body1"
-        sx={{
-          textAlign: "center",
-          fontSize: "1.6rem",
-          fontWeight: 700,
-          color: "#FC68B4",
-          margin: "1rem 0rem",
-        }}
-      >
-        סיימת את המשחק!
-      </Typography>
-    </Stack>
+      סיימת את המשחק!
+    </Typography>
   );
 }

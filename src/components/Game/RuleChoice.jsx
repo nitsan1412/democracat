@@ -12,11 +12,12 @@ export default function RuleChoice(props) {
       justifyContent="center"
       sx={{
         padding: "0.5rem",
-        height: "10rem"
+        height: "10rem",
+        width: "calc(100% - 2rem)"
       }}
     >
       {props.rule?.info ? (
-        <Rule rule={props.rule} />
+        <Rule rule={props.rule} showTitle />
       ) : (
         <Stack
           sx={{
