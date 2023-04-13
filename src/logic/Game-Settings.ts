@@ -1,25 +1,29 @@
 import { RuleDetails } from "../contracts";
+import { AverageLocationApplier } from "../contracts/applier/AverageLocationApplier";
+import { DisableApplier } from "../contracts/applier/DisableApplier";
+import { DonkeyApplier } from "../contracts/applier/DonkeyApplier";
+import { ResetSpeedApplier } from "../contracts/applier/ResetSpeedApplier";
 
 export const rules: RuleDetails[] = [
   {
     name: "חוק תקשורת",
     info: "יללות אסורות בכל שעות היום והלילה.",
     impact: { donkey: 1 },
-    apply: { type: "Donkey" },
+    apply: new DonkeyApplier(),
     isDelayed: true,
   },
   {
     name: "חוק השיוויון",
     info: "כל החתולים מגיעים לעמק השווה",
     impact: { all: 0 },
-    apply: { type: "Average-Location" },
+    apply: new AverageLocationApplier(),
     isDelayed: true,
   },
   {
     name: "הצבעת אי אמון בממשלה",
     info: "כל החתולים חוזרים להיות גורים קטנטנים וחמודים",
     impact: { all: 0 },
-    apply: { type: "Reset" },
+    apply: new ResetSpeedApplier(),
     isDelayed: true,
   },
   {
@@ -46,7 +50,7 @@ export const rules: RuleDetails[] = [
     name: "חוק ביטול זכות בחירה לערבים",
     info: 'ביטול אפשרות הצייד תגרום לחתול הערבי להפוך לחתול בית וכך ניתן יהיה להעביר אותו למאמצים בחו"ל.',
     impact: { arab: -1 },
-    apply: { type: "Disable", args: ["arab"] },
+    apply: new DisableApplier(["arab"]),
   },
   {
     name: "חוק עבודה בשבת",

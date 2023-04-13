@@ -1,6 +1,7 @@
+import { ICharacterType } from "../contracts";
 import { allCharacterTypes } from "./Game-Settings";
 
-export default class CharacterType {
+export class CharacterType implements ICharacterType {
   speed: number;
   disabled: boolean = false;
 

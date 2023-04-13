@@ -1,6 +1,7 @@
-import CharacterType from "./CharacterType";
+import { ICharacter } from "../contracts/Character";
+import { CharacterType } from "./CharacterType";
 
-export default class Character {
+export class Character implements ICharacter {
   xPosition: number;
   constructor(public type: CharacterType, public location = 0, private currentScore = 0) {
     this.xPosition = Math.random();

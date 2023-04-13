@@ -1,6 +1,6 @@
+import { Character } from "./Character";
+import { CharacterType } from "./CharacterType";
 import Game from "./Game";
-import CharacterType from "./CharacterType";
-import Character from "./Character";
 
 export default class CharacterManager {
   characters: Character[];

@@ -3,6 +3,7 @@ import { ScoreManager } from "./ScoreManager";
 import { GameStatus, GameSummary } from "../contracts";
 import RuleManager from "./RuleManager";
 import CharacterManager from "./CharacterManager";
+import { Character } from "./Character";
 
 export default class Game {
   status: GameStatus;
@@ -49,7 +50,7 @@ export default class Game {
     this.characterManager.characters = rule.apply(
       this.characterManager.characters,
       this.characterManager.characterTypes
-    );
+    ) as Character[];
   }
 
   pause() {

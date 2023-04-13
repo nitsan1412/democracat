@@ -1,16 +1,15 @@
 import { DateTime } from "luxon";
-import Character from "./Character";
-import CharacterType from "./CharacterType";
 import { SummayText } from "../contracts/SummayText";
+import { ICharacter, ICharacterType } from "../contracts";
 
 export class ScoreManager {
-  calculateScore(charactersDoneArray: Character[]): number {
+  calculateScore(charactersDoneArray: ICharacter[]): number {
     return charactersDoneArray ? charactersDoneArray.length : 0;
   }
 
   calculateBonusScore(
-    charactersDoneArray: Character[],
-    characterTypes: CharacterType[],
+    charactersDoneArray: ICharacter[],
+    characterTypes: ICharacterType[],
     diversityTypes: {
       [name: string]: number;
     }

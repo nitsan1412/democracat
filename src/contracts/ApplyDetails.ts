@@ -1,3 +1,3 @@
-import { ApplierType } from "./ApplierType";
+import { ApplierType } from "./applier/ApplierType";
 
 export type ApplyDetails = { type: ApplierType; args?: any[] };
