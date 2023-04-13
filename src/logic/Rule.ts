@@ -9,7 +9,7 @@ export class Rule {
     public name: string,
     public info: string,
     private impact: Impact,
-    private isDelayed: boolean,
+    public isDelayed: boolean,
     apply: Applier
   ) {
     this.apply = apply || this.apply;
