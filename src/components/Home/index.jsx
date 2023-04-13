@@ -20,14 +20,18 @@ export default function StartGameMenu() {
     <Stack
       alignItems="center"
       sx={{
-        paddingTop: "1rem",
         height: 1,
+        padding: "2rem 0 4rem",
+        gap: "1rem",
+        backgroundImage: `url(${homeBackground})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "bottom"
       }}
     >
       <Stack
         justifyContent="center"
         sx={{
-          height: "8rem",
+          height: "8rem"
         }}
       >
         <Typography variant="h3" sx={{ fontWeight: "700" }}>
@@ -37,25 +41,17 @@ export default function StartGameMenu() {
       </Stack>
       <Stack
         alignItems="center"
-        gap={8}
+        justifyContent="space-between"
         sx={{
-          height: "calc(100% - 8rem)",
+          height: "calc(100% - 4rem)",
           width: 1,
-          backgroundImage: `url(${homeBackground})`,
-          marginTop: "-2.5rem",
+          "> :only-child": { margin: "auto" }
         }}
       >
         {!highestScoreToShow.highestScore ? (
           ""
         ) : (
-          <Stack
-            justifyContent="flex-start"
-            sx={{
-              marginTop: "4rem",
-            }}
-          >
-            <HightScoreBox highestScoreToShow={highestScoreToShow} />
-          </Stack>
+          <HightScoreBox highestScoreToShow={highestScoreToShow} />
         )}
         <Stack sx={{ width: 0.6 }} gap={2} justifyContent="center">
           <StartGameButton />
@@ -71,12 +67,6 @@ export default function StartGameMenu() {
               backgroundColor: "white",
             }}
           />
-        </Stack>
-        <Stack
-          flexDirection="row"
-          onClick={() => setShowUseInfo(!showUseInfo)}
-          sx={{ cursor: "pointer" }}
-        >
           <Typography
             variant="body1"
             sx={{
@@ -88,16 +78,16 @@ export default function StartGameMenu() {
           >
             תקנון ותנאי שימוש{" "}
           </Typography>
+          <Dialog
+            open={showUseInfo}
+            onClose={() => {
+              setShowUseInfo(false);
+            }}
+            sx={{ borderRadius: 15, padding: "1rem" }}
+          >
+            <TermsOfUse />
+          </Dialog>
         </Stack>
-        <Dialog
-          open={showUseInfo}
-          onClose={() => {
-            setShowUseInfo(false);
-          }}
-          sx={{ borderRadius: 15, padding: "1rem" }}
-        >
-          <TermsOfUse />
-        </Dialog>
       </Stack>
     </Stack>
   );
