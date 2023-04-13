@@ -1,4 +1,4 @@
-import { characters } from "./Game-Settings";
+import { allCharacterTypes } from "./Game-Settings";
 
 export default class CharacterType {
   speed: number;
@@ -39,7 +39,7 @@ export default class CharacterType {
   }
 
   static characterTypes = (speed: number, donkey: boolean) =>
-    characters.map(
+    allCharacterTypes.map(
       (c) => new CharacterType(c.name, c.translation, 0, speed, donkey)
     );
 }
