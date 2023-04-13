@@ -10,15 +10,18 @@ export default function Rule({ rule, inSummary }) {
   return (
     <Stack
       sx={{
-        border: "2px #ECECEC solid ",
-        padding: inSummary ? "0.5rem" : 0,
+        border: "none",
+        padding: inSummary ? "0.5rem" : "1rem",
         zIndex: inSummary ? 4560 : 99,
         width: !inSummary ? "315px" : "100%",
+        height: 1,
         flexDirection: "column",
         alignItems: "center",
         alignSelf: "center",
         justifyContent: "center",
         borderRadius: "25px",
+        background: "white",
+        boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.4)"
       }}
     >
       <Stack

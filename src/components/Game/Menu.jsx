@@ -18,7 +18,7 @@ export default function Menu() {
       direction="row"
       alignItems="center"
       justifyContent="space-around"
-      sx={{ width: "100%", height: "4rem", "+*": { height: "calc(100% - 4rem)" } }}
+      sx={{ width: "100%", flex: 1, height: "4rem", "+*": { height: "calc(100% - 4rem)" } }}
     >
     <Stack
         direction="row"
