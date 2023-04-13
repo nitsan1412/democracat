@@ -57,7 +57,7 @@ export default function SummaryRulesReview() {
           margin: "1.5rem 0",
         },
         ".slick-slide": {
-          padding: "0.5rem",
+          padding: "0.5rem"
         },
         ".slick-dots": {
           bottom: 0,

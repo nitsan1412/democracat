@@ -75,6 +75,7 @@ export default function StartGameMenu() {
               textDecoration: "underline",
               fontWeight: 600,
             }}
+            onClick={() => setShowUseInfo(true)}
           >
             תקנון ותנאי שימוש{" "}
           </Typography>
@@ -83,7 +84,7 @@ export default function StartGameMenu() {
             onClose={() => {
               setShowUseInfo(false);
             }}
-            sx={{ borderRadius: 15, padding: "1rem" }}
+            sx={{ borderRadius: 15, margin: "0 -1rem" }}
           >
             <TermsOfUse />
           </Dialog>
