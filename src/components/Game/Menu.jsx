@@ -1,10 +1,7 @@
 import { useNavigate } from "react-router-dom";
-
+import { useGame } from "../../helpers/GameContext";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Chip } from "@mui/material";
-import Timer from "./Timer";
-import Score from "./Score";
 import backArrow from "../../images/icons/backArrow.svg";
 
 export default function Menu() {

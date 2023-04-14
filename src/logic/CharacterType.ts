@@ -23,19 +23,16 @@ export default class CharacterType {
   }
 
   changeImage(newImage: string) {
-    if (newImage === "donkey") {
-      this.donkey = true;
-    } else {
-      this.donkey = false;
-    }
+    if (newImage === "donkey") this.donkey = true;
+    else this.donkey = false;
   }
 
   get gender() {
-    return this.name.includes("woman") ? "woman" : "man";
+    return this.name.split("-")[1];
   }
 
   get genderlessName() {
-    return this.name.replace(`-${this.gender}`, "");
+    return this.name.split("-")[0];
   }
 
   static characterTypes = (speed: number, donkey: boolean) =>
