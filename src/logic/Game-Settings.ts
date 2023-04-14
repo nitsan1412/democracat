@@ -71,7 +71,7 @@ export const rules: RuleDetails[] = [
   {
     name: "אישור פונדקאות ללהטבים",
     info: "חוק המאפשר לחברי הקהילה הלהטבית לקיים הליך פונדקאות",
-    impact: { "-LGTB": -2 },
+    impact: { "-lgbt": 3 },
   },
   {
     name: "פסילת מפלגות ערביות",
@@ -97,7 +97,11 @@ export const allCharacterTypes = [
   },
   {
     name: "orthodox-woman",
-    translation: "icon",
+    translation: "חרדית",
+  },
+  {
+    name: "orthodox-lgbt",
+    translation: "להט\"ב חרד",
   },
   {
     name: "arab-man",
@@ -108,6 +112,10 @@ export const allCharacterTypes = [
     translation: "ערביה",
   },
   {
+    name: "arab-lgbt",
+    translation: "להט\"ב ערבי",
+  },
+  {
     name: "secular-man",
     translation: "חילוני",
   },
@@ -116,11 +124,19 @@ export const allCharacterTypes = [
     translation: "חילונית",
   },
   {
+    name: "secular-lgbt",
+    translation: "להט\"ב חילוני",
+  },
+  {
     name: "religious-man",
     translation: "דתי ציוני",
   },
   {
     name: "religious-woman",
     translation: "דתייה ציונית",
+  },
+  {
+    name: "religious-lgbt",
+    translation: "להט\"ב דתי ציוני",
   },
 ];

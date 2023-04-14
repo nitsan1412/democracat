@@ -5,6 +5,7 @@ import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "../Game/CharacterImage";
 import Game from "../../logic/Game";
+
 export default function SummaryReview() {
   const { game } = useGame();
 
@@ -52,7 +53,7 @@ export default function SummaryReview() {
           רוצה לשחק שוב?
         </Typography>
       </Stack>
-      <Stack
+      {game.characterManager.charactersDone().length === 0 ? '' : <Stack
         sx={{ maxWidth: "350px", marginTop: 2 }}
         flexDirection="column"
         justifyContent="center"
@@ -132,7 +133,7 @@ export default function SummaryReview() {
             }
           )}
         </Grid>
-      </Stack>
+      </Stack>}
     </Stack>
   );
 }

@@ -7,6 +7,10 @@ import ArabWoman from "../../images/cats/arab-woman.svg";
 import OrthodoxWoman from "../../images/cats/orthodox-woman.svg";
 import ReligiousWoman from "../../images/cats/religious-woman.svg";
 import SecularWoman from "../../images/cats/secular-woman.svg";
+import ArabLGBT from "../../images/cats/arab-lgbt.svg";
+import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.svg";
+import ReligiousLGBT from "../../images/cats/religious-lgbt.svg";
+import SecularLGBT from "../../images/cats/secular-lgbt.svg";
 
 export default function CharacterImage({ characterType, sx, ...props }) {
   return (
@@ -31,4 +35,8 @@ export const IMAGES = {
   "orthodox-woman": OrthodoxWoman,
   "religious-woman": ReligiousWoman,
   "secular-woman": SecularWoman,
+  "arab-lgbt": ArabLGBT,
+  "orthodox-lgbt": OrthodoxLGBT,
+  "religious-lgbt": ReligiousLGBT,
+  "secular-lgbt": SecularLGBT,
 };

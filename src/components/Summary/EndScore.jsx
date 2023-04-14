@@ -7,79 +7,55 @@ export default function EndScore() {
   const { game } = useGame();
 
   return (
-    <Stack alignItems="center">
+    <Stack
+      gap={1}
+      height={1}
+      flexDirection="column"
+      alignItems="center"
+      alignSelf="center"
+      justifyContent="center"
+    >
+      <Typography
+        variant="body1"
+        sx={{
+          textAlign: "center",
+          fontSize: "1.1rem",
+          fontWeight: 600,
+        }}
+      >
+        זה הניקוד שלך
+      </Typography>
       <Stack
-        gap={1}
-        height={1}
-        flexDirection="column"
-        alignItems="center"
-        alignSelf="center"
-        justifyContent="center"
+        flexDirection="row-reverse"
+        gap={2}
+        sx={{
+          border: "1px #ECECEC solid ",
+          borderRadius: "25px",
+          padding: "0.4rem 3rem",
+        }}
       >
         <Typography
           variant="body1"
           sx={{
             textAlign: "center",
-            flex: 5,
-            fontSize: "1rem",
-            fontWeight: 700,
+            fontSize: "1.1rem",
+            fontWeight: 400,
           }}
         >
-          זה הניקוד שלך
+          {game.gameSummary.bonusScore + game.gameSummary.score}
         </Typography>
-        <Stack
-          flexDirection="row-reverse"
-          gap={2}
-          sx={{
-            border: "1px #ECECEC solid ",
-            borderRadius: "25px",
-            padding: "0.4rem 3rem",
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{
-              textAlign: "center",
-              flex: 5,
-              fontSize: "1.1rem",
-              fontWeight: 400,
-            }}
-          >
-            {game.gameSummary.bonusScore + game.gameSummary.score}
-          </Typography>
-          <img src={emptyCat} alt="" />
-        </Stack>
+        <img src={emptyCat} alt="" />
       </Stack>
-      <Stack gap={1} height={1} flexDirection="row" alignItems="center">
-        <Typography
-          variant="body1"
-          sx={{
-            fontSize: "0.9rem",
-            fontWeight: 400,
-            textDecoration: "underline",
-          }}
-        >
-          כולל בונוס
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            fontSize: "0.9rem",
-            fontWeight: 400,
-          }}
-        >
-          על סך
-        </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            fontSize: "0.9rem",
-            fontWeight: 400,
-          }}
-        >
-          {game.gameSummary.bonusScore} נקודות!
-        </Typography>
-      </Stack>
+      <Typography
+        variant="body1"
+        sx={{
+          fontSize: "0.8rem",
+          fontWeight: 600,
+          letterSpacing: "0.15em"
+        }}
+      >
+        <u>כולל בונוס</u>&nbsp;על סך {game.gameSummary.bonusScore} נקודות!
+      </Typography>
     </Stack>
   );
 }

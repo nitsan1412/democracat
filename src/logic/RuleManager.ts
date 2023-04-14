@@ -22,6 +22,7 @@ export default class RuleManager {
   resetNextRule() {
     this.lastRuleTime = Date.now();
     this.nextRule = undefined;
+    this.setNextRuleIfShould();
   }
 
   setNextRule() {
