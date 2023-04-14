@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useGame } from "../../helpers/GameContext";
@@ -22,18 +23,19 @@ export default function GameSummary() {
   }, [game.status, navigate]);
   if (game.status === "pending") return <></>;
   return (
-    <>
-      <Stack
-        alignItems="center"
-        justifyContent="center"
-        direction="column"
-        gap={1}
+    <Stack
+      sx={{
+        height: "100%"
+      }}
+    >
+      <Box
         sx={{
           padding: "1rem",
-          ".slick-slide": { padding: "0.5rem 1rem" },
-          ".slick-arrow": { zIndex: 72, "&::before": { color: "#000000" } },
-          ".slick-prev": { left: "-45px" },
-          ".slick-next": { right: "-55px" },
+          height: "calc(100% - 6rem)",
+          overflowX: "hidden",
+          overflowY: "auto",
+          backgroundImage: `url(${homeBackground})`,
+          backgroundPosition: "bottom",
         }}
       >
         <SummaryHeader />
@@ -42,16 +44,8 @@ export default function GameSummary() {
           alignItems="center"
           justifyContent="center"
           direction="column"
-          gap={1}
-          sx={{
-            backgroundImage: `url(${homeBackground})`,
-            backgroundPositionY: "-3.4rem",
-            padding: "1rem",
-            ".slick-slide": { padding: "0.5rem 1rem" },
-            ".slick-arrow": { zIndex: 72, "&::before": { color: "#000000" } },
-            ".slick-prev": { left: "-45px" },
-            ".slick-next": { right: "-55px" },
-          }}
+          gap={2}
+          sx={{ padding: "1rem" }}
         >
           <Stack sx={boxStyle}>
             <EndScore />
@@ -59,26 +53,22 @@ export default function GameSummary() {
           <Stack sx={boxStyle}>
             <SummaryReview />
           </Stack>
-          <Stack sx={boxStyle}>
-            <SummaryRulesReview />
-          </Stack>
+          <SummaryRulesReview />
         </Stack>
-      </Stack>
+      </Box>
       <Stack
         gap={2}
         sx={{
           flexDirection: "row",
-          position: "sticky",
-          bottom: "0",
+          padding: "1rem 2rem",
           height: "6rem",
+          bottom: "0",
           width: "100%",
           zIndex: 150,
           justifyContent: "center",
-          paddingBottom: "2rem",
-          paddingTop: "2rem",
           alignItems: "center",
           backgroundColor: "white",
-          borderTop: "1px solid #F4F4F4",
+          borderTop: '2px solid lightgray'
         }}
       >
         <ShareButton
@@ -87,6 +77,8 @@ export default function GameSummary() {
             fontWeight: "500",
             height: "2.7rem",
             padding: "0.5rem 1rem",
+            boxShadow: "none",
+            flex: 1
           }}
         />
         <Stack
@@ -118,13 +110,12 @@ export default function GameSummary() {
           </Typography>
         </Stack>
       </Stack>
-    </>
+    </Stack>
   );
 }
 
 const boxStyle = {
-  border: "2px #ECECEC solid ",
-  padding: "0.5rem",
+  padding: "1rem",
   width: "315px",
   flexDirection: "column",
   alignItems: "center",
@@ -132,4 +123,5 @@ const boxStyle = {
   justifyContent: "center",
   borderRadius: "25px",
   backgroundColor: "#FFFFFF",
+  boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.25)"
 };

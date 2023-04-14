@@ -3,7 +3,7 @@ import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
 
-export default function RuleImpact({ rule, inSummary }) {
+export default function RuleImpact({ rule }) {
   const { game } = useGame();
   const impactedCharacterTypes = game.characterManager.characterTypes
     .map((characterType) => ({
@@ -19,6 +19,7 @@ export default function RuleImpact({ rule, inSummary }) {
   return (
     <Stack
       width={1}
+      gap={1}
       direction="row"
       justifyContent="center"
       alignItems="center"
@@ -29,23 +30,15 @@ export default function RuleImpact({ rule, inSummary }) {
         ) : (
           <Badge
             key={characterType}
-            badgeContent={
-              inSummary
-                ? `${impact > 0 ? "+" : "-"}${
-                    impact > 0 ? impact : impact * -1
-                  }`
-                : `${impact > 0 ? impact : impact * -1}${
-                    impact > 0 ? "+" : "-"
-                  }`
-            }
+            badgeContent={`${impact > 0 ? "+" : "-"}${impact > 0 ? impact : impact * -1}`}
             sx={{
               justifyContent: "center",
               ".MuiBadge-badge": {
                 padding: 0,
-                fontSize: inSummary ? "0.6rem" : "0.75rem",
-                width: inSummary ? "11px" : "15px",
-                height: inSummary ? "15px" : "15px",
-                lineHeight: inSummary ? "11px" : "15px",
+                fontSize: "0.6rem",
+                width: "11px",
+                height: "15px",
+                lineHeight: "11px",
                 right: 15,
                 backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
                 color: "#FFFFFF",
@@ -54,15 +47,7 @@ export default function RuleImpact({ rule, inSummary }) {
           >
             <CharacterImage
               characterType={characterType}
-              sx={
-                impactedCharacterTypes.length < 5
-                  ? inSummary
-                    ? { height: "42px", width: "40px" }
-                    : { height: "53px", width: "50px" }
-                  : inSummary
-                  ? { height: "35px", width: "33px" }
-                  : { height: "35px", width: "33px" }
-              }
+              sx={impactedCharacterTypes.length < 5 ? { height: "42px", width: "40px" } : { height: "35px", width: "33px" }}
             />
           </Badge>
         )

@@ -43,7 +43,6 @@ export default class CharacterManager {
 
   createCharacterWithProbability(charachterAdditionChance) {
     if (Math.random() <= charachterAdditionChance) {
-      console.log("in if");
       this.characters.push(
         Character.createCharacter(
           this.characterTypes.filter((characterType) => !characterType.disabled)

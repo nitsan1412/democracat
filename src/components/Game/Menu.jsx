@@ -8,22 +8,33 @@ import Score from "./Score";
 import backArrow from "../../images/icons/backArrow.svg";
 
 export default function Menu() {
+  const { newGame } = useGame();
   const navigate = useNavigate();
 
   return (
     <Stack
       position="static"
-      sx={{ "+*": { height: "calc(100% - 48px)" } }}
       direction="row"
       alignItems="center"
       justifyContent="space-around"
-      marginTop="1rem"
-      minWidth="100%"
+      sx={{ width: "100%", flex: 1, height: "4rem", "+*": { height: "calc(100% - 4rem)" } }}
     >
+    <Stack
+        direction="row"
+        gap={1}
+        onClick={() => {
+          newGame();
+          navigate("/");
+        }}
+      >
+        <img src={backArrow} alt="" />
+        <Typography variant="subtitle1" sx={{  }}>
+          חזרה
+        </Typography>
+      </Stack>
       <Stack
-        alignItems="center"
-        justifyContent="center"
-        sx={{ height: "3rem", cursor: "pointer" }}
+         direction="row"
+         gap={1}
       >
         <Stack
           direction="row"
@@ -39,14 +50,14 @@ export default function Menu() {
           </Typography>
         </Stack>
       </Stack>
-      <Chip label={<Score />} variant="outlined" sx={Menu.styles.button} />
-      <Chip label={<Timer />} variant="outlined" sx={Menu.styles.button} />
     </Stack>
   );
 }
 
 Menu.styles = {
   button: {
+    height: "2.5rem",
     borderColor: "#ECECEC",
+    borderRadius: "1.25rem"
   },
 };
