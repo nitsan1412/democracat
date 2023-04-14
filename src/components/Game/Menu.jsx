@@ -14,9 +14,13 @@ export default function Menu() {
       direction="row"
       alignItems="center"
       justifyContent="space-around"
-      sx={{ width: "100%", flex: 1, height: "4rem", "+*": { height: "calc(100% - 4rem)" } }}
+      sx={{
+        width: "100%",
+        height: "4rem",
+        "+*": { height: "calc(100% - 4rem)" },
+      }}
     >
-    <Stack
+      <Stack
         direction="row"
         gap={1}
         onClick={() => {
@@ -25,27 +29,13 @@ export default function Menu() {
         }}
       >
         <img src={backArrow} alt="" />
-        <Typography variant="subtitle1" sx={{  }}>
+        <Typography variant="subtitle1" sx={{}}>
           חזרה
         </Typography>
       </Stack>
-      <Stack
-         direction="row"
-         gap={1}
-      >
-        <Stack
-          direction="row"
-          gap={1}
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <img src={backArrow} alt="" />
-
-          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
-            חזרה
-          </Typography>
-        </Stack>
+      <Stack direction="row" gap={1}>
+        <Chip label={<Score />} variant="outlined" sx={Menu.styles.button} />
+        <Chip label={<Timer />} variant="outlined" sx={Menu.styles.button} />
       </Stack>
     </Stack>
   );
@@ -55,6 +45,6 @@ Menu.styles = {
   button: {
     height: "2.5rem",
     borderColor: "#ECECEC",
-    borderRadius: "1.25rem"
+    borderRadius: "1.25rem",
   },
 };
