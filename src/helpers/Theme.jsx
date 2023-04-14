@@ -25,6 +25,7 @@ const theme = createTheme({
     h4: { direction: "rtl", fontFamily: "Assistant" },
     h5: { direction: "rtl", fontFamily: "Assistant" },
     h6: { direction: "rtl", fontFamily: "Assistant" },
+    subtitle1: { direction: "rtl", fontFamily: "Assistant" },
     body1: { direction: "rtl", fontFamily: "Assistant" },
     body2: { direction: "rtl", fontFamily: "Assistant" },
   },
