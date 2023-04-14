@@ -25,8 +25,8 @@ export function GameProvider({ children }) {
   }, []);
 
   const start = () => {
-    const game = new Game()
-    setGame(game)
+    const game = new Game();
+    setGame(game);
     game.start();
     const interval = setInterval(() => {
       game.step();

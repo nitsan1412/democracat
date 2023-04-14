@@ -10,19 +10,19 @@ export default class Game {
   ) {
     Object.assign(this, {
       speed,
-      status: Game.STATUS.PENDING,
       duration,
       charachterAdditionChance,
+      status: Game.STATUS.PENDING,
     });
   }
 
   start() {
+    this.ruleManager = new RuleManager();
     this.characterManager = new CharacterManager(Game.INITIAL_SPEED);
     this.scoreManager = new ScoreManager();
+    this.paused = false;
     this.status = Game.STATUS.RUNNING;
     this.startTime = Date.now();
-    this.paused = false;
-    this.ruleManager = new RuleManager();
   }
 
   step() {
