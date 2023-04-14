@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.scss";
 
 import { GameProvider } from "./helpers/GameContext";
@@ -18,6 +18,9 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<Game />} />
             <Route path="/summary" element={<Summary />} />
+            <Route path="/shared" element={<Navigate to="/" />} />
+            <Route path="/regame" element={<Navigate to="/game" />} />
+            <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       </GameProvider>

@@ -5,6 +5,7 @@ import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "../Game/CharacterImage";
 import Game from "../../logic/Game";
+
 export default function SummaryReview() {
   const { game } = useGame();
 

@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useGame } from "../../helpers/GameContext";
 
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -37,8 +36,19 @@ export default function Menu() {
          direction="row"
          gap={1}
       >
-        <Chip label={<Score />} variant="outlined" sx={Menu.styles.button} />
-        <Chip label={<Timer />} variant="outlined" sx={Menu.styles.button} />
+        <Stack
+          direction="row"
+          gap={1}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <img src={backArrow} alt="" />
+
+          <Typography variant="subtitle1" sx={{ fontWeight: "700" }}>
+            חזרה
+          </Typography>
+        </Stack>
       </Stack>
     </Stack>
   );
