@@ -2,8 +2,8 @@ import Game from "./Game";
 import { rules } from "./Game-Settings";
 
 export default class Rule {
-  constructor({ name, impact, apply, info }) {
-    Object.assign(this, { name, impact, info });
+  constructor({ name, impact, info, isDelayed, apply }) {
+    Object.assign(this, { name, impact, info, isDelayed });
     if (apply) {
       this.apply = apply;
     }
@@ -78,8 +78,8 @@ export default class Rule {
   }
 
   static RULES = rules.map((r) => {
-    const { name, impact, info, apply: applyDetails } = r;
+    const { name, impact, info, isDelayed, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule({ name, impact, info, apply });
+    return new Rule({ name, impact, info, isDelayed, apply });
   });
 }

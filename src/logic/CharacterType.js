@@ -1,4 +1,4 @@
-import { characters } from "./Game-Settings";
+import { allCharacterTypes } from "./Game-Settings";
 
 export default class CharacterType {
   constructor({
@@ -32,13 +32,13 @@ export default class CharacterType {
   }
 
   get gender() {
-    return this.name.includes("woman") ? "woman" : "man";
+    return this.name.split("-")[1];
   }
 
   get genderlessName() {
-    return this.name.replace(`-${this.gender}`, "");
+    return this.name.split("-")[0];
   }
 
   static characterTypes = (speed, donkey) =>
-    characters.map((c) => new CharacterType({ ...c, speed, donkey }));
+    allCharacterTypes.map((c) => new CharacterType({ ...c, speed, donkey }));
 }

@@ -15,10 +15,20 @@ export default class RuleManager {
   resetNextRule() {
     this.lastRuleTime = Date.now();
     this.nextRule = undefined;
+    this.setNextRuleIfShould();
   }
 
   setNextRule() {
-    this.nextRule = this.pendingRules[0];
+    if (
+      this.chosenRules.length + this.declinedRules.length >
+      RuleManager.DELAYED_RULES_PERIOD
+    ) {
+      this.nextRule = this.pendingRules[0];
+    } else {
+      this.nextRule = this.pendingRules.filter(
+        (pendingRule) => !pendingRule.isDelayed
+      )[0];
+    }
   }
 
   setNextRuleIfShould() {
@@ -79,4 +89,5 @@ export default class RuleManager {
   };
   static RULE_BATCHES = [3, 4, 3, 3, 5];
   static RULES_DELAY = 5;
+  static DELAYED_RULES_PERIOD = 7;
 }

@@ -8,7 +8,6 @@ import Board from "./Board";
 import Menu from "./Menu";
 import RuleActions from "./RuleActions";
 import gameBackground from "../../images/gameBackground.png";
-import pillow from "../../images/icons/pillow.svg";
 
 export default function Game() {
   const { game } = useGame();
@@ -19,45 +18,38 @@ export default function Game() {
     if (game.status === "pending") navigate("/");
     else if (game.status === "over") navigate("/summary");
   }, [game.status, navigate]);
+
   if (game.status === "pending") return <></>;
+
   return (
-    <Stack alignItems="stretch">
-      <Stack alignItems="space-between" height="10vh">
-        <Menu />
-      </Stack>
+    <Stack
+      sx={{
+        height: 1,
+      }}
+    >
+      <Menu />
       <Stack
         sx={{
           backgroundImage: `url(${gameBackground})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "top",
+          backgroundSize: "contain"
         }}
       >
+        <RuleChoice rule={rule || {}} />
+        <Board />
         <Stack
+          alignItems="center"
+          justifyContent="center"
           sx={{
-            height: "20vh",
+            padding: "1rem",
+            marginTop: "1rem",
+            height: "5rem",
+            borderTop: '2px solid lightgray'
           }}
         >
-          <RuleChoice rule={rule || {}} />
+          {rule ? <RuleActions rule={rule} /> : ""}
         </Stack>
-        <Stack
-          sx={{
-            height: "50vh",
-          }}
-        >
-          <Board />
-        </Stack>
-      </Stack>
-      <Stack
-        sx={{
-          height: "10vh",
-        }}
-      >
-        <img src={pillow} alt="" height="45rem" />
-      </Stack>
-      <Stack
-        sx={{
-          height: "10vh",
-        }}
-      >
-        {rule ? <RuleActions rule={rule} /> : ""}
       </Stack>
     </Stack>
   );

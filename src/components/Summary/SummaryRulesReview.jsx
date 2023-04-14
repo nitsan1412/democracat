@@ -1,51 +1,109 @@
 import Stack from "@mui/material/Stack";
 import Slider from "react-slick";
-import Typography from "@mui/material/Typography";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGame } from "../../helpers/GameContext";
 import Rule from "../Game/Rule";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function SummaryRulesReview() {
   const { game } = useGame();
 
+  if (game.ruleManager.chosenRules.length === 0)  return ''
+
+  const PrevArrow = ({ className, style, onClick }) => (
+    <div
+      style={{
+        background: "#474747",
+        borderRadius: "100%",
+        width: 35,
+        height: 35,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: "-1rem"
+      }}
+      {...{ className, onClick }}
+    >
+      <ArrowBackIcon sx={{ color: "white" }} />
+    </div>
+  );
+
+  const NextArrow = ({ className, style, onClick }) => (
+    <div
+      style={{
+        background: "#474747",
+        borderRadius: "100%",
+        width: 35,
+        height: 35,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: "-1rem"
+      }}
+      {...{ className, onClick }}
+    >
+      <ArrowForwardIcon sx={{ color: "white" }} />
+    </div>
+  );
+
   return (
     <Stack
-      alignItems="center"
-      justifyContent="center"
-      maxWidth="250px"
       sx={{
-        ".slick-initialized": {
-          direction: "row",
-          justifyContent: "center",
-          alignContent: "center",
-        },
+        width: "100%",
         ".slick-list": {
-          width: 250,
-          direction: "column",
-          alignContent: "center",
-          height: "12rem",
-          margin: "1rem -2rem",
+          width: "calc(100% + 2rem)",
+          margin: "1.5rem 0",
         },
-        ".css-1qgzj37-MuiStack-root .slick-track": {
-          maxWidth: 230,
-          height: "13rem",
-          transform: "translate3d(0px, 0px, 0px)",
+        ".slick-slide": {
+          padding: "0.5rem",
+          ".MuiStack-root": {
+            height: "15rem" // Change here in case rule is too big for the paper
+          }
         },
         ".slick-dots": {
+          position: "relative",
           bottom: 0,
+          display: "flex !important",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+          width: "100%",
+          "> *": {
+            width: "unset",
+            margin: 0
+          }
+        },
+        ".slick-prev": {
+          left: 0,
+          zIndex: 1,
+          "::before": { content: "unset" },
+        },
+        ".slick-next": {
+          right: 0,
+          zIndex: 1,
+          "::before": { content: "unset" },
         },
       }}
     >
-      <Typography variant="h5">
-        {game.ruleManager.chosenRules.length} :חוקים שעברו
-      </Typography>
       <Slider
         slidesToShow={1}
         slidesToScroll={1}
-        dots={true}
-        swipeToSlide={true}
+        dots
+        swipeToSlide
+        prevArrow={<PrevArrow />}
+        nextArrow={<NextArrow />}
       >
         {game.ruleManager.chosenRules.map((rule, ruleIndex) => (
-          <Rule key={ruleIndex} rule={rule} inSummary />
+          <Rule
+            key={ruleIndex}
+            rule={rule}
+            showImpact
+            overTitle={`${ruleIndex+1}/${game.ruleManager.chosenRules.length} חוקים שעברו`}
+            sx={{
+              width: "calc(100% - 2rem)"
+            }}
+          />
         ))}
       </Slider>
     </Stack>
