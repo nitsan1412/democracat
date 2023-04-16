@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+
 import { useGame } from "../../helpers/GameContext";
+import { useNavigate } from "../../helpers/SmartNavigate";
 import ShareButton from "./Share";
 import SummaryHeader from "./SummaryHeader";
 import EndScore from "./EndScore";
@@ -19,9 +20,11 @@ export default function GameSummary() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (game.status === "pending") navigate("/");
+    if (game.status === "pending") navigate("/", true);
   }, [game.status, navigate]);
-  if (game.status === "pending") return <></>;
+
+  if (!game || game.status === "pending") return <></>;
+
   return (
     <Stack
       sx={{
@@ -95,7 +98,7 @@ export default function GameSummary() {
           }}
           onClick={() => {
             start();
-            navigate("/regame");
+            navigate("/regame", true);
           }}
         >
           <img src={restartGameArrow} alt="" width="15px" height="15px" />

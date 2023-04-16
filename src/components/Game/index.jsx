@@ -1,7 +1,4 @@
 import { useEffect } from "react";
-import { useGame } from "../../helpers/GameContext";
-import { useNavigate } from "react-router-dom";
-
 import Stack from "@mui/material/Stack";
 import RuleChoice from "./RuleChoice";
 import Board from "./Board";
@@ -9,17 +6,20 @@ import Menu from "./Menu";
 import RuleActions from "./RuleActions";
 import gameBackground from "../../images/gameBackground.png";
 
+import { useNavigate } from "../../helpers/SmartNavigate";
+import { useGame } from "../../helpers/GameContext";
+
 export default function Game() {
   const { game } = useGame();
   const navigate = useNavigate();
-  const rule = game.ruleManager.nextRule;
+  const rule = game?.ruleManager?.nextRule;
 
   useEffect(() => {
-    if (game.status === "pending") navigate("/");
-    else if (game.status === "over") navigate("/summary");
-  }, [game.status, navigate]);
+    if (!game || game.status === "pending") navigate("/", true);
+    else if (game.status === "over") navigate("/summary", true);
+  }, [game, game.status, navigate]);
 
-  if (game.status === "pending") return <></>;
+  if (!game || game.status === "pending") return <></>;
 
   return (
     <Stack
