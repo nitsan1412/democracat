@@ -29,27 +29,22 @@ export default class Character {
     const gender = Character.rullete(characterGenderPercentages);
 
     return new Character({
-      type: characterTypes.find(
-        (item) => item.name === `${type}-${gender}`
-      ),
+      type: characterTypes.find((item) => item.name === `${type}-${gender}`),
     });
   }
 
-  static rullete (percentages) {
+  static rullete(percentages) {
     let rulletePointer =
-      Math.random() *
-      Object.values(percentages).reduce((sum, x) => sum + x, 0);
-    return Object.keys(percentages).find(
-      (option) => {
-        const precetage = percentages[option];
-        if (rulletePointer <= precetage) {
-          return true;
-        } else {
-          rulletePointer = rulletePointer - precetage;
-          return false;
-        }
+      Math.random() * Object.values(percentages).reduce((sum, x) => sum + x, 0);
+    return Object.keys(percentages).find((option) => {
+      const precetage = percentages[option];
+      if (rulletePointer <= precetage) {
+        return true;
+      } else {
+        rulletePointer = rulletePointer - precetage;
+        return false;
       }
-    );
+    });
   }
 
   static CHARACTER_TYPE_PRECENTAGES = {
@@ -62,6 +57,6 @@ export default class Character {
   static CHARACTER_GENDER_PRECENTAGES = {
     man: 45,
     woman: 45,
-    lgbt: 10
+    lgbt: 10,
   };
 }
