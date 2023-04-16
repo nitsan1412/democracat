@@ -111,5 +111,5 @@ export default class Game {
   static STEP = 0.1;
   static DURATION = 2.5 * 60;
   static TRACK_END = 100;
-  static INITIAL_SPEED = 120;
+  static INITIAL_SPEED = 1;
 }
