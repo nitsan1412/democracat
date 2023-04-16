@@ -1,11 +1,20 @@
 import { DateTime } from "luxon";
 import Character from "./Character";
-export default class ScoreManager {
-  calculateScore(charactersDoneArray) {
+import CharacterType from "./CharacterType";
+import { SummayText } from "../contracts/SummayText";
+
+export class ScoreManager {
+  calculateScore(charactersDoneArray: Character[]): number {
     return charactersDoneArray ? charactersDoneArray.length : 0;
   }
 
-  calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
+  calculateBonusScore(
+    charactersDoneArray: Character[],
+    characterTypes: CharacterType[],
+    diversityTypes: {
+      [name: string]: number;
+    }
+  ) {
     if (charactersDoneArray.length === 0) return 0;
     const numberOfFinished = charactersDoneArray.length;
     let bonusScore =
@@ -45,12 +54,10 @@ export default class ScoreManager {
     return Math.max(bonusScore, 0);
   }
 
-  // static getFinishedGroupPrecentage()
-
-  static compairHighScore(newScore) {
-    const currentHighest = localStorage.getItem("highest-score");
+  static compairHighScore(newScore: number) {
+    const currentHighest = Number(localStorage.getItem("highest-score")) 
     if (!currentHighest) {
-      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
@@ -58,14 +65,18 @@ export default class ScoreManager {
     } else if (currentHighest < newScore) {
       localStorage.removeItem("highest-score");
       localStorage.removeItem("highest-score-dateTime");
-      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
       );
     }
   }
-  getSummaryText(numberOfChosenRules, score, bonusScore) {
+  getSummaryText(
+    numberOfChosenRules: number,
+    score: number,
+    bonusScore: number
+  ): SummayText | SummayText[] {
     if (numberOfChosenRules < 3) return ScoreManager.SUMMARY_TEXTS[0];
     let scoreIndex = ScoreManager.SUMMARY_TEXTS_SCORE_LIMIT.findIndex(
       (scoreLimit) => score <= scoreLimit

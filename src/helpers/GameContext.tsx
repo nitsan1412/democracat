@@ -1,9 +1,11 @@
 import { useState, createContext, useContext, useEffect } from "react";
-
+import React from "react";
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
-const GameContext = createContext();
+import { Rule } from "../logic/Rule";
+
+const GameContext = createContext(null);
 
 export const useGame = () => useContext(GameContext);
 
@@ -38,12 +40,12 @@ export function GameProvider({ children }) {
     setIntervalHandler(interval);
   };
 
-  const chooseRule = (rule) => {
+  const chooseRule = (rule: Rule) => {
     game.chooseRule(rule);
     forceUpdate();
   };
 
-  const declineRule = (rule) => {
+  const declineRule = (rule: Rule) => {
     game.ruleManager.declineRule(rule);
     forceUpdate();
   };
@@ -63,8 +65,7 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
-      }}
-    >
+      }}>
       {children}
     </GameContext.Provider>
   );

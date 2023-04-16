@@ -1,12 +1,24 @@
-import ScoreManager from "./ScoreManager";
+import { Rule } from "./Rule";
+import { ScoreManager } from "./ScoreManager";
+import { GameStatus, GameSummary } from "../contracts";
 import RuleManager from "./RuleManager";
 import CharacterManager from "./CharacterManager";
 
 export default class Game {
+  status: GameStatus;
+  gameSummary: GameSummary;
+  ruleManager: RuleManager;
+
+  private scoreManager: ScoreManager;
+  private startTime: number;
+  private pauseTime: number;
+  private paused: boolean;
+  private characterManager: CharacterManager;
+
   constructor(
-    speed = 1,
-    duration = Game.DURATION,
-    charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE
+    private speed = Game.INITIAL_SPEED,
+    private duration = Game.DURATION,
+    private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE
   ) {
     Object.assign(this, {
       speed,
@@ -37,8 +49,8 @@ export default class Game {
     }
   }
 
-  chooseRule(rule) {
-    this.ruleManager._setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
+  chooseRule(rule: Rule) {
+    this.ruleManager.setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
     this.characterManager.characters = rule.apply(
       this.characterManager.characters,
       this.characterManager.characterTypes
@@ -90,7 +102,7 @@ export default class Game {
     };
   }
 
-  static STATUS = {
+  static STATUS: { [key: string]: GameStatus } = {
     PENDING: "pending",
     RUNNING: "running",
     OVER: "over",

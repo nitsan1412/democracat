@@ -3,6 +3,9 @@ import CharacterType from "./CharacterType";
 import Character from "./Character";
 
 export default class CharacterManager {
+  characters: Character[];
+  characterTypes: CharacterType[];
+
   constructor(speed = 1) {
     this.characters = [];
     this.characterTypes = CharacterType.characterTypes(speed, false);
@@ -12,22 +15,22 @@ export default class CharacterManager {
     return Object.fromEntries(
       this.characterTypes.map((characterType) => [
         characterType.name,
-        this._getCharactersOfType(characterType),
+        this.getCharactersOfType(characterType),
       ])
     );
   }
 
-  get charactersByGenderlessType() {
+  private get charactersByGenderlessType() {
     const genderlessCharacterTypeNames = this.characterTypes
       .map((type) => type.genderlessName)
       .filter((type, index, arr) => arr.indexOf(type) === index); // unique
 
     return Object.fromEntries(
       genderlessCharacterTypeNames.map((genderlessCharacterTypeName) => {
-        const men = this._getCharactersOfType(
+        const men = this.getCharactersOfType(
           `${genderlessCharacterTypeName}-man`
         );
-        const women = this._getCharactersOfType(
+        const women = this.getCharactersOfType(
           `${genderlessCharacterTypeName}-woman`
         );
         return [genderlessCharacterTypeName, men.concat(women)];
@@ -41,7 +44,7 @@ export default class CharacterManager {
       .forEach((charcter) => charcter.move(Game.STEP));
   }
 
-  createCharacterWithProbability(charachterAdditionChance) {
+  createCharacterWithProbability(charachterAdditionChance: number) {
     if (Math.random() <= charachterAdditionChance) {
       this.characters.push(
         Character.createCharacter(
@@ -75,7 +78,7 @@ export default class CharacterManager {
     return diversityMap;
   }
 
-  _getCharactersOfType(characterType) {
+  private getCharactersOfType(characterType: string | CharacterType) {
     if (characterType.constructor === String) {
       characterType = this.characterTypes.find(
         (type) => type.name === characterType
