@@ -24,7 +24,7 @@ export default function RuleImpact({ rule }) {
       justifyContent="center"
       alignItems="center"
       flexWrap="wrap"
-      minHeight="100%"
+      // minHeight="100%"
     >
       {impactedCharacterTypes.map(({ characterType, impact }) =>
         !impact ? (
@@ -53,8 +53,16 @@ export default function RuleImpact({ rule }) {
               characterType={characterType}
               sx={
                 impactedCharacterTypes.length < 5
-                  ? { height: "42px", width: "40px" }
-                  : { height: "35px", width: "33px" }
+                  ? {
+                      height: "42px",
+                      width: "40px",
+                      minHeight: "0rem !important",
+                    }
+                  : {
+                      height: "35px",
+                      width: "33px",
+                      minHeight: "0rem !important",
+                    }
               }
             />
           </Badge>
