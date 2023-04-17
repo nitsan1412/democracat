@@ -9,7 +9,7 @@ export class Rule {
     public name: string,
     public info: string,
     private impact: Impact,
-    public isDelayed: boolean,
+    public isDelayed: boolean | undefined,
     apply: Applier
   ) {
     this.apply = apply || this.apply;
@@ -27,7 +27,7 @@ export class Rule {
 
   static initApplier(
     apply: ApplyDetails
-  ): (characters: Character[], characterTypes: CharacterType[]) => Character[] | null  {
+  ): (characters: Character[], characterTypes: CharacterType[]) => Character[] | null | undefined  {
     if (!apply) {
       return null;
     }

@@ -11,7 +11,7 @@ import EndScore from "./EndScore";
 import SummaryReview from "./SummaryReview";
 import SummaryRulesReview from "./SummaryRulesReview";
 import restartGameArrow from "../../images/icons/restartGameArrow.svg";
-import homeBackground from "../../images/homeBackground.png";
+import gameBackground from "../../images/gameBackground.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -37,7 +37,7 @@ export default function GameSummary() {
           height: "calc(100% - 6rem)",
           overflowX: "hidden",
           overflowY: "auto",
-          backgroundImage: `url(${homeBackground})`,
+          backgroundImage: `url(${gameBackground})`,
           backgroundPosition: "bottom",
         }}
       >
