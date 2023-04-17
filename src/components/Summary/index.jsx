@@ -28,7 +28,7 @@ export default function GameSummary() {
   return (
     <Stack
       sx={{
-        height: "100%"
+        height: "100%",
       }}
     >
       <Box
@@ -71,7 +71,7 @@ export default function GameSummary() {
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "white",
-          borderTop: '2px solid lightgray'
+          borderTop: "2px solid lightgray",
         }}
       >
         <ShareButton
@@ -81,7 +81,7 @@ export default function GameSummary() {
             height: "2.7rem",
             padding: "0.5rem 1rem",
             boxShadow: "none",
-            flex: 1
+            flex: 1,
           }}
         />
         <Stack
@@ -126,5 +126,5 @@ const boxStyle = {
   justifyContent: "center",
   borderRadius: "25px",
   backgroundColor: "#FFFFFF",
-  boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.25)"
+  boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.25)",
 };

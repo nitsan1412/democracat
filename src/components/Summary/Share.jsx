@@ -29,7 +29,9 @@ export default function Share(props) {
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
   const url = `${document.location.toString().split("/summary")[0]}/share`;
-  const text = `${game.gameSummary.endGameText.firstLine},
+  const text = `מיציטופיה - למען פלורליזם חברתי ${
+    game.gameSummary.endGameText.firstLine
+  },
 ${game.gameSummary.endGameText.secondLine}.
 ניקוד: ${game.gameSummary.bonusScore + game.gameSummary.score}.
 `;
@@ -57,9 +59,11 @@ ${game.gameSummary.endGameText.secondLine}.
         שתפו חברים
       </Button>
       <Dialog fullWidth open={open} onClose={() => setOpen(false)}>
-       <DialogTitle>
-          <Typography variant="h4" sx={{ textAlign: "center" }}>שיתוף</Typography>
-       </DialogTitle>
+        <DialogTitle>
+          <Typography variant="h4" sx={{ textAlign: "center" }}>
+            שיתוף
+          </Typography>
+        </DialogTitle>
         <DialogContent>
           <Stack direction="row" justifyContent="space-evenly">
             <FacebookShareButton url={url} quote={text}>

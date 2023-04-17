@@ -1,6 +1,5 @@
 import { DateTime } from "luxon";
 import Character from "./Character";
-import CharacterType from "./CharacterType";
 import { SummayText } from "../contracts/SummayText";
 
 export class ScoreManager {
@@ -8,13 +7,7 @@ export class ScoreManager {
     return charactersDoneArray ? charactersDoneArray.length : 0;
   }
 
-  calculateBonusScore(
-    charactersDoneArray: Character[],
-    characterTypes: CharacterType[],
-    diversityTypes: {
-      [name: string]: number;
-    }
-  ) {
+  calculateBonusScore(charactersDoneArray: Character[]) {
     if (charactersDoneArray.length === 0) return 0;
     const numberOfFinished = charactersDoneArray.length;
     let bonusScore =
@@ -50,7 +43,6 @@ export class ScoreManager {
       );
       bonusScore -= (PrecentageDifference / 100) * numberOfFinished;
     });
-    ScoreManager.compairHighScore(bonusScore + numberOfFinished);
     return Math.max(Math.round(bonusScore), 0);
   }
 
@@ -62,13 +54,15 @@ export class ScoreManager {
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
       );
+      return true
     } else if (currentHighest < newScore) {
       localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
       );
-    }
+      return true
+    } else return false
   }
   getSummaryText(
     numberOfChosenRules: number,

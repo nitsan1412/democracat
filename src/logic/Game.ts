@@ -90,20 +90,18 @@ export default class Game {
     const score = this.scoreManager.calculateScore(
       this.characterManager.charactersDone()
     );
-    const bonusScore = this.scoreManager.calculateBonusScore(
-      this.characterManager.charactersDone(),
-      this.characterManager.characterTypes,
-      this.characterManager.diversityTypes()
-    );
+    const bonusScore = this.scoreManager.calculateBonusScore(this.characterManager.charactersDone());
     this.gameSummary = {
       score,
       bonusScore,
+      isHighScore: ScoreManager.compairHighScore(score + bonusScore),
       endGameText: this.scoreManager.getSummaryText(
         this.ruleManager.chosenRules.length,
         score,
-        bonusScore
-      ),
+        bonusScore,
+        ),
     };
+
   }
 
   static STATUS: { [key: string]: GameStatus } = {
