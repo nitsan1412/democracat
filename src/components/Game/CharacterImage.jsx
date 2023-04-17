@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import ArabMan from "../../images/cats/arab-man.svg";
 import OrthodoxMan from "../../images/cats/orthodox-man.svg";
 import ReligiousMan from "../../images/cats/religious-man.svg";
@@ -25,7 +25,7 @@ import SecularWomanMuted from "../../images/cats/secular-woman-muted.svg";
 // import SecularLGBTMuted from "../../images/cats/secular-lgbt-muted.svg";
 export default function CharacterImage({ characterType, sx, ...props }) {
   return (
-    <Box
+    <Stack
       sx={{
         ...sx,
         backgroundImage: `url(${IMAGES[characterType]})`,
@@ -33,7 +33,7 @@ export default function CharacterImage({ characterType, sx, ...props }) {
         backgroundSize: "contain",
       }}
       {...props}
-    />
+    ></Stack>
   );
 }
 

@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -8,7 +7,7 @@ import RuleImpact from "./RuleImpact";
 export default function RuleSelectedModal(props) {
   const { game } = useGame();
   return (
-    <Box sx={style}>
+    <Stack sx={style}>
       <Stack direction="row" alignItems="center" justifyContent="center">
         <Typography
           id="modal-modal-title"
@@ -83,7 +82,7 @@ export default function RuleSelectedModal(props) {
           {props.rule.info || ""}
         </Typography>
       </Stack>
-    </Box>
+    </Stack>
   );
 }
 const style = {

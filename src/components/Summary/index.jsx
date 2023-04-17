@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
@@ -28,17 +27,15 @@ export default function GameSummary() {
   return (
     <Stack
       sx={{
-        height: "100%",
+        height: 1,
       }}
     >
-      <Box
+      <Stack
         sx={{
-          padding: "1rem",
-          height: "calc(100% - 6rem)",
-          overflowX: "hidden",
-          overflowY: "auto",
           backgroundImage: `url(${gameBackground})`,
-          backgroundPosition: "bottom",
+          backgroundPosition: "top",
+          backgroundSize: "contain",
+          backgroundBlendMode: "lighten",
         }}
       >
         <SummaryHeader />
@@ -58,7 +55,7 @@ export default function GameSummary() {
           </Stack>
           <SummaryRulesReview />
         </Stack>
-      </Box>
+      </Stack>
       <Stack
         gap={2}
         sx={{

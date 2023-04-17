@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
-import endGame from "../../images/animations/endGame.gif";
-import newRecord from "../../images/animations/newRecord.gif";
+import endGame from "../../images/animations/endGameGif.gif";
+import newRecord from "../../images/animations/newRecordGif.gif";
 import { useGame } from "../../helpers/GameContext";
 
 export default function SummaryHeader() {
@@ -11,20 +11,19 @@ export default function SummaryHeader() {
       variant="body1"
       sx={{
         backgroundImage: `url(${
-          game.scoreManager.isHighScore ? newRecord : endGame
+          game.gameSummary.isHighScore ? newRecord : endGame
         })`,
-        backgroundRepeat: "round",
+        backgroundRepeat: "none",
         backgroundPosition: "center",
         margin: "0 1rem",
         width: "calc(100% - 2rem)",
         textAlign: "center",
-        fontSize: "1.6rem",
-        fontWeight: 700,
+        fontSize: "3.1rem",
         color: "#FC68B4",
         padding: "1rem 0rem",
       }}
     >
-      סיימת את המשחק!
+      {game.gameSummary.isHighScore ? "שברת שיא!" : "סיימת את המשחק"}
     </Typography>
   );
 }
