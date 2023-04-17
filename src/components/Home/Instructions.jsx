@@ -15,9 +15,10 @@ import "slick-carousel/slick/slick-theme.css";
 import StartGameButton from "../StartGameButton";
 
 import catKing from "../../images/icons/instructions/catKing.svg";
-import catIcons from "../../images/icons/instructions/catIcons.svg";
+// import catIcons from "../../images/icons/instructions/catIcons.svg";
 import approveButton from "../../images/icons/instructions/approveButton.svg";
 import declineButton from "../../images/icons/instructions/declineButton.svg";
+import fiveCatsInInstructions from "../../images/icons/instructions/fiveCatsInInstructions.svg";
 
 export default function Instructions(props) {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ export default function Instructions(props) {
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
         מה המטרה?
       </Typography>
-      <img src={catIcons} alt="cat icons" />
+      <img src={fiveCatsInInstructions} alt="sector cats" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         לפניכם 4 סוגי חתולים שרצים אל כרית הצמר, כל סוג חתול <b>מייצג חלק</b>{" "}
         מחברת החתולים
