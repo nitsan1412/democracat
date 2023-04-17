@@ -1,10 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Chip } from "@mui/material";
 import Timer from "./Timer";
 import Score from "./Score";
 import backArrow from "../../images/icons/backArrow.svg";
+
+import { useNavigate } from "../../helpers/SmartNavigate";
 
 export default function Menu() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function Menu() {
         direction="row"
         gap={1}
         onClick={() => {
-          navigate("/");
+          navigate("/", true);
         }}
       >
         <img src={backArrow} alt="" />
