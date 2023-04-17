@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
 
 import { useForceUpdate } from "./ForceUpdate";
-import Game from "../logic/Game";
+import Game  from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
 import { Rule } from "../logic/Rule";
 
@@ -11,7 +11,7 @@ export const useGame = () => useContext(GameContext);
 
 export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
-  const [game, setGame] = useState<any>(new Game());
+  const [game, setGame] = useState<any>(new Game(Boolean(localStorage.getItem("isGameMuted") || false)));
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
   const searchParams = new URLSearchParams(window.location.search);
 
@@ -40,6 +40,11 @@ export function GameProvider({ children }) {
     forceUpdate();
   };
 
+  const changeGameSounds=()=>{
+    localStorage.setItem("isGameMuted", String(!game.isGameMuted));
+    game.isGameMuted = !game.isGameMuted
+  }
+
   const cancel = () => {
     clearInterval(intervalHandler);
     setIntervalHandler(undefined);
@@ -49,6 +54,7 @@ export function GameProvider({ children }) {
 
   const getGameFromURL = () => {
     return new Game(
+      Boolean(localStorage.getItem("isGameMuted")),
       Number(searchParams.get("speed") || Game.INITIAL_SPEED),
       Number(searchParams.get("duration") || Game.DURATION),
       Number(searchParams.get("charachterAdditionChance") || CharacterManager.CHARACTER_ADDITION_CHANCE)
@@ -63,6 +69,7 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
+        changeGameSounds
       }}>
       {children}
     </GameContext.Provider>

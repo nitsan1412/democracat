@@ -1,1 +1,1 @@
-export type ApplierType = "Donkey" | "Average-Location" | "Reset" | "Disable";
+export type ApplierType = "Muted" | "Average-Location" | "Reset" | "Disable";

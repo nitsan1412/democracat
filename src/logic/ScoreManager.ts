@@ -63,8 +63,6 @@ export class ScoreManager {
         DateTime.now().toFormat("dd.MM.yyyy")
       );
     } else if (currentHighest < newScore) {
-      localStorage.removeItem("highest-score");
-      localStorage.removeItem("highest-score-dateTime");
       localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",

@@ -16,11 +16,13 @@ export default class Game {
   private characterManager: CharacterManager;
 
   constructor(
+    private isGameMuted = false,
     private speed = Game.INITIAL_SPEED,
     private duration = Game.DURATION,
-    private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE
+    private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE,
   ) {
     Object.assign(this, {
+      isGameMuted,
       speed,
       duration,
       charachterAdditionChance,
@@ -109,7 +111,7 @@ export default class Game {
   };
 
   static STEP = 0.1;
-  static DURATION = 2.5 * 60;
+  static DURATION = 2 * 60;
   static TRACK_END = 100;
   static INITIAL_SPEED = 1;
 }

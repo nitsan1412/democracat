@@ -27,15 +27,15 @@ export class Rule {
 
   static initApplier(
     apply: ApplyDetails
-  ): (characters: Character[], characterTypes: CharacterType[]) => Character[] {
+  ): (characters: Character[], characterTypes: CharacterType[]) => Character[]  {
     if (!apply) {
       return null;
     }
     switch (apply.type) {
-      case "Donkey":
+      case "Muted":
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) =>
-            characterType.changeImage("donkey")
+            characterType.changeImage("muted")
           );
           return characters;
         };
@@ -60,7 +60,7 @@ export class Rule {
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) => {
             characterType.resetSpeed();
-            if (characterType.donkey) {
+            if (characterType.muted) {
               characterType.changeImage(characterType.name);
             }
           });

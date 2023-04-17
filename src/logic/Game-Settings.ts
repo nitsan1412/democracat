@@ -4,8 +4,8 @@ export const rules: RuleDetails[] = [
   {
     name: "חוק תקשורת",
     info: "יללות אסורות בכל שעות היום והלילה.",
-    impact: { donkey: 1 },
-    apply: { type: "Donkey" },
+    impact: { muted: 1 },
+    apply: { type: "Muted" },
     isDelayed: true,
   },
   {

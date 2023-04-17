@@ -9,7 +9,7 @@ export default class CharacterType {
     private translation: string,
     private initialScore = 0,
     private initialSpeed = 1,
-    public donkey = false
+    public muted = false
   ) {
     this.speed = initialSpeed;
   }
@@ -23,8 +23,8 @@ export default class CharacterType {
   }
 
   changeImage(newImage: string) {
-    if (newImage === "donkey") this.donkey = true;
-    else this.donkey = false;
+    if (newImage === "muted") this.muted = true;
+    else this.muted = false;
   }
 
   get gender() {
@@ -35,8 +35,8 @@ export default class CharacterType {
     return this.name.split("-")[0];
   }
 
-  static characterTypes = (speed: number, donkey: boolean) =>
+  static characterTypes = (speed: number, muted: boolean) =>
     allCharacterTypes.map(
-      (c) => new CharacterType(c.name, c.translation, 0, speed, donkey)
+      (c) => new CharacterType(c.name, c.translation, 0, speed, muted)
     );
 }
