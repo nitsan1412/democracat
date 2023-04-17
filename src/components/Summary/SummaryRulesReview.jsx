@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 export default function SummaryRulesReview() {
   const { game } = useGame();
 
-  if (game.ruleManager.chosenRules.length === 0)  return ''
+  if (game.ruleManager.chosenRules.length === 0) return "";
 
   const PrevArrow = ({ className, style, onClick }) => (
     <div
@@ -22,7 +22,7 @@ export default function SummaryRulesReview() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        marginLeft: "-1rem"
+        marginLeft: "-1rem",
       }}
       {...{ className, onClick }}
     >
@@ -40,7 +40,7 @@ export default function SummaryRulesReview() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        marginRight: "-1rem"
+        marginRight: "-1rem",
       }}
       {...{ className, onClick }}
     >
@@ -54,13 +54,13 @@ export default function SummaryRulesReview() {
         width: "100%",
         ".slick-list": {
           width: "calc(100% + 2rem)",
-          margin: "1.5rem 0",
+          margin: "1.5rem 0, 0, 0",
         },
         ".slick-slide": {
           padding: "0.5rem",
           ".MuiStack-root": {
-            height: "15rem" // Change here in case rule is too big for the paper
-          }
+            minHeight: "8rem", // Change here in case rule is too big for the paper
+          },
         },
         ".slick-dots": {
           position: "relative",
@@ -71,8 +71,8 @@ export default function SummaryRulesReview() {
           width: "100%",
           "> *": {
             width: "unset",
-            margin: 0
-          }
+            margin: 0,
+          },
         },
         ".slick-prev": {
           left: 0,
@@ -99,9 +99,11 @@ export default function SummaryRulesReview() {
             key={ruleIndex}
             rule={rule}
             showImpact
-            overTitle={`${ruleIndex+1}/${game.ruleManager.chosenRules.length} חוקים שעברו`}
+            overTitle={`${ruleIndex + 1}/${
+              game.ruleManager.chosenRules.length
+            } חוקים שעברו`}
             sx={{
-              width: "calc(100% - 2rem)"
+              width: "calc(100% - 2rem)",
             }}
           />
         ))}
