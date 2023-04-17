@@ -1,5 +1,5 @@
-import { useState, createContext, useContext, useEffect } from "react";
-import React from "react";
+import React, { useState, createContext, useContext } from "react";
+
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
@@ -11,24 +11,15 @@ export const useGame = () => useContext(GameContext);
 
 export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
-  const [game, setGame] = useState(new Game());
+  const [game, setGame] = useState<any>(new Game());
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
-
-  useEffect(() => {
-    const params = new URLSearchParams(document.location.search);
-    const speed = Number(params.get("speed") || 1);
-    const duration = Number(params.get("duration") || Game.DURATION);
-    const charachterAdditionChance = Number(
-      params.get("charachter-addition-chance") ||
-        CharacterManager.CHARACTER_ADDITION_CHANCE
-    );
-    setGame(new Game(speed, duration, charachterAdditionChance));
-  }, []);
+  const searchParams = new URLSearchParams(window.location.search);
 
   const start = () => {
-    const game = new Game();
+    const game = getGameFromURL();
     setGame(game);
     game.start();
+
     const interval = setInterval(() => {
       game.step();
       forceUpdate();
@@ -52,8 +43,16 @@ export function GameProvider({ children }) {
   const cancel = () => {
     clearInterval(intervalHandler);
     setIntervalHandler(undefined);
-    setGame(new Game());
+    setGame(undefined);
     forceUpdate();
+  };
+
+  const getGameFromURL = () => {
+    return new Game(
+      Number(searchParams.get("speed") || Game.INITIAL_SPEED),
+      Number(searchParams.get("duration") || Game.DURATION),
+      Number(searchParams.get("charachterAdditionChance") || CharacterManager.CHARACTER_ADDITION_CHANCE)
+    );
   };
 
   return (
