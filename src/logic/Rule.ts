@@ -27,7 +27,7 @@ export class Rule {
 
   static initApplier(
     apply: ApplyDetails
-  ): (characters: Character[], characterTypes: CharacterType[]) => Character[]  {
+  ): (characters: Character[], characterTypes: CharacterType[]) => Character[] | null  {
     if (!apply) {
       return null;
     }
@@ -83,6 +83,7 @@ export class Rule {
       default:
         console.error("Got unsupported apply", apply);
     }
+    return null
   }
 
   static RULES = rules.map((r) => {

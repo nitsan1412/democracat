@@ -11,7 +11,7 @@ export const useGame = () => useContext(GameContext);
 
 export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
-  const [game, setGame] = useState<any>(new Game(Boolean(localStorage.getItem("isGameMuted") || false)));
+  const [game, setGame] = useState<any>(new Game());
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
   const searchParams = new URLSearchParams(window.location.search);
 
@@ -54,7 +54,6 @@ export function GameProvider({ children }) {
 
   const getGameFromURL = () => {
     return new Game(
-      Boolean(localStorage.getItem("isGameMuted")),
       Number(searchParams.get("speed") || Game.INITIAL_SPEED),
       Number(searchParams.get("duration") || Game.DURATION),
       Number(searchParams.get("charachterAdditionChance") || CharacterManager.CHARACTER_ADDITION_CHANCE)

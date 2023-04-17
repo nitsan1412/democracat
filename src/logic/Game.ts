@@ -11,22 +11,22 @@ export default class Game {
 
   private scoreManager: ScoreManager;
   private startTime: number;
+  private isGameMuted : boolean;
   private pauseTime: number;
   private paused: boolean;
   private characterManager: CharacterManager;
 
   constructor(
-    private isGameMuted = false,
     private speed = Game.INITIAL_SPEED,
     private duration = Game.DURATION,
     private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE,
   ) {
     Object.assign(this, {
-      isGameMuted,
       speed,
       duration,
       charachterAdditionChance,
       status: Game.STATUS.PENDING,
+      isGameMuted: localStorage.getItem("isGameMuted")==="true" ? true : false,
     });
   }
 
@@ -37,6 +37,8 @@ export default class Game {
     this.paused = false;
     this.status = Game.STATUS.RUNNING;
     this.startTime = Date.now();
+    this.isGameMuted =  localStorage.getItem("isGameMuted")==="true" ? true : false
+
   }
 
   step() {
