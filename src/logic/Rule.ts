@@ -1,15 +1,21 @@
+import { Applier, ApplyDetails, Impact } from "../contracts";
+import Character from "./Character";
+import CharacterType from "./CharacterType";
 import Game from "./Game";
 import { rules } from "./Game-Settings";
 
-export default class Rule {
-  constructor({ name, impact, info, isDelayed, apply }) {
-    Object.assign(this, { name, impact, info, isDelayed });
-    if (apply) {
-      this.apply = apply;
-    }
+export class Rule {
+  constructor(
+    public name: string,
+    public info: string,
+    private impact: Impact,
+    public isDelayed: boolean | undefined,
+    apply: Applier
+  ) {
+    this.apply = apply || this.apply;
   }
 
-  apply(characters, characterTypes) {
+  apply(characters: Character[], characterTypes: CharacterType[]) {
     Object.entries(this.impact).forEach(([filter, speedChange]) => {
       characterTypes
         .filter((characterType) => characterType.name.includes(filter))
@@ -19,19 +25,21 @@ export default class Rule {
     return characters;
   }
 
-  static initApplier(apply) {
+  static initApplier(
+    apply: ApplyDetails
+  ): (characters: Character[], characterTypes: CharacterType[]) => Character[] | null | undefined  {
     if (!apply) {
-      return;
+      return null;
     }
     switch (apply.type) {
-      case "donkey":
+      case "Muted":
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) =>
-            characterType.changeImage("donkey")
+            characterType.changeImage("muted")
           );
           return characters;
         };
-      case "average-loc":
+      case "Average-Location":
         return (characters) => {
           const onBoardCharacters = characters.filter(
             (character) =>
@@ -48,17 +56,17 @@ export default class Rule {
           });
           return characters;
         };
-      case "reset":
+      case "Reset":
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) => {
             characterType.resetSpeed();
-            if (characterType.donkey) {
+            if (characterType.muted) {
               characterType.changeImage(characterType.name);
             }
           });
           return characters;
         };
-      case "disable":
+      case "Disable":
         return (characters, characterTypes) => {
           const types = apply.args || [];
           characterTypes
@@ -75,11 +83,12 @@ export default class Rule {
       default:
         console.error("Got unsupported apply", apply);
     }
+    return null
   }
 
   static RULES = rules.map((r) => {
     const { name, impact, info, isDelayed, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule({ name, impact, info, isDelayed, apply });
+    return new Rule(name, info, impact, isDelayed, apply);
   });
 }

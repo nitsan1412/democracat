@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+
 import { useGame } from "../../helpers/GameContext";
+import { useNavigate } from "../../helpers/SmartNavigate";
 import ShareButton from "./Share";
 import SummaryHeader from "./SummaryHeader";
 import EndScore from "./EndScore";
 import SummaryReview from "./SummaryReview";
 import SummaryRulesReview from "./SummaryRulesReview";
 import restartGameArrow from "../../images/icons/restartGameArrow.svg";
-import homeBackground from "../../images/homeBackground.png";
+import gameBackground from "../../images/gameBackground.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -19,23 +19,23 @@ export default function GameSummary() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (game.status === "pending") navigate("/");
+    if (game.status === "pending") navigate("/", true);
   }, [game.status, navigate]);
-  if (game.status === "pending") return <></>;
+
+  if (!game || game.status === "pending") return <></>;
+
   return (
     <Stack
       sx={{
-        height: "100%"
+        height: 1,
       }}
     >
-      <Box
+      <Stack
         sx={{
-          padding: "1rem",
-          height: "calc(100% - 6rem)",
-          overflowX: "hidden",
-          overflowY: "auto",
-          backgroundImage: `url(${homeBackground})`,
-          backgroundPosition: "bottom",
+          backgroundImage: `url(${gameBackground})`,
+          backgroundPosition: "top",
+          backgroundSize: "contain",
+          backgroundBlendMode: "lighten",
         }}
       >
         <SummaryHeader />
@@ -55,7 +55,7 @@ export default function GameSummary() {
           </Stack>
           <SummaryRulesReview />
         </Stack>
-      </Box>
+      </Stack>
       <Stack
         gap={2}
         sx={{
@@ -68,7 +68,7 @@ export default function GameSummary() {
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "white",
-          borderTop: '2px solid lightgray'
+          borderTop: "2px solid lightgray",
         }}
       >
         <ShareButton
@@ -78,7 +78,7 @@ export default function GameSummary() {
             height: "2.7rem",
             padding: "0.5rem 1rem",
             boxShadow: "none",
-            flex: 1
+            flex: 1,
           }}
         />
         <Stack
@@ -95,7 +95,7 @@ export default function GameSummary() {
           }}
           onClick={() => {
             start();
-            navigate("/regame");
+            navigate("/regame", true);
           }}
         >
           <img src={restartGameArrow} alt="" width="15px" height="15px" />
@@ -123,5 +123,5 @@ const boxStyle = {
   justifyContent: "center",
   borderRadius: "25px",
   backgroundColor: "#FFFFFF",
-  boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.25)"
+  boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.25)",
 };

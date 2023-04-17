@@ -18,7 +18,7 @@ export default function Board() {
       {game.characterManager.charactersInPlay().map((character, index) => (
         <Character key={index} character={character} trackSize={80} />
       ))}
-      <img src={pillow} alt="" height="45rem" />
+      <img src={pillow} alt="" width="100%" />
     </Stack>
   );
 }

@@ -10,6 +10,7 @@ import RuleSelectedModal from "./RuleSelectedModal";
 export default function RuleActions(props) {
   const { game, declineRule, chooseRule } = useGame();
   const [openModal, setOpenModal] = useState(false);
+
   return (
     <Stack width={1} direction="row" justifyContent="space-evenly">
       <Stack
@@ -29,8 +30,16 @@ export default function RuleActions(props) {
           setOpenModal(true);
           game.pause();
           props.rule.name === "חוק תקשורת"
-            ? playSound("donkey")
-            : playSound("meow");
+            ? playSound(
+                "muted",
+                game.isGameMuted ||
+                  game.characterManager.characterTypes[0].muted
+              )
+            : playSound(
+                "meow",
+                game.isGameMuted ||
+                  game.characterManager.charactersInPlay()[0].type.muted
+              );
         }}
       >
         <CheckIcon

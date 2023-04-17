@@ -1,28 +1,44 @@
-import ScoreManager from "./ScoreManager";
+import { Rule } from "./Rule";
+import { ScoreManager } from "./ScoreManager";
+import { GameStatus, GameSummary } from "../contracts";
 import RuleManager from "./RuleManager";
 import CharacterManager from "./CharacterManager";
 
 export default class Game {
+  status: GameStatus;
+  gameSummary: GameSummary;
+  ruleManager: RuleManager;
+
+  private scoreManager: ScoreManager;
+  private startTime: number;
+  private isGameMuted : boolean;
+  private pauseTime: number;
+  private paused: boolean;
+  private characterManager: CharacterManager;
+
   constructor(
-    speed = 1,
-    duration = Game.DURATION,
-    charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE
+    private speed = Game.INITIAL_SPEED,
+    private duration = Game.DURATION,
+    private charachterAdditionChance = CharacterManager.CHARACTER_ADDITION_CHANCE,
   ) {
     Object.assign(this, {
       speed,
-      status: Game.STATUS.PENDING,
       duration,
       charachterAdditionChance,
+      status: Game.STATUS.PENDING,
+      isGameMuted: localStorage.getItem("isGameMuted")==="true" ? true : false,
     });
   }
 
   start() {
+    this.ruleManager = new RuleManager();
     this.characterManager = new CharacterManager(Game.INITIAL_SPEED);
     this.scoreManager = new ScoreManager();
+    this.paused = false;
     this.status = Game.STATUS.RUNNING;
     this.startTime = Date.now();
-    this.paused = false;
-    this.ruleManager = new RuleManager();
+    this.isGameMuted =  localStorage.getItem("isGameMuted")==="true" ? true : false
+
   }
 
   step() {
@@ -37,8 +53,8 @@ export default class Game {
     }
   }
 
-  chooseRule(rule) {
-    this.ruleManager._setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
+  chooseRule(rule: Rule) {
+    this.ruleManager.setRuleStatus(rule, RuleManager.RULE_STATUS.CHOSEN);
     this.characterManager.characters = rule.apply(
       this.characterManager.characters,
       this.characterManager.characterTypes
@@ -74,30 +90,28 @@ export default class Game {
     const score = this.scoreManager.calculateScore(
       this.characterManager.charactersDone()
     );
-    const bonusScore = this.scoreManager.calculateBonusScore(
-      this.characterManager.charactersDone(),
-      this.characterManager.characterTypes,
-      this.characterManager.diversityTypes()
-    );
+    const bonusScore = this.scoreManager.calculateBonusScore(this.characterManager.charactersDone());
     this.gameSummary = {
       score,
       bonusScore,
+      isHighScore: ScoreManager.compairHighScore(score + bonusScore),
       endGameText: this.scoreManager.getSummaryText(
         this.ruleManager.chosenRules.length,
         score,
-        bonusScore
-      ),
+        bonusScore,
+        ),
     };
+
   }
 
-  static STATUS = {
+  static STATUS: { [key: string]: GameStatus } = {
     PENDING: "pending",
     RUNNING: "running",
     OVER: "over",
   };
 
   static STEP = 0.1;
-  static DURATION = 2.5 * 60;
+  static DURATION = 2 * 60;
   static TRACK_END = 100;
-  static INITIAL_SPEED = 120;
+  static INITIAL_SPEED = 1;
 }

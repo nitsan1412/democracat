@@ -1,18 +1,20 @@
+import CharacterType from "./CharacterType";
+
 export default class Character {
-  constructor({ type, location = 0, currentScore = 0 }) {
-    Object.assign(this, {
-      type,
-      location,
-      currentScore,
-      xPosition: Math.random(),
-    });
+  xPosition: number;
+  constructor(
+    public type: CharacterType,
+    public location = 0,
+    private currentScore = 0
+  ) {
+    this.xPosition = Math.random();
   }
 
-  move(dt) {
+  move(dt: number) {
     this.location = Math.max(this.location + this.type.speed * dt, 0);
   }
 
-  static createCharacter(characterTypes) {
+  static createCharacter(characterTypes: CharacterType[]) {
     const characterTypePercentages = Object.fromEntries(
       Object.entries(Character.CHARACTER_TYPE_PRECENTAGES).filter(([key]) =>
         characterTypes.some((type) => type.name.includes(key))
@@ -28,28 +30,23 @@ export default class Character {
     const type = Character.rullete(characterTypePercentages);
     const gender = Character.rullete(characterGenderPercentages);
 
-    return new Character({
-      type: characterTypes.find(
-        (item) => item.name === `${type}-${gender}`
-      ),
-    });
+    return new Character(
+      characterTypes.find((item) => item.name === `${type}-${gender}`) || characterTypes[0]
+    );
   }
 
-  static rullete (percentages) {
+  static rullete(percentages: { [k: string]: number }) {
     let rulletePointer =
-      Math.random() *
-      Object.values(percentages).reduce((sum, x) => sum + x, 0);
-    return Object.keys(percentages).find(
-      (option) => {
-        const precetage = percentages[option];
-        if (rulletePointer <= precetage) {
-          return true;
-        } else {
-          rulletePointer = rulletePointer - precetage;
-          return false;
-        }
+      Math.random() * Object.values(percentages).reduce((sum, x) => sum + x, 0);
+    return Object.keys(percentages).find((option) => {
+      const precetage = percentages[option];
+      if (rulletePointer <= precetage) {
+        return true;
+      } else {
+        rulletePointer = rulletePointer - precetage;
+        return false;
       }
-    );
+    });
   }
 
   static CHARACTER_TYPE_PRECENTAGES = {
@@ -62,6 +59,6 @@ export default class Character {
   static CHARACTER_GENDER_PRECENTAGES = {
     man: 45,
     woman: 45,
-    lgbt: 10
+    lgbt: 10,
   };
 }

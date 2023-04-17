@@ -1,5 +1,6 @@
+import { CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import React from "react";
 
 const theme = createTheme({
   direction: "rtl",
@@ -38,7 +39,7 @@ const theme = createTheme({
       xl: 1536,
     },
   },
-});
+} as any);
 
 export default function Provider({ children }) {
   return (

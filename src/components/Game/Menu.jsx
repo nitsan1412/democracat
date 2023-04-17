@@ -1,16 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { useGame } from "../../helpers/GameContext";
-
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Chip } from "@mui/material";
 import Timer from "./Timer";
 import Score from "./Score";
 import backArrow from "../../images/icons/backArrow.svg";
+import soundOn from "../../images/icons/soundOn.svg";
+import soundOff from "../../images/icons/soundOff.svg";
 
+import { useNavigate } from "../../helpers/SmartNavigate";
+import { useGame } from "../../helpers/GameContext";
 export default function Menu() {
-  const { newGame } = useGame();
   const navigate = useNavigate();
+  const { game, changeGameSounds } = useGame();
 
   return (
     <Stack
@@ -28,8 +29,7 @@ export default function Menu() {
         direction="row"
         gap={1}
         onClick={() => {
-          newGame();
-          navigate("/");
+          navigate("/", true);
         }}
       >
         <img src={backArrow} alt="" />
@@ -40,6 +40,16 @@ export default function Menu() {
       <Stack direction="row" gap={1}>
         <Chip label={<Score />} variant="outlined" sx={Menu.styles.button} />
         <Chip label={<Timer />} variant="outlined" sx={Menu.styles.button} />
+      </Stack>
+      <Stack
+        onClick={() => {
+          changeGameSounds();
+        }}
+      >
+        <img
+          src={game.isGameMuted ? soundOff : soundOn}
+          alt={game.isGameMuted ? "הפעל קול" : "השתק"}
+        />
       </Stack>
     </Stack>
   );

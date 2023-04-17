@@ -1,41 +1,74 @@
 import { DateTime } from "luxon";
+import Character from "./Character";
+import { SummayText } from "../contracts/SummayText";
 
-export default class ScoreManager {
-  calculateScore(charactersDoneArray) {
+export class ScoreManager {
+  calculateScore(charactersDoneArray: Character[]): number {
     return charactersDoneArray ? charactersDoneArray.length : 0;
   }
 
-  calculateBonusScore(charactersDoneArray, characterTypes, diversityTypes) {
+  calculateBonusScore(charactersDoneArray: Character[]) {
     if (charactersDoneArray.length === 0) return 0;
-    const numberOfFinished = this.calculateScore(charactersDoneArray);
-    let bonusScore = numberOfFinished * characterTypes.length;
-    const avg = (numberOfFinished / characterTypes.length).toFixed(0);
-    for (const key in diversityTypes) {
-      bonusScore -= Math.pow(avg - diversityTypes[key], 2);
-    }
-    ScoreManager.compairHighScore(bonusScore + numberOfFinished);
-    return Math.max(bonusScore, 0);
+    const numberOfFinished = charactersDoneArray.length;
+    let bonusScore =
+      numberOfFinished *
+      (ScoreManager.GENDERS.length + ScoreManager.SECTORS.length);
+    ScoreManager.GENDERS.forEach((gender) => {
+      const doneOfGenderPrecentage =
+        (charactersDoneArray.filter((character) =>
+          character.type.name.includes(gender)
+        ).length /
+          numberOfFinished) *
+        100;
+      const PrecentageDifference = Math.abs(
+        Math.floor(
+          +Character.CHARACTER_GENDER_PRECENTAGES[`${gender}`] -
+            doneOfGenderPrecentage
+        )
+      );
+      bonusScore -= (PrecentageDifference / 100) * numberOfFinished;
+    });
+    ScoreManager.SECTORS.forEach((sector) => {
+      const doneOfSectorPrecentage =
+        (charactersDoneArray.filter((character) =>
+          character.type.name.includes(sector)
+        ).length /
+          numberOfFinished) *
+        100;
+      const PrecentageDifference = Math.abs(
+        Math.floor(
+          +Character.CHARACTER_TYPE_PRECENTAGES[`${sector}`] -
+            doneOfSectorPrecentage
+        )
+      );
+      bonusScore -= (PrecentageDifference / 100) * numberOfFinished;
+    });
+    return Math.max(Math.round(bonusScore), 0);
   }
 
-  static compairHighScore(newScore) {
-    const currentHighest = localStorage.getItem("highest-score");
+  static compairHighScore(newScore: number) {
+    const currentHighest = Number(localStorage.getItem("highest-score")) 
     if (!currentHighest) {
-      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
       );
+      return true
     } else if (currentHighest < newScore) {
-      localStorage.removeItem("highest-score");
-      localStorage.removeItem("highest-score-dateTime");
-      localStorage.setItem("highest-score", newScore);
+      localStorage.setItem("highest-score", `${newScore}`);
       localStorage.setItem(
         "highest-score-dateTime",
         DateTime.now().toFormat("dd.MM.yyyy")
       );
-    }
+      return true
+    } else return false
   }
-  getSummaryText(numberOfChosenRules, score, bonusScore) {
+  getSummaryText(
+    numberOfChosenRules: number,
+    score: number,
+    bonusScore: number
+  ): SummayText | SummayText[] {
     if (numberOfChosenRules < 3) return ScoreManager.SUMMARY_TEXTS[0];
     let scoreIndex = ScoreManager.SUMMARY_TEXTS_SCORE_LIMIT.findIndex(
       (scoreLimit) => score <= scoreLimit
@@ -53,6 +86,8 @@ export default class ScoreManager {
 
   static SUMMARY_TEXTS_SCORE_LIMIT = [30, 60, 100];
   static SUMMARY_TEXTS_BONUS_LIMIT = [200, 350];
+  static GENDERS = ["man", "woman", "lgbt"];
+  static SECTORS = ["orthodox", "arab", "secular", "religious"];
 
   static SUMMARY_TEXTS = [
     {
@@ -62,8 +97,7 @@ export default class ScoreManager {
     [
       {
         firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו",
-        secondLine:
-          "נראה לי שאפשר יותר טוב. כדאי גם לדאוג לכל המגזרים.",
+        secondLine: "נראה לי שאפשר יותר טוב. כדאי גם לדאוג לכל המגזרים.",
       },
       {
         firstLine: "בתור שליט מדינת החתולים הצלחת לא משהו, אבל המגוון לא רע.",

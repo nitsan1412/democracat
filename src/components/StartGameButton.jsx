@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 
+import { useNavigate } from "../helpers/SmartNavigate";
 import { useGame } from "../helpers/GameContext";
 
 export default function StartGameButton({ text = "התחל משחק", ...props }) {
@@ -9,7 +9,7 @@ export default function StartGameButton({ text = "התחל משחק", ...props }
 
   const onClick = () => {
     start();
-    navigate("/game");
+    navigate("/game", true);
   };
 
   return (

@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 
 import { GameProvider } from "./helpers/GameContext";
 import ThemeProvider from "./helpers/Theme";
+import { Navigate } from './helpers/SmartNavigate'
 
 import Home from "./components/Home";
 import Summary from "./components/Summary";
@@ -18,9 +19,9 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<Game />} />
             <Route path="/summary" element={<Summary />} />
-            <Route path="/shared" element={<Navigate to="/" />} />
-            <Route path="/regame" element={<Navigate to="/game" />} />
-            <Route path="/*" element={<Navigate to="/" />} />
+            <Route path="/shared" element={<Navigate to="/" keepParams />} />
+            <Route path="/regame" element={<Navigate to="/game" keepParams />} />
+            <Route path="/*" element={<Navigate to="/" keepParams />} />
           </Routes>
         </BrowserRouter>
       </GameProvider>
