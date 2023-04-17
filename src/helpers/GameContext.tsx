@@ -5,14 +5,14 @@ import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
 import { Rule } from "../logic/Rule";
 
-const GameContext = createContext(null);
+const GameContext = createContext<any>(null);
 
 export const useGame = () => useContext(GameContext);
 
 export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
   const [game, setGame] = useState(new Game());
-  const [intervalHandler, setIntervalHandler] = useState(undefined);
+  const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
 
   useEffect(() => {
     const params = new URLSearchParams(document.location.search);
@@ -22,7 +22,6 @@ export function GameProvider({ children }) {
       params.get("charachter-addition-chance") ||
         CharacterManager.CHARACTER_ADDITION_CHANCE
     );
-
     setGame(new Game(speed, duration, charachterAdditionChance));
   }, []);
 

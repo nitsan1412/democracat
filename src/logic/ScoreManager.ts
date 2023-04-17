@@ -51,7 +51,7 @@ export class ScoreManager {
       bonusScore -= (PrecentageDifference / 100) * numberOfFinished;
     });
     ScoreManager.compairHighScore(bonusScore + numberOfFinished);
-    return Math.max(bonusScore, 0);
+    return Math.max(Math.round(bonusScore), 0);
   }
 
   static compairHighScore(newScore: number) {
