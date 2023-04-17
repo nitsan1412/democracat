@@ -23,6 +23,8 @@ export default function RuleImpact({ rule }) {
       direction="row"
       justifyContent="center"
       alignItems="center"
+      flexWrap="wrap"
+      minHeight="100%"
     >
       {impactedCharacterTypes.map(({ characterType, impact }) =>
         !impact ? (
@@ -30,7 +32,9 @@ export default function RuleImpact({ rule }) {
         ) : (
           <Badge
             key={characterType}
-            badgeContent={`${impact > 0 ? "+" : "-"}${impact > 0 ? impact : impact * -1}`}
+            badgeContent={`${impact > 0 ? "+" : "-"}${
+              impact > 0 ? impact : impact * -1
+            }`}
             sx={{
               justifyContent: "center",
               ".MuiBadge-badge": {
@@ -38,7 +42,7 @@ export default function RuleImpact({ rule }) {
                 fontSize: "0.6rem",
                 width: "11px",
                 height: "15px",
-                lineHeight: "11px",
+                // lineHeight: "11px",
                 right: 15,
                 backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
                 color: "#FFFFFF",
@@ -47,7 +51,11 @@ export default function RuleImpact({ rule }) {
           >
             <CharacterImage
               characterType={characterType}
-              sx={impactedCharacterTypes.length < 5 ? { height: "42px", width: "40px" } : { height: "35px", width: "33px" }}
+              sx={
+                impactedCharacterTypes.length < 5
+                  ? { height: "42px", width: "40px" }
+                  : { height: "35px", width: "33px" }
+              }
             />
           </Badge>
         )
