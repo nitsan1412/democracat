@@ -22,6 +22,8 @@ import {
   TelegramShareButton,
   TelegramIcon,
 } from "react-share";
+import { DateTime } from "luxon";
+
 import { useGame } from "../../helpers/GameContext";
 
 export default function Share(props) {
@@ -29,12 +31,10 @@ export default function Share(props) {
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
   const url = `${document.location.toString().split("/summary")[0]}/share`;
-  const text = `מיציטופיה - למען פלורליזם חברתי ${
-    game.gameSummary.endGameText.firstLine
-  },
-${game.gameSummary.endGameText.secondLine}.
-ניקוד: ${game.gameSummary.bonusScore + game.gameSummary.score}.
-`;
+  const text = `מיציטופיה - למען פלורליזם חברתי 
+  ${DateTime.now().toFormat("dd.MM.yyyy")}
+הניקוד שלך: ${game.gameSummary.bonusScore + game.gameSummary.score},
+כולל בונוס: ${game.gameSummary.bonusScore}`;
 
   const copy = () => {
     setCopyStatus("copying");

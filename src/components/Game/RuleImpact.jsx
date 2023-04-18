@@ -61,8 +61,8 @@ export default function RuleImpact({ rule }) {
                       minHeight: "0rem !important",
                     }
                   : {
-                      height: "35px",
-                      width: "33px",
+                      height: "41px",
+                      width: "38px",
                       minHeight: "0rem !important",
                     }
               }
@@ -70,7 +70,7 @@ export default function RuleImpact({ rule }) {
           </Badge>
         )
       )}
-      <Stack
+      <div
         direction="row"
         alignItems="center"
         justifyContent="center"
@@ -88,7 +88,7 @@ export default function RuleImpact({ rule }) {
         >
           {rule.summaryInfo || ""}
         </Typography>
-      </Stack>
+      </div>
     </Stack>
   );
 }
