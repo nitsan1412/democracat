@@ -23,6 +23,11 @@ import SecularWomanMuted from "../../images/cats/secular-woman-muted.svg";
 // import OrthodoxLGBTMuted from "../../images/cats/orthodox-lgbt-muted.svg";
 // import ReligiousLGBTMuted from "../../images/cats/religious-lgbt-muted.svg";
 // import SecularLGBTMuted from "../../images/cats/secular-lgbt-muted.svg";
+import ArabWomanTransparent from "../../images/cats/arab-woman-transparent.svg";
+import OrthodoxWomanTransparent from "../../images/cats/orthodox-woman-transparent.svg";
+import ReligiousWomanTransparent from "../../images/cats/religious-woman-transparent.svg";
+import SecularWomanTransparent from "../../images/cats/secular-woman-transparent.svg";
+
 export default function CharacterImage({ characterType, sx, ...props }) {
   return (
     <Stack
@@ -62,4 +67,8 @@ export const IMAGES = {
   "orthodox-lgbt-muted": OrthodoxLGBT,
   "religious-lgbt-muted": ReligiousLGBT,
   "secular-lgbt-muted": SecularLGBT,
+  "arab-woman-transparent": ArabWomanTransparent,
+  "orthodox-woman-transparent": OrthodoxWomanTransparent,
+  "religious-woman-transparent": ReligiousWomanTransparent,
+  "secular-woman-transparent": SecularWomanTransparent,
 };

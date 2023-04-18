@@ -6,8 +6,10 @@ import { rules } from "./Game-Settings";
 
 export class Rule {
   constructor(
+    public id: number,
     public name: string,
-    public info: string,
+    public initialInfo: string,
+    public summaryInfo: string,
     private impact: Impact,
     public isDelayed: boolean | undefined,
     apply: Applier
@@ -17,9 +19,8 @@ export class Rule {
 
   apply(characters: Character[], characterTypes: CharacterType[]) {
     Object.entries(this.impact).forEach(([filter, speedChange]) => {
-      characterTypes
-        .filter((characterType) => characterType.name.includes(filter))
-        .forEach((characterType) => characterType.changeSpeed(speedChange));
+      let currentCharacterTypes = (filter==="all") ?characterTypes : characterTypes.filter((characterType) => characterType.name.includes(filter))
+      currentCharacterTypes.forEach((characterType) => characterType.changeSpeed(speedChange));
     });
 
     return characters;
@@ -80,6 +81,22 @@ export class Rule {
             types.every((t) => !character.type.name.startsWith(t))
           );
         };
+        case "Woman-Transparent": 
+        return (characters, characterTypes) => {
+          const types = apply.args || [];
+          characterTypes
+            .filter((characterType) =>
+             characterType.name.includes("-woman"))
+            .forEach((characterType) => {
+              characterType.changeImage("transparent");
+            });
+            Object.entries(types).forEach(([filter, speedChange]) => {
+              characterTypes
+                .filter((characterType) => characterType.name.includes(filter))
+                .forEach((characterType) => characterType.changeSpeed(speedChange));
+            });
+            return characters;
+        };
       default:
         console.error("Got unsupported apply", apply);
     }
@@ -87,8 +104,8 @@ export class Rule {
   }
 
   static RULES = rules.map((r) => {
-    const { name, impact, info, isDelayed, apply: applyDetails } = r;
+    const { id, name, impact, initialInfo, summaryInfo, isDelayed, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule(name, info, impact, isDelayed, apply);
+    return new Rule(id, name, initialInfo, summaryInfo, impact, isDelayed, apply);
   });
 }

@@ -13,10 +13,10 @@ export default function RuleChoice(props) {
       sx={{
         padding: "0.5rem",
         height: "10rem",
-        width: "calc(100% - 2rem)"
+        width: "calc(100% - 2rem)",
       }}
     >
-      {props.rule?.info ? (
+      {props.rule?.initialInfo ? (
         <Rule rule={props.rule} showTitle />
       ) : (
         <Stack

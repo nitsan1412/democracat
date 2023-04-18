@@ -3,9 +3,9 @@ import Game from "./Game";
 import { rules } from "./Game-Settings";
 
 export default class RuleAveragelocation extends Rule {
-  constructor({ name, impact, apply, info }) {
-    super({ name, impact, apply, info });
-    Object.assign(this, { name, impact, info });
+  constructor({ id, name, impact, apply, initialInfo, summaryInfo }) {
+    super({ id, name, impact, apply, initialInfo, summaryInfo });
+    Object.assign(this, { id, name, impact, initialInfo, summaryInfo });
     if (apply) {
       this.apply = apply;
     }
@@ -28,8 +28,15 @@ export default class RuleAveragelocation extends Rule {
   }
 
   static RULES = rules.map((r) => {
-    const { name, impact, info, apply: applyDetails } = r;
+    const {
+      id,
+      name,
+      impact,
+      initialInfo,
+      summaryInfo,
+      apply: applyDetails,
+    } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule({ name, impact, info, apply });
+    return new Rule({ id, name, impact, initialInfo, summaryInfo, apply });
   });
 }

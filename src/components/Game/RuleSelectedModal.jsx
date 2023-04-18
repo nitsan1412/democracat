@@ -53,7 +53,25 @@ export default function RuleSelectedModal(props) {
           {props.rule.name}
         </Typography>
       </Stack>
-
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+      >
+        <Typography
+          id="modal-modal-title"
+          variant="h6"
+          component="h6"
+          sx={{
+            fontSize: "0.9rem",
+            fontWeight: 600,
+            justifyContent: "center",
+          }}
+        >
+          {props.rule.initialInfo || ""}
+        </Typography>
+      </Stack>
       <Stack
         direction="row"
         alignItems="center"
@@ -79,7 +97,7 @@ export default function RuleSelectedModal(props) {
             justifyContent: "center",
           }}
         >
-          {props.rule.info || ""}
+          {props.rule.summaryInfo || ""}
         </Typography>
       </Stack>
     </Stack>

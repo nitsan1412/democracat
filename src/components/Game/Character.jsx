@@ -33,6 +33,8 @@ export default function Character({ character, trackSize }) {
         backgroundImage: `url(${
           character.type.muted
             ? IMAGES[`${character.type.name}-muted`]
+            : character.type.transparent
+            ? IMAGES[`${character.type.name}-transparent`]
             : IMAGES[character.type.name]
         })`,
         backgroundSize: "contain",

@@ -10,8 +10,8 @@ export default function RuleImpact({ rule }) {
       characterType: characterType.name,
       impact:
         rule.impact[
-          Object.keys(rule.impact).find((key) =>
-            characterType.name.includes(key)
+          Object.keys(rule.impact).find(
+            (key) => key === "all" || characterType.name.includes(key)
           )
         ],
     }))
