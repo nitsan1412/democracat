@@ -9,7 +9,8 @@ export default class CharacterType {
     private translation: string,
     private initialScore = 0,
     private initialSpeed = 1,
-    public muted = false
+    public muted = false,
+    public transparent = false
   ) {
     this.speed = initialSpeed;
   }
@@ -25,6 +26,8 @@ export default class CharacterType {
   changeImage(newImage: string) {
     if (newImage === "muted") this.muted = true;
     else this.muted = false;
+    if (newImage === "transparent") this.transparent = true;
+    else this.transparent = false;
   }
 
   get gender() {

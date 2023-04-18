@@ -38,7 +38,7 @@ export default function Rule({ rule, showImpact, showTitle, overTitle, sx={} }) 
                 {overTitle}
               </Typography>}
         <Typography variant="h5" sx={{ textAlign: "center" }}>{rule.name}</Typography>
-        <Typography variant="body2" sx={{ textAlign: "center" }}>{rule.info}</Typography>
+        <Typography variant="body2" sx={{ textAlign: "center" }}>{rule.initialInfo}</Typography>
         {showImpact ? <RuleImpact rule={rule} /> : <></>}
       </Stack>
     </Stack>

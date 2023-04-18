@@ -1,4 +1,5 @@
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
@@ -10,8 +11,8 @@ export default function RuleImpact({ rule }) {
       characterType: characterType.name,
       impact:
         rule.impact[
-          Object.keys(rule.impact).find((key) =>
-            characterType.name.includes(key)
+          Object.keys(rule.impact).find(
+            (key) => key === "all" || characterType.name.includes(key)
           )
         ],
     }))
@@ -24,6 +25,7 @@ export default function RuleImpact({ rule }) {
       justifyContent="center"
       alignItems="center"
       flexWrap="wrap"
+      marginTop={2}
       // minHeight="100%"
     >
       {impactedCharacterTypes.map(({ characterType, impact }) =>
@@ -68,6 +70,25 @@ export default function RuleImpact({ rule }) {
           </Badge>
         )
       )}
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+      >
+        <Typography
+          id="modal-modal-title"
+          variant="h6"
+          component="h6"
+          sx={{
+            fontSize: "0.9rem",
+            fontWeight: 600,
+            justifyContent: "center",
+          }}
+        >
+          {rule.summaryInfo || ""}
+        </Typography>
+      </Stack>
     </Stack>
   );
 }
