@@ -25,6 +25,7 @@ export default function RuleImpact({ rule }) {
       justifyContent="center"
       alignItems="center"
       flexWrap="wrap"
+      marginTop={2}
       // minHeight="100%"
     >
       {impactedCharacterTypes.map(({ characterType, impact }) =>
