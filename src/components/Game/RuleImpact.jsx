@@ -1,4 +1,5 @@
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
@@ -68,6 +69,25 @@ export default function RuleImpact({ rule }) {
           </Badge>
         )
       )}
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+      >
+        <Typography
+          id="modal-modal-title"
+          variant="h6"
+          component="h6"
+          sx={{
+            fontSize: "0.9rem",
+            fontWeight: 600,
+            justifyContent: "center",
+          }}
+        >
+          {rule.summaryInfo || ""}
+        </Typography>
+      </Stack>
     </Stack>
   );
 }

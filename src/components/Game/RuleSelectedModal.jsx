@@ -81,7 +81,7 @@ export default function RuleSelectedModal(props) {
       >
         <RuleImpact rule={props.rule} />
       </Stack>
-      <Stack
+      {/* <Stack
         direction="row"
         alignItems="center"
         justifyContent="center"
@@ -99,7 +99,7 @@ export default function RuleSelectedModal(props) {
         >
           {props.rule.summaryInfo || ""}
         </Typography>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 }
