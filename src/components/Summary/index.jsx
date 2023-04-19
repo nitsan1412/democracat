@@ -69,6 +69,7 @@ export default function GameSummary() {
           alignItems: "center",
           backgroundColor: "white",
           borderTop: "2px solid lightgray",
+          position: "sticky",
         }}
       >
         <ShareButton

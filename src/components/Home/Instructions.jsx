@@ -31,7 +31,7 @@ export default function Instructions(props) {
       </Typography>
       <img src={catKing} alt="cat king" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>ברכות!</b> נבחרת לשלוט במדינת החתולים אתם מחליטים אילו סוגי חתולים
+        <b>ברכות!</b> נבחרתם לשלוט במדינת החתולים. אתם מחליטים אילו סוגי חתולים
         יגיעו אל כרית הצמר הנעימה
       </Typography>
     </Stack>,
@@ -45,7 +45,7 @@ export default function Instructions(props) {
         מחברת החתולים
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>המטרה</b> היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
+        <b>המטרה</b> .היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
         <b>על כל חתול</b> שהגיע אל הכרית תקבלו נקודה
       </Typography>
     </Stack>,
@@ -75,7 +75,7 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        תקבלו בונוס משמעותי על מגוון החתולים שיגיעו אל כרית הצמר
+        תקבלו בונוס משמעותי בהתאם למגוון החתולים שיגיעו אל כרית הצמר
       </Typography>
       <StartGameButton />
     </Stack>,

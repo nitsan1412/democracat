@@ -13,6 +13,7 @@ export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
   const [game, setGame] = useState<any>(new Game());
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
+
   const searchParams = new URLSearchParams(window.location.search);
 
   const start = () => {

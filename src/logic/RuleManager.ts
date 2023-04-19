@@ -9,7 +9,7 @@ export default class RuleManager {
   
   constructor() {
     this.generateRules();
-    this.resetNextRule();
+    // this.resetNextRule();
   }
 
   private generateRules() {
@@ -46,7 +46,7 @@ export default class RuleManager {
 
   private get shouldSetNextRule() {
     return (
-      !this.nextRule &&
+      !this.nextRule && 
       (this.hasMoreRulesInBatch ||
         (Date.now() - this.lastRuleTime) / 1000 > RuleManager.RULES_DELAY)
     );
@@ -94,7 +94,8 @@ export default class RuleManager {
     CHOSEN: "chosen",
     DECLINED: "declined",
   };
-  static RULE_BATCHES = [3, 4, 3, 3, 5];
-  static RULES_DELAY = 5;
+  // static RULE_BATCHES = [3, 4, 3, 3, 5, 3, 4, 3, 4, 3, 4];
+  static RULE_BATCHES =[1]
+  static RULES_DELAY = 1;
   static DELAYED_RULES_PERIOD = 7;
 }
