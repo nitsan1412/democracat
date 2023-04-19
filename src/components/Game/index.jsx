@@ -33,7 +33,7 @@ export default function Game() {
           backgroundImage: `url(${gameBackground})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "top",
-          backgroundSize: "contain"
+          backgroundSize: "contain",
         }}
       >
         <RuleChoice rule={rule || {}} />
@@ -45,7 +45,7 @@ export default function Game() {
             padding: "1rem",
             marginTop: "1rem",
             height: "5rem",
-            borderTop: '2px solid lightgray'
+            borderTop: "2px solid lightgray",
           }}
         >
           {rule ? <RuleActions rule={rule} /> : ""}

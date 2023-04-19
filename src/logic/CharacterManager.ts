@@ -5,10 +5,12 @@ import Character from "./Character";
 export default class CharacterManager {
   characters: Character[];
   characterTypes: CharacterType[];
+  catFinishedNow: boolean;
 
   constructor(speed = 1) {
     this.characters = [];
     this.characterTypes = CharacterType.characterTypes(speed, false);
+    this.catFinishedNow = false;
   }
 
   get charactersByType() {
@@ -39,9 +41,18 @@ export default class CharacterManager {
   }
 
   move() {
-    this.characters
+    
+    let previousDoneCats = this.charactersDone().length
+    this.catFinishedNow = false
+     this.characters
       .filter((charcter) => charcter.location < Game.TRACK_END)
-      .forEach((charcter) => charcter.move(Game.STEP));
+      .forEach((charcter) =>charcter.move(Game.STEP));
+   if (this.charactersDone().length !== previousDoneCats){
+    this.catFinishedNow = true;
+    
+   }else {
+    this.catFinishedNow = false;
+   }
   }
 
   createCharacterWithProbability(charachterAdditionChance: number) {

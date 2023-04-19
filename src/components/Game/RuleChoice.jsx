@@ -30,7 +30,7 @@ export default function RuleChoice(props) {
             הכנסת בפגרה{" "}
           </Typography>
           <Typography variant="h6" sx={{ color: "black", fontSize: "0.9rem" }}>
-            5 שניות הפסקה{" "}
+            הפסקה קצרה{" "}
           </Typography>
           <img src={knessetInBreake} alt="" />
         </Stack>

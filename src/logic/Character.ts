@@ -12,6 +12,7 @@ export default class Character {
 
   move(dt: number) {
     this.location = Math.max(this.location + this.type.speed * dt, 0);
+    if (this.location>100) return true
   }
 
   static createCharacter(characterTypes: CharacterType[]) {
