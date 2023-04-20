@@ -40,11 +40,11 @@ export default function Instructions(props) {
       </Typography>
       <img src={fiveCatsInInstructions} alt="sector cats" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        לפניכם 4 סוגי חתולים שרצים אל כרית הצמר, כל סוג חתול <b>מייצג חלק</b>{" "}
-        מחברת החתולים
+        לפניכם חתולים מ 4 מגזרים ו 3 מגדרים שרצים אל כרית הצמר, כל סוג חתול{" "}
+        <b>מייצג חלק</b> מחברת החתולים
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>המטרה</b> .היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
+        <b>המטרה</b> היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
         <b>על כל חתול</b> שהגיע אל הכרית תקבלו נקודה
       </Typography>
     </Stack>,
@@ -53,6 +53,7 @@ export default function Instructions(props) {
         איך משחקים?
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
+        {" "}
         בעזרת{" "}
         <img
           src={approveButton}
