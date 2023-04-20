@@ -15,7 +15,6 @@ import "slick-carousel/slick/slick-theme.css";
 import StartGameButton from "../StartGameButton";
 
 import catKing from "../../images/icons/instructions/catKing.svg";
-// import catIcons from "../../images/icons/instructions/catIcons.svg";
 import approveButton from "../../images/icons/instructions/approveButton.svg";
 import declineButton from "../../images/icons/instructions/declineButton.svg";
 import fiveCatsInInstructions from "../../images/icons/instructions/fiveCatsInInstructions.svg";

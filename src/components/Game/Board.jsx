@@ -19,11 +19,7 @@ export default function Board() {
       {game.characterManager.charactersInPlay().map((character, index) => (
         <Character key={index} character={character} trackSize={80} />
       ))}
-      {/* {game.characterManager.catFinishedNow ? ( */}
       <img src={`url(${catFinishedGif})`} alt="" width="10rem" />
-      {/* ) : ( */}
-      {/* <></>
-      )} */}
       <div>
         <img src={pillow} alt="" width="100%" />
       </div>

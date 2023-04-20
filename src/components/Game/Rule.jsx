@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import RuleImpact from "./RuleImpact";
 
-export default function Rule({ rule, showImpact, showTitle, overTitle, sx={} }) {
+export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
   return (
     <Stack
       sx={{
@@ -17,7 +17,7 @@ export default function Rule({ rule, showImpact, showTitle, overTitle, sx={} }) 
         borderRadius: "25px",
         background: "white",
         boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.4)",
-        ...sx
+        ...sx,
       }}
     >
       <Stack
@@ -29,16 +29,23 @@ export default function Rule({ rule, showImpact, showTitle, overTitle, sx={} }) 
         alignSelf="center"
         justifyContent="center"
       >
-        {!overTitle ? "" :
-              <Typography
-                color="primary"
-                variant="body1"
-                sx={{ fontWeight: 600, textAlign: "center" }}
-              >
-                {overTitle}
-              </Typography>}
-        <Typography variant="h5" sx={{ textAlign: "center" }}>{rule.name}</Typography>
-        <Typography variant="body2" sx={{ textAlign: "center" }}>{rule.initialInfo}</Typography>
+        {!overTitle ? (
+          ""
+        ) : (
+          <Typography
+            color="primary"
+            variant="body1"
+            sx={{ fontWeight: 600, textAlign: "center" }}
+          >
+            {overTitle}
+          </Typography>
+        )}
+        <Typography variant="h5" sx={{ textAlign: "center" }}>
+          {rule.name}
+        </Typography>
+        <Typography variant="body2" sx={{ textAlign: "center" }}>
+          {rule.initialInfo}
+        </Typography>
         {showImpact ? <RuleImpact rule={rule} /> : <></>}
       </Stack>
     </Stack>

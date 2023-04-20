@@ -26,7 +26,6 @@ export default function RuleImpact({ rule }) {
       alignItems="center"
       flexWrap="wrap"
       marginTop={2}
-      // minHeight="100%"
     >
       {impactedCharacterTypes.map(({ characterType, impact }) =>
         !impact ? (
@@ -44,7 +43,6 @@ export default function RuleImpact({ rule }) {
                 fontSize: "0.6rem",
                 width: "11px",
                 height: "15px",
-                // lineHeight: "11px",
                 right: 15,
                 backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
                 color: "#FFFFFF",

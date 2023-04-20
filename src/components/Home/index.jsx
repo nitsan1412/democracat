@@ -25,13 +25,13 @@ export default function StartGameMenu() {
         gap: "1rem",
         backgroundImage: `url(${homeBackground})`,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "bottom"
+        backgroundPosition: "bottom",
       }}
     >
       <Stack
         justifyContent="center"
         sx={{
-          height: "8rem"
+          height: "8rem",
         }}
       >
         <Typography variant="h3" sx={{ fontWeight: "700" }}>
@@ -45,7 +45,7 @@ export default function StartGameMenu() {
         sx={{
           height: "calc(100% - 4rem)",
           width: 1,
-          "> :only-child": { margin: "auto" }
+          "> :only-child": { margin: "auto" },
         }}
       >
         {!highestScoreToShow.highestScore ? (
@@ -86,6 +86,36 @@ export default function StartGameMenu() {
             }}
             sx={{ borderRadius: 15, margin: "0 -1rem" }}
           >
+            <Stack
+              alignItems="flex-start"
+              sx={{
+                hight: "2rem",
+                position: "sticky",
+                top: "0",
+                backgroundColor: "#ffffff",
+                zIndex: 150,
+                cursor: "pointer",
+                padding: "1rem",
+              }}
+              onClick={() => setShowUseInfo(false)}
+            >
+              <Typography
+                variant="body1"
+                sx={{
+                  textAlign: "center",
+                  fontSize: "1.1rem",
+                  paddingRight: "0.4rem",
+                  paddingLeft: "0.4rem",
+                  fontWeight: 800,
+                  borderRadius: "50px",
+                  border: "solid 2px black",
+                  backgroundColor: "#ffffff",
+                }}
+                onClick={() => setShowUseInfo(true)}
+              >
+                X
+              </Typography>{" "}
+            </Stack>
             <TermsOfUse />
           </Dialog>
         </Stack>
