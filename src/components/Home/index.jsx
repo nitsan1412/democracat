@@ -94,11 +94,8 @@ export default function StartGameMenu() {
                 top: "0",
                 backgroundColor: "#ffffff",
                 zIndex: 150,
-                // marginTop: "-5%",
                 cursor: "pointer",
                 padding: "1rem",
-                // gap: "1rem",
-                // backgroundPosition: "bottom"
               }}
               onClick={() => setShowUseInfo(false)}
             >

@@ -1,7 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Rule from "./Rule";
 import knessetInBreake from "../../images/knessetInBreake.svg";
-import { Typography } from "@mui/material";
 
 export default function RuleChoice(props) {
   return (
@@ -17,7 +16,7 @@ export default function RuleChoice(props) {
       }}
     >
       {props.rule?.initialInfo ? (
-        <Rule rule={props.rule} showTitle />
+        <Rule rule={props.rule} />
       ) : (
         <Stack
           sx={{
@@ -26,12 +25,6 @@ export default function RuleChoice(props) {
             alignItems: "center",
           }}
         >
-          {/* <Typography variant="h6" sx={{ color: "black" }}>
-            הכנסת בפגרה{" "}
-          </Typography> */}
-          {/* <Typography variant="h6" sx={{ color: "black", fontSize: "0.9rem" }}>
-            הפסקה קצרה{" "}
-          </Typography> */}
           <img src={knessetInBreake} alt="" />
         </Stack>
       )}

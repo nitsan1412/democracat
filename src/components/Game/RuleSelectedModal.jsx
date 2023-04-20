@@ -81,25 +81,6 @@ export default function RuleSelectedModal(props) {
       >
         <RuleImpact rule={props.rule} />
       </Stack>
-      {/* <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-      >
-        <Typography
-          id="modal-modal-title"
-          variant="h6"
-          component="h6"
-          sx={{
-            fontSize: "0.9rem",
-            fontWeight: 600,
-            justifyContent: "center",
-          }}
-        >
-          {props.rule.summaryInfo || ""}
-        </Typography>
-      </Stack> */}
     </Stack>
   );
 }

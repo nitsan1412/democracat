@@ -7,6 +7,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useGame } from "../../helpers/GameContext";
 import { playSound } from "../../helpers/Sounds";
 import RuleSelectedModal from "./RuleSelectedModal";
+
 export default function RuleActions(props) {
   const { game, declineRule, chooseRule } = useGame();
   const [openModal, setOpenModal] = useState(false);
