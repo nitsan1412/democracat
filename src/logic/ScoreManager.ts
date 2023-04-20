@@ -10,9 +10,8 @@ export class ScoreManager {
   calculateBonusScore(charactersDoneArray: Character[]) {
     if (charactersDoneArray.length === 0) return 0;
     const numberOfFinished = charactersDoneArray.length;
-    let bonusScore =
-      numberOfFinished *
-      (ScoreManager.GENDERS.length + ScoreManager.SECTORS.length);
+    const initialBonus = numberOfFinished * 2;
+    let sumOfSquares = 0
     ScoreManager.GENDERS.forEach((gender) => {
       const doneOfGenderPrecentage =
         (charactersDoneArray.filter((character) =>
@@ -20,13 +19,13 @@ export class ScoreManager {
         ).length /
           numberOfFinished) *
         100;
-      const PrecentageDifference = Math.abs(
+      const PrecentageDifference = Math.pow(
         Math.floor(
           +Character.CHARACTER_GENDER_PRECENTAGES[`${gender}`] -
             doneOfGenderPrecentage
         )
-      );
-      bonusScore -= (PrecentageDifference / 100) * numberOfFinished;
+      , 2);
+      sumOfSquares += (PrecentageDifference / 100) * numberOfFinished;
     });
     ScoreManager.SECTORS.forEach((sector) => {
       const doneOfSectorPrecentage =
@@ -35,15 +34,15 @@ export class ScoreManager {
         ).length /
           numberOfFinished) *
         100;
-      const PrecentageDifference = Math.abs(
+      const PrecentageDifference = Math.pow(
         Math.floor(
           +Character.CHARACTER_TYPE_PRECENTAGES[`${sector}`] -
             doneOfSectorPrecentage
         )
-      );
-      bonusScore -= (PrecentageDifference / 100) * numberOfFinished;
+      , 2);
+      sumOfSquares += (PrecentageDifference / 100) * numberOfFinished;
     });
-    return Math.max(Math.round(bonusScore), 0);
+    return Math.max(Math.round(initialBonus - Math.sqrt(sumOfSquares)), 0);
   }
 
   static compairHighScore(newScore: number) {
