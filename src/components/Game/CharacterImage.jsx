@@ -1,32 +1,37 @@
 import Stack from "@mui/material/Stack";
-import ArabMan from "../../images/cats/arab-man.svg";
-import OrthodoxMan from "../../images/cats/orthodox-man.svg";
-import ReligiousMan from "../../images/cats/religious-man.svg";
-import SecularMan from "../../images/cats/secular-man.svg";
-import ArabWoman from "../../images/cats/arab-woman.svg";
-import OrthodoxWoman from "../../images/cats/orthodox-woman.svg";
-import ReligiousWoman from "../../images/cats/religious-woman.svg";
-import SecularWoman from "../../images/cats/secular-woman.svg";
+import ArabMan from "../../images/cats/arab-man.png";
+import OrthodoxMan from "../../images/cats/orthodox-man.png";
+import ReligiousMan from "../../images/cats/religious-man.png";
+import SecularMan from "../../images/cats/secular-man.png";
+import ArabWoman from "../../images/cats/arab-woman.png";
+import OrthodoxWoman from "../../images/cats/orthodox-woman.png";
+import ReligiousWoman from "../../images/cats/religious-woman.png";
+import SecularWoman from "../../images/cats/secular-woman.png";
+// import ArabLGBT from "../../images/cats/arab-lgbt.png";
 import ArabLGBT from "../../images/cats/arab-lgbt.svg";
+
+// import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.png";
 import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.svg";
+// import ReligiousLGBT from "../../images/cats/religious-lgbt.png";
+
 import ReligiousLGBT from "../../images/cats/religious-lgbt.svg";
-import SecularLGBT from "../../images/cats/secular-lgbt.svg";
-import ArabManMuted from "../../images/cats/arab-man-muted.svg";
-import OrthodoxManMuted from "../../images/cats/orthodox-man-muted.svg";
-import ReligiousManMuted from "../../images/cats/religious-man-muted.svg";
-import SecularManMuted from "../../images/cats/secular-man-muted.svg";
-import ArabWomanMuted from "../../images/cats/arab-woman-muted.svg";
-import OrthodoxWomanMuted from "../../images/cats/orthodox-woman-muted.svg";
-import ReligiousWomanMuted from "../../images/cats/religious-woman-muted.svg";
-import SecularWomanMuted from "../../images/cats/secular-woman-muted.svg";
-// import ArabLGBTMuted from "../../images/cats/arab-lgbt-muted.svg";
-// import OrthodoxLGBTMuted from "../../images/cats/orthodox-lgbt-muted.svg";
-// import ReligiousLGBTMuted from "../../images/cats/religious-lgbt-muted.svg";
-// import SecularLGBTMuted from "../../images/cats/secular-lgbt-muted.svg";
-import ArabWomanTransparent from "../../images/cats/arab-woman-transparent.svg";
-import OrthodoxWomanTransparent from "../../images/cats/orthodox-woman-transparent.svg";
-import ReligiousWomanTransparent from "../../images/cats/religious-woman-transparent.svg";
-import SecularWomanTransparent from "../../images/cats/secular-woman-transparent.svg";
+import SecularLGBT from "../../images/cats/secular-lgbt.png";
+import ArabManMuted from "../../images/cats/arab-man-muted.png";
+import OrthodoxManMuted from "../../images/cats/orthodox-man-muted.png";
+import ReligiousManMuted from "../../images/cats/religious-man-muted.png";
+import SecularManMuted from "../../images/cats/secular-man-muted.png";
+import ArabWomanMuted from "../../images/cats/arab-woman-muted.png";
+import OrthodoxWomanMuted from "../../images/cats/orthodox-woman-muted.png";
+import ReligiousWomanMuted from "../../images/cats/religious-woman-muted.png";
+import SecularWomanMuted from "../../images/cats/secular-woman-muted.png";
+// import ArabLGBTMuted from "../../images/cats/arab-lgbt-muted.png";
+// import OrthodoxLGBTMuted from "../../images/cats/orthodox-lgbt-muted.png";
+// import ReligiousLGBTMuted from "../../images/cats/religious-lgbt-muted.png";
+// import SecularLGBTMuted from "../../images/cats/secular-lgbt-muted.png";
+import ArabWomanTransparent from "../../images/cats/arab-woman-transparent.png";
+import OrthodoxWomanTransparent from "../../images/cats/orthodox-woman-transparent.png";
+import ReligiousWomanTransparent from "../../images/cats/religious-woman-transparent.png";
+import SecularWomanTransparent from "../../images/cats/secular-woman-transparent.png";
 
 export default function CharacterImage({ characterType, sx, ...props }) {
   return (

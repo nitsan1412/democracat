@@ -26,12 +26,12 @@ export default function RuleChoice(props) {
             alignItems: "center",
           }}
         >
-          <Typography variant="h6" sx={{ color: "black" }}>
+          {/* <Typography variant="h6" sx={{ color: "black" }}>
             הכנסת בפגרה{" "}
-          </Typography>
-          <Typography variant="h6" sx={{ color: "black", fontSize: "0.9rem" }}>
+          </Typography> */}
+          {/* <Typography variant="h6" sx={{ color: "black", fontSize: "0.9rem" }}>
             הפסקה קצרה{" "}
-          </Typography>
+          </Typography> */}
           <img src={knessetInBreake} alt="" />
         </Stack>
       )}

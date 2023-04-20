@@ -47,7 +47,7 @@ export default class Game {
     this.characterManager.createCharacterWithProbability(
       this.charachterAdditionChance
     );
-    if (this.characterManager.characters.length>0){
+    if (this.characterManager.characters.length>1){
       this.ruleManager.setNextRuleIfShould();
     }
     if (this.time <= 0) {
