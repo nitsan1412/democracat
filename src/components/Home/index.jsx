@@ -104,8 +104,8 @@ export default function StartGameMenu() {
                 sx={{
                   textAlign: "center",
                   fontSize: "1.1rem",
-                  paddingRight: "0.4rem",
-                  paddingLeft: "0.4rem",
+                  paddingRight: "0.5rem",
+                  paddingLeft: "0.5rem",
                   fontWeight: 800,
                   borderRadius: "50px",
                   border: "solid 2px black",

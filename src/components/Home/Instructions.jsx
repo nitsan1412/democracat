@@ -53,7 +53,6 @@ export default function Instructions(props) {
         איך משחקים?
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        {" "}
         בעזרת{" "}
         <img
           src={approveButton}
@@ -65,7 +64,9 @@ export default function Instructions(props) {
           src={declineButton}
           alt="decline"
           style={{ display: "inline", verticalAlign: "bottom" }}
-        />{" "}
+        />
+      </Typography>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
         של חוקים תוכלו לקדם סוגי חתולים מסוימים ולעכב את האחרים
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
