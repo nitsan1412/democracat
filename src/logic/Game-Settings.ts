@@ -6,8 +6,8 @@ export const rules: RuleDetails[] = [
     name: "חוק הצניעות",
     initialInfo: "להעלות את המודעות לצניעות בעזרת הפרדה בין נשים לגברים במרחב הציבורי",
     summaryInfo: "החוק מייצר הפרדה בין גברים לנשים לטובת המגזר החרדי. חופש התנועה של הנשים מכל המגזרים האחרים נפגע.",
-    impact: { orthodox: 1, "-woman": -1 },
-    apply: { type: "Woman-Transparent", args: [{impact: { orthodox: 1, "-woman": -1 }}] },
+    impact: { "orthodox-man": 1, "orthodox-woman": 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1 },
+    apply: { type: "Woman-Transparent", args: [{impact: { "orthodox-man": 1, "orthodox-woman": 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1  }}] },
     isDelayed: true,
   },
   {
@@ -113,7 +113,7 @@ export const rules: RuleDetails[] = [
     name: "חוק האלכוהול",
     initialInfo: `להתחשב במגזר המוסלמי על ידי איסור מכירה של אלכוהול במהלך חודש הרמאדן`,
     summaryInfo: `החוק המתחשב ברגשות המגזר המוסלמי אך פוגע בכל יתר המגזרים.`,
-    impact: { arab: 1, orthodox:-1, secular:1, religious:1},
+    impact: { arab: 1, orthodox:-1, secular:-1, religious:-1},
   },
   {
     id: 17,
@@ -168,7 +168,6 @@ export const rules: RuleDetails[] = [
   },
   {
     id: 24,
-
     name: "חוק השיוויון",
     initialInfo: `לבסס את השיוויון בפני החוק של כל המגזרים והמגדרים`,
     summaryInfo: `החוק מעגן את חוק יסוד השיוויון כחוק יסוד ומטיב עם כולם.`,
@@ -178,10 +177,12 @@ export const rules: RuleDetails[] = [
   },
   {
     id: 25,
-    name: "חוק המוסר",
-    initialInfo: `למנוע שחיתות שילטונית באמצעות האיסור להגיש מועמדות לכנסת לבעלי עבר פלילי`,
-    summaryInfo: `החוק מאפשר לשמור על טוהר המידות של נבחרי ציבור ומיטיב לכולם.`,
-    impact: {all:1 },
+    name: "הצבעת אי אמון בממשלה",
+    initialInfo: `להחליף את הממשלה`,
+    summaryInfo: `ההצעה מבטלת את כל החוקים שאושרו עד עכשיו. כל המגזרים נעים במהירות אחידה.`,
+    impact: { all: 0 },
+    apply: { type: "Reset" },
+    isDelayed: true,
   },
   {
     id: 26,
@@ -253,15 +254,7 @@ export const rules: RuleDetails[] = [
     summaryInfo: `החוק מעודד עלייה של יהודים ושומר על הצביון היהודי של המדינה, ובכך מיטיב עם כל המגזרים מלבד המגזר הערבי.`,
     impact: { arab: -1, orthodox:1, secular:1, religious:1},
   },
-  {
-    id: 36,
-    name: "הצבעת אי אמון בממשלה",
-    initialInfo: `להחליף את הממשלה`,
-    summaryInfo: `ההצעה מבטלת את כל החוקים שאושרו עד עכשיו. כל המגזרים נעים במהירות אחידה.`,
-    impact: { all: 0 },
-    apply: { type: "Reset" },
-    isDelayed: true,
-  },
+
   
 ];
 
