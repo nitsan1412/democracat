@@ -69,7 +69,7 @@ export default function RuleSelectedModal(props) {
             justifyContent: "center",
           }}
         >
-          מטרת החוק: {props.rule.initialInfo || ""}
+          {props.rule.initialInfo || ""}
         </Typography>
       </Stack>
       <Stack
