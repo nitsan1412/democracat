@@ -30,22 +30,23 @@ export default function Instructions(props) {
       </Typography>
       <img src={catKing} alt="cat king" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>ברכות!</b> נבחרתם לשלוט במדינת החתולים. אתם מחליטים אילו סוגי חתולים
-        יגיעו אל כרית הצמר הנעימה
+        <b>ברכות!</b> נבחרתם לשלוט במדינת החתולים מיציטופיה בה יש חברה
+        פלורליסטית ולכל חתול יש קול.
+      </Typography>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        ביכולתך להחליט איזה חתולים יגיעו אל כרית הצמר הנעימה{" "}
       </Typography>
     </Stack>,
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
-        מה המטרה?
+        החתולים המשתתפים
       </Typography>
       <img src={fiveCatsInInstructions} alt="sector cats" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        לפניכם חתולים מ 4 מגזרים ו 3 מגדרים שרצים אל כרית הצמר, כל סוג חתול{" "}
-        <b>מייצג חלק</b> מחברת החתולים
+        החתולים מחולקים לארבעה מגזרים: חילוני, דתי-ציוני, חרדי וערבי
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>המטרה</b> היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר,{" "}
-        <b>על כל חתול</b> שהגיע אל הכרית תקבלו נקודה
+        ושלושה מגזרים: זכר, נקבה ולהט"ב
       </Typography>
     </Stack>,
     <Stack alignItems="center" gap={2}>
@@ -53,7 +54,13 @@ export default function Instructions(props) {
         איך משחקים?
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        בעזרת{" "}
+        המטרה היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר בתוך שתי דקות{" "}
+      </Typography>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        כל חתול מזכה אותך בנקודה{" "}
+      </Typography>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        תוכלו לקדם חתולים מסויימים ולעכב אחרים בעזרת{" "}
         <img
           src={approveButton}
           alt="approve"
@@ -64,19 +71,19 @@ export default function Instructions(props) {
           src={declineButton}
           alt="decline"
           style={{ display: "inline", verticalAlign: "bottom" }}
-        />
+        />{" "}
+        של חוקים
       </Typography>
+
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        של חוקים תוכלו לקדם סוגי חתולים מסוימים ולעכב את האחרים
-      </Typography>
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>ויש גם בונוסים!</b>
+        <b>ויש גם בונוס!</b>
       </Typography>
       <Typography
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        תקבלו בונוס משמעותי בהתאם למגוון החתולים שיגיעו אל כרית הצמר
+        הבונוס יחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל
+        הכרית
       </Typography>
       <StartGameButton />
     </Stack>,

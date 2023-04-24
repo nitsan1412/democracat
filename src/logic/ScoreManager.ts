@@ -83,8 +83,8 @@ export class ScoreManager {
     return ScoreManager.SUMMARY_TEXTS[scoreIndex + 1][bonusIndex];
   }
 
-  static SUMMARY_TEXTS_SCORE_LIMIT = [30, 60, 100];
-  static SUMMARY_TEXTS_BONUS_LIMIT = [200, 350];
+  static SUMMARY_TEXTS_SCORE_LIMIT = [40, 60, 80];
+  static SUMMARY_TEXTS_BONUS_LIMIT = [40, 61];
   static GENDERS = ["man", "woman", "lgbt"];
   static SECTORS = ["orthodox", "arab", "secular", "religious"];
 
