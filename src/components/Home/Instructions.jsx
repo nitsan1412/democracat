@@ -125,7 +125,7 @@ export default function Instructions(props) {
   const Dots = ({ current }) => (
     <Stack
       className="dots"
-      direction="row-reverse"
+      direction="row"
       alignItems="center"
       justifyContent="center"
       gap={1}
