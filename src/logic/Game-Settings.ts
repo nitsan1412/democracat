@@ -165,6 +165,7 @@ export const rules: RuleDetails[] = [
     impact: { muted: 1 },
     apply: { type: "Muted" },
     isDelayed: true,
+    icon:"muted",
   },
   {
     id: 24,
@@ -174,6 +175,7 @@ export const rules: RuleDetails[] = [
     impact: { all: 0 },
     apply: { type: "Average-Location" },
     isDelayed: true,
+    icon:"equality",
   },
   {
     id: 25,
@@ -183,6 +185,8 @@ export const rules: RuleDetails[] = [
     impact: { all: 0 },
     apply: { type: "Reset" },
     isDelayed: true,
+    icon:"reset",
+
   },
   {
     id: 26,
