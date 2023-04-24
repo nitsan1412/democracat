@@ -1,6 +1,5 @@
 import { Howl } from "howler";
 
-let playlist: any = [];
 export function playSound(name: string, isGameMuted: boolean) {
   if (isGameMuted) return "";
   let config = SOUNDS[name];
