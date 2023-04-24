@@ -9,6 +9,7 @@ import soundOff from "../../images/icons/soundOff.svg";
 
 import { useNavigate } from "../../helpers/SmartNavigate";
 import { useGame } from "../../helpers/GameContext";
+
 export default function Menu() {
   const navigate = useNavigate();
   const { game, changeGameSounds } = useGame();
