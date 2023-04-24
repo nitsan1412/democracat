@@ -71,7 +71,14 @@ export default function RuleImpact({ rule }) {
         )
       )}
       {rule.icon ? (
-        <img src={ICONS[rule.icon]} alt="rule-icon" height="2%" />
+        <div
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+        >
+          <img src={ICONS[rule.icon]} alt="rule-icon" height="80px" />
+        </div>
       ) : (
         ""
       )}
