@@ -9,7 +9,7 @@ import SummaryHeader from "./SummaryHeader";
 import EndScore from "./EndScore";
 import SummaryReview from "./SummaryReview";
 import SummaryRulesReview from "./SummaryRulesReview";
-// import PluralismComic from "./PluralismComic";
+import PluralismComic from "./PluralismComic";
 import restartGameArrow from "../../images/icons/restartGameArrow.svg";
 import gameBackground from "../../images/gameBackground.png";
 import "slick-carousel/slick/slick.css";
@@ -55,11 +55,11 @@ export default function GameSummary() {
           <Stack sx={boxStyle}>
             <SummaryReview />
           </Stack>
-          {/* <Stack
+          <Stack
             sx={{ ...boxStyle, backgroundColor: "#FC68B4", color: "#FFF6FA" }}
           >
             <PluralismComic />
-          </Stack> */}
+          </Stack>
           <SummaryRulesReview />
         </Stack>
       </Stack>
