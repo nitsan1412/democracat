@@ -31,18 +31,23 @@ export default function Instructions(props) {
       <img src={catKing} alt="cat king" />
       <Typography
         variant="body1"
-        sx={{ textAlign: "center", marginTop: "1rem" }}
+        sx={{ textAlign: "center", marignBottom: "-1rem" }}
       >
-        <b>ברכות!</b> נבחרת לשלוט במדינת החתולים מיציטופיה בה יש חברה פלורליסטית
-        ולכל חתול יש קול.
+        <b>ברכות</b>
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "-1rem" }}
+      >
+        נבחרת לשלוט במדינת מיציטופיה בה מתנהלת חברה פלורליסטית ולכל חתול יש קול{" "}
       </Typography>
       <Typography
         variant="body1"
         sx={{ textAlign: "center", marginTop: "1rem" }}
       >
-        ביכולתך להחליט איזה חתולים יגיעו אל כרית הצמר הנעימה{" "}
+        ביכולתך להחליט אילו חתולים יגיעו אל כרית הצמר הנעימה{" "}
       </Typography>
-      <Stack height="1.5rem"> </Stack>
+      <Stack height="1rem"> </Stack>
     </Stack>,
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
@@ -68,33 +73,36 @@ export default function Instructions(props) {
       </Typography>
       <Typography
         variant="body1"
-        sx={{ textAlign: "center", marginTop: "-1rem" }}
+        sx={{
+          textAlign: "center",
+          marginTop: "-0.5rem",
+          marginBottom: "-0.5rem",
+        }}
       >
         כל חתול מזכה אותך בנקודה{" "}
+      </Typography>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
+        תוכל לקדם חתולים מסויימים ולעכב אחרים{" "}
       </Typography>
       <Typography
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        תוכל לקדם חתולים מסויימים ולעכב אחרים{" "}
+        בעזרת אישור או דחייה של חוקים
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        בעזרת{" "}
         <img
           src={approveButton}
           alt="approve"
           style={{ display: "inline", verticalAlign: "bottom" }}
         />{" "}
-        או{" "}
         <img
           src={declineButton}
           alt="decline"
           style={{ display: "inline", verticalAlign: "bottom" }}
         />{" "}
       </Typography>
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
-        של חוקים
-      </Typography>
+
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         <b>ויש גם בונוס!</b>
       </Typography>
