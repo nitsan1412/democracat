@@ -17,6 +17,8 @@ export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
         borderRadius: "25px",
         background: "white",
         boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.4)",
+        zIndex: 10,
+
         ...sx,
       }}
     >

@@ -6,7 +6,7 @@ export const rules: RuleDetails[] = [
     name: "חוק הצניעות",
     initialInfo: "מעלה את המודעות לצניעות על ידי הפרדה בין נשים לגברים במרחב הציבורי",
     summaryInfo: "החוק מייצר הפרדה בין גברים לנשים לטובת המגזר החרדי. הוא פוגע בחופש התנועה של נשים מכל המגזרים האחרים. לכן הן הופכות שקופות במרחב הציבורי.",
-    impact: { "orthodox-man": 1, "orthodox-woman": 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1 },
+    impact: { orthodox: 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1 },
     apply: { type: "Woman-Transparent", args: [{impact: { "orthodox-man": 1, "orthodox-woman": 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1  }}] },
     isDelayed: true,
   },
@@ -36,7 +36,7 @@ export const rules: RuleDetails[] = [
     name: "חוק המפלגות היהודיות",
     initialInfo: `שומר על אופיה היהודי של הכנסת על ידי איסור על מפלגות איסלאמיות לרוץ בבחירות`,
     summaryInfo: "החוק פוגע במגזר הערבי שאין לו נציגות בכנסת.",
-    impact: { arab: -1, orthodox:1, secular:1, religious:1},
+    impact: { arab: -3, orthodox:1, secular:1, religious:1},
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const rules: RuleDetails[] = [
     name: "חוק המילגות",
     initialInfo: `מעניק מילגות ליוצאי צבא`,
     summaryInfo: "החוק נותן יתרון לכל מי שעשה שירות צבאי. הוא טוב למגזר החילוני והציוני דתי.",
-    impact: { arab: -1, orthodox:-1, secular:1, religious:1},
+    impact: { secular:1, religious:1},
   },
   {
     id: 9,
@@ -92,7 +92,7 @@ export const rules: RuleDetails[] = [
     name: "חוק ההפלות",
     initialInfo: `מאפשר הפלות רק עם מניע המוגדר בחוק`,
     summaryInfo: `החוק מצמצם הפלות המיותרות אבל מונע מהאישה שליטה על גופה. החוק טוב למגזר החרדי ופוגע בנשים מכל המגזרים וגם בגברים שיגדלו ילד לא רצוי.`,
-    impact: { "orthodox-man": 1, "orthodox-lgbt":1, "-woman": -3,  "arab-man": -1,  "religious-man": -1 },
+    impact: { "orthodox-man": 1, "orthodox-lgbt":1, "-woman": -3,  "arab-man": -1,  "secular-man": -1 },
   },
   {
     id: 14,
@@ -113,7 +113,7 @@ export const rules: RuleDetails[] = [
     name: "חוק האלכוהול",
     initialInfo: `מתחשב במגזר המוסלמי על ידי איסור מכירה של אלכוהול במהלך חודש הרמאדן`,
     summaryInfo: `החוק טוב למגזר הערבי ופוגע בכל יתר המגזרים.`,
-    impact: { arab: 1, orthodox:-1, secular:-1, religious:-1},
+    impact: { arab: 1, orthodox:-2, secular:-2, religious:-2},
   },
   {
     id: 17,
@@ -133,8 +133,8 @@ export const rules: RuleDetails[] = [
     id: 19,
     name: "חוק מדינת כל אזרחיה",
     initialInfo: `מבסס את הדמוקרטיה הישראלית על ידי ביטול חוק הלאום המגדיר את ישראל כמדינת היהודים בלבד`,
-    summaryInfo: `חוק הלאום שמגדיר את ישראל כמדינת היהודים בלבד מבוטל. הביטול פוגע במגזרים החרדי והדתי ציוני הרוצים מדינה יהודית ותורמת למגזר הערבי.`,
-    impact: {orthodox:-1,  arab:3 },
+    summaryInfo: `חוק הלאום שמגדיר את ישראל כמדינת היהודים בלבד מבוטל. הביטול פוגע במגזרים החרדי והדתי ציוני הרוצים מדינה יהודית ותורם למגזר הערבי.`,
+    impact: {orthodox:-1, religious:-1,  arab:3 },
   },
   {
     id: 20,

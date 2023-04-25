@@ -5,9 +5,11 @@ import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "../Game/CharacterImage";
 import Game from "../../logic/Game";
+import { useNavigate } from "../../helpers/SmartNavigate";
 
 export default function SummaryReview() {
-  const { game } = useGame();
+  const { game, start } = useGame();
+  const navigate = useNavigate();
 
   return (
     <Stack alignItems="center">
@@ -48,6 +50,11 @@ export default function SummaryReview() {
             flex: 5,
             fontSize: "1rem",
             fontWeight: 700,
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            start();
+            navigate("/regame", true);
           }}
         >
           רוצה לשחק שוב?
