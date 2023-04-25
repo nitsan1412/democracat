@@ -5,7 +5,7 @@ import emptyCat from "../../images/icons/emptyCat.svg";
 export default function HighestScoreBox(props) {
   return (
     <Stack
-      alignItems="center"
+      // alignItems="center"
       sx={{
         border: "2px #ECECEC solid ",
         padding: "0.5rem",

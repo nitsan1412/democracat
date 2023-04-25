@@ -17,7 +17,7 @@ import StartGameButton from "../StartGameButton";
 import catKing from "../../images/icons/instructions/catKing.svg";
 import approveButton from "../../images/icons/instructions/approveButton.svg";
 import declineButton from "../../images/icons/instructions/declineButton.svg";
-import fiveCatsInInstructions from "../../images/icons/instructions/fiveCatsInInstructions.svg";
+import allCatsInInstructions from "../../images/icons/instructions/allCats.png";
 
 export default function Instructions(props) {
   const [open, setOpen] = useState(false);
@@ -29,23 +29,33 @@ export default function Instructions(props) {
         מי אני? מה אני?
       </Typography>
       <img src={catKing} alt="cat king" />
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>ברכות!</b> נבחרתם לשלוט במדינת החתולים מיציטופיה בה יש חברה
-        פלורליסטית ולכל חתול יש קול.
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "1rem" }}
+      >
+        <b>ברכות!</b> נבחרת לשלוט במדינת החתולים מיציטופיה בה יש חברה פלורליסטית
+        ולכל חתול יש קול.
       </Typography>
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "1rem" }}
+      >
         ביכולתך להחליט איזה חתולים יגיעו אל כרית הצמר הנעימה{" "}
       </Typography>
+      <Stack height="1.5rem"> </Stack>
     </Stack>,
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
         החתולים המשתתפים
       </Typography>
-      <img src={fiveCatsInInstructions} alt="sector cats" />
+      <img src={allCatsInInstructions} alt="sector cats" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         החתולים מחולקים לארבעה מגזרים: חילוני, דתי-ציוני, חרדי וערבי
       </Typography>
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "-1rem" }}
+      >
         ושלושה מגזרים: זכר, נקבה ולהט"ב
       </Typography>
     </Stack>,
@@ -56,11 +66,20 @@ export default function Instructions(props) {
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         המטרה היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר בתוך שתי דקות{" "}
       </Typography>
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "-1rem" }}
+      >
         כל חתול מזכה אותך בנקודה{" "}
       </Typography>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "-1rem" }}
+      >
+        תוכל לקדם חתולים מסויימים ולעכב אחרים{" "}
+      </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        תוכלו לקדם חתולים מסויימים ולעכב אחרים בעזרת{" "}
+        בעזרת{" "}
         <img
           src={approveButton}
           alt="approve"
@@ -72,9 +91,10 @@ export default function Instructions(props) {
           alt="decline"
           style={{ display: "inline", verticalAlign: "bottom" }}
         />{" "}
+      </Typography>
+      <Typography variant="body1" sx={{ textAlign: "center" }}>
         של חוקים
       </Typography>
-
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         <b>ויש גם בונוס!</b>
       </Typography>
@@ -85,7 +105,11 @@ export default function Instructions(props) {
         הבונוס יחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל
         הכרית
       </Typography>
-      <StartGameButton />
+      <Stack
+        sx={{ marginTop: "1.5rem", marginBottom: "0.6rem", width: "100%" }}
+      >
+        <StartGameButton />
+      </Stack>
     </Stack>,
   ].reverse();
 
@@ -165,7 +189,7 @@ export default function Instructions(props) {
           infinite={false}
           prevArrow={<PrevArrow />}
           nextArrow={<NextArrow />}
-          style={{ width: "20rem" }}
+          style={{ width: "22rem" }}
         >
           {slides.map((slide, index) => (
             <Paper
@@ -173,16 +197,21 @@ export default function Instructions(props) {
               elevation={2}
               sx={{
                 width: "90vw",
-                height: "30rem",
+                height: "34rem",
                 padding: "2rem",
                 paddingTop: "1rem",
-                marginTop: "4rem",
+                marginTop: "1rem",
               }}
             >
               <Typography
                 color="primary"
                 variant="body1"
-                sx={{ fontWeight: 600, textAlign: "center" }}
+                sx={{
+                  fontWeight: 600,
+                  textAlign: "center",
+                  // marginTop: "1rem",
+                  marginBottom: "1rem",
+                }}
               >
                 הוראות המשחק
               </Typography>

@@ -62,7 +62,7 @@ export class Rule {
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) => {
             characterType.resetSpeed();
-            if (characterType.muted) {
+            if (characterType.muted || characterType.transparent ) {
               characterType.changeImage(characterType.name);
             }
           });
