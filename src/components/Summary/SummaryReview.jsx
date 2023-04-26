@@ -45,6 +45,7 @@ export default function SummaryReview() {
         </Typography>
         <Typography
           variant="body1"
+          color="primary"
           sx={{
             textAlign: "center",
             flex: 5,

@@ -47,7 +47,7 @@ export default function PluralismComic() {
       </Typography>
       <Button
         variant="contained"
-        // color="#FC68B4"
+        // color="secondary"
         // onClick={() => {}}
         // fullWidth
         // disableElevation
@@ -57,7 +57,7 @@ export default function PluralismComic() {
           margin: "1rem",
           paddingX: "1rem",
           // height: "3rem",
-          color: "#FC68B4",
+          color: "secondary",
           backgroundColor: "#FFFFFF",
         }}
         // cursor="pointer"

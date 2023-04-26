@@ -46,7 +46,7 @@ export default function RuleImpact({ rule }) {
                 width: "11px",
                 height: "15px",
                 right: 15,
-                backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
+                backgroundColor: impact > 0 ? "primary" : "secondary",
                 color: "#FFFFFF",
               },
             }}

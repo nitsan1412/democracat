@@ -56,7 +56,7 @@ export default function GameSummary() {
             <SummaryReview />
           </Stack>
           {/* <Stack
-            sx={{ ...boxStyle, backgroundColor: "#FC68B4", color: "#FFF6FA" }}
+            sx={{ ...boxStyle, backgroundColor: "secondary", color: "#FFF6FA" }}
           >
             <PluralismComic />
           </Stack> */}
