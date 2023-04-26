@@ -3,6 +3,8 @@ import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
+import Equality from "../../images/icons/equality.png";
+import Muted from "../../images/icons/muted.png";
 
 export default function RuleImpact({ rule }) {
   const { game } = useGame();
@@ -68,6 +70,18 @@ export default function RuleImpact({ rule }) {
           </Badge>
         )
       )}
+      {rule.icon ? (
+        <div
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+        >
+          <img src={ICONS[rule.icon]} alt="rule-icon" height="80px" />
+        </div>
+      ) : (
+        ""
+      )}
       <div
         direction="row"
         alignItems="center"
@@ -90,3 +104,9 @@ export default function RuleImpact({ rule }) {
     </Stack>
   );
 }
+
+export const ICONS = {
+  equality: Equality,
+  reset: Equality,
+  muted: Muted,
+};

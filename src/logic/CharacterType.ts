@@ -20,6 +20,7 @@ export default class CharacterType {
   }
 
   changeSpeed(acceleration: number) {
+    if (this.speed + acceleration <= CharacterType.MAX_SPEED)
     this.speed += acceleration;
   }
 
@@ -42,4 +43,7 @@ export default class CharacterType {
     allCharacterTypes.map(
       (c) => new CharacterType(c.name, c.translation, 0, speed, muted)
     );
+
+    static MAX_SPEED = 8
+
 }

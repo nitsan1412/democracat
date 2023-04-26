@@ -15,6 +15,16 @@ export default function RuleChoice(props) {
         width: "calc(100% - 2rem)",
       }}
     >
+      <Stack
+        sx={{
+          position: "absolute",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 1,
+        }}
+      >
+        <img src={knessetInBreake} alt="" />
+      </Stack>
       {props.rule?.initialInfo ? (
         <Rule rule={props.rule} />
       ) : (

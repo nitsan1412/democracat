@@ -17,6 +17,8 @@ export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
         borderRadius: "25px",
         background: "white",
         boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.4)",
+        zIndex: 10,
+
         ...sx,
       }}
     >
@@ -44,7 +46,7 @@ export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
           {rule.name}
         </Typography>
         <Typography variant="body2" sx={{ textAlign: "center" }}>
-          מטרת החוק: {rule.initialInfo}
+          {rule.initialInfo}
         </Typography>
         {showImpact ? <RuleImpact rule={rule} /> : <></>}
       </Stack>

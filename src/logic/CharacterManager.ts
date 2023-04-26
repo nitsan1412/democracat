@@ -55,8 +55,10 @@ export default class CharacterManager {
    }
   }
 
+ 
   createCharacterWithProbability(charachterAdditionChance: number) {
-    if (Math.random() <= charachterAdditionChance) {
+    let currentChance =  this.characters.length>3 ? charachterAdditionChance : 0.1
+    if (Math.random() <= currentChance) {
       this.characters.push(
         Character.createCharacter(
           this.characterTypes.filter((characterType) => !characterType.disabled)

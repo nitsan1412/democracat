@@ -12,6 +12,7 @@ export class Rule {
     public summaryInfo: string,
     private impact: Impact,
     public isDelayed: boolean | undefined,
+    public icon: string | undefined,
     apply: Applier
   ) {
     this.apply = apply || this.apply;
@@ -61,7 +62,7 @@ export class Rule {
         return (characters, characterTypes) => {
           characterTypes.forEach((characterType) => {
             characterType.resetSpeed();
-            if (characterType.muted) {
+            if (characterType.muted || characterType.transparent ) {
               characterType.changeImage(characterType.name);
             }
           });
@@ -104,8 +105,8 @@ export class Rule {
   }
 
   static RULES = rules.map((r) => {
-    const { id, name, impact, initialInfo, summaryInfo, isDelayed, apply: applyDetails } = r;
+    const { id, name, impact, initialInfo, summaryInfo, isDelayed, icon, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
-    return new Rule(id, name, initialInfo, summaryInfo, impact, isDelayed, apply);
+    return new Rule(id, name, initialInfo, summaryInfo, impact, isDelayed, icon, apply);
   });
 }
