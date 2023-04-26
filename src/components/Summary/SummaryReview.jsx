@@ -51,6 +51,7 @@ export default function SummaryReview() {
             fontSize: "1rem",
             fontWeight: 700,
             cursor: "pointer",
+            textDecoration: "underline",
           }}
           onClick={() => {
             start();
