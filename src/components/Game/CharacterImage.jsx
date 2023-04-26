@@ -7,14 +7,14 @@ import ArabWoman from "../../images/cats/arab-woman.png";
 import OrthodoxWoman from "../../images/cats/orthodox-woman.png";
 import ReligiousWoman from "../../images/cats/religious-woman.png";
 import SecularWoman from "../../images/cats/secular-woman.png";
-// import ArabLGBT from "../../images/cats/arab-lgbt.png";
-import ArabLGBT from "../../images/cats/arab-lgbt.svg";
+import ArabLGBT from "../../images/cats/arab-lgbt.png";
+// import ArabLGBT from "../../images/cats/arab-lgbt.svg";
 
-// import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.png";
-import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.svg";
-// import ReligiousLGBT from "../../images/cats/religious-lgbt.png";
+import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.png";
+// import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.svg";
+import ReligiousLGBT from "../../images/cats/religious-lgbt.png";
 
-import ReligiousLGBT from "../../images/cats/religious-lgbt.svg";
+// import ReligiousLGBT from "../../images/cats/religious-lgbt.svg";
 import SecularLGBT from "../../images/cats/secular-lgbt.png";
 import ArabManMuted from "../../images/cats/arab-man-muted.png";
 import OrthodoxManMuted from "../../images/cats/orthodox-man-muted.png";
@@ -24,10 +24,10 @@ import ArabWomanMuted from "../../images/cats/arab-woman-muted.png";
 import OrthodoxWomanMuted from "../../images/cats/orthodox-woman-muted.png";
 import ReligiousWomanMuted from "../../images/cats/religious-woman-muted.png";
 import SecularWomanMuted from "../../images/cats/secular-woman-muted.png";
-// import ArabLGBTMuted from "../../images/cats/arab-lgbt-muted.png";
-// import OrthodoxLGBTMuted from "../../images/cats/orthodox-lgbt-muted.png";
-// import ReligiousLGBTMuted from "../../images/cats/religious-lgbt-muted.png";
-// import SecularLGBTMuted from "../../images/cats/secular-lgbt-muted.png";
+import ArabLGBTMuted from "../../images/cats/arab-lgbt-muted.png";
+import OrthodoxLGBTMuted from "../../images/cats/orthodox-lgbt-muted.png";
+import ReligiousLGBTMuted from "../../images/cats/religious-lgbt-muted.png";
+import SecularLGBTMuted from "../../images/cats/secular-lgbt-muted.png";
 import ArabWomanTransparent from "../../images/cats/arab-woman-transparent.png";
 import OrthodoxWomanTransparent from "../../images/cats/orthodox-woman-transparent.png";
 import ReligiousWomanTransparent from "../../images/cats/religious-woman-transparent.png";
@@ -68,10 +68,10 @@ export const IMAGES = {
   "orthodox-woman-muted": OrthodoxWomanMuted,
   "religious-woman-muted": ReligiousWomanMuted,
   "secular-woman-muted": SecularWomanMuted,
-  "arab-lgbt-muted": ArabLGBT,
-  "orthodox-lgbt-muted": OrthodoxLGBT,
-  "religious-lgbt-muted": ReligiousLGBT,
-  "secular-lgbt-muted": SecularLGBT,
+  "arab-lgbt-muted": ArabLGBTMuted,
+  "orthodox-lgbt-muted": OrthodoxLGBTMuted,
+  "religious-lgbt-muted": ReligiousLGBTMuted,
+  "secular-lgbt-muted": SecularLGBTMuted,
   "arab-woman-transparent": ArabWomanTransparent,
   "orthodox-woman-transparent": OrthodoxWomanTransparent,
   "religious-woman-transparent": ReligiousWomanTransparent,
