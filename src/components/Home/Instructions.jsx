@@ -110,8 +110,7 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        הבונוס יחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל
-        הכרית
+        שיחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל הכרית
       </Typography>
       <Stack
         sx={{ marginTop: "1.5rem", marginBottom: "0.6rem", width: "100%" }}
