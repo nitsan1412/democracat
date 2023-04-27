@@ -8,13 +8,8 @@ import OrthodoxWoman from "../../images/cats/orthodox-woman.png";
 import ReligiousWoman from "../../images/cats/religious-woman.png";
 import SecularWoman from "../../images/cats/secular-woman.png";
 import ArabLGBT from "../../images/cats/arab-lgbt.png";
-// import ArabLGBT from "../../images/cats/arab-lgbt.svg";
-
 import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.png";
-// import OrthodoxLGBT from "../../images/cats/orthodox-lgbt.svg";
 import ReligiousLGBT from "../../images/cats/religious-lgbt.png";
-
-// import ReligiousLGBT from "../../images/cats/religious-lgbt.svg";
 import SecularLGBT from "../../images/cats/secular-lgbt.png";
 import ArabManMuted from "../../images/cats/arab-man-muted.png";
 import OrthodoxManMuted from "../../images/cats/orthodox-man-muted.png";
