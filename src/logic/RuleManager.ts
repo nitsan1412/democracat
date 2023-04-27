@@ -96,6 +96,6 @@ export default class RuleManager {
   };
   // static RULE_BATCHES = [3, 4, 3, 3, 5, 3, 4, 3, 4, 3, 4];
   static RULE_BATCHES =[1]
-  static RULES_DELAY = 2.5;
+  static RULES_DELAY = 2;
   static DELAYED_RULES_PERIOD = 7;
 }
