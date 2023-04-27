@@ -12,7 +12,7 @@ export default function RuleChoice(props) {
       sx={{
         padding: "0.5rem",
         height: "10rem",
-        width: "calc(100% - 2rem)",
+        width: "22rem",
       }}
     >
       <Stack
