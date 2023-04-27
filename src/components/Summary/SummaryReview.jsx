@@ -45,12 +45,14 @@ export default function SummaryReview() {
         </Typography>
         <Typography
           variant="body1"
+          color="primary"
           sx={{
             textAlign: "center",
             flex: 5,
             fontSize: "1rem",
             fontWeight: 700,
             cursor: "pointer",
+            textDecoration: "underline",
           }}
           onClick={() => {
             start();

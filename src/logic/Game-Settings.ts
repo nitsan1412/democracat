@@ -161,7 +161,7 @@ export const rules: RuleDetails[] = [
     id: 23,
     name: "חוק תקשורת",
     initialInfo: `מצמצם את הוצאות הממשלה על ידי סגירת ערוצי תקשורת מיותרים`,
-    summaryInfo: `החוק פוגע בחופש הביטוי של כל המגזרים ולכן כל החתולים נעשים שקופים.`,
+    summaryInfo: `החוק פוגע בחופש הביטוי של כל המגזרים ולכן פיהם של כל החתולים נחסם.`,
     impact: { muted: 1 },
     apply: { type: "Muted" },
     isDelayed: true,
@@ -185,7 +185,7 @@ export const rules: RuleDetails[] = [
     impact: { all: 0 },
     apply: { type: "Reset" },
     isDelayed: true,
-    icon:"reset",
+    // icon:"reset",
 
   },
   {

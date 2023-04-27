@@ -1,7 +1,7 @@
 import Stack from "@mui/material/Stack";
 import { useGame } from "../../helpers/GameContext";
 import Character from "./Character";
-import pillow from "../../images/icons/pillow.svg";
+import pillow from "../../images/icons/pillow.png";
 import catFinishedGif from "../../images/animations/catFinishedGif.gif";
 
 export default function Board() {
