@@ -61,7 +61,7 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        ושלושה מגזרים: זכר, נקבה ולהט"ב
+        ושלושה מגדרים: זכר, נקבה ולהט"ב
       </Typography>
     </Stack>,
     <Stack alignItems="center" gap={2}>
