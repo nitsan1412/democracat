@@ -17,12 +17,14 @@ export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
         borderRadius: "25px",
         background: "white",
         boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.4)",
+        zIndex: 10,
+
         ...sx,
       }}
     >
       <Stack
         gap={1}
-        width={1}
+        // width={1}
         height={1}
         flexDirection="column"
         alignItems="center"
@@ -46,7 +48,7 @@ export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
         <Typography variant="body2" sx={{ textAlign: "center" }}>
           {rule.initialInfo}
         </Typography>
-        {showImpact ? <RuleImpact rule={rule} /> : <></>}
+        {showImpact ? <RuleImpact rule={rule} overTitle={overTitle} /> : <></>}
       </Stack>
     </Stack>
   );

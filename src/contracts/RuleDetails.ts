@@ -9,4 +9,5 @@ export type RuleDetails = {
   impact: Impact;
   isDelayed?: boolean;
   apply?: ApplyDetails;
+  icon?:string
 };

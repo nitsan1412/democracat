@@ -29,7 +29,7 @@ export default function RuleSelectedModal(props) {
         <Typography
           id="modal-modal-title"
           variant="overline"
-          sx={{ fontSize: "0.9rem", color: "#79C300" }}
+          sx={{ fontSize: "0.9rem", color: "primary" }}
         >
           הצעת החוק עברה בהצלחה
         </Typography>
@@ -69,7 +69,7 @@ export default function RuleSelectedModal(props) {
             justifyContent: "center",
           }}
         >
-          מטרת החוק: {props.rule.initialInfo || ""}
+          {props.rule.initialInfo || ""}
         </Typography>
       </Stack>
       <Stack

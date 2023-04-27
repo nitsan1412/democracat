@@ -3,8 +3,10 @@ import Typography from "@mui/material/Typography";
 import Badge from "@mui/material/Badge";
 import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
+import Equality from "../../images/icons/equality.png";
+import Muted from "../../images/icons/muted.png";
 
-export default function RuleImpact({ rule }) {
+export default function RuleImpact({ rule, overTitle }) {
   const { game } = useGame();
   const impactedCharacterTypes = game.characterManager.characterTypes
     .map((characterType) => ({
@@ -33,17 +35,23 @@ export default function RuleImpact({ rule }) {
         ) : (
           <Badge
             key={characterType}
-            badgeContent={`${impact > 0 ? "+" : "-"}${
-              impact > 0 ? impact : impact * -1
-            }`}
+            badgeContent={
+              overTitle
+                ? `${impact > 0 ? "+" : "-"}${
+                    impact > 0 ? impact : impact * -1
+                  }`
+                : `${impact > 0 ? impact : impact * -1}${
+                    impact > 0 ? "+" : "-"
+                  }`
+            }
             sx={{
               justifyContent: "center",
               ".MuiBadge-badge": {
                 padding: 0,
                 fontSize: "0.6rem",
                 width: "11px",
-                height: "15px",
-                right: 15,
+                height: "19px",
+                right: 8,
                 backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
                 color: "#FFFFFF",
               },
@@ -68,6 +76,18 @@ export default function RuleImpact({ rule }) {
           </Badge>
         )
       )}
+      {rule.icon ? (
+        <div
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+        >
+          <img src={ICONS[rule.icon]} alt="rule-icon" height="80px" />
+        </div>
+      ) : (
+        ""
+      )}
       <div
         direction="row"
         alignItems="center"
@@ -90,3 +110,9 @@ export default function RuleImpact({ rule }) {
     </Stack>
   );
 }
+
+export const ICONS = {
+  equality: Equality,
+  reset: Equality,
+  muted: Muted,
+};

@@ -9,6 +9,7 @@ export default function SummaryHeader() {
   return (
     <Typography
       variant="body1"
+      color="secondary"
       sx={{
         backgroundImage: `url(${
           game.gameSummary.isHighScore ? newRecord : endGame
@@ -19,7 +20,6 @@ export default function SummaryHeader() {
         width: "calc(100% - 2rem)",
         textAlign: "center",
         fontSize: "3.1rem",
-        color: "#FC68B4",
         padding: "1rem 0rem",
       }}
     >
