@@ -11,12 +11,6 @@ import Summary from "./components/Summary";
 import Game from "./components/Game";
 
 export default function App() {
-  useEffect(() => {
-    // eslint-disable-next-line
-    screen.orientation.lock("portrait");
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <ThemeProvider>
       <GameProvider>
