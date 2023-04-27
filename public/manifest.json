@@ -4,18 +4,8 @@
   "icons": [
     {
       "src": "secular-woman.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "112x116",
       "type": "image/png"
-    },
-    {
-      "src": "secular-woman.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "secular-woman.png",
-      "type": "image/png",
-      "sizes": "512x512"
     }
   ],
   "start_url": ".",
