@@ -43,7 +43,6 @@ export default function Game() {
           justifyContent="center"
           sx={{
             padding: "1rem",
-            marginTop: "1rem",
             height: "5rem",
             borderTop: "2px solid lightgray",
           }}
