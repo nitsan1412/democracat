@@ -134,7 +134,7 @@ export default function GameSummary() {
           }}
           onClick={() => {
             window.open(
-              "https://docs.google.com/forms/d/1RIWliWpH1JzcBN6RJjxVDyG0YgFTpKMYTMT0LXCaHiM",
+              "https://docs.google.com/forms/d/e/1FAIpQLScMHQ-JwlNL0F9RW7QZEsgzPpPCigf_7y3DQbpceLTDAvcTZg/viewform",
               "_blank"
             );
           }}
