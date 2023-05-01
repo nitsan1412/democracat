@@ -56,7 +56,16 @@ export default function Share(props) {
         }
         onClick={() => setOpen(true)}
       >
-        שתפו חברים
+        <Typography
+          variant="body"
+          sx={{
+            textAlign: "center",
+            justifyContent: "center",
+            lineHeight: 1,
+          }}
+        >
+          שתפו חברים
+        </Typography>
       </Button>
       <Dialog fullWidth open={open} onClose={() => setOpen(false)}>
         <DialogTitle>

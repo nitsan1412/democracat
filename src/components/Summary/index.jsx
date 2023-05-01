@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-
+import RateReviewIcon from "@mui/icons-material/RateReview";
 import { useGame } from "../../helpers/GameContext";
 import { useNavigate } from "../../helpers/SmartNavigate";
 import ShareButton from "./Share";
@@ -64,7 +64,7 @@ export default function GameSummary() {
         </Stack>
       </Stack>
       <Stack
-        gap={2}
+        gap={1}
         sx={{
           flexDirection: "row",
           padding: "1rem 2rem",
@@ -84,7 +84,7 @@ export default function GameSummary() {
             fontSize: "0.9rem",
             fontWeight: "500",
             height: "2.7rem",
-            padding: "0.5rem 1rem",
+            padding: "0.5rem 0.5rem",
             boxShadow: "none",
             flex: 1,
           }}
@@ -93,13 +93,14 @@ export default function GameSummary() {
           gap={1}
           sx={{
             border: "1px #646464 solid ",
-            padding: "0.5rem 1rem",
+            padding: "0.5rem 0.5rem",
             flexDirection: "row",
             alignItems: "center",
             alignSelf: "center",
             justifyContent: "center",
             borderRadius: "12px",
             cursor: "pointer",
+            flex: 1,
           }}
           onClick={() => {
             start();
@@ -115,6 +116,38 @@ export default function GameSummary() {
             }}
           >
             שחק שוב
+          </Typography>
+        </Stack>
+        <Stack
+          gap={1}
+          sx={{
+            flex: 1,
+            border: "1px #646464 solid ",
+            padding: "0.5rem 0.5rem",
+            height: "2.7rem",
+            flexDirection: "row",
+            alignItems: "center",
+            alignSelf: "center",
+            justifyContent: "center",
+            borderRadius: "12px",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            window.open(
+              "https://docs.google.com/forms/d/1RIWliWpH1JzcBN6RJjxVDyG0YgFTpKMYTMT0LXCaHiM",
+              "_blank"
+            );
+          }}
+        >
+          <RateReviewIcon />
+          <Typography
+            variant="subtitle1"
+            sx={{
+              fontSize: "0.9rem",
+              fontWeight: "500",
+            }}
+          >
+            משוב
           </Typography>
         </Stack>
       </Stack>
