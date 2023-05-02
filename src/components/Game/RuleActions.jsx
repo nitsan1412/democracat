@@ -37,7 +37,7 @@ export default function RuleActions(props) {
                   game.characterManager.characterTypes[0].muted
               )
             : playSound(
-                "meow",
+                "chosenLaw",
                 game.isGameMuted ||
                   game.characterManager.charactersInPlay()[0].type.muted
               );
@@ -69,6 +69,11 @@ export default function RuleActions(props) {
         }}
         onClick={() => {
           declineRule(props.rule);
+          playSound(
+            "declineLaw",
+            game.isGameMuted ||
+              game.characterManager.charactersInPlay()[0].type.muted
+          );
         }}
       >
         <ClearIcon

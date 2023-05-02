@@ -8,10 +8,10 @@ export default class Game {
   status: GameStatus;
   gameSummary: GameSummary;
   ruleManager: RuleManager;
+  isGameMuted : boolean;
 
   private scoreManager: ScoreManager;
   private startTime: number;
-  private isGameMuted : boolean;
   private pauseTime: number;
   private paused: boolean;
   private characterManager: CharacterManager;
@@ -87,7 +87,7 @@ export default class Game {
     );
   }
 
-  finish() {
+  finish() {   
     this.status = Game.STATUS.OVER;
     const score = this.scoreManager.calculateScore(
       this.characterManager.charactersDone()
