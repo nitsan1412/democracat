@@ -5,6 +5,7 @@ import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "./CharacterImage";
 import Equality from "../../images/icons/equality.png";
 import Muted from "../../images/icons/muted.png";
+import Refresh from "../../images/icons/refresh.png";
 
 export default function RuleImpact({ rule, overTitle }) {
   const { game } = useGame();
@@ -113,6 +114,6 @@ export default function RuleImpact({ rule, overTitle }) {
 
 export const ICONS = {
   equality: Equality,
-  reset: Equality,
+  refresh: Refresh,
   muted: Muted,
 };

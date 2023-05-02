@@ -39,7 +39,7 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        נבחרת לשלוט במדינת מיציטופיה בה מתנהלת חברה פלורליסטית ולכל חתול יש קול{" "}
+        נבחרת לשלוט במדינת מיציטופיה בה החברה פלורליסטית ולכל חתול יש קול{" "}
       </Typography>
       <Typography
         variant="body1"
@@ -51,7 +51,7 @@ export default function Instructions(props) {
     </Stack>,
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
-        החתולים המשתתפים
+        אזרחי מדינת מיציטופיה
       </Typography>
       <img src={allCatsInInstructions} alt="sector cats" />
       <Typography variant="body1" sx={{ textAlign: "center" }}>
@@ -110,7 +110,7 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        שיחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל הכרית
+        המחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל הכרית
       </Typography>
       <Stack
         sx={{ marginTop: "1.5rem", marginBottom: "0.6rem", width: "100%" }}

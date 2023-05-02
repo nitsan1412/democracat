@@ -185,7 +185,7 @@ export const rules: RuleDetails[] = [
     impact: { all: 0 },
     apply: { type: "Reset" },
     isDelayed: true,
-    // icon:"reset",
+    icon:"refresh",
 
   },
   {

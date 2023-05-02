@@ -31,7 +31,7 @@ export default function Share(props) {
   const [open, setOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("none");
   const url = `${document.location.toString().split("/summary")[0]}/share`;
-  const text = `${DateTime.now().toFormat("dd.MM.yyyy")}
+  const text = `מיציטופיה\n ${DateTime.now().toFormat("dd.MM.yyyy")}
 הניקוד שלך: ${game.gameSummary.bonusScore + game.gameSummary.score}
 כולל בונוס: ${game.gameSummary.bonusScore}
 שחקו במיציטופיה כאן:\n`;
