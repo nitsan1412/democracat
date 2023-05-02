@@ -6,7 +6,7 @@ export function playSound(name: string, isGameMuted: boolean) {
   if (Array.isArray(config)) {
     config = config[Math.floor(Math.random() * config.length)];
   }
-  const howl = new Howl({ ...config });
+  const howl: any = new Howl({ ...config });
   return howl.play();
 }
 
@@ -58,10 +58,7 @@ const SOUNDS = {
     { src: ["/sounds/ChoosingALaw-01.mp3"], volume: 0.5 },
   ],
   muted: { src: [""] },
-  siteMusic: {
-    src: ["/sounds/SiteMusicLoop.mp3"],
-    autoplay: true,
-    loop: true,
-    volume: 0.3,
-  },
+ 
 };
+
+
