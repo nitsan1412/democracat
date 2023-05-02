@@ -23,7 +23,7 @@ export default function EndScore() {
           fontWeight: 600,
         }}
       >
-        זה הניקוד שלך
+        הניקוד הסופי{" "}
       </Typography>
       <Stack
         flexDirection="row-reverse"
@@ -51,10 +51,20 @@ export default function EndScore() {
         sx={{
           fontSize: "0.8rem",
           fontWeight: 600,
-          letterSpacing: "0.15em"
+          letterSpacing: "0.15em",
         }}
       >
-        <u>כולל בונוס</u>&nbsp;על סך {game.gameSummary.bonusScore} נקודות!
+        {game.gameSummary.score}&nbsp;&nbsp; עבור החתולים שעברו
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          fontSize: "0.8rem",
+          fontWeight: 600,
+          letterSpacing: "0.15em",
+        }}
+      >
+        {game.gameSummary.bonusScore}&nbsp;&nbsp; בונוס עבור פלורליזם
       </Typography>
     </Stack>
   );

@@ -12,7 +12,7 @@ import { useGame } from "../../helpers/GameContext";
 
 export default function Menu() {
   const navigate = useNavigate();
-  const { game, changeGameSounds } = useGame();
+  const { game, changeGameSounds, cancel } = useGame();
 
   return (
     <Stack
@@ -31,6 +31,7 @@ export default function Menu() {
         gap={1}
         onClick={() => {
           navigate("/", true);
+          cancel();
         }}
       >
         <img src={backArrow} alt="" />

@@ -86,7 +86,7 @@ export default function SummaryReview() {
                 fontWeight: 400,
               }}
             >
-              החתולים שאספתם{" "}
+              החתולים שאספת{" "}
             </Typography>
           </Stack>
           <Grid

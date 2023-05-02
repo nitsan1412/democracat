@@ -1,9 +1,11 @@
 import React, { useState, createContext, useContext } from "react";
 
 import { useForceUpdate } from "./ForceUpdate";
-import Game  from "../logic/Game";
+import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
 import { Rule } from "../logic/Rule";
+import { playSound } from "./Sounds";
+import { useMusic } from "./MusicContext";
 
 const GameContext = createContext<any>(null);
 
@@ -13,18 +15,23 @@ export function GameProvider({ children }) {
   const forceUpdate = useForceUpdate();
   const [game, setGame] = useState<any>(new Game());
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
-  
   const searchParams = new URLSearchParams(window.location.search);
-
+  const { stopMusic, startMusic } = useMusic();
   const start = () => {
     const game = getGameFromURL();
     setGame(game);
     game.start();
-
+    if (
+      !localStorage.getItem("isGameMuted") ||
+      localStorage.getItem("isGameMuted") === "false"
+    )
+      startMusic();
     const interval = setInterval(() => {
       game.step();
       forceUpdate();
       if (game.status === "over") {
+        stopMusic();
+        playSound("newHighScore", game.isGameMuted);
         clearInterval(interval);
       }
     }, Game.STEP * 1000);
@@ -41,23 +48,29 @@ export function GameProvider({ children }) {
     forceUpdate();
   };
 
-  const changeGameSounds=()=>{
+  const changeGameSounds = () => {
     localStorage.setItem("isGameMuted", String(!game.isGameMuted));
-    game.isGameMuted = !game.isGameMuted
-  }
+    if (!game.isGameMuted) stopMusic();
+    else startMusic();
+    game.isGameMuted = !game.isGameMuted;
+  };
 
   const cancel = () => {
     clearInterval(intervalHandler);
     setIntervalHandler(undefined);
     setGame(undefined);
     forceUpdate();
+    stopMusic();
   };
 
   const getGameFromURL = () => {
     return new Game(
       Number(searchParams.get("speed") || Game.INITIAL_SPEED),
       Number(searchParams.get("duration") || Game.DURATION),
-      Number(searchParams.get("charachterAdditionChance") || CharacterManager.CHARACTER_ADDITION_CHANCE)
+      Number(
+        searchParams.get("charachterAdditionChance") ||
+          CharacterManager.CHARACTER_ADDITION_CHANCE
+      )
     );
   };
 
@@ -69,8 +82,10 @@ export function GameProvider({ children }) {
         cancel,
         chooseRule,
         declineRule,
-        changeGameSounds
-      }}>
+        changeGameSounds,
+        stopMusic,
+      }}
+    >
       {children}
     </GameContext.Provider>
   );

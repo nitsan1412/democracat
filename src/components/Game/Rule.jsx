@@ -24,7 +24,7 @@ export default function Rule({ rule, showImpact, overTitle, sx = {} }) {
     >
       <Stack
         gap={1}
-        // width={1}
+        width={1}
         height={1}
         flexDirection="column"
         alignItems="center"
