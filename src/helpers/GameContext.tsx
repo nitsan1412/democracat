@@ -29,10 +29,12 @@ export function GameProvider({ children }) {
     const interval = setInterval(() => {
       game.step();
       forceUpdate();
+      if (game.characterManager.catFinishedNow) {
+        playSound("whenReachinCouch", game.isGameMuted);
+      }
       if (game.status === "over") {
-        stopMusic();
-        playSound("newHighScore", game.isGameMuted);
         clearInterval(interval);
+        playSound("newHighScore", game.isGameMuted);
       }
     }, Game.STEP * 1000);
     setIntervalHandler(interval);
@@ -60,7 +62,11 @@ export function GameProvider({ children }) {
     setIntervalHandler(undefined);
     setGame(undefined);
     forceUpdate();
-    stopMusic();
+    if (!game.isGameMuted) stopMusic();
+  };
+
+  const cancelMusic = () => {
+    if (!game.isGameMuted) stopMusic();
   };
 
   const getGameFromURL = () => {
@@ -80,6 +86,7 @@ export function GameProvider({ children }) {
         game,
         start,
         cancel,
+        cancelMusic,
         chooseRule,
         declineRule,
         changeGameSounds,

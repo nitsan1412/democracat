@@ -8,13 +8,13 @@ export default class Game {
   status: GameStatus;
   gameSummary: GameSummary;
   ruleManager: RuleManager;
+  characterManager: CharacterManager;
   isGameMuted : boolean;
 
   private scoreManager: ScoreManager;
   private startTime: number;
   private pauseTime: number;
   private paused: boolean;
-  private characterManager: CharacterManager;
 
   constructor(
     private speed = Game.INITIAL_SPEED,
@@ -49,8 +49,8 @@ export default class Game {
     );
     if (this.characterManager.characters.length>1){
       this.ruleManager.setNextRuleIfShould();
-    }
-    if (this.time <= 0) {
+    }    
+    if (this.time < 0.1) {
       this.finish();
     }
   }

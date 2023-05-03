@@ -95,7 +95,7 @@ export class ScoreManager {
     },
     [
       {
-        firstLine: "לא ממש הצלחת",
+        firstLine: "לא ממש הצלחת!",
         secondLine: "אולי כדאי לחשוב על העברת חתולים ממגזרים נוספים.",
       },
       {
