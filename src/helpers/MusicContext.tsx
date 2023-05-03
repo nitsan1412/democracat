@@ -9,18 +9,19 @@ export function MusicProvider({ children }) {
   const [music, setMusic] = useState<any>(null);
 
   const startMusic = () => {
-    setMusic(
-      new Howl({
-        src: ["/sounds/SiteMusicLoop.mp3"],
-        autoplay: true,
-        loop: true,
-        volume: 0.1,
-      })
-    );
+    const newMusic: any = new Howl({
+      src: ["/sounds/SiteMusicLoop.mp3"],
+      autoplay: true,
+      loop: true,
+      volume: 0.1,
+    });
+    newMusic.play();
+
+    setMusic(newMusic);
   };
 
   const stopMusic = () => {
-    music.pause();
+    music.stop();
     music.unload();
     setMusic(null);
   };

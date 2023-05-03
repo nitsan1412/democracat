@@ -29,6 +29,7 @@ export default function RuleImpact({ rule, overTitle }) {
       alignItems="center"
       flexWrap="wrap"
       marginTop={2}
+      maxWidth="313px"
     >
       {impactedCharacterTypes.map(({ characterType, impact }) =>
         !impact ? (
@@ -80,9 +81,9 @@ export default function RuleImpact({ rule, overTitle }) {
       {rule.icon ? (
         <div
           direction="row"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
+          alignitems="center"
+          justifycontent="center"
+          textalign="center"
         >
           <img src={ICONS[rule.icon]} alt="rule-icon" height="80px" />
         </div>
@@ -91,9 +92,9 @@ export default function RuleImpact({ rule, overTitle }) {
       )}
       <div
         direction="row"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
+        alignitems="center"
+        justifycontent="center"
+        textalign="center"
       >
         <Typography
           id="modal-modal-title"

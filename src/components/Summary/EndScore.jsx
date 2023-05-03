@@ -54,7 +54,7 @@ export default function EndScore() {
           letterSpacing: "0.15em",
         }}
       >
-        {game.gameSummary.score}&nbsp;&nbsp; עבור החתולים שעברו
+        {game.gameSummary.score}&nbsp;&nbsp; חתולים הגיעו לכרית
       </Typography>
       <Typography
         variant="body1"
