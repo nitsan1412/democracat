@@ -10,14 +10,17 @@ import { useNavigate } from "../../helpers/SmartNavigate";
 import { useGame } from "../../helpers/GameContext";
 
 export default function Game() {
-  const { game } = useGame();
+  const { game, cancelMusic } = useGame();
   const navigate = useNavigate();
   const rule = game?.ruleManager?.nextRule;
 
   useEffect(() => {
     if (!game || game.status === "pending") navigate("/", true);
-    else if (game.status === "over") navigate("/summary", true);
-  }, [game, game.status, navigate]);
+    else if (game.status === "over") {
+      cancelMusic();
+      navigate("/summary", true);
+    }
+  }, [game, cancelMusic, game.status, navigate]);
 
   if (!game || game.status === "pending") return <></>;
 
