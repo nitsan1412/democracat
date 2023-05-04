@@ -13,8 +13,6 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import ShareIcon from "@mui/icons-material/Share";
 import {
-  FacebookShareButton,
-  FacebookIcon,
   TwitterShareButton,
   TwitterIcon,
   WhatsappShareButton,
@@ -75,9 +73,6 @@ export default function Share(props) {
         </DialogTitle>
         <DialogContent>
           <Stack direction="row" justifyContent="space-evenly">
-            <FacebookShareButton url={url} quote={text}>
-              <FacebookIcon size={48} round />
-            </FacebookShareButton>
             <TwitterShareButton url={url} title={text}>
               <TwitterIcon size={48} round />
             </TwitterShareButton>
