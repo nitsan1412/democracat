@@ -17,6 +17,7 @@ export function GameProvider({ children }) {
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
   const searchParams = new URLSearchParams(window.location.search);
   const { stopMusic, startMusic } = useMusic();
+
   const start = () => {
     const game = getGameFromURL();
     setGame(game);
@@ -27,10 +28,11 @@ export function GameProvider({ children }) {
     )
       startMusic();
     const interval = setInterval(() => {
+      const numberOfFinished = game.characterManager.charactersDone().length;
       game.step();
       forceUpdate();
-      if (game.characterManager.catFinishedNow) {
-        playSound("whenReachinCouch", game.isGameMuted);
+      if (numberOfFinished < game.characterManager.charactersDone().length) {
+        playSound("meow", game.isGameMuted);
       }
       if (game.status === "over") {
         clearInterval(interval);

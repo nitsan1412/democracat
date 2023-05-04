@@ -41,14 +41,11 @@ export default class CharacterManager {
   }
 
   move() {
-    let previousDoneCats = this.charactersDone().length+0
-    console.log("previousDoneCats", previousDoneCats);
-    
+    let previousDoneCats = this.charactersDone().length+0   
     this.catFinishedNow = false
      this.characters
       .filter((charcter) => charcter.location < Game.TRACK_END)
       .forEach((charcter) =>charcter.move(Game.STEP));
-      console.log("this.charactersDone().length", this.charactersDone().length);
 
    if (this.charactersDone().length !== previousDoneCats){
     this.catFinishedNow = true;
