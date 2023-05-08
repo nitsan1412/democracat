@@ -72,6 +72,7 @@ export function GameProvider({ children }) {
   };
 
   const getGameFromURL = () => {
+    console.log("speed", searchParams.get("speed"));
     return new Game(
       Number(searchParams.get("speed") || Game.INITIAL_SPEED),
       Number(searchParams.get("duration") || Game.DURATION),

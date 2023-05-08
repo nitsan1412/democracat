@@ -32,7 +32,7 @@ export default class Game {
 
   start() {
     this.ruleManager = new RuleManager();
-    this.characterManager = new CharacterManager(Game.INITIAL_SPEED);
+    this.characterManager = new CharacterManager(this.speed);
     this.scoreManager = new ScoreManager();
     this.paused = false;
     this.status = Game.STATUS.RUNNING;
@@ -113,7 +113,7 @@ export default class Game {
   };
 
   static STEP = 0.1;
-  static DURATION = 2 * 60;
+  static DURATION = 1.5 * 60;
   static TRACK_END = 100;
   static INITIAL_SPEED = 1;
 }
