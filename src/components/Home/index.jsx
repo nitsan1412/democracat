@@ -100,7 +100,11 @@ export default function StartGameMenu() {
           משוב
         </Button>
       </Stack>
-      <Stack sx={{ width: 0.6, marginTop: "3rem" }} justifyContent="center">
+      <Stack
+        sx={{ width: 0.6, marginTop: "3rem" }}
+        gap={1}
+        justifyContent="center"
+      >
         <Typography
           variant="body1"
           sx={{
@@ -108,6 +112,8 @@ export default function StartGameMenu() {
             fontSize: "1.1rem",
             textDecoration: "underline",
             fontWeight: 600,
+            cursor: "pointer",
+            padding: 1,
           }}
           onClick={() => setShowUseInfo(true)}
         >
@@ -120,6 +126,8 @@ export default function StartGameMenu() {
             fontSize: "1.1rem",
             textDecoration: "underline",
             fontWeight: 600,
+            cursor: "pointer",
+            padding: 1,
           }}
           onClick={() => setShowAbout(true)}
         >
