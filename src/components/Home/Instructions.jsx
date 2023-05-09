@@ -61,7 +61,7 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        ושלושה מגדרים: זכר, נקבה ולהט"ב
+        שני מגדרים: (זכר, נקבה) ולהט"בים
       </Typography>
     </Stack>,
     <Stack alignItems="center" gap={2}>
@@ -69,7 +69,7 @@ export default function Instructions(props) {
         איך משחקים?
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        המטרה היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר בתוך שתי דקות{" "}
+        המטרה היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר בתוך דקה וחצי{" "}
       </Typography>
       <Typography
         variant="body1"
