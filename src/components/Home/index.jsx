@@ -99,6 +99,8 @@ export default function StartGameMenu() {
           <RateReviewIcon />
           משוב
         </Button>
+      </Stack>
+      <Stack sx={{ width: 0.6, marginTop: "3rem" }} justifyContent="center">
         <Typography
           variant="body1"
           sx={{
