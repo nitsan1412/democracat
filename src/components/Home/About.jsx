@@ -31,9 +31,9 @@ export default function About() {
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        במשחק משתתפים חתולים המייצגים מגזרים שונים ( חילוני, דתי ציוני, חרדי
+        במשחק משתתפים חתולים המייצגים מגזרים שונים (חילוני, דתי ציוני, חרדי
         וערבי) ומגדרים שונים (נשים וגברים) ולהט"בים. המטרה היא להביא כמה שיותר
-        חתולים לכרית הרכה והנעימה תוך שתי דקות.{" "}
+        חתולים לכרית הרכה והנעימה תוך דקה וחצי.{" "}
       </Typography>
       <Typography
         variant="body2"
@@ -49,13 +49,13 @@ export default function About() {
         בסיום המשחק מקבלים ניקוד המבוסס על מספר החתולים שהגיע לכרית ועוד בונוס
         משמעותי על מגוון המגזרים והמגדרים.
       </Typography>
-      <Typography
+      {/* <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
         קישור למילה פלורליזם מביא את השחקן לקומיקס קצר המסביר את חשיבות הגיוון
         בחיינו.
-      </Typography>
+      </Typography> */}
       <ul>
         <li style={{ fontSize: "0.9rem" }}>
           אין כל קשר בין החוקים במשחק לחוקים במציאות
@@ -74,7 +74,7 @@ export default function About() {
           fontWeight: 700,
         }}
       >
-        עבדו ימים כלילות, עמלו בפרך ולקחו חלק ביצירת פאר זו:{" "}
+        עבדו קשה, עמלו בפרך ולקחו חלק ביצירת פאר זו:{" "}
       </Typography>
       <Typography
         variant="body2"
@@ -111,7 +111,13 @@ export default function About() {
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
         <b> עזרו, חיזקו, תרמו וייעצו:</b>&nbsp; מארגני ומשתתפי הדמוקרתון 2023,
-        גארוגי אברמוביץ', דורי אדר, עמותת זול"ת, משפחת שטרק ורבים אחרים{" "}
+        עמותת זול"ת, גארוגי אברמוביץ', דורי אדר, ורבים אחרים{" "}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
+      >
+        <b> ותודה במיוחד לכל מי שהגיב ועזר לשפר את המשחק</b>
       </Typography>
       <br></br>
     </div>
