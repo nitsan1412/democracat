@@ -1,12 +1,14 @@
 import { useState } from "react";
-import Stack from "@mui/material/Stack";
+import { Stack, Button } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Typography from "@mui/material/Typography";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 
 import InstructionsButton from "./Instructions";
 import StartGameButton from "../StartGameButton";
 import HightScoreBox from "./HighestScoreBox";
 import TermsOfUse from "./TermsOfUse";
+import About from "./About";
 import homeBackground from "../../images/homeBackground.png";
 
 export default function StartGameMenu() {
@@ -15,6 +17,7 @@ export default function StartGameMenu() {
     date: localStorage.getItem("highest-score-dateTime"),
   };
   const [showUseInfo, setShowUseInfo] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
 
   return (
     <Stack
@@ -63,6 +66,8 @@ export default function StartGameMenu() {
           disableElevation
           variant="outlined"
           color="secondary"
+          cursor="pointer"
+          zIndex={30}
           sx={{
             borderWidth: 2,
             fontSize: "1.3rem !important",
@@ -70,6 +75,30 @@ export default function StartGameMenu() {
             backgroundColor: "white",
           }}
         />
+        <Button
+          // fullWidth
+          // disableElevation
+          variant="outlined"
+          color="black"
+          cursor="pointer"
+          sx={{
+            borderWidth: 2,
+            fontSize: "1.3rem",
+            height: "3rem",
+            backgroundColor: "white",
+            position: "inherit",
+          }}
+          onClick={() => {
+            window.open(
+              "https://docs.google.com/forms/d/e/1FAIpQLScMHQ-JwlNL0F9RW7QZEsgzPpPCigf_7y3DQbpceLTDAvcTZg/viewform",
+              "_blank"
+            );
+          }}
+        >
+          {" "}
+          <RateReviewIcon />
+          משוב
+        </Button>
         <Typography
           variant="body1"
           sx={{
@@ -81,6 +110,18 @@ export default function StartGameMenu() {
           onClick={() => setShowUseInfo(true)}
         >
           תקנון ותנאי שימוש{" "}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "center",
+            fontSize: "1.1rem",
+            textDecoration: "underline",
+            fontWeight: 600,
+          }}
+          onClick={() => setShowAbout(true)}
+        >
+          מי אנחנו ומדוע יצרנו את המשחק{" "}
         </Typography>
         <Dialog
           open={showUseInfo}
@@ -120,6 +161,45 @@ export default function StartGameMenu() {
             </Typography>{" "}
           </Stack>
           <TermsOfUse />
+        </Dialog>
+        <Dialog
+          open={showAbout}
+          onClose={() => {
+            setShowAbout(false);
+          }}
+          sx={{ borderRadius: 15, margin: "0 -1rem" }}
+        >
+          <Stack
+            alignItems="flex-start"
+            sx={{
+              hight: "2rem",
+              position: "sticky",
+              top: "0",
+              backgroundColor: "#ffffff",
+              zIndex: 150,
+              cursor: "pointer",
+              padding: "1rem",
+            }}
+            onClick={() => setShowAbout(false)}
+          >
+            <Typography
+              variant="body1"
+              sx={{
+                textAlign: "center",
+                fontSize: "1.1rem",
+                paddingRight: "0.5rem",
+                paddingLeft: "0.5rem",
+                fontWeight: 800,
+                borderRadius: "50px",
+                border: "solid 2px black",
+                backgroundColor: "#ffffff",
+              }}
+              onClick={() => setShowAbout(true)}
+            >
+              X
+            </Typography>{" "}
+          </Stack>
+          <About />
         </Dialog>
       </Stack>
     </Stack>
