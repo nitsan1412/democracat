@@ -127,7 +127,6 @@ export default function StartGameMenu() {
             textDecoration: "underline",
             fontWeight: 600,
             cursor: "pointer",
-            padding: 1,
           }}
           onClick={() => setShowAbout(true)}
         >
