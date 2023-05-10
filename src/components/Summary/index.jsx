@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import RateReviewIcon from "@mui/icons-material/RateReview";
 import { useGame } from "../../helpers/GameContext";
 import { useNavigate } from "../../helpers/SmartNavigate";
 import ShareButton from "./Share";
@@ -9,11 +8,11 @@ import SummaryHeader from "./SummaryHeader";
 import EndScore from "./EndScore";
 import SummaryReview from "./SummaryReview";
 import SummaryRulesReview from "./SummaryRulesReview";
-// import PluralismComic from "./PluralismComic";
 import restartGameArrow from "../../images/icons/restartGameArrow.svg";
 import gameBackground from "../../images/gameBackground.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import feedback from "../../images/icons/feedback.svg";
 
 export default function GameSummary() {
   const { game, start } = useGame();
@@ -139,7 +138,7 @@ export default function GameSummary() {
             );
           }}
         >
-          <RateReviewIcon />
+          <img src={feedback} alt={"משוב"} />
           <Typography
             variant="subtitle1"
             sx={{

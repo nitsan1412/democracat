@@ -2,14 +2,13 @@ import { useState } from "react";
 import { Stack, Button } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Typography from "@mui/material/Typography";
-import RateReviewIcon from "@mui/icons-material/RateReview";
-
 import InstructionsButton from "./Instructions";
 import StartGameButton from "../StartGameButton";
 import HightScoreBox from "./HighestScoreBox";
 import TermsOfUse from "./TermsOfUse";
 import About from "./About";
 import homeBackground from "../../images/homeBackground.png";
+import feedback from "../../images/icons/feedback.svg";
 
 export default function StartGameMenu() {
   const highestScoreToShow = {
@@ -76,8 +75,6 @@ export default function StartGameMenu() {
           }}
         />
         <Button
-          // fullWidth
-          // disableElevation
           variant="outlined"
           color="black"
           cursor="pointer"
@@ -87,6 +84,7 @@ export default function StartGameMenu() {
             height: "3rem",
             backgroundColor: "white",
             position: "inherit",
+            gap: 2,
           }}
           onClick={() => {
             window.open(
@@ -95,9 +93,7 @@ export default function StartGameMenu() {
             );
           }}
         >
-          {" "}
-          <RateReviewIcon />
-          משוב
+          <img src={feedback} alt={"משוב"} /> משוב
         </Button>
       </Stack>
       <Stack
