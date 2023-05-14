@@ -77,8 +77,8 @@ export default function StartGameMenu() {
           }}
         />
         <StartGameButton />
-        {!highestScoreToShow.highestScore ? <FeedbackButton /> : ""}
       </Stack>
+      {!highestScoreToShow.highestScore ? <FeedbackButton /> : ""}
 
       <Stack
         sx={{ marginTop: "13rem" }}
