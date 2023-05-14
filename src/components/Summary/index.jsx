@@ -5,7 +5,7 @@ import { useGame } from "../../helpers/GameContext";
 import { useNavigate } from "../../helpers/SmartNavigate";
 import ShareButton from "./Share";
 import SummaryHeader from "./SummaryHeader";
-import EndScore from "./EndScore";
+import EndScore from "../EndScore";
 import SummaryReview from "./SummaryReview";
 import SummaryRulesReview from "./SummaryRulesReview";
 import restartGameArrow from "../../images/icons/restartGameArrow.svg";
@@ -49,7 +49,7 @@ export default function GameSummary() {
           sx={{ padding: "1rem" }}
         >
           <Stack sx={boxStyle}>
-            <EndScore />
+            <EndScore gameSummary={game.gameSummary} />
           </Stack>
           <Stack sx={boxStyle}>
             <SummaryReview />
@@ -66,7 +66,7 @@ export default function GameSummary() {
         gap={1}
         sx={{
           flexDirection: "row",
-          padding: "1rem 2rem",
+          padding: "0.7rem 1rem",
           height: "6rem",
           bottom: "0",
           width: "100%",
@@ -80,10 +80,10 @@ export default function GameSummary() {
       >
         <ShareButton
           sx={{
-            fontSize: "0.9rem",
+            fontSize: "0.8rem",
             fontWeight: "500",
             height: "2.7rem",
-            padding: "0.5rem 0.5rem",
+            padding: "0.5rem 0.3rem",
             boxShadow: "none",
             flex: 1,
           }}
@@ -91,8 +91,7 @@ export default function GameSummary() {
         <Stack
           gap={1}
           sx={{
-            border: "1px #646464 solid ",
-            padding: "0.5rem 0.5rem",
+            padding: "0.5rem 0.4rem",
             flexDirection: "row",
             alignItems: "center",
             alignSelf: "center",
@@ -100,13 +99,15 @@ export default function GameSummary() {
             borderRadius: "12px",
             cursor: "pointer",
             flex: 1,
+            backgroundColor: "#79C300",
+            color: "#FFFFFF",
           }}
           onClick={() => {
             start();
             navigate("/regame", true);
           }}
         >
-          <img src={restartGameArrow} alt="" width="15px" height="15px" />
+          <img src={restartGameArrow} alt="" width="13px" height="13px" />
           <Typography
             variant="subtitle1"
             sx={{
@@ -114,7 +115,7 @@ export default function GameSummary() {
               fontWeight: "500",
             }}
           >
-            שחק שוב
+            משחק חוזר
           </Typography>
         </Stack>
         <Stack
@@ -138,7 +139,7 @@ export default function GameSummary() {
             );
           }}
         >
-          <img src={feedback} alt={"משוב"} />
+          <img src={feedback} alt={"משוב"} width="15px" height="15px" />
           <Typography
             variant="subtitle1"
             sx={{
@@ -146,7 +147,7 @@ export default function GameSummary() {
               fontWeight: "500",
             }}
           >
-            משוב
+            מה דעתך?
           </Typography>
         </Stack>
       </Stack>

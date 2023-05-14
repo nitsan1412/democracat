@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Stack, Button } from "@mui/material";
+import { Stack } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Typography from "@mui/material/Typography";
-import InstructionsButton from "./Instructions";
+import InstructionsButton from "../Instructions";
 import StartGameButton from "../StartGameButton";
 import HightScoreBox from "./HighestScoreBox";
 import TermsOfUse from "./TermsOfUse";
 import About from "./About";
 import homeBackground from "../../images/homeBackground.png";
-import feedback from "../../images/icons/feedback.svg";
+import FeedbackButton from "../FeedbakButton";
 
 export default function StartGameMenu() {
   const highestScoreToShow = {
@@ -54,12 +54,14 @@ export default function StartGameMenu() {
         {!highestScoreToShow.highestScore ? (
           ""
         ) : (
-          <HightScoreBox highestScoreToShow={highestScoreToShow} />
+          <>
+            <HightScoreBox highestScoreToShow={highestScoreToShow} />
+            <FeedbackButton />
+          </>
         )}
       </Stack>
 
       <Stack sx={{ width: 0.6 }} gap={2} justifyContent="center">
-        <StartGameButton />
         <InstructionsButton
           fullWidth
           disableElevation
@@ -74,142 +76,129 @@ export default function StartGameMenu() {
             backgroundColor: "white",
           }}
         />
-        <Button
-          variant="outlined"
-          color="black"
-          cursor="pointer"
-          sx={{
-            borderWidth: 2,
-            fontSize: "1.3rem",
-            height: "3rem",
-            backgroundColor: "white",
-            position: "inherit",
-            gap: 2,
-          }}
-          onClick={() => {
-            window.open(
-              "https://docs.google.com/forms/d/e/1FAIpQLScMHQ-JwlNL0F9RW7QZEsgzPpPCigf_7y3DQbpceLTDAvcTZg/viewform",
-              "_blank"
-            );
-          }}
-        >
-          <img src={feedback} alt={"משוב"} /> משוב
-        </Button>
+        <StartGameButton />
+        {!highestScoreToShow.highestScore ? <FeedbackButton /> : ""}
       </Stack>
+
       <Stack
-        sx={{ width: 0.6, marginTop: "3rem" }}
-        gap={1}
-        justifyContent="center"
+        sx={{ marginTop: "13rem" }}
+        flexDirection="row"
+        justifyContent="space-between"
+        minWidth="95%"
       >
+        <Typography
+          variant="body1"
+          sx={{
+            textDecoration: "underline",
+            textAlign: "center",
+            fontSize: "1.1rem",
+            fontWeight: 600,
+            cursor: "pointer",
+            padding: 1,
+            color: "#7A7A7A",
+          }}
+          onClick={() => setShowAbout(true)}
+        >
+          עלינו ועל המשחק{" "}
+        </Typography>
         <Typography
           variant="body1"
           sx={{
             textAlign: "center",
             fontSize: "1.1rem",
-            textDecoration: "underline",
             fontWeight: 600,
             cursor: "pointer",
             padding: 1,
+            color: "#7A7A7A",
           }}
           onClick={() => setShowUseInfo(true)}
         >
           תקנון ותנאי שימוש{" "}
         </Typography>
-        <Typography
-          variant="body1"
-          sx={{
-            textAlign: "center",
-            fontSize: "1.1rem",
-            textDecoration: "underline",
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
-          onClick={() => setShowAbout(true)}
-        >
-          מי אנחנו ומדוע יצרנו את המשחק{" "}
-        </Typography>
-        <Dialog
-          open={showUseInfo}
-          onClose={() => {
-            setShowUseInfo(false);
-          }}
-          sx={{ borderRadius: 15, margin: "0 -1rem" }}
-        >
-          <Stack
-            alignItems="flex-start"
-            sx={{
-              hight: "2rem",
-              position: "sticky",
-              top: "0",
-              backgroundColor: "#ffffff",
-              zIndex: 150,
-              cursor: "pointer",
-              padding: "1rem",
-            }}
-            onClick={() => setShowUseInfo(false)}
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                textAlign: "center",
-                fontSize: "1.1rem",
-                paddingRight: "0.5rem",
-                paddingLeft: "0.5rem",
-                fontWeight: 800,
-                borderRadius: "50px",
-                border: "solid 2px black",
-                backgroundColor: "#ffffff",
-              }}
-              onClick={() => setShowUseInfo(true)}
-            >
-              X
-            </Typography>{" "}
-          </Stack>
-          <TermsOfUse />
-        </Dialog>
-        <Dialog
-          open={showAbout}
-          onClose={() => {
-            setShowAbout(false);
-          }}
-          sx={{ borderRadius: 15, margin: "0 -1rem" }}
-        >
-          <Stack
-            alignItems="flex-start"
-            sx={{
-              hight: "2rem",
-              position: "sticky",
-              top: "0",
-              backgroundColor: "#ffffff",
-              zIndex: 150,
-              cursor: "pointer",
-              padding: "1rem",
-            }}
-            onClick={() => setShowAbout(false)}
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                textAlign: "center",
-                fontSize: "1.1rem",
-                paddingRight: "0.5rem",
-                paddingLeft: "0.5rem",
-                fontWeight: 800,
-                borderRadius: "50px",
-                border: "solid 2px black",
-                backgroundColor: "#ffffff",
-              }}
-              onClick={() => setShowAbout(true)}
-            >
-              X
-            </Typography>{" "}
-          </Stack>
-          <About />
-        </Dialog>
       </Stack>
+
+      <Dialog
+        open={showUseInfo}
+        onClose={() => {
+          setShowUseInfo(false);
+        }}
+        sx={{ borderRadius: 15, margin: "0 -1rem" }}
+      >
+        <Stack
+          alignItems="flex-start"
+          sx={{
+            hight: "2rem",
+            position: "sticky",
+            top: "0",
+            backgroundColor: "#ffffff",
+            zIndex: 150,
+            cursor: "pointer",
+            padding: "1rem",
+          }}
+          onClick={() => setShowUseInfo(false)}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              textAlign: "center",
+              fontSize: "1.1rem",
+              paddingRight: "0.5rem",
+              paddingLeft: "0.5rem",
+              fontWeight: 800,
+              borderRadius: "50px",
+              border: "solid 2px black",
+              backgroundColor: "#ffffff",
+            }}
+            onClick={() => setShowUseInfo(true)}
+          >
+            X
+          </Typography>{" "}
+        </Stack>
+        <TermsOfUse />
+      </Dialog>
+      <Dialog
+        open={showAbout}
+        onClose={() => {
+          setShowAbout(false);
+        }}
+        sx={{ borderRadius: 15, margin: "0 -1rem" }}
+      >
+        <Stack
+          alignItems="flex-start"
+          sx={{
+            hight: "2rem",
+            position: "sticky",
+            top: "0",
+            backgroundColor: "#ffffff",
+            zIndex: 150,
+            cursor: "pointer",
+            padding: "1rem",
+          }}
+          onClick={() => setShowAbout(false)}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              textAlign: "center",
+              fontSize: "1.1rem",
+              paddingRight: "0.5rem",
+              paddingLeft: "0.5rem",
+              fontWeight: 800,
+              borderRadius: "50px",
+              border: "solid 2px black",
+              backgroundColor: "#ffffff",
+            }}
+            onClick={() => setShowAbout(true)}
+          >
+            X
+          </Typography>{" "}
+        </Stack>
+        <About />
+      </Dialog>
     </Stack>
   );
 }
+
 StartGameMenu.characterStyles = {
   width: 150,
   height: 150,

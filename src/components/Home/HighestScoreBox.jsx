@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import emptyCat from "../../images/icons/emptyCat.svg";
+import award from "../../images/icons/award.svg";
 
 export default function HighestScoreBox(props) {
   return (
@@ -35,7 +35,7 @@ export default function HighestScoreBox(props) {
             fontWeight: 700,
           }}
         >
-          הניקוד הגבוה ביותר שלך
+          הניקוד שלך
         </Typography>
         <Stack
           flexDirection="row-reverse"
@@ -57,7 +57,7 @@ export default function HighestScoreBox(props) {
           >
             {props.highestScoreToShow.highestScore}
           </Typography>
-          <img src={emptyCat} alt="" />
+          <img src={award} alt="" />
         </Stack>
       </Stack>
       <Stack

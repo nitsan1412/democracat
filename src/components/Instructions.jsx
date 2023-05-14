@@ -12,12 +12,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import StartGameButton from "../StartGameButton";
+import StartGameButton from "./StartGameButton";
 
-import catKing from "../../images/icons/instructions/catKing.svg";
-import approveButton from "../../images/icons/instructions/approveButton.svg";
-import declineButton from "../../images/icons/instructions/declineButton.svg";
-import allCatsInInstructions from "../../images/icons/instructions/allCats.png";
+import catKing from "../images/icons/instructions/catKing.svg";
+import approveButton from "../images/icons/instructions/approveButton.svg";
+import declineButton from "../images/icons/instructions/declineButton.svg";
+import allCatsInInstructions from "../images/icons/instructions/allCats.png";
 
 export default function Instructions(props) {
   const [open, setOpen] = useState(false);
@@ -47,7 +47,7 @@ export default function Instructions(props) {
       >
         ביכולתך להחליט אילו חתולים יגיעו אל כרית הצמר הנעימה{" "}
       </Typography>
-      <Stack height="1rem"> </Stack>
+      <Stack height="0.01rem"> </Stack>
     </Stack>,
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
@@ -113,7 +113,7 @@ export default function Instructions(props) {
         המחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל הכרית
       </Typography>
       <Stack
-        sx={{ marginTop: "1.5rem", marginBottom: "0.6rem", width: "100%" }}
+        sx={{ marginTop: "1.5rem", marginBottom: "2.3rem", width: "100%" }}
       >
         <StartGameButton />
       </Stack>
@@ -244,12 +244,12 @@ const styles = {
   },
   ".slick-prev": {
     left: 0,
-    zIndex: 1,
+    zIndex: 2,
     "::before": { content: "unset" },
   },
   ".slick-next": {
     right: 0,
-    zIndex: 1,
+    zIndex: 2,
     "::before": { content: "unset" },
   },
   ".slick-slide": { padding: "1rem" },
