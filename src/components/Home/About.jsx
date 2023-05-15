@@ -51,33 +51,46 @@ export default function About() {
         <a href="https://www.linkedin.com/in/nitsan-stark-levit/">
           {" "}
           ניצן שטרק לויט,
+        </a>{" "}
+        &nbsp; עידן שטרק, תומר שטרק{" "}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
+      >
+        <b> מעצבות גרפיקה:</b>&nbsp;
+        <a href="https://www.linkedin.com/in/maya-zimmermann-5b204184">
+          {" "}
+          מאיה צימרמן
         </a>
-        עידן שטרק, תומר שטרק{" "}
+        &nbsp;ו
+        <a href="https://www.linkedin.com/in/emily-breslav-374776232">
+          אמילי ברסלב
+        </a>
+        &nbsp;{" "}
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        <b> מעצבות:</b>&nbsp; מאיה צימרמן ואמילי ברסלב{" "}
+        <b> מעצבות תוכן:</b>&nbsp;
+        <a href="https://www.meravstark.com/"> מירב שטרק</a>
+        &nbsp; ונטע שטרק{" "}
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        <b> מעצבות תוכן:</b>&nbsp; מירב שטרק ונטע שטרק{" "}
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
-      >
-        <b>טכנאי קול:</b>&nbsp; אלון קפלן
+        <b>מעצב מוזיקה וקולות:</b>&nbsp;
+        <a href="http://www.Alonkaplan.com"> אלון קפלן</a>
+        &nbsp;
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
         <b> עזרו, חיזקו, תרמו וייעצו:</b>&nbsp; מארגני ומשתתפי הדמוקרתון 2023,
-        עמותת זול"ת, גארוגי אברמוביץ', דורי אדר, ורבים אחרים{" "}
+        עמותת זול"ת, גאורגי אברמוביץ', דורי אדר, ורבים אחרים{" "}
       </Typography>
       <Typography
         variant="body2"
