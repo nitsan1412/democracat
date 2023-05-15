@@ -1,10 +1,10 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import emptyCat from "../../images/icons/emptyCat.svg";
-import { useGame } from "../../helpers/GameContext";
+import award from "../images/icons/award.svg";
+// import { useGame } from "../helpers/GameContext";
 
-export default function EndScore() {
-  const { game } = useGame();
+export default function EndScore({ gameSummary }) {
+  // const { game } = useGame();
 
   return (
     <Stack
@@ -42,9 +42,9 @@ export default function EndScore() {
             fontWeight: 400,
           }}
         >
-          {game.gameSummary.bonusScore + game.gameSummary.score}
+          {gameSummary.bonusScore + gameSummary.score}
         </Typography>
-        <img src={emptyCat} alt="" />
+        <img src={award} alt="" />
       </Stack>
       <Typography
         variant="body1"
@@ -54,7 +54,7 @@ export default function EndScore() {
           letterSpacing: "0.15em",
         }}
       >
-        {game.gameSummary.score}&nbsp;&nbsp; חתולים הגיעו לכרית
+        {gameSummary.score}&nbsp;&nbsp; חתולים הגיעו לכרית
       </Typography>
       <Typography
         variant="body1"
@@ -64,7 +64,8 @@ export default function EndScore() {
           letterSpacing: "0.15em",
         }}
       >
-        {game.gameSummary.bonusScore}&nbsp;&nbsp; בונוס עבור פלורליזם
+        {gameSummary.bonusScore}&nbsp;&nbsp; נקודות
+        <b> בונוס</b>&nbsp; עבור פלורליזם
       </Typography>
     </Stack>
   );

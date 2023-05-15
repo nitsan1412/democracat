@@ -11,60 +11,20 @@ export default function About() {
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        משחק מיציטופיה פותח בעקבות המשבר החברתי בישראל.
+        המשחק מיציטופיה פותח בעקבות המשבר החברתי בישראל בשנת 2023,
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        חוקים העוברים בכנסת משפיעים באופן שונה על כל אחד מהזרמים והמגזרים
-        המרכיבים את החברה הישראלית.{" "}
+        במסגרת הדמוקרטון ובתמיכת מכון זולת,
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        מטרת המשחק להדגיש את חשיבות השמירה על פלורליזם חברתי במדינה שנוצרה
-        מקיבוץ גלויות.{" "}
+        במטרה להדגיש את חשיבות הפלורליזם החברתי במדינה.
       </Typography>
-      <Typography
-        variant="body2"
-        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
-      >
-        במשחק משתתפים חתולים המייצגים מגזרים שונים (חילוני, דתי ציוני, חרדי
-        וערבי) ומגדרים שונים (נשים וגברים) ולהט"בים. המטרה היא להביא כמה שיותר
-        חתולים לכרית הרכה והנעימה תוך דקה וחצי.{" "}
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
-      >
-        תוך כדי תנועה מופיעים חוקים שונים, שאפשר לאשר או לדחות. כל חוק משפיע
-        באופן שונה על מהירות מגזרים או מגדרים של חתולים.{" "}
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
-      >
-        בסיום המשחק מקבלים ניקוד המבוסס על מספר החתולים שהגיע לכרית ועוד בונוס
-        משמעותי על מגוון המגזרים והמגדרים.
-      </Typography>
-      {/* <Typography
-        variant="body2"
-        sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
-      >
-        קישור למילה פלורליזם מביא את השחקן לקומיקס קצר המסביר את חשיבות הגיוון
-        בחיינו.
-      </Typography> */}
-      <ul>
-        <li style={{ fontSize: "0.9rem" }}>
-          אין כל קשר בין החוקים במשחק לחוקים במציאות
-        </li>
-        <li style={{ fontSize: "0.9rem" }}>
-          הפירוש הניתן לחוקים הוא לפי דעתם של המפתחים.{" "}
-        </li>
-      </ul>
-
       <Typography
         variant="body2"
         sx={{
@@ -86,32 +46,51 @@ export default function About() {
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        <b>מתכנתים:</b> &nbsp; ניצן שטרק לויט, עידן שטרק, תומר שטרק{" "}
+        <b>מתכנתים:</b>
+        &nbsp;
+        <a href="https://www.linkedin.com/in/nitsan-stark-levit/">
+          {" "}
+          ניצן שטרק לויט,
+        </a>{" "}
+        &nbsp; עידן שטרק, תומר שטרק{" "}
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        <b> מעצבות:</b>&nbsp; מאיה צימרמן ואמילי ברסלב{" "}
+        <b> מעצבות גרפיקה:</b>&nbsp;
+        <a href="https://www.linkedin.com/in/maya-zimmermann-5b204184">
+          {" "}
+          מאיה צימרמן
+        </a>
+        &nbsp;ו
+        <a href="https://www.linkedin.com/in/emily-breslav-374776232">
+          אמילי ברסלב
+        </a>
+        &nbsp;{" "}
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        <b> מעצבות תוכן:</b>&nbsp; מירב שטרק ונטע שטרק{" "}
+        <b> מעצבות תוכן:</b>&nbsp;
+        <a href="https://www.meravstark.com/"> מירב שטרק</a>
+        &nbsp; ונטע שטרק{" "}
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
-        <b>טכנאי קול:</b>&nbsp; אלון קפלן
+        <b>מעצב מוזיקה וקולות:</b>&nbsp;
+        <a href="http://www.Alonkaplan.com"> אלון קפלן</a>
+        &nbsp;
       </Typography>
       <Typography
         variant="body2"
         sx={{ margin: 0, textAlign: "justify", padding: "0 0.5rem" }}
       >
         <b> עזרו, חיזקו, תרמו וייעצו:</b>&nbsp; מארגני ומשתתפי הדמוקרתון 2023,
-        עמותת זול"ת, גארוגי אברמוביץ', דורי אדר, ורבים אחרים{" "}
+        עמותת זול"ת, גאורגי אברמוביץ', דורי אדר, ורבים אחרים{" "}
       </Typography>
       <Typography
         variant="body2"

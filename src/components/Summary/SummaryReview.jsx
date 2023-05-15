@@ -6,13 +6,35 @@ import { useGame } from "../../helpers/GameContext";
 import CharacterImage from "../Game/CharacterImage";
 import Game from "../../logic/Game";
 import { useNavigate } from "../../helpers/SmartNavigate";
-
+import sadCat from "../../images/icons/sadCat.png";
 export default function SummaryReview() {
   const { game, start } = useGame();
   const navigate = useNavigate();
 
   return (
     <Stack alignItems="center">
+      {game.characterManager.charactersDone().length === 0 ? (
+        <Stack
+          sx={{ maxWidth: "350px", marginTop: 2 }}
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={4}
+        >
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: "0.9rem",
+              fontWeight: 600,
+            }}
+          >
+            החתולים שאספת{" "}
+          </Typography>
+          <img src={sadCat} alt="sad-cat" width="50%" />
+        </Stack>
+      ) : (
+        ""
+      )}
       <Stack
         gap={1}
         height={1}
@@ -30,7 +52,9 @@ export default function SummaryReview() {
             fontWeight: 600,
           }}
         >
-          {game.gameSummary.endGameText.firstLine}
+          {game.characterManager.charactersDone().length === 0
+            ? "נראה שלא הצלחת לאסוף חתולים"
+            : game.gameSummary.endGameText.firstLine}
         </Typography>
         <Typography
           variant="body1"
@@ -41,7 +65,9 @@ export default function SummaryReview() {
             fontWeight: 600,
           }}
         >
-          {game.gameSummary.endGameText.secondLine}
+          {game.characterManager.charactersDone().length === 0
+            ? "מומלץ לקרוא את הוראות המשחק ולשחק שוב"
+            : game.gameSummary.endGameText.secondLine}
         </Typography>
         <Typography
           variant="body1"

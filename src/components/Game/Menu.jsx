@@ -29,6 +29,7 @@ export default function Menu() {
       <Stack
         direction="row"
         gap={1}
+        sx={{ cursor: "pointer" }}
         onClick={() => {
           navigate("/", true);
           cancel();
@@ -47,6 +48,7 @@ export default function Menu() {
         onClick={() => {
           changeGameSounds();
         }}
+        sx={{ cursor: "pointer" }}
       >
         <img
           src={game.isGameMuted ? soundOff : soundOn}

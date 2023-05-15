@@ -1,31 +1,14 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import ClearIcon from "@mui/icons-material/Clear";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useGame } from "../../helpers/GameContext";
 import RuleImpact from "./RuleImpact";
 
 export default function RuleSelectedModal(props) {
   const { game } = useGame();
   return (
-    <Stack sx={style}>
+    <Stack sx={{ ...style }}>
       <Stack direction="row" alignItems="center" justifyContent="center">
-        <Typography
-          id="modal-modal-title"
-          variant="button"
-          sx={{
-            fontSize: "0.8rem",
-            alignItems: "center",
-            width: "2rem",
-          }}
-        >
-          <ClearIcon
-            sx={{ marginRight: "-8px", marginLeft: "8px", cursor: "pointer" }}
-            onClick={() => {
-              game.resume();
-              props.setOpenModal(false);
-            }}
-          />
-        </Typography>
         <Typography
           id="modal-modal-title"
           variant="overline"
@@ -81,6 +64,31 @@ export default function RuleSelectedModal(props) {
       >
         <RuleImpact rule={props.rule} />
       </Stack>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        marginTop="1rem"
+      >
+        <Typography
+          id="modal-modal-title"
+          variant="button"
+          sx={{
+            fontSize: "0.9rem",
+            alignItems: "center",
+            textDecoration: "underline",
+          }}
+          onClick={() => {
+            game.resume();
+            props.setOpenModal(false);
+          }}
+        >
+          {" "}
+          הצעת החוק הבאה
+        </Typography>
+        <ChevronLeftIcon />
+      </Stack>
     </Stack>
   );
 }
@@ -88,7 +96,7 @@ const style = {
   width: "100%",
   bgcolor: "background.paper",
   boxShadow: 24,
-  p: 4,
+  p: 2,
   display: "flex",
   flexDirection: "column",
   paddingTop: "12px",

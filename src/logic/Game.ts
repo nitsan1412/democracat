@@ -96,7 +96,7 @@ export default class Game {
     this.gameSummary = {
       score,
       bonusScore,
-      isHighScore: ScoreManager.compairHighScore(score + bonusScore),
+      isHighScore:(score + bonusScore===0) ? false: ScoreManager.compairHighScore(score + bonusScore),
       endGameText: this.scoreManager.getSummaryText(
         this.ruleManager.chosenRules.length,
         score,
