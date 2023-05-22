@@ -37,20 +37,12 @@ export default function RuleImpact({ rule, overTitle }) {
         ) : (
           <Badge
             key={characterType}
-            badgeContent={
-              overTitle
-                ? `${impact > 0 ? "+" : "-"}${
-                    impact > 0 ? impact : impact * -1
-                  }`
-                : `${impact > 0 ? impact : impact * -1}${
-                    impact > 0 ? "+" : "-"
-                  }`
-            }
+            badgeContent={`${impact > 0 ? "+" : "-"}`}
             sx={{
               justifyContent: "center",
               ".MuiBadge-badge": {
                 padding: 0,
-                fontSize: "0.6rem",
+                fontSize: "1rem",
                 width: "11px",
                 height: "19px",
                 right: 8,

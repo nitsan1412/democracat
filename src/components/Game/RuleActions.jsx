@@ -11,7 +11,17 @@ import RuleSelectedModal from "./RuleSelectedModal";
 export default function RuleActions(props) {
   const { game, declineRule, chooseRule } = useGame();
   const [openModal, setOpenModal] = useState(false);
+  const [ischosen, setIsChosen] = useState(false);
 
+  const closeModal =()=>{
+    if (ischosen) {
+      chooseRule(props.rule);
+    } else {
+      declineRule(props.rule);
+    }
+    setOpenModal(false);
+    game.resume();
+  }
   return (
     <Stack width={1} direction="row" justifyContent="space-evenly">
       <Stack
@@ -27,9 +37,9 @@ export default function RuleActions(props) {
           cursor: "pointer",
         }}
         onClick={() => {
-          chooseRule(props.rule);
-          setOpenModal(true);
           game.pause();
+          setIsChosen(true);
+          setOpenModal(true);
           props.rule.name === "חוק תקשורת"
             ? playSound(
                 "muted",
@@ -68,7 +78,9 @@ export default function RuleActions(props) {
           cursor: "pointer",
         }}
         onClick={() => {
-          declineRule(props.rule);
+          game.pause();
+          setIsChosen(false);
+          setOpenModal(true);
           playSound(
             "declineLaw",
             game.isGameMuted ||
@@ -92,12 +104,16 @@ export default function RuleActions(props) {
       <Dialog
         open={openModal}
         onClose={() => {
-          setOpenModal(false);
-          game.resume();
+          closeModal()
         }}
         sx={{ borderRadius: 15 }}
       >
-        <RuleSelectedModal rule={props.rule} setOpenModal={setOpenModal} />
+        <RuleSelectedModal
+          rule={props.rule}
+          // setOpenModal={setOpenModal}
+          isRuleChosen={ischosen}
+          closeModal={closeModal}
+        />
       </Dialog>
     </Stack>
   );
