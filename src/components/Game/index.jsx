@@ -50,7 +50,7 @@ export default function Game() {
             borderTop: "2px solid lightgray",
           }}
         >
-          {rule ? <RuleActions rule={rule} /> : ""}
+          {game.time > 0.5 ? rule ? <RuleActions rule={rule} /> : "" : ""}
         </Stack>
       </Stack>
     </Stack>
