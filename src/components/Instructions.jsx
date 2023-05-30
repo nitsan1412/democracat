@@ -26,7 +26,7 @@ export default function Instructions(props) {
   const slides = [
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
-        מי אני? מה אני?
+        כמה אני פלורליסט?
       </Typography>
       <img src={catKing} alt="cat king" />
       <Typography
@@ -47,7 +47,7 @@ export default function Instructions(props) {
       >
         ביכולתך להחליט אילו חתולים יגיעו אל כרית הצמר הנעימה{" "}
       </Typography>
-      <Stack height="0.01rem"> </Stack>
+      <Stack height="2rem"> </Stack>
     </Stack>,
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
@@ -59,7 +59,7 @@ export default function Instructions(props) {
       </Typography>
       <Typography
         variant="body1"
-        sx={{ textAlign: "center", marginTop: "-1rem" }}
+        sx={{ textAlign: "center", marginTop: "-1rem", marginBottom: "2rem" }}
       >
         שני מגדרים: (זכר, נקבה) ולהט"בים
       </Typography>
@@ -69,20 +69,11 @@ export default function Instructions(props) {
         איך משחקים?
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        המטרה היא להגיע עם המספר הרב ביותר של חתולים אל כרית הצמר בתוך דקה וחצי{" "}
-      </Typography>
-      <Typography
-        variant="body1"
-        sx={{
-          textAlign: "center",
-          marginTop: "-0.5rem",
-          marginBottom: "-0.5rem",
-        }}
-      >
-        כל חתול מזכה אותך בנקודה{" "}
+        המטרה היא להגיע עם המספר הרב ביותר של חתולים ממגזרים ומגדרים שונים אל
+        כרית הצמר בתוך דקה וחצי{" "}
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        תוכל לקדם חתולים מסויימים ולעכב אחרים{" "}
+        חתולים ממגזר או מגדר מסויים יתקדמו או יתעכבו{" "}
       </Typography>
       <Typography
         variant="body1"
@@ -102,19 +93,33 @@ export default function Instructions(props) {
           style={{ display: "inline", verticalAlign: "bottom" }}
         />{" "}
       </Typography>
-
+      <Typography
+        variant="body1"
+        sx={{
+          textAlign: "center",
+          marginTop: "-0.5rem",
+          marginBottom: "-0.5rem",
+        }}
+      >
+        <b>בנקודה</b>
+        כל חתול מזכה אותך{" "}
+      </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        <b>ויש גם בונוס!</b>
+        <b>ויש גם בונוס על פלורליזם!</b>
       </Typography>
       <Typography
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        המחושב לפי ההצלחה להעביר מספר דומה של חתולים מכל מגדר ומגזר אל הכרית
+        ההצלחה להעביר כמות דומה של חתולים ממגזרים ומגדרים שונים תגדיל את הבונוס{" "}
       </Typography>
-      <Stack
-        sx={{ marginTop: "1.5rem", marginBottom: "2.3rem", width: "100%" }}
+      <Typography
+        variant="body1"
+        sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
+        המשחק נעצר אחרי אישור או דחייה של חוקת עד לחיצה על המשך משחק{" "}
+      </Typography>
+      <Stack sx={{ marginTop: "0rem", width: "100%" }}>
         <StartGameButton />
       </Stack>
     </Stack>,
@@ -204,10 +209,9 @@ export default function Instructions(props) {
               elevation={2}
               sx={{
                 width: "90vw",
-                height: "34rem",
+                height: "36rem",
                 padding: "2rem",
                 paddingTop: "1rem",
-                marginTop: "1rem",
               }}
             >
               <Typography

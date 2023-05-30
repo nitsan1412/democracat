@@ -22,7 +22,7 @@ export default function RuleSelectedModal(props) {
             variant="overline"
             sx={{ fontSize: "0.9rem" }}
           >
-            הנה מה שהיה קורה אם החוק היה עובר:
+            השפעת החוק אם היה עובר:
           </Typography>
         </Stack>
       ) : (
