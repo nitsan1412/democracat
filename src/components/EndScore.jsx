@@ -1,11 +1,9 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import award from "../images/icons/award.svg";
-// import { useGame } from "../helpers/GameContext";
+import CatStars from "./CatStars";
 
-export default function EndScore({ gameSummary }) {
-  // const { game } = useGame();
-
+export default function EndScore({ gameSummary, ratingLimits }) {
   return (
     <Stack
       gap={1}
@@ -25,6 +23,26 @@ export default function EndScore({ gameSummary }) {
       >
         הניקוד הסופי{" "}
       </Typography>
+      <Stack
+        flexDirection="row-reverse"
+        gap={2}
+        sx={{
+          border: "1px #ECECEC solid ",
+          borderRadius: "25px",
+          padding: "0.4rem 3rem",
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "center",
+            fontSize: "1.1rem",
+            fontWeight: 400,
+          }}
+        >
+          <CatStars gameSummary={gameSummary} ratingLimits={ratingLimits} />
+        </Typography>
+      </Stack>
       <Stack
         flexDirection="row-reverse"
         gap={2}

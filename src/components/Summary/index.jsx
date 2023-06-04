@@ -49,7 +49,10 @@ export default function GameSummary() {
           sx={{ padding: "1rem" }}
         >
           <Stack sx={boxStyle}>
-            <EndScore gameSummary={game.gameSummary} />
+            <EndScore
+              gameSummary={game.gameSummary}
+              ratingLimits={game.RATING_LIMITS}
+            />
           </Stack>
           <Stack sx={boxStyle}>
             <SummaryReview />

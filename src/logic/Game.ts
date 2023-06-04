@@ -116,4 +116,6 @@ export default class Game {
   static DURATION = 1.5 * 60;
   static TRACK_END = 100;
   static INITIAL_SPEED = 1;
+  static RATING_LIMITS = [120, 100, 80, 50, 20];
+
 }
