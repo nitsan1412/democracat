@@ -51,8 +51,8 @@ export default function About() {
         <a href="https://www.linkedin.com/in/nitsan-stark-levit/">
           {" "}
           ניצן שטרק לויט,
-        </a>{" "}
-        &nbsp; עידן שטרק, תומר שטרק{" "}
+        </a>
+        &nbsp;עידן שטרק, תומר שטרק
       </Typography>
       <Typography
         variant="body2"
