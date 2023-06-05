@@ -52,11 +52,6 @@ export function GameProvider({ children }) {
     forceUpdate();
   };
 
-    const isFullCat = (rule: Rule) => {
-    game.chooseRule(rule);
-    forceUpdate();
-  };
-
   const changeGameSounds = () => {
     localStorage.setItem("isGameMuted", String(!game.isGameMuted));
     if (!game.isGameMuted) stopMusic();

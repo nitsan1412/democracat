@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import award from "../images/icons/award.svg";
 import CatStars from "./CatStars";
 
-export default function EndScore({ gameSummary, ratingLimits }) {
+export default function EndScore({ gameSummary }) {
   return (
     <Stack
       gap={1}
@@ -29,7 +29,7 @@ export default function EndScore({ gameSummary, ratingLimits }) {
         sx={{
           border: "1px #ECECEC solid ",
           borderRadius: "25px",
-          padding: "0.4rem 3rem",
+          padding: "0.4rem 1rem",
         }}
       >
         <Typography
@@ -40,7 +40,7 @@ export default function EndScore({ gameSummary, ratingLimits }) {
             fontWeight: 400,
           }}
         >
-          <CatStars gameSummary={gameSummary} ratingLimits={ratingLimits} />
+          <CatStars gameSummary={gameSummary} />
         </Typography>
       </Stack>
       <Stack

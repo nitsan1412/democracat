@@ -51,7 +51,6 @@ export default function GameSummary() {
           <Stack sx={boxStyle}>
             <EndScore
               gameSummary={game.gameSummary}
-              ratingLimits={game.RATING_LIMITS}
             />
           </Stack>
           <Stack sx={boxStyle}>
