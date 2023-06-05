@@ -101,8 +101,7 @@ export default function Instructions(props) {
           marginBottom: "-0.5rem",
         }}
       >
-        <b>בנקודה</b>
-        כל חתול מזכה אותך{" "}
+        כל חתול מזכה אותך <b>בנקודה</b>
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         <b>ויש גם בונוס על פלורליזם!</b>
@@ -111,13 +110,13 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        ההצלחה להעביר כמות דומה של חתולים ממגזרים ומגדרים שונים תגדיל את הבונוס{" "}
+        ההצלחה להעביר כמות דומה של חתולים ממגזרים ומגדרים שונים תגדיל את הבונוס.{" "}
       </Typography>
       <Typography
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        המשחק נעצר אחרי אישור או דחייה של חוקת עד לחיצה על המשך משחק{" "}
+        המשחק נעצר אחרי אישור או דחייה של חוק, עד לחיצה על המשך משחק{" "}
       </Typography>
       <Stack sx={{ marginTop: "0rem", width: "100%" }}>
         <StartGameButton />
@@ -237,7 +236,7 @@ export default function Instructions(props) {
 }
 
 const styles = {
-  height: "100%",
+  // height: "100%",
   alignItems: "flex-start",
   paddingTop: "10vh",
   ".dots": {
