@@ -94,8 +94,7 @@ export default function RuleSelectedModal(props) {
             props.closeModal();
           }}
         >
-          {" "}
-          הצעת החוק הבאה
+          המשך המשחק
         </Typography>
         <ChevronLeftIcon />
       </Stack>
