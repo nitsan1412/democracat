@@ -1,22 +1,33 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { useGame } from "../../helpers/GameContext";
 import RuleImpact from "./RuleImpact";
 
 export default function RuleSelectedModal(props) {
-  const { game } = useGame();
   return (
     <Stack sx={{ ...style }}>
       <Stack direction="row" alignItems="center" justifyContent="center">
         <Typography
           id="modal-modal-title"
           variant="overline"
-          sx={{ fontSize: "0.9rem", color: "primary" }}
+          sx={{ fontSize: "1rem", color: "primary", fontWeight: 600 }}
         >
-          הצעת החוק עברה בהצלחה
+          {props.isRuleChosen ? " הצעת החוק עברה בהצלחה" : "הצעת החוק נדחתה"}
         </Typography>
       </Stack>
+      {!props.isRuleChosen ? (
+        <Stack direction="row" alignItems="center" justifyContent="center">
+          <Typography
+            id="modal-modal-title"
+            variant="overline"
+            sx={{ fontSize: "0.9rem" }}
+          >
+            השפעת החוק אם היה עובר:
+          </Typography>
+        </Stack>
+      ) : (
+        ""
+      )}
       <Stack
         direction="row"
         alignItems="center"
@@ -80,8 +91,7 @@ export default function RuleSelectedModal(props) {
             textDecoration: "underline",
           }}
           onClick={() => {
-            game.resume();
-            props.setOpenModal(false);
+            props.closeModal();
           }}
         >
           {" "}
