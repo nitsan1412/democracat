@@ -84,6 +84,8 @@ export class ScoreManager {
   }
 
   static SUMMARY_TEXTS_SCORE_LIMIT = [25, 35, 50];
+  static STARS_LIMITS = [25, 35, 50];
+
   static SUMMARY_TEXTS_BONUS_LIMIT = [40, 61];
   static GENDERS = ["man", "woman", "lgbt"];
   static SECTORS = ["orthodox", "arab", "secular", "religious"];
