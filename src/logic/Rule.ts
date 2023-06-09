@@ -2,7 +2,7 @@ import { Applier, ApplyDetails, Impact } from "../contracts";
 import Character from "./Character";
 import CharacterType from "./CharacterType";
 import Game from "./Game";
-import { rules } from "./Game-Settings";
+import { getRulesFromDb } from "./Game-Settings";
 
 export class Rule {
   constructor(
@@ -104,7 +104,7 @@ export class Rule {
     return null
   }
 
-  static RULES = rules.map((r) => {
+  static RULES = getRulesFromDb().map((r) => {
     const { id, name, impact, initialInfo, summaryInfo, isDelayed, icon, apply: applyDetails } = r;
     const apply = Rule.initApplier(applyDetails);
     return new Rule(id, name, initialInfo, summaryInfo, impact, isDelayed, icon, apply);

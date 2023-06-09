@@ -1,6 +1,18 @@
 import { RuleDetails } from "../contracts";
+import axios from "axios"
+ let rules: RuleDetails[];
 
-export const rules: RuleDetails[] = [
+export const getRulesFromDb=()=>{
+  axios.get('https://sheet.best/api/sheets/a6e67deb-2f00-43c3-89d3-b331341d53ed')
+  .then(response => {
+    console.log(response);
+  })
+
+  if (rules)return rules
+  else return oldRules
+}
+
+export const oldRules: RuleDetails[] = [
   {
     id: 1,
     name: "חוק הצניעות",
