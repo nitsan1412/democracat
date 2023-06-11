@@ -26,7 +26,7 @@ export default function Instructions(props) {
   const slides = [
     <Stack alignItems="center" gap={2}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>
-        כמה אני פלורליסט?
+        כמה אתה פלורליסט?
       </Typography>
       <img src={catKing} alt="cat king" />
       <Typography
@@ -73,14 +73,15 @@ export default function Instructions(props) {
         כרית הצמר בתוך דקה וחצי{" "}
       </Typography>
       <Typography variant="body1" sx={{ textAlign: "center" }}>
-        חתולים ממגזר או מגדר מסויים יתקדמו או יתעכבו{" "}
+        חתולים ממגזר או מגדר מסויים יתקדמו או יתעכבו בעזרת אישור או דחייה של
+        חוקים{" "}
       </Typography>
-      <Typography
+      {/* <Typography
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
         בעזרת אישור או דחייה של חוקים
-      </Typography>
+      </Typography> */}
       <Typography variant="body1" sx={{ textAlign: "center" }}>
         <img
           src={approveButton}
@@ -110,10 +111,11 @@ export default function Instructions(props) {
         variant="body1"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
-        ההצלחה להעביר כמות דומה של חתולים ממגזרים ומגדרים שונים תגדיל את הבונוס.{" "}
+        הבונוס תלוי ביכולת שלך להעביר כמות דומה של חתולים מהמגזרים והמגדרים
+        השונים{" "}
       </Typography>
       <Typography
-        variant="body1"
+        variant="body2"
         sx={{ textAlign: "center", marginTop: "-1rem" }}
       >
         המשחק נעצר אחרי אישור או דחייה של חוק, עד לחיצה על המשך משחק{" "}

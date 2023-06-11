@@ -6,11 +6,10 @@ import CharacterImage from "./CharacterImage";
 import Equality from "../../images/icons/equality.png";
 import Muted from "../../images/icons/muted.png";
 import Refresh from "../../images/icons/refresh.png";
-
 export default function RuleImpact({ rule, overTitle }) {
   const { game } = useGame();
-  const impactedCharacterTypes = game.characterManager.characterTypes
-    .map((characterType) => ({
+  const impactedCharacterTypes = game.characterManager.characterTypes.map(
+    (characterType) => ({
       characterType: characterType.name,
       impact:
         rule.impact[
@@ -18,8 +17,9 @@ export default function RuleImpact({ rule, overTitle }) {
             (key) => key === "all" || characterType.name.includes(key)
           )
         ],
-    }))
-    .filter((item) => Boolean(item.impact));
+    })
+  );
+  // .filter((item) => Boolean(item.impact));
   return (
     <Stack
       width={1}
@@ -31,28 +31,11 @@ export default function RuleImpact({ rule, overTitle }) {
       marginTop={2}
       maxWidth="313px"
     >
-      {impactedCharacterTypes.map(({ characterType, impact }) =>
-        !impact ? (
-          ""
-        ) : (
-          <Badge
-            key={characterType}
-            badgeContent={`${impact > 0 ? "+" : "-"}`}
-            sx={{
-              justifyContent: "center",
-              ".MuiBadge-badge": {
-                padding: 0,
-                fontSize: "1rem",
-                width: "11px",
-                height: "19px",
-                right: 8,
-                backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
-                color: "#FFFFFF",
-              },
-            }}
-          >
+      {!rule.icon &&
+        impactedCharacterTypes.map(({ characterType, impact }) =>
+          !impact ? (
             <CharacterImage
-              characterType={characterType}
+              characterType={`${characterType}-not-influenced`}
               sx={
                 impactedCharacterTypes.length < 5
                   ? {
@@ -67,9 +50,42 @@ export default function RuleImpact({ rule, overTitle }) {
                     }
               }
             />
-          </Badge>
-        )
-      )}
+          ) : (
+            <Badge
+              key={characterType}
+              badgeContent={`${impact > 0 ? "+" : "-"}`}
+              sx={{
+                justifyContent: "center",
+                ".MuiBadge-badge": {
+                  padding: 0,
+                  fontSize: "1rem",
+                  width: "11px",
+                  height: "19px",
+                  right: 8,
+                  backgroundColor: impact > 0 ? "#79C300" : "#FC68B4",
+                  color: "#FFFFFF",
+                },
+              }}
+            >
+              <CharacterImage
+                characterType={characterType}
+                sx={
+                  impactedCharacterTypes.length < 5
+                    ? {
+                        height: "42px",
+                        width: "40px",
+                        minHeight: "0rem !important",
+                      }
+                    : {
+                        height: "41px",
+                        width: "38px",
+                        minHeight: "0rem !important",
+                      }
+                }
+              />
+            </Badge>
+          )
+        )}
       {rule.icon ? (
         <div
           direction="row"
@@ -82,12 +98,7 @@ export default function RuleImpact({ rule, overTitle }) {
       ) : (
         ""
       )}
-      <div
-        direction="row"
-        alignitems="center"
-        justifycontent="center"
-        textalign="center"
-      >
+      <Stack direction="row" textAlign="center" minHeight="1rem">
         <Typography
           id="modal-modal-title"
           variant="h6"
@@ -96,11 +107,13 @@ export default function RuleImpact({ rule, overTitle }) {
             fontSize: "0.9rem",
             fontWeight: 600,
             justifyContent: "center",
+            alignitems: "center",
+            textalign: "center",
           }}
         >
           {rule.summaryInfo || ""}
         </Typography>
-      </div>
+      </Stack>
     </Stack>
   );
 }

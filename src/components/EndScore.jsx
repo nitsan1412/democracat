@@ -1,6 +1,5 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import award from "../images/icons/award.svg";
 import CatStars from "./CatStars";
 
 export default function EndScore({ gameSummary }) {
@@ -21,7 +20,7 @@ export default function EndScore({ gameSummary }) {
           fontWeight: 600,
         }}
       >
-        הניקוד הסופי{" "}
+        הניקוד הסופי &nbsp;&nbsp;{gameSummary.bonusScore + gameSummary.score}
       </Typography>
       <Stack
         flexDirection="row-reverse"
@@ -43,27 +42,7 @@ export default function EndScore({ gameSummary }) {
           <CatStars gameSummary={gameSummary} />
         </Typography>
       </Stack>
-      <Stack
-        flexDirection="row-reverse"
-        gap={2}
-        sx={{
-          border: "1px #ECECEC solid ",
-          borderRadius: "25px",
-          padding: "0.4rem 3rem",
-        }}
-      >
-        <Typography
-          variant="body1"
-          sx={{
-            textAlign: "center",
-            fontSize: "1.1rem",
-            fontWeight: 400,
-          }}
-        >
-          {gameSummary.bonusScore + gameSummary.score}
-        </Typography>
-        <img src={award} alt="" />
-      </Stack>
+
       <Typography
         variant="body1"
         sx={{

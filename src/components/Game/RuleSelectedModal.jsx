@@ -41,6 +41,7 @@ export default function RuleSelectedModal(props) {
           sx={{
             fontSize: "1.5rem",
             fontWeight: 700,
+            alignItems: "center",
             justifyContent: "center",
           }}
         >
@@ -60,6 +61,7 @@ export default function RuleSelectedModal(props) {
           sx={{
             fontSize: "0.9rem",
             fontWeight: 600,
+            alignItems: "center",
             justifyContent: "center",
           }}
         >

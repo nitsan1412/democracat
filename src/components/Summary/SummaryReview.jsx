@@ -130,44 +130,44 @@ export default function SummaryReview() {
                     character.location > Game.TRACK_END &&
                     characterType === character.type.name
                 ).length;
-                if (numberOfCharactersDoneOfType <= 0) return "";
-                else
-                  return (
-                    <Stack
+                // if (numberOfCharactersDoneOfType <= 0) return "";
+                // else
+                return (
+                  <Stack
+                    sx={{
+                      flexDirection: "row",
+                      width: 70,
+                      marginBottom: 2,
+                      justifyContent: "center",
+                    }}
+                    key={index}
+                  >
+                    <Badge
+                      key={characterType}
+                      badgeContent={numberOfCharactersDoneOfType || "0"}
                       sx={{
-                        flexDirection: "row",
-                        width: 70,
-                        marginBottom: 2,
                         justifyContent: "center",
+                        ".MuiBadge-badge": {
+                          padding: 0,
+                          fontSize: "0.7rem",
+                          width: "1.7rem",
+                          height: "1.7rem",
+                          borderRadius: "25px",
+                          lineHeight: "21px",
+                          right: 15,
+                          backgroundColor: "#FFFFFF",
+                          color: "#303030",
+                          border: " 1px solid #303030",
+                        },
                       }}
-                      key={index}
-                    >
-                      <Badge
-                        key={characterType}
-                        badgeContent={numberOfCharactersDoneOfType}
-                        sx={{
-                          justifyContent: "center",
-                          ".MuiBadge-badge": {
-                            padding: 0,
-                            fontSize: "0.7rem",
-                            width: "1.7rem",
-                            height: "1.7rem",
-                            borderRadius: "25px",
-                            lineHeight: "21px",
-                            right: 15,
-                            backgroundColor: "#FFFFFF",
-                            color: "#303030",
-                            border: " 1px solid #303030",
-                          },
-                        }}
-                      />
+                    />
 
-                      <CharacterImage
-                        characterType={characterType}
-                        sx={{ height: "53px", width: "50px" }}
-                      />
-                    </Stack>
-                  );
+                    <CharacterImage
+                      characterType={characterType}
+                      sx={{ height: "53px", width: "50px" }}
+                    />
+                  </Stack>
+                );
               }
             )}
           </Grid>

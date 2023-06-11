@@ -59,7 +59,7 @@ export default function SummaryRulesReview() {
         ".slick-slide": {
           padding: "0.5rem",
           ".MuiStack-root": {
-            minHeight: "8rem", // Change here in case rule is too big for the paper
+            minHeight: "1rem", // Change here in case rule is too big for the paper
           },
         },
         ".slick-dots": {
