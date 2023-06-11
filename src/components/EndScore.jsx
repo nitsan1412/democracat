@@ -1,6 +1,5 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import award from "../images/icons/award.svg";
 import CatStars from "./CatStars";
 
 export default function EndScore({ gameSummary }) {
