@@ -4,7 +4,7 @@ export const rules: RuleDetails[] = [
   {
     id: 1,
     name: "חוק הצניעות",
-    initialInfo: "מחייב הפרדה בין נשים לגברים כדי להעניק אופי יהודי למרחב הציבורי",
+    initialInfo: "מחייב הפרדה בין נשים לגברים כדי להעניק אופי צנוע למרחב הציבורי",
     summaryInfo: "החוק פוגע בחופש התנועה של נשים מכל המגזרים. לכן הן הופכות שקופות במרחב הציבורי.",
     impact: { orthodox: 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1 },
     apply: { type: "Woman-Transparent", args: [{impact: { "orthodox-man": 1, "orthodox-woman": 1, "religious-woman":-1, "secular-woman":-1, "arab-woman":-1  }}] },
@@ -35,14 +35,14 @@ export const rules: RuleDetails[] = [
     id: 5,
     name: "חוק המפלגות היהודיות",
     initialInfo: `אוסר על מפלגות איסלאמיות להתמודד בבחירות לכנסת`,
-    summaryInfo: "החוק  מבסס את אופיה היהודי של הכנסת. אבל הוא גם מונע ייצוג של המגזר הערבי ופוגע בו.",
+    summaryInfo: "החוק  מבסס את אופיה היהודי של הכנסת. הוא מונע ייצוג של המגזר הערבי ופוגע בו.",
     impact: { arab: -3, orthodox:1, secular:1, religious:1},
   },
   {
     id: 6,
     name: "חוק האיזוק האלקטרוני",
     initialInfo: `מגן על אנשים בסיכון על ידי ענידת אזיק אלקטרוני על אנשים אלימים`,
-    summaryInfo: "החוק מסייע במיגור האלימות נגד נשים. הוא טוב לכולם ובעיקר לנשים מכל המגזרים.",
+    summaryInfo: "החוק מסייע במיגור האלימות. הוא טוב לכולם ובעיקר לנשים מכל המגזרים.",
     impact: { "-woman": 3, "-man":1, "-lgbt":1},
   },
   {
@@ -63,7 +63,7 @@ export const rules: RuleDetails[] = [
     id: 9,
     name: "חוק התחבורה הציבורית",
     initialInfo: `מאפשר הפעלת תחבורה ציבורית בשבת`,
-    summaryInfo: "החוק מאפשר לאנשים לנסוע בכל ימות השבוע הוא טוב לחילונים וערבים ולא מקובל על המגזר החרדי.",
+    summaryInfo: "החוק מאפשר לאנשים לנסוע בכל ימות השבוע. הוא טוב לחילונים וערבים ולא מקובל על המגזר החרדי.",
     impact: { arab: 2, orthodox:-1, secular:2 },
   },
   {
@@ -111,7 +111,7 @@ export const rules: RuleDetails[] = [
   {
     id: 16,
     name: "חוק האלכוהול",
-    initialInfo: `מתחשב במגזר המוסלמי על ידי איסור מכירה של אלכוהול במהלך חודש הרמאדן`,
+    initialInfo: `אוסר על מכירה של אלכוהול במהלך חודש הרמאדן`,
     summaryInfo: `החוק מתחשב במוסלמים. הוא טוב למגזר הערבי ופוגע בכל יתר המגזרים.`,
     impact: { arab: 1, orthodox:-2, secular:-2, religious:-2},
   },
@@ -131,7 +131,7 @@ export const rules: RuleDetails[] = [
   },
   {
     id: 19,
-    name: "חוק מדינת כל אזרחיה",
+    name: "חוק איחוד הרשויות השופטות",
     initialInfo: `מעניק חוק אחיד לכל האזרחים על ידי ביטול בתי הדין הרבניים`,
     summaryInfo: `החוק מעביר את כל סמכויות השיפוט לבתי הדין האזרחיים. הוא יפגע בגברים חרדים ודתיים בגלל העדפתם להישפט בהתאם לחוקי ההלכה.`,
     impact: {orthodox:-1, religious:-1,  arab:3 },
@@ -191,7 +191,7 @@ export const rules: RuleDetails[] = [
   {
     id: 26,
     name: "חוק ביטול השבות",
-    initialInfo: `מונע התפוצצות אוכלוסין במדינה`,
+    initialInfo: `מונע עלייה לארץ כדי להתמודד עם פיצוץ אוכלוסין`,
     summaryInfo: `החוק מונע עלייה של יהודים. הוא טוב למגזר הערבי ופוגע בכל שאר המגזרים.`,
     impact: { arab: 1, orthodox:-1, secular:-1, religious:-1},
   },

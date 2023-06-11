@@ -27,7 +27,18 @@ import ArabWomanTransparent from "../../images/cats/arab-woman-transparent.png";
 import OrthodoxWomanTransparent from "../../images/cats/orthodox-woman-transparent.png";
 import ReligiousWomanTransparent from "../../images/cats/religious-woman-transparent.png";
 import SecularWomanTransparent from "../../images/cats/secular-woman-transparent.png";
-
+import ArabManNotInfluenced from "../../images/cats/arab-man-not-influenced.png";
+import OrthodoxManNotInfluenced from "../../images/cats/orthodox-man-not-influenced.png";
+import ReligiousManNotInfluenced from "../../images/cats/religious-man-not-influenced.png";
+import SecularManNotInfluenced from "../../images/cats/secular-man-not-influenced.png";
+import ArabWomanNotInfluenced from "../../images/cats/arab-woman-not-influenced.png";
+import OrthodoxWomanNotInfluenced from "../../images/cats/orthodox-woman-not-influenced.png";
+import ReligiousWomanNotInfluenced from "../../images/cats/religious-woman-not-influenced.png";
+import SecularWomanNotInfluenced from "../../images/cats/secular-woman-not-influenced.png";
+import ArabLGBTNotInfluenced from "../../images/cats/arab-lgbt-not-influenced.png";
+import OrthodoxLGBTNotInfluenced from "../../images/cats/orthodox-lgbt-not-influenced.png";
+import ReligiousLGBTNotInfluenced from "../../images/cats/religious-lgbt-not-influenced.png";
+import SecularLGBTNotInfluenced from "../../images/cats/secular-lgbt-not-influenced.png";
 export default function CharacterImage({ characterType, sx, ...props }) {
   return (
     <Stack
@@ -71,4 +82,16 @@ export const IMAGES = {
   "orthodox-woman-transparent": OrthodoxWomanTransparent,
   "religious-woman-transparent": ReligiousWomanTransparent,
   "secular-woman-transparent": SecularWomanTransparent,
+  "arab-man-not-influenced": ArabManNotInfluenced,
+  "orthodox-man-not-influenced": OrthodoxManNotInfluenced,
+  "religious-man-not-influenced": ReligiousManNotInfluenced,
+  "secular-man-not-influenced": SecularManNotInfluenced,
+  "arab-woman-not-influenced": ArabWomanNotInfluenced,
+  "orthodox-woman-not-influenced": OrthodoxWomanNotInfluenced,
+  "religious-woman-not-influenced": ReligiousWomanNotInfluenced,
+  "secular-woman-not-influenced": SecularWomanNotInfluenced,
+  "arab-lgbt-not-influenced": ArabLGBTNotInfluenced,
+  "orthodox-lgbt-not-influenced": OrthodoxLGBTNotInfluenced,
+  "religious-lgbt-not-influenced": ReligiousLGBTNotInfluenced,
+  "secular-lgbt-not-influenced": SecularLGBTNotInfluenced,
 };
