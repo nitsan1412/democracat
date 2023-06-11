@@ -98,12 +98,7 @@ export default function RuleImpact({ rule, overTitle }) {
       ) : (
         ""
       )}
-      <div
-        direction="row"
-        alignitems="center"
-        justifycontent="center"
-        textalign="center"
-      >
+      <Stack direction="row" textAlign="center" minHeight="1rem">
         <Typography
           id="modal-modal-title"
           variant="h6"
@@ -112,11 +107,13 @@ export default function RuleImpact({ rule, overTitle }) {
             fontSize: "0.9rem",
             fontWeight: 600,
             justifyContent: "center",
+            alignitems: "center",
+            textalign: "center",
           }}
         >
           {rule.summaryInfo || ""}
         </Typography>
-      </div>
+      </Stack>
     </Stack>
   );
 }

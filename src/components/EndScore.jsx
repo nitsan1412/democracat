@@ -20,7 +20,7 @@ export default function EndScore({ gameSummary }) {
           fontWeight: 600,
         }}
       >
-        הניקוד הסופי: {gameSummary.bonusScore + gameSummary.score}
+        הניקוד הסופי &nbsp;&nbsp;{gameSummary.bonusScore + gameSummary.score}
       </Typography>
       <Stack
         flexDirection="row-reverse"
