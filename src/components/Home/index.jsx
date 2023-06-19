@@ -104,6 +104,8 @@ export default function StartGameMenu() {
         <Typography
           variant="body1"
           sx={{
+            textDecoration: "underline",
+
             textAlign: "center",
             fontSize: "1.1rem",
             fontWeight: 600,
