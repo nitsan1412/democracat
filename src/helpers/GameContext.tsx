@@ -17,6 +17,11 @@ export function GameProvider({ children }) {
   const searchParams = new URLSearchParams(window.location.search);
   const { stopMusic, startMusic } = useMusic();
 
+  const { data } = useGoogleSheets({
+    apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    sheetId: process.env.REACT_APP_GOOGLE_SHEETS_ID,
+  });
+
   const start = () => {
     const game = getGameFromURL();
     setGame(game);
