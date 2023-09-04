@@ -1,6 +1,4 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
-import useGoogleSheets from "use-google-sheets";
-import dotenv from "dotenv";
+import React, { useState, createContext, useContext } from "react";
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
