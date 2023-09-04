@@ -7,7 +7,7 @@ import { playSound } from "./Sounds";
 import { useMusic } from "./MusicContext";
 
 const GameContext = createContext<any>(null);
-
+ 
 export const useGame = () => useContext(GameContext);
 
 export function GameProvider({ children }) {
