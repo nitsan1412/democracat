@@ -1,5 +1,4 @@
 import React, { useState, createContext, useContext } from "react";
-
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
