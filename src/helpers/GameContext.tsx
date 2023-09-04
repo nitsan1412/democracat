@@ -1,6 +1,4 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
-import useGoogleSheets from "use-google-sheets";
-import dotenv from "dotenv";
+import React, { useState, createContext, useContext } from "react";
 import { useForceUpdate } from "./ForceUpdate";
 import Game from "../logic/Game";
 import CharacterManager from "../logic/CharacterManager";
@@ -18,11 +16,6 @@ export function GameProvider({ children }) {
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
   const searchParams = new URLSearchParams(window.location.search);
   const { stopMusic, startMusic } = useMusic();
-
-  const { data } = useGoogleSheets({
-    apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    sheetId: process.env.REACT_APP_GOOGLE_SHEETS_ID,
-  });
 
   const start = () => {
     const game = getGameFromURL();
