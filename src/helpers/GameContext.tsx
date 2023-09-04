@@ -7,7 +7,7 @@ import { playSound } from "./Sounds";
 import { useMusic } from "./MusicContext";
 
 const GameContext = createContext<any>(null);
-
+ 
 export const useGame = () => useContext(GameContext);
 
 export function GameProvider({ children }) {
@@ -16,11 +16,6 @@ export function GameProvider({ children }) {
   const [intervalHandler, setIntervalHandler] = useState<any>(undefined);
   const searchParams = new URLSearchParams(window.location.search);
   const { stopMusic, startMusic } = useMusic();
-
-  const { data } = useGoogleSheets({
-    apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    sheetId: process.env.REACT_APP_GOOGLE_SHEETS_ID,
-  });
 
   const start = () => {
     const game = getGameFromURL();
